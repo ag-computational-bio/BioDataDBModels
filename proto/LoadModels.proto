@@ -26,7 +26,7 @@ message ID {
 }
 
 message CreateLoadLinkSetRequest {
-    string ID = 1;
+    string DatasetID = 1;
     repeated DatasetEntityMetaData Metadata = 2;
 }
 
