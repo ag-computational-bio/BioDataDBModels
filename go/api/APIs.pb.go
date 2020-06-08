@@ -8,7 +8,7 @@ package api
 
 import (
 	context "context"
-	loadmodels "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels"
+	loadmodels "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels/loadmodels"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"

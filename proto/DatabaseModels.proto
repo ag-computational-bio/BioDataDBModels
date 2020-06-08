@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/ag-computational-bio/BioDataDBModels/databasemodels";
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/databasemodels";
 
 message DatasetEntry {
     
