@@ -1,12 +1,7 @@
 syntax = "proto3";
 
-option go_package = "github.com/ag-computational-bio/APIModels";
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/loadmodels";
 
-service LoadService {
-    rpc InitLoad(InitLoadDataset) returns (ID);
-    rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks);
-    rpc FinishLoad(ID) returns (Empty);
-}
 
 message Empty {}
 
@@ -38,9 +33,12 @@ message CommonDatasetEntryMetaData {
     string Filetype = 2;
     string Name = 3;
     string Version = 4;
-    string ID = 5;
     Origin Origin = 6;
     int64 ContentLen = 7;
+}
+
+message DatasetLink {
+    string ID = 1;
 }
 
 message Origin {

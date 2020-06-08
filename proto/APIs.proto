@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/api";
+
+import "proto/LoadModels.proto";
+
+
+service LoadService {
+    rpc InitLoad(InitLoadDataset) returns (ID);
+    rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks);
+    rpc FinishLoad(ID) returns (Empty);
+}
