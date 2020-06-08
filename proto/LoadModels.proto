@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
+import "proto/CommonModels.proto";
+
 
 message Empty {}
 
@@ -25,30 +27,9 @@ message ID {
 
 message CreateLoadLinkSetRequest {
     string ID = 1;
-    repeated CommonDatasetEntryMetaData Metadata = 2;
-}
-
-message CommonDatasetEntryMetaData {
-    string Filename = 1;
-    string Filetype = 2;
-    string Name = 3;
-    string Version = 4;
-    Origin Origin = 6;
-    int64 ContentLen = 7;
+    repeated DatasetEntityMetaData Metadata = 2;
 }
 
 message DatasetLink {
     string ID = 1;
-}
-
-message Origin {
-    string Link = 1;
-    string Bucket = 2;
-    string Key = 3;
-    OriginTypeEnum OriginType = 4;
-
-    enum OriginTypeEnum {
-        ObjectStorage = 0;
-        OriginLink = 1;
-    }
 }

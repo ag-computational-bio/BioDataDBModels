@@ -2,6 +2,27 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/databasemodels";
 
+import "google/protobuf/timestamp.proto";
+import "proto/CommonModels.proto";
+
 message DatasetEntry {
-    
+    string ID = 1;
+    DatasetEntryMetadata Metadata = 2;
+}
+
+message DatasetEntryMetadata {
+    string Status = 1;
+    string Error = 2;
+    google.protobuf.Timestamp Started = 3;
+    google.protobuf.Timestamp Finished = 4;
+    string Datasetname = 5;
+    string Datasettype = 6;
+    string OwnerID = 7;
+    bool isPublic = 8;
+}
+
+message DatasetEntityEntry {
+    string ID = 1;
+    string DatasetID = 2;
+    DatasetEntityMetaData Metadata = 3;
 }
