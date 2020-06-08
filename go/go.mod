@@ -1,4 +1,4 @@
-module github.com/ag-computational-bio/APIModels
+module github.com/ag-computational-bio/BioDataDBApiModels/go
 
 go 1.14
 
