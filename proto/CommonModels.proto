@@ -9,6 +9,8 @@ message DatasetEntityMetaData {
     string Version = 4;
     Origin Origin = 5;
     int64 ContentLen = 6;
+    string Bucket = 7;
+    string Key = 8;
 }
 
 message Origin {
