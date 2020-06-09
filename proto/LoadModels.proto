@@ -4,30 +4,33 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmode
 
 import "proto/CommonModels.proto";
 
+// These messages are used in the Load service (user facing)
 
+
+// Empty empty return object for functions that return nothing
 message Empty {}
 
 message InitLoadDataset {
-    string DatasetName = 1;
-    string Datatype = 2;
+    string DatasetName = 1; // Name of the dataset
+    string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
 }
 
 message UploadLinks {
-    repeated UploadLink Links = 1;
+    repeated UploadLink Links = 1; // List of Links to upload a dataset
 }
 
 message UploadLink {
-    string ID = 1;
-    string Link = 2;
+    string ID = 1; // ID of the upload request
+    string Link = 2; // Upload link (normally a presigned put URL for S3)
 }
 
 message ID {
-    string ID = 1;
+    string ID = 1; // An arbitrary ID
 }
 
 message CreateLoadLinkSetRequest {
-    string DatasetID = 1;
-    repeated DatasetEntityMetaData Metadata = 2;
+    string DatasetID = 1; // ID of the dataset upload links should be created for
+    repeated DatasetEntityMetaData Metadata = 2; // List of metadata of uploaded Entites
 }
 
 message DatasetLink {

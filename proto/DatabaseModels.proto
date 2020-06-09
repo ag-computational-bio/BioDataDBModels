@@ -5,6 +5,8 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/database
 import "google/protobuf/timestamp.proto";
 import "proto/CommonModels.proto";
 
+// These messages are used as templates for the Database storage schemas
+
 message DatasetEntry {
     string ID = 1;
     DatasetEntryMetadata Metadata = 2;

@@ -5,13 +5,21 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 import "proto/LoadModels.proto";
 import "google/api/annotations.proto";
 
+// This service is used to create datasets and load their entities into an object storage
+// and create corresponding metadata objects to store the location of the entities in object storage.
+// This interface should be usable from within the platform and from outside
 service LoadService {
+    // Initiates a dataset
+    // Returns: The id of the dataset
     rpc InitLoad(InitLoadDataset) returns (ID) {
         option (google.api.http) = {
             post: "/v1/load/init"
             body: "*"
         };
     }
+
+    // Creates a list of upload links to place dataset entities in object storage
+    // and adds corresponding metadata objects
     rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks) {
         option (google.api.http) = {
             post: "/v1/load/createlinks"
@@ -19,6 +27,8 @@ service LoadService {
         };
     }
     
+    // Finishes a dataset load operation
+    // Datasets that finished loading can not add more entities
     rpc FinishLoad(ID) returns (Empty) {
         option (google.api.http) = {
             post: "/v1/load/finish"

@@ -2,9 +2,13 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels";
 
+// These are common messages that are used in multiple interfaces
+
+// A location in S3
 message Location {
     string Bucket = 1;
     string Key = 2;
+    string URL = 3; // Object storage endpoint
 }
 
 message DatasetEntityMetaData {
