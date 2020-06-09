@@ -2,6 +2,11 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels";
 
+message Location {
+    string Bucket = 1;
+    string Key = 2;
+}
+
 message DatasetEntityMetaData {
     string Filename = 1;
     string Filetype = 2;
@@ -9,8 +14,6 @@ message DatasetEntityMetaData {
     string Version = 4;
     Origin Origin = 5;
     int64 ContentLen = 6;
-    string Bucket = 7;
-    string Key = 8;
 }
 
 message Origin {

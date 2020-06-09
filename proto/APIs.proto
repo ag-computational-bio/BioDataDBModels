@@ -3,10 +3,26 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
 import "proto/LoadModels.proto";
-
+import "google/api/annotations.proto";
 
 service LoadService {
-    rpc InitLoad(InitLoadDataset) returns (ID);
-    rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks);
-    rpc FinishLoad(ID) returns (Empty);
+    rpc InitLoad(InitLoadDataset) returns (ID) {
+        option (google.api.http) = {
+            post: "/v1/load/init"
+            body: "*"
+        };
+    }
+    rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks) {
+        option (google.api.http) = {
+            post: "/v1/load/createlinks"
+            body: "*"
+        };
+    }
+    
+    rpc FinishLoad(ID) returns (Empty) {
+        option (google.api.http) = {
+            post: "/v1/load/finish"
+            body: "*"
+        };
+    }
 }

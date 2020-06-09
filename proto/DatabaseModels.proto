@@ -25,4 +25,5 @@ message DatasetEntityEntry {
     string ID = 1;
     string DatasetID = 2;
     DatasetEntityMetaData Metadata = 3;
+    Location Location = 4;
 }

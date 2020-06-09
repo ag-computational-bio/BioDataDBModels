@@ -6,4 +6,6 @@ mv go/proto/DatabaseModels.pb.go go/databasemodels
 mv go/proto/LoadModels.pb.go go/loadmodels
 mv go/proto/CommonModels.pb.go go/commonmodels
 
+protoc -I. --grpc-gateway_out=logtostderr=true,paths=source_relative:./go/gateway proto/APIs.proto
+
 rm -r go/proto
