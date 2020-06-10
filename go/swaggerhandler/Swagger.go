@@ -1,4 +1,4 @@
-package biodatadbapiswagger
+package swaggerhandler
 
 import "net/http"
 
