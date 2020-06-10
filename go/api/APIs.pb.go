@@ -115,8 +115,14 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type LoadServiceClient interface {
+	// Initiates a dataset
+	// Returns: The id of the dataset
 	InitLoad(ctx context.Context, in *loadmodels.InitLoadDataset, opts ...grpc.CallOption) (*loadmodels.ID, error)
+	// Creates a list of upload links to place dataset entities in object storage
+	// and adds corresponding metadata objects
 	CreateLoadLinkSet(ctx context.Context, in *loadmodels.CreateLoadLinkSetRequest, opts ...grpc.CallOption) (*loadmodels.UploadLinks, error)
+	// Finishes a dataset load operation
+	// Datasets that finished loading can not add more entities
 	FinishLoad(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*loadmodels.Empty, error)
 }
 
@@ -157,8 +163,14 @@ func (c *loadServiceClient) FinishLoad(ctx context.Context, in *loadmodels.ID, o
 
 // LoadServiceServer is the server API for LoadService service.
 type LoadServiceServer interface {
+	// Initiates a dataset
+	// Returns: The id of the dataset
 	InitLoad(context.Context, *loadmodels.InitLoadDataset) (*loadmodels.ID, error)
+	// Creates a list of upload links to place dataset entities in object storage
+	// and adds corresponding metadata objects
 	CreateLoadLinkSet(context.Context, *loadmodels.CreateLoadLinkSetRequest) (*loadmodels.UploadLinks, error)
+	// Finishes a dataset load operation
+	// Datasets that finished loading can not add more entities
 	FinishLoad(context.Context, *loadmodels.ID) (*loadmodels.Empty, error)
 }
 

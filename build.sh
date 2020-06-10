@@ -11,4 +11,7 @@ mv go/proto/CommonModels.pb.go go/commonmodels
 
 protoc -I. --grpc-gateway_out=logtostderr=true,paths=source_relative:./go/gateway proto/APIs.proto
 
+protoc -I. --swagger_out=logtostderr=true:./swagger proto/APIs.proto
+mv swagger/proto/APIs.swagger.json go/www
+
 rm -r go/proto

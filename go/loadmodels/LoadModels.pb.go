@@ -26,6 +26,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+// Empty empty return object for functions that return nothing
 type Empty struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -69,8 +70,8 @@ type InitLoadDataset struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatasetName string `protobuf:"bytes,1,opt,name=DatasetName,proto3" json:"DatasetName,omitempty"`
-	Datatype    string `protobuf:"bytes,2,opt,name=Datatype,proto3" json:"Datatype,omitempty"`
+	DatasetName string `protobuf:"bytes,1,opt,name=DatasetName,proto3" json:"DatasetName,omitempty"` // Name of the dataset
+	Datatype    string `protobuf:"bytes,2,opt,name=Datatype,proto3" json:"Datatype,omitempty"`       //Datatype of the dataset, e.g. json, gbff, fasta
 }
 
 func (x *InitLoadDataset) Reset() {
@@ -124,7 +125,7 @@ type UploadLinks struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Links []*UploadLink `protobuf:"bytes,1,rep,name=Links,proto3" json:"Links,omitempty"`
+	Links []*UploadLink `protobuf:"bytes,1,rep,name=Links,proto3" json:"Links,omitempty"` // List of Links to upload a dataset
 }
 
 func (x *UploadLinks) Reset() {
@@ -171,8 +172,8 @@ type UploadLink struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ID   string `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
-	Link string `protobuf:"bytes,2,opt,name=Link,proto3" json:"Link,omitempty"`
+	ID   string `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`     // ID of the upload request
+	Link string `protobuf:"bytes,2,opt,name=Link,proto3" json:"Link,omitempty"` // Upload link (normally a presigned put URL for S3)
 }
 
 func (x *UploadLink) Reset() {
@@ -226,7 +227,7 @@ type ID struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ID string `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"`
+	ID string `protobuf:"bytes,1,opt,name=ID,proto3" json:"ID,omitempty"` // An arbitrary ID
 }
 
 func (x *ID) Reset() {
@@ -273,8 +274,8 @@ type CreateLoadLinkSetRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatasetID string                                `protobuf:"bytes,1,opt,name=DatasetID,proto3" json:"DatasetID,omitempty"`
-	Metadata  []*commonmodels.DatasetEntityMetaData `protobuf:"bytes,2,rep,name=Metadata,proto3" json:"Metadata,omitempty"`
+	DatasetID string                                `protobuf:"bytes,1,opt,name=DatasetID,proto3" json:"DatasetID,omitempty"` // ID of the dataset upload links should be created for
+	Metadata  []*commonmodels.DatasetEntityMetaData `protobuf:"bytes,2,rep,name=Metadata,proto3" json:"Metadata,omitempty"`   // List of metadata of uploaded Entites
 }
 
 func (x *CreateLoadLinkSetRequest) Reset() {
