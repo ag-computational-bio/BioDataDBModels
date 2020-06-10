@@ -14,6 +14,8 @@ mv ./go/api/proto/APIs.pb.gw.go ./go/api
 rm -r ./go/api/proto
 
 protoc -I. --swagger_out=logtostderr=true:./swagger proto/APIs.proto
-mv swagger/proto/APIs.swagger.json go/www/swagger-ui/
+mv swagger/proto/APIs.swagger.json go/swaggerhandler
+
+go generate go/swaggerhandler/SwaggerGen.go
 
 rm -r go/proto
