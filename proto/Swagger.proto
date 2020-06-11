@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+import "protoc/gateway/options/annotations.proto";
+
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
+
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+    info: {
+        title: "BioDataDB ETL Service"
+        version: "0.1"
+        contact: {
+            name: ""
+            url: ""
+        };
+    };
+    security_definitions: {
+        security: {
+            key: "ApiKeyAuth";
+            value: {
+                type: TYPE_API_KEY;
+                in: IN_HEADER;
+                name: "X-API-Key";
+            }
+        }
+    }
+    security: {
+		security_requirement: {
+			key: "ApiKeyAuth";
+			value: {};
+		}
+	}
+    schemes: [HTTP,HTTPS]
+    consumes: "application/json"
+    produces: "application/json"
+    responses: {
+        key: "404"
+        value: {
+            description: "Returned when the resource does not exist."
+            schema: {
+                json_schema: {
+                    type: STRING
+                };
+            };
+        };
+    };
+};

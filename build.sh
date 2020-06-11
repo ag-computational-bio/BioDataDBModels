@@ -13,8 +13,7 @@ protoc -I. --grpc-gateway_out=logtostderr=true,paths=source_relative:./go/api pr
 mv ./go/api/proto/APIs.pb.gw.go ./go/api
 rm -r ./go/api/proto
 
-protoc -I. --swagger_out=logtostderr=true:./swagger proto/APIs.proto
-mv swagger/proto/APIs.swagger.json go/swaggerhandler
+protoc -I. --swagger_out=logtostderr=true,allow_merge=true:./go/swaggerhandler proto/APIs.proto proto/Swagger.proto
 
 go generate go/swaggerhandler/SwaggerGen.go
 
