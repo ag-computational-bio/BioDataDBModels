@@ -8,7 +8,7 @@ import "protoc/gateway/options/annotations.proto";
 // These messages are used in the Load service (user facing)
 
 
-// Empty
+// Empty \n
 // Empty object
 message Empty {}
 
@@ -19,6 +19,9 @@ message Empty {}
 message InitLoadDataset {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         example: { value: '{ "DatasetName": "test", "Datatype": "test2" }' }
+        json_schema: {
+            title: "Init Dataset load";
+    };
     };
     string DatasetName = 1; // Name of the dataset
     string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta

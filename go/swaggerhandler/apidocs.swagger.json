@@ -187,7 +187,7 @@
     },
     "Empty": {
       "type": "object",
-      "title": "Empty\nEmpty object"
+      "title": "Empty \\n\nEmpty object"
     },
     "ID": {
       "type": "object",
@@ -212,7 +212,7 @@
           "type": "string"
         }
       },
-      "title": "InitLoadDataset\nData required to start loading a dataset into the BioDataDB\nDatasetName: Name of the dataset\nDatatype: type of the loaded data, e.g. json, gbff, fasta"
+      "title": "Init Dataset load"
     },
     "Origin": {
       "type": "object",
