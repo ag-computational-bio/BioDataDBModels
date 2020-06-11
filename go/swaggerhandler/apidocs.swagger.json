@@ -189,7 +189,8 @@
     },
     "Empty": {
       "type": "object",
-      "title": "An empty object"
+      "description": "An empty object",
+      "title": "Empty"
     },
     "ID": {
       "type": "object",

@@ -11,7 +11,8 @@ import "protoc/gateway/options/annotations.proto";
 message Empty {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            title: "An empty object";
+            title: "Empty";
+            description: "An empty object";
         };
     };
 }
