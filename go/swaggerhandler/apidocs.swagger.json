@@ -182,7 +182,8 @@
           "type": "string",
           "format": "int64"
         }
-      }
+      },
+      "title": "The metadata of a dataset entity\nFilename: Name of the original file e.g.: mydata.json\nFiletype: Type of the stored file, e.g.: json, gbff,...\nName: Name of the dataset entity e.g.: mydata\nOrigin: Source of the dataset\nContentLen: Lenght of the stored dataset"
     },
     "Empty": {
       "type": "object",

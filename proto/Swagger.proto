@@ -5,6 +5,7 @@ import "protoc/gateway/options/annotations.proto";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
+// The "header" of the swagger docs
 
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
     info: {

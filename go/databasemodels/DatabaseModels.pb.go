@@ -195,6 +195,11 @@ func (x *DatasetEntryMetadata) GetIsPublic() bool {
 	return false
 }
 
+// The Entry of a dataset entity
+// ID: ID of the entity
+// DatasetID: ID of the corresponding dataset
+// DatasetEntityMetaData: Metadata of the dataset
+// Location: Where the entity is stored
 type DatasetEntityEntry struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

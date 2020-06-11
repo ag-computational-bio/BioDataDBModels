@@ -136,6 +136,12 @@ func (x *Location) GetURL() string {
 	return ""
 }
 
+// The metadata of a dataset entity
+// Filename: Name of the original file e.g.: mydata.json
+// Filetype: Type of the stored file, e.g.: json, gbff,...
+// Name: Name of the dataset entity e.g.: mydata
+// Origin: Source of the dataset
+// ContentLen: Lenght of the stored dataset
 type DatasetEntityMetaData struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

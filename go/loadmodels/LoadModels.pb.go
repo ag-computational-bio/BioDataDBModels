@@ -332,6 +332,7 @@ func (x *CreateLoadLinkSetRequest) GetMetadata() []*commonmodels.DatasetEntityMe
 	return nil
 }
 
+// Unused
 type DatasetLink struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
