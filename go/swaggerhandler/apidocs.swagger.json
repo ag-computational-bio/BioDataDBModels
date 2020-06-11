@@ -151,7 +151,7 @@
           }
         }
       },
-      "title": "Request message to request a set of presigned URL links"
+      "title": "CreateLoadLinkSetRequest\nRequest message to request a set of presigned URL links"
     },
     "DatasetEntityMetaData": {
       "type": "object",
@@ -187,7 +187,7 @@
     },
     "Empty": {
       "type": "object",
-      "title": "Empty empty return object for functions that return nothing"
+      "title": "Empty\nEmpty object"
     },
     "ID": {
       "type": "object",
@@ -196,7 +196,7 @@
           "type": "string"
         }
       },
-      "title": "An arbitrary ID"
+      "title": "ID\nAn arbitrary ID"
     },
     "InitLoadDataset": {
       "type": "object",
@@ -212,7 +212,7 @@
           "type": "string"
         }
       },
-      "title": "Data required to start loading a dataset into the BioDataDB\nDatasetName: Name of the dataset\nDatatype: type of the loaded data, e.g. json, gbff, fasta"
+      "title": "InitLoadDataset\nData required to start loading a dataset into the BioDataDB\nDatasetName: Name of the dataset\nDatatype: type of the loaded data, e.g. json, gbff, fasta"
     },
     "Origin": {
       "type": "object",
@@ -253,7 +253,7 @@
           "type": "string"
         }
       },
-      "title": "A presigned URL link and its upload request URL"
+      "title": "UploadLink\nA presigned URL link and its upload request URL"
     },
     "UploadLinks": {
       "type": "object",
@@ -265,7 +265,7 @@
           }
         }
       },
-      "title": "A set of presigned put URL to store the data"
+      "title": "UploadLinks\nA set of presigned put URL to store the data"
     },
     "protobufAny": {
       "type": "object",

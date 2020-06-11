@@ -8,9 +8,11 @@ import "protoc/gateway/options/annotations.proto";
 // These messages are used in the Load service (user facing)
 
 
-// Empty empty return object for functions that return nothing
+// Empty
+// Empty object
 message Empty {}
 
+// InitLoadDataset
 // Data required to start loading a dataset into the BioDataDB
 // DatasetName: Name of the dataset
 // Datatype: type of the loaded data, e.g. json, gbff, fasta
@@ -22,22 +24,26 @@ message InitLoadDataset {
     string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
 }
 
+// UploadLinks
 // A set of presigned put URL to store the data
 message UploadLinks {
     repeated UploadLink Links = 1; // List of Links to upload a dataset
 }
 
+// UploadLink
 // A presigned URL link and its upload request URL
 message UploadLink {
     string ID = 1; // ID of the upload request
     string Link = 2; // Upload link (normally a presigned put URL for S3)
 }
 
+// ID
 // An arbitrary ID
 message ID {
     string ID = 1; // An arbitrary ID
 }
 
+// CreateLoadLinkSetRequest
 // Request message to request a set of presigned URL links
 message CreateLoadLinkSetRequest {
     string DatasetID = 1; // ID of the dataset upload links should be created for

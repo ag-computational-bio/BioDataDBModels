@@ -27,7 +27,8 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-// Empty empty return object for functions that return nothing
+// Empty
+// Empty object
 type Empty struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -66,6 +67,7 @@ func (*Empty) Descriptor() ([]byte, []int) {
 	return file_proto_LoadModels_proto_rawDescGZIP(), []int{0}
 }
 
+// InitLoadDataset
 // Data required to start loading a dataset into the BioDataDB
 // DatasetName: Name of the dataset
 // Datatype: type of the loaded data, e.g. json, gbff, fasta
@@ -124,6 +126,7 @@ func (x *InitLoadDataset) GetDatatype() string {
 	return ""
 }
 
+// UploadLinks
 // A set of presigned put URL to store the data
 type UploadLinks struct {
 	state         protoimpl.MessageState
@@ -172,6 +175,7 @@ func (x *UploadLinks) GetLinks() []*UploadLink {
 	return nil
 }
 
+// UploadLink
 // A presigned URL link and its upload request URL
 type UploadLink struct {
 	state         protoimpl.MessageState
@@ -228,6 +232,7 @@ func (x *UploadLink) GetLink() string {
 	return ""
 }
 
+// ID
 // An arbitrary ID
 type ID struct {
 	state         protoimpl.MessageState
@@ -276,6 +281,7 @@ func (x *ID) GetID() string {
 	return ""
 }
 
+// CreateLoadLinkSetRequest
 // Request message to request a set of presigned URL links
 type CreateLoadLinkSetRequest struct {
 	state         protoimpl.MessageState
