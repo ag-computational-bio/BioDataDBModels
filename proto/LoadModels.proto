@@ -8,47 +8,65 @@ import "protoc/gateway/options/annotations.proto";
 // These messages are used in the Load service (user facing)
 
 
-// Empty \n
-// Empty object
-message Empty {}
+message Empty {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "An empty object";
+        };
+    };
+}
 
-// InitLoadDataset
-// Data required to start loading a dataset into the BioDataDB
-// DatasetName: Name of the dataset
-// Datatype: type of the loaded data, e.g. json, gbff, fasta
 message InitLoadDataset {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         example: { value: '{ "DatasetName": "test", "Datatype": "test2" }' }
         json_schema: {
             title: "Init Dataset load";
-    };
+            description: "Data required to start loading a dataset into the BioDataDB"
+        };
     };
     string DatasetName = 1; // Name of the dataset
     string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
 }
 
-// UploadLinks
-// A set of presigned put URL to store the data
 message UploadLinks {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Upload links";
+            description: "A set of presigned put URL to store the data"
+        };
+    };
     repeated UploadLink Links = 1; // List of Links to upload a dataset
 }
 
-// UploadLink
-// A presigned URL link and its upload request URL
 message UploadLink {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Upload link";
+            description: "A presigned URL link and its upload request URL"
+        };
+    };
     string ID = 1; // ID of the upload request
     string Link = 2; // Upload link (normally a presigned put URL for S3)
 }
 
-// ID
-// An arbitrary ID
+
 message ID {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "ID";
+            description: "An arbitrary ID"
+        };
+    };
     string ID = 1; // An arbitrary ID
 }
 
-// CreateLoadLinkSetRequest
-// Request message to request a set of presigned URL links
 message CreateLoadLinkSetRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Create load link set request";
+            description: "Request message to request a set of presigned URL links"
+        };
+    };
     string DatasetID = 1; // ID of the dataset upload links should be created for
     repeated DatasetEntityMetaData Metadata = 2; // List of metadata of uploaded Entites
 }

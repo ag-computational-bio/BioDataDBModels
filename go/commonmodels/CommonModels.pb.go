@@ -136,6 +136,7 @@ func (x *Location) GetURL() string {
 	return ""
 }
 
+//
 // The metadata of a dataset entity
 // Filename: Name of the original file e.g.: mydata.json
 // Filetype: Type of the stored file, e.g.: json, gbff,...
