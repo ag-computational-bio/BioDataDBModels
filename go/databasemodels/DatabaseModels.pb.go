@@ -27,6 +27,7 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
+// A database entry for a dataset
 type DatasetEntry struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -82,6 +83,15 @@ func (x *DatasetEntry) GetMetadata() *DatasetEntryMetadata {
 	return nil
 }
 
+// The metadata of a dataset
+// Status: The status of the dataset, currently supported: running, finished
+// Error: Reports a fundemental error in the dataset
+// Started: When the datasets was initiated
+// Finished: Last change TODO: need to rename
+// Datasetname: Name of the dataset
+// Datasettype: Type of the stored data in the dataset
+// OwnerID: ID of the owner
+// isPublic: Indicates if the dataset if publicly available
 type DatasetEntryMetadata struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

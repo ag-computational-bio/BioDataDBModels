@@ -4,6 +4,9 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/commonmo
 
 // These are common messages that are used in multiple interfaces
 
+import "protoc/gateway/options/annotations.proto";
+
+
 // A location in S3
 message Location {
     string Bucket = 1;
@@ -11,7 +14,16 @@ message Location {
     string URL = 3; // Object storage endpoint
 }
 
+// The metadata of a dataset entity
+// Filename: Name of the original file e.g.: mydata.json
+// Filetype: Type of the stored file, e.g.: json, gbff,...
+// Name: Name of the dataset entity e.g.: mydata
+// Origin: Source of the dataset
+// ContentLen: Lenght of the stored dataset
 message DatasetEntityMetaData {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "Filename": "test.gbff", "Filetype": "gbff", "Name": "test", "Version": "v0.1", "ContentLen": 5 }' }
+    };
     string Filename = 1;
     string Filetype = 2;
     string Name = 3;
@@ -21,6 +33,9 @@ message DatasetEntityMetaData {
 }
 
 message Origin {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "Link": "example.com/myawsomedata.test.gbff", "OriginTypeEnum": "OriginLink" }' }
+    };
     string Link = 1;
     string Bucket = 2;
     string Key = 3;

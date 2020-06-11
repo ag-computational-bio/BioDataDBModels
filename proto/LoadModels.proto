@@ -3,6 +3,7 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
 import "proto/CommonModels.proto";
+import "protoc/gateway/options/annotations.proto";
 
 // These messages are used in the Load service (user facing)
 
@@ -10,24 +11,34 @@ import "proto/CommonModels.proto";
 // Empty empty return object for functions that return nothing
 message Empty {}
 
+// Data required to start loading a dataset into the BioDataDB
+// DatasetName: Name of the dataset
+// Datatype: type of the loaded data, e.g. json, gbff, fasta
 message InitLoadDataset {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "DatasetName": "test", "Datatype": "test2" }' }
+    };
     string DatasetName = 1; // Name of the dataset
     string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
 }
 
+// A set of presigned put URL to store the data
 message UploadLinks {
     repeated UploadLink Links = 1; // List of Links to upload a dataset
 }
 
+// A presigned URL link and its upload request URL
 message UploadLink {
     string ID = 1; // ID of the upload request
     string Link = 2; // Upload link (normally a presigned put URL for S3)
 }
 
+// An arbitrary ID
 message ID {
     string ID = 1; // An arbitrary ID
 }
 
+// Request message to request a set of presigned URL links
 message CreateLoadLinkSetRequest {
     string DatasetID = 1; // ID of the dataset upload links should be created for
     repeated DatasetEntityMetaData Metadata = 2; // List of metadata of uploaded Entites

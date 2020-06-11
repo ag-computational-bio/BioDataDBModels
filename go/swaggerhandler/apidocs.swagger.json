@@ -150,10 +150,18 @@
             "$ref": "#/definitions/DatasetEntityMetaData"
           }
         }
-      }
+      },
+      "title": "Request message to request a set of presigned URL links"
     },
     "DatasetEntityMetaData": {
       "type": "object",
+      "example": {
+        "Filename": "test.gbff",
+        "Filetype": "gbff",
+        "Name": "test",
+        "Version": "v0.1",
+        "ContentLen": 5
+      },
       "properties": {
         "Filename": {
           "type": "string"
@@ -186,10 +194,15 @@
         "ID": {
           "type": "string"
         }
-      }
+      },
+      "title": "An arbitrary ID"
     },
     "InitLoadDataset": {
       "type": "object",
+      "example": {
+        "DatasetName": "test",
+        "Datatype": "test2"
+      },
       "properties": {
         "DatasetName": {
           "type": "string"
@@ -197,10 +210,15 @@
         "Datatype": {
           "type": "string"
         }
-      }
+      },
+      "title": "Data required to start loading a dataset into the BioDataDB\nDatasetName: Name of the dataset\nDatatype: type of the loaded data, e.g. json, gbff, fasta"
     },
     "Origin": {
       "type": "object",
+      "example": {
+        "Link": "example.com/myawsomedata.test.gbff",
+        "OriginTypeEnum": "OriginLink"
+      },
       "properties": {
         "Link": {
           "type": "string"
@@ -233,7 +251,8 @@
         "Link": {
           "type": "string"
         }
-      }
+      },
+      "title": "A presigned URL link and its upload request URL"
     },
     "UploadLinks": {
       "type": "object",
@@ -244,7 +263,8 @@
             "$ref": "#/definitions/UploadLink"
           }
         }
-      }
+      },
+      "title": "A set of presigned put URL to store the data"
     },
     "protobufAny": {
       "type": "object",
