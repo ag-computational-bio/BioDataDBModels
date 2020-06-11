@@ -4,44 +4,50 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/database
 
 import "google/protobuf/timestamp.proto";
 import "proto/CommonModels.proto";
+import "protoc/gateway/options/annotations.proto";
 
 // These messages are used as templates for the Database storage schemas
 
-// A database entry for a dataset
 message DatasetEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetEntry";
+            description: "Database entry for a dataset"
+        };
+    };
     string ID = 1;
     DatasetEntryMetadata Metadata = 2;
 }
 
 
-// The metadata of a dataset
-// Status: The status of the dataset, currently supported: running, finished
-// Error: Reports a fundemental error in the dataset
-// Started: When the datasets was initiated
-// Finished: Last change TODO: need to rename
-// Datasetname: Name of the dataset
-// Datasettype: Type of the stored data in the dataset
-// OwnerID: ID of the owner
-// isPublic: Indicates if the dataset if publicly available
+
 message DatasetEntryMetadata {
-    string Status = 1;
-    string Error = 2;
-    google.protobuf.Timestamp Started = 3;
-    google.protobuf.Timestamp Finished = 4;
-    string Datasetname = 5;
-    string Datasettype = 6;
-    string OwnerID = 7;
-    bool isPublic = 8;
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetEntryMetadata";
+            description: "Metadata of an dataset in the dataset database collection"
+        };
+    };
+    string Status = 1; // The status of the dataset, currently supported: running, finished
+    string Error = 2; // Reports a fundemental error in the dataset
+    google.protobuf.Timestamp Started = 3; // When the datasets was initiated
+    google.protobuf.Timestamp Finished = 4; // Last change TODO: need to rename
+    string Datasetname = 5; // Name of the dataset
+    string Datasettype = 6; // Type of the stored data in the dataset
+    string OwnerID = 7; // ID of the owner
+    bool isPublic = 8; //Indicates if the dataset if publicly available
 }
 
-// The Entry of a dataset entity
-// ID: ID of the entity
-// DatasetID: ID of the corresponding dataset
-// DatasetEntityMetaData: Metadata of the dataset
-// Location: Where the entity is stored
+
 message DatasetEntityEntry {
-    string ID = 1;
-    string DatasetID = 2;
-    DatasetEntityMetaData Metadata = 3;
-    Location Location = 4;
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetEntityEntry";
+            description: "Database entry for a dataset entity"
+        };
+    };
+    string ID = 1; //ID of the entity
+    string DatasetID = 2; // ID of the corresponding dataset
+    DatasetEntityMetaData Metadata = 3; // Metadata of the dataset
+    Location Location = 4; //Where the entity is stored
 }

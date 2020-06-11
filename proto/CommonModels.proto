@@ -9,37 +9,44 @@ import "protoc/gateway/options/annotations.proto";
 
 // A location in S3
 message Location {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Location";
+            description: "A location in an object storage"
+        };
+    };
     string Bucket = 1;
     string Key = 2;
     string URL = 3; // Object storage endpoint
 }
 
-//
-// The metadata of a dataset entity
-// Filename: Name of the original file e.g.: mydata.json
-// Filetype: Type of the stored file, e.g.: json, gbff,...
-// Name: Name of the dataset entity e.g.: mydata
-// Origin: Source of the dataset
-// ContentLen: Lenght of the stored dataset
+
 message DatasetEntityMetaData {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         example: { value: '{ "Filename": "test.gbff", "Filetype": "gbff", "Name": "test", "Version": "v0.1", "ContentLen": 5 }' }
+        json_schema: {
+            title: "DatasetEntityMetaData";
+            description: "Metadata of a dataset entity"
+        };
     };
-    string Filename = 1;
-    string Filetype = 2;
-    string Name = 3;
-    string Version = 4;
-    Origin Origin = 5;
-    int64 ContentLen = 6;
+    string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
+    string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
+    string Name = 3; // Name: Name of the dataset entity e.g.: mydata
+    string Version = 4; // Remote version of the dataset
+    Origin Origin = 5; // Origin: Source of the dataset
+    int64 ContentLen = 6; // ContentLen: Lenght of the stored dataset
 }
 
 message Origin {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         example: { value: '{ "Link": "example.com/myawsomedata.test.gbff", "OriginTypeEnum": "OriginLink" }' }
+        json_schema: {
+            title: "Origin";
+            description: "The source of a dataset. Entries are set depending of the origin type.  OriginLink means that a link is given, objectstorage that bucket, key and link are present. Link is the s3 endpoint"
+        };
     };
     string Link = 1;
-    string Bucket = 2;
-    string Key = 3;
+    Location ObjectStorageLocatio = 2;
     OriginTypeEnum OriginType = 4;
 
     enum OriginTypeEnum {
@@ -47,3 +54,4 @@ message Origin {
         OriginLink = 1;
     }
 }
+

@@ -152,7 +152,7 @@
         }
       },
       "description": "Request message to request a set of presigned URL links",
-      "title": "Create load link set request"
+      "title": "CreateLoadLinkSetRequest"
     },
     "DatasetEntityMetaData": {
       "type": "object",
@@ -184,7 +184,8 @@
           "format": "int64"
         }
       },
-      "title": "The metadata of a dataset entity\nFilename: Name of the original file e.g.: mydata.json\nFiletype: Type of the stored file, e.g.: json, gbff,...\nName: Name of the dataset entity e.g.: mydata\nOrigin: Source of the dataset\nContentLen: Lenght of the stored dataset"
+      "description": "Metadata of a dataset entity",
+      "title": "DatasetEntityMetaData"
     },
     "Empty": {
       "type": "object",
@@ -215,7 +216,23 @@
         }
       },
       "description": "Data required to start loading a dataset into the BioDataDB",
-      "title": "Init Dataset load"
+      "title": "InitLoadDataset"
+    },
+    "Location": {
+      "type": "object",
+      "properties": {
+        "Bucket": {
+          "type": "string"
+        },
+        "Key": {
+          "type": "string"
+        },
+        "URL": {
+          "type": "string"
+        }
+      },
+      "description": "A location in an object storage",
+      "title": "Location"
     },
     "Origin": {
       "type": "object",
@@ -227,16 +244,15 @@
         "Link": {
           "type": "string"
         },
-        "Bucket": {
-          "type": "string"
-        },
-        "Key": {
-          "type": "string"
+        "ObjectStorageLocatio": {
+          "$ref": "#/definitions/Location"
         },
         "OriginType": {
           "$ref": "#/definitions/OriginOriginTypeEnum"
         }
-      }
+      },
+      "description": "The source of a dataset. Entries are set depending of the origin type.  OriginLink means that a link is given, objectstorage that bucket, key and link are present. Link is the s3 endpoint",
+      "title": "Origin"
     },
     "OriginOriginTypeEnum": {
       "type": "string",
@@ -257,7 +273,7 @@
         }
       },
       "description": "A presigned URL link and its upload request URL",
-      "title": "Upload link"
+      "title": "UploadLink"
     },
     "UploadLinks": {
       "type": "object",
@@ -270,7 +286,7 @@
         }
       },
       "description": "A set of presigned put URL to store the data",
-      "title": "Upload links"
+      "title": "UploadLinks"
     },
     "protobufAny": {
       "type": "object",

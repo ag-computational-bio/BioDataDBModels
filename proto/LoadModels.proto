@@ -20,7 +20,7 @@ message InitLoadDataset {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         example: { value: '{ "DatasetName": "test", "Datatype": "test2" }' }
         json_schema: {
-            title: "Init Dataset load";
+            title: "InitLoadDataset";
             description: "Data required to start loading a dataset into the BioDataDB"
         };
     };
@@ -31,7 +31,7 @@ message InitLoadDataset {
 message UploadLinks {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            title: "Upload links";
+            title: "UploadLinks";
             description: "A set of presigned put URL to store the data"
         };
     };
@@ -41,7 +41,7 @@ message UploadLinks {
 message UploadLink {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            title: "Upload link";
+            title: "UploadLink";
             description: "A presigned URL link and its upload request URL"
         };
     };
@@ -63,7 +63,7 @@ message ID {
 message CreateLoadLinkSetRequest {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
-            title: "Create load link set request";
+            title: "CreateLoadLinkSetRequest";
             description: "Request message to request a set of presigned URL links"
         };
     };
