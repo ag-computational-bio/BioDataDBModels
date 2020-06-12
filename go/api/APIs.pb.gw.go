@@ -305,11 +305,11 @@ func RegisterLoadServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_LoadService_InitLoad_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "load", "init"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_LoadService_InitLoad_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "load", "init"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_LoadService_CreateLoadLinkSet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "load", "createlinks"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_LoadService_CreateLoadLinkSet_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "load", "createlinks"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_LoadService_FinishLoad_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"v1", "load", "finish"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_LoadService_FinishLoad_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "load", "finish"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (

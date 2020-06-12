@@ -13,7 +13,7 @@ service LoadService {
     // Returns: The id of the dataset
     rpc InitLoad(InitLoadDataset) returns (ID) {
         option (google.api.http) = {
-            post: "/v1/load/init"
+            post: "/api/v1/load/init"
             body: "*"
         };
     }
@@ -22,7 +22,7 @@ service LoadService {
     // and adds corresponding metadata objects
     rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks) {
         option (google.api.http) = {
-            post: "/v1/load/createlinks"
+            post: "/api/v1/load/createlinks"
             body: "*"
         };
     }
@@ -31,7 +31,7 @@ service LoadService {
     // Datasets that finished loading can not add more entities
     rpc FinishLoad(ID) returns (Empty) {
         option (google.api.http) = {
-            post: "/v1/load/finish"
+            post: "/api/v1/load/finish"
             body: "*"
         };
     }

@@ -17,7 +17,7 @@
     "application/json"
   ],
   "paths": {
-    "/v1/load/createlinks": {
+    "/api/v1/load/createlinks": {
       "post": {
         "summary": "Creates a list of upload links to place dataset entities in object storage\nand adds corresponding metadata objects",
         "operationId": "LoadService_CreateLoadLinkSet",
@@ -57,7 +57,7 @@
         ]
       }
     },
-    "/v1/load/finish": {
+    "/api/v1/load/finish": {
       "post": {
         "summary": "Finishes a dataset load operation\nDatasets that finished loading can not add more entities",
         "operationId": "LoadService_FinishLoad",
@@ -97,7 +97,7 @@
         ]
       }
     },
-    "/v1/load/init": {
+    "/api/v1/load/init": {
       "post": {
         "summary": "Initiates a dataset\nReturns: The id of the dataset",
         "operationId": "LoadService_InitLoad",
