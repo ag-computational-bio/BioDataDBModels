@@ -16,7 +16,6 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
             url: ""
         };
     };
-    base_path: "/api",
     security_definitions: {
         security: {
             key: "ApiKeyAuth";
