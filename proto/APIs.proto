@@ -3,6 +3,8 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
 import "proto/LoadModels.proto";
+import "proto/DatasetModels.proto";
+import "proto/CommonModels.proto";
 import "google/api/annotations.proto";
 
 // This service is used to create datasets and load their entities into an object storage
@@ -32,6 +34,59 @@ service LoadService {
     rpc FinishLoad(ID) returns (Empty) {
         option (google.api.http) = {
             post: "/api/v1/load/finish"
+            body: "*"
+        };
+    }
+}
+
+
+// Dataset management service
+service DatasetService {
+
+    // Creates a new dataset
+    rpc CreateNewDataset(CreateDatasetRequest) returns (DatasetEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/dataset/create"
+            body: "*"
+        };
+    }
+
+    // Creates a new dataset version based on an existing dataset
+    rpc CreateNewDatasetVersion(NewDatasetVersionRequest) returns (DatasetVersionEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetversion/create"
+            body: "*"
+        };
+
+    }
+
+    // Lists all datasets
+    rpc Datasets(Empty) returns (DatasetEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/dataset/list"
+            body: "*"
+        };
+    }
+
+    rpc DatasetVersion(ID) returns (DatasetVersionEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetversion/list"
+            body: "*"
+        };
+    }
+
+    // Lists all entities of a dataset
+    rpc DatasetVersionEntities(ID) returns (DatasetObjectList) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetobjects/list"
+            body: "*"
+        };
+    }
+
+    // Creates preauth download links for all entities of a dataset
+    rpc DatasetVersionEntitiesLinks(ID) returns (DatasetObjectLinks) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetobjects/links"
             body: "*"
         };
     }

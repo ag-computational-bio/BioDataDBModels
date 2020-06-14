@@ -7,6 +7,15 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/commonmo
 import "protoc/gateway/options/annotations.proto";
 
 
+message Empty {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Empty";
+            description: "An empty object";
+        };
+    };
+}
+
 // A location in S3
 message Location {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
@@ -18,23 +27,6 @@ message Location {
     string Bucket = 1;
     string Key = 2;
     string URL = 3; // Object storage endpoint
-}
-
-
-message DatasetEntityMetaData {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        example: { value: '{ "Filename": "test.gbff", "Filetype": "gbff", "Name": "test", "Version": "v0.1", "ContentLen": 5 }' }
-        json_schema: {
-            title: "DatasetEntityMetaData";
-            description: "Metadata of a dataset entity"
-        };
-    };
-    string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
-    string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
-    string Name = 3; // Name: Name of the dataset entity e.g.: mydata
-    string Version = 4; // Remote version of the dataset
-    Origin Origin = 5; // Origin: Source of the dataset
-    int64 ContentLen = 6; // ContentLen: Lenght of the stored dataset
 }
 
 message Origin {

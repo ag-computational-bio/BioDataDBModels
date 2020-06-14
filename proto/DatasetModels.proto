@@ -1,0 +1,147 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels";
+
+import "google/protobuf/timestamp.proto";
+import "proto/CommonModels.proto";
+import "protoc/gateway/options/annotations.proto";
+
+// These messages are used as templates for the Database storage schemas
+
+message DatasetEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetEntry";
+            description: "Database entry for a dataset"
+        };
+    };
+    string ID = 1;
+    DatasetEntryMetadata Metadata = 2;
+}
+
+
+
+message DatasetEntryMetadata {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetEntryMetadata";
+            description: "Representation of the metadata of a dataset"
+        };
+    };
+    string Status = 1; // The status of the dataset, currently supported: running, finished
+    string Error = 2; // Reports a fundemental error in the dataset
+    google.protobuf.Timestamp Started = 3; // When the datasets was initiated
+    google.protobuf.Timestamp Finished = 4; // Last change TODO: need to rename
+    string Datasetname = 5; // Name of the dataset
+    string Datasettype = 6; // Type of the stored data in the dataset
+    string OwnerID = 7; // ID of the owner
+    bool isPublic = 8; //Indicates if the dataset if publicly available
+}
+
+message DatasetObjectEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetObjectEntry";
+            description: "Representation of a dataset entity"
+        };
+    };
+    string ID = 1; //ID of the entity
+    string DatasetID = 2; // ID of the corresponding dataset
+    DatasetObjectMetaData Metadata = 3; // Metadata of the dataset
+    Location Location = 4; //Where the entity is stored
+}
+
+message DatasetObjectMetaData {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "Filename": "test.gbff", "Filetype": "gbff", "Name": "test", "Version": "v0.1", "ContentLen": 5 }' }
+        json_schema: {
+            title: "DatasetObjectMetaData";
+            description: "Metadata of a dataset entity"
+        };
+    };
+    string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
+    string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
+    string Name = 3; // Name: Name of the dataset entity e.g.: mydata
+    string Version = 4; // Remote version of the dataset
+    Origin Origin = 5; // Origin: Source of the dataset
+    int64 ContentLen = 6; // ContentLen: Lenght of the stored dataset
+}
+
+
+message DatasetObjectLinks {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetLinks";
+            description: "List of links to download the entities of a dataset"
+        };
+    };
+    string ID = 1;
+    repeated DatasetObjectLink Entites = 2;
+}
+
+message DatasetObjectLink {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetObjectLink";
+            description: "Links to download a specific entity of a dataset"
+        };
+    };
+    string Link = 1;
+    string ObjectID = 2;
+}
+
+message CreateDatasetRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "DatasetName": "test", "Datatype": "test2" }' }
+        json_schema: {
+            title: "InitLoadDataset";
+            description: "Data required to start loading a dataset into the BioDataDB"
+        };
+    };
+    string DatasetName = 1; // Name of the dataset
+    string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
+}
+
+message DatasetList {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetList";
+            description: "A list of datasets"
+        };
+    };
+    repeated DatasetEntry Datasets = 1;
+}
+
+message DatasetObjectList {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetList";
+            description: "A list of datasets"
+        };
+    };
+    repeated DatasetEntry Datasets = 1;
+}
+
+message DatasetVersionEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetVersionEntry";
+            description: "Dataset version representation"
+        };
+    };
+    string ID = 1;
+    string DatasetID = 2;
+    string DatasetName = 3;
+    string Version = 4;
+}
+
+message NewDatasetVersionRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "NewDatasetVersionRequest";
+            description: "Creates a new dataset version"
+        };
+    };
+    string DatasetID = 1;
+    string Version = 2;
+}

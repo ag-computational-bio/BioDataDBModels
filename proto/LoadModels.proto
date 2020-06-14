@@ -2,31 +2,22 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
-import "proto/CommonModels.proto";
+import "proto/DatasetModels.proto";
 import "protoc/gateway/options/annotations.proto";
 
 // These messages are used in the Load service (user facing)
 
 
-message Empty {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "Empty";
-            description: "An empty object";
-        };
-    };
-}
-
 message InitLoadDataset {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        example: { value: '{ "DatasetName": "test", "Datatype": "test2" }' }
+        example: { value: '{ "DatasetID": "test", "Version": "0.1" }' }
         json_schema: {
             title: "InitLoadDataset";
             description: "Data required to start loading a dataset into the BioDataDB"
         };
     };
-    string DatasetName = 1; // Name of the dataset
-    string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
+    string DatasetID = 1; // ID of the dataset
+    string Version = 2; // Version of the dataset upload
 }
 
 message UploadLinks {
@@ -69,10 +60,5 @@ message CreateLoadLinkSetRequest {
         };
     };
     string DatasetID = 1; // ID of the dataset upload links should be created for
-    repeated DatasetEntityMetaData Metadata = 2; // List of metadata of uploaded Entites
-}
-
-// Unused
-message DatasetLink {
-    string ID = 1;
+    repeated DatasetObjectMetaData Metadata = 2; // List of metadata of uploaded objects
 }

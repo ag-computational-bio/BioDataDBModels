@@ -16,6 +16,245 @@
     "application/json"
   ],
   "paths": {
+    "/api/v1/dataset/create": {
+      "post": {
+        "summary": "Creates a new dataset",
+        "operationId": "DatasetService_CreateNewDataset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateDatasetRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/dataset/list": {
+      "post": {
+        "summary": "Lists all datasets",
+        "operationId": "DatasetService_Datasets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/datasetobjects/links": {
+      "post": {
+        "summary": "Creates preauth download links for all entities of a dataset",
+        "operationId": "DatasetService_DatasetVersionEntitiesLinks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetObjectLinks"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/datasetobjects/list": {
+      "post": {
+        "summary": "Lists all entities of a dataset",
+        "operationId": "DatasetService_DatasetVersionEntities",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetObjectList"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/datasetversion/create": {
+      "post": {
+        "summary": "Creates a new dataset version based on an existing dataset",
+        "operationId": "DatasetService_CreateNewDatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetVersionEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NewDatasetVersionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/datasetversion/list": {
+      "post": {
+        "operationId": "DatasetService_DatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetVersionEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/load/createlinks": {
       "post": {
         "summary": "Creates a list of upload links to place dataset entities in object storage\nand adds corresponding metadata objects",
@@ -138,6 +377,23 @@
     }
   },
   "definitions": {
+    "CreateDatasetRequest": {
+      "type": "object",
+      "example": {
+        "DatasetName": "test",
+        "Datatype": "test2"
+      },
+      "properties": {
+        "DatasetName": {
+          "type": "string"
+        },
+        "Datatype": {
+          "type": "string"
+        }
+      },
+      "description": "Data required to start loading a dataset into the BioDataDB",
+      "title": "InitLoadDataset"
+    },
     "CreateLoadLinkSetRequest": {
       "type": "object",
       "properties": {
@@ -147,14 +403,103 @@
         "Metadata": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetEntityMetaData"
+            "$ref": "#/definitions/DatasetObjectMetaData"
           }
         }
       },
       "description": "Request message to request a set of presigned URL links",
       "title": "CreateLoadLinkSetRequest"
     },
-    "DatasetEntityMetaData": {
+    "DatasetEntry": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Metadata": {
+          "$ref": "#/definitions/DatasetEntryMetadata"
+        }
+      },
+      "description": "Database entry for a dataset",
+      "title": "DatasetEntry"
+    },
+    "DatasetEntryMetadata": {
+      "type": "object",
+      "properties": {
+        "Status": {
+          "type": "string"
+        },
+        "Error": {
+          "type": "string"
+        },
+        "Started": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Finished": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Datasetname": {
+          "type": "string"
+        },
+        "Datasettype": {
+          "type": "string"
+        },
+        "OwnerID": {
+          "type": "string"
+        },
+        "isPublic": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      },
+      "description": "Representation of the metadata of a dataset",
+      "title": "DatasetEntryMetadata"
+    },
+    "DatasetObjectLink": {
+      "type": "object",
+      "properties": {
+        "Link": {
+          "type": "string"
+        },
+        "ObjectID": {
+          "type": "string"
+        }
+      },
+      "description": "Links to download a specific entity of a dataset",
+      "title": "DatasetObjectLink"
+    },
+    "DatasetObjectLinks": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Entites": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetObjectLink"
+          }
+        }
+      },
+      "description": "List of links to download the entities of a dataset",
+      "title": "DatasetLinks"
+    },
+    "DatasetObjectList": {
+      "type": "object",
+      "properties": {
+        "Datasets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetEntry"
+          }
+        }
+      },
+      "description": "A list of datasets",
+      "title": "DatasetList"
+    },
+    "DatasetObjectMetaData": {
       "type": "object",
       "example": {
         "Filename": "test.gbff",
@@ -185,7 +530,26 @@
         }
       },
       "description": "Metadata of a dataset entity",
-      "title": "DatasetEntityMetaData"
+      "title": "DatasetObjectMetaData"
+    },
+    "DatasetVersionEntry": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "DatasetName": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "string"
+        }
+      },
+      "description": "Dataset version representation",
+      "title": "DatasetVersionEntry"
     },
     "Empty": {
       "type": "object",
@@ -205,14 +569,14 @@
     "InitLoadDataset": {
       "type": "object",
       "example": {
-        "DatasetName": "test",
-        "Datatype": "test2"
+        "DatasetID": "test",
+        "Version": "0.1"
       },
       "properties": {
-        "DatasetName": {
+        "DatasetID": {
           "type": "string"
         },
-        "Datatype": {
+        "Version": {
           "type": "string"
         }
       },
@@ -234,6 +598,19 @@
       },
       "description": "A location in an object storage",
       "title": "Location"
+    },
+    "NewDatasetVersionRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetID": {
+          "type": "string"
+        },
+        "Version": {
+          "type": "string"
+        }
+      },
+      "description": "Creates a new dataset version",
+      "title": "NewDatasetVersionRequest"
     },
     "Origin": {
       "type": "object",
