@@ -103,7 +103,7 @@ var file_proto_APIs_proto_rawDesc = []byte{
 var file_proto_APIs_proto_goTypes = []interface{}{
 	(*loadmodels.InitLoadDataset)(nil),             // 0: InitLoadDataset
 	(*loadmodels.CreateLoadLinkSetRequest)(nil),    // 1: CreateLoadLinkSetRequest
-	(*loadmodels.ID)(nil),                          // 2: ID
+	(*commonmodels.ID)(nil),                        // 2: ID
 	(*datasetmodels.CreateDatasetRequest)(nil),     // 3: CreateDatasetRequest
 	(*datasetmodels.NewDatasetVersionRequest)(nil), // 4: NewDatasetVersionRequest
 	(*commonmodels.Empty)(nil),                     // 5: Empty
@@ -177,13 +177,13 @@ const _ = grpc.SupportPackageIsVersion6
 type LoadServiceClient interface {
 	// Initiates a dataset
 	// Returns: The id of the dataset
-	InitLoad(ctx context.Context, in *loadmodels.InitLoadDataset, opts ...grpc.CallOption) (*loadmodels.ID, error)
+	InitLoad(ctx context.Context, in *loadmodels.InitLoadDataset, opts ...grpc.CallOption) (*commonmodels.ID, error)
 	// Creates a list of upload links to place dataset entities in object storage
 	// and adds corresponding metadata objects
 	CreateLoadLinkSet(ctx context.Context, in *loadmodels.CreateLoadLinkSetRequest, opts ...grpc.CallOption) (*loadmodels.UploadLinks, error)
 	// Finishes a dataset load operation
 	// Datasets that finished loading can not add more entities
-	FinishLoad(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error)
+	FinishLoad(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error)
 }
 
 type loadServiceClient struct {
@@ -194,8 +194,8 @@ func NewLoadServiceClient(cc grpc.ClientConnInterface) LoadServiceClient {
 	return &loadServiceClient{cc}
 }
 
-func (c *loadServiceClient) InitLoad(ctx context.Context, in *loadmodels.InitLoadDataset, opts ...grpc.CallOption) (*loadmodels.ID, error) {
-	out := new(loadmodels.ID)
+func (c *loadServiceClient) InitLoad(ctx context.Context, in *loadmodels.InitLoadDataset, opts ...grpc.CallOption) (*commonmodels.ID, error) {
+	out := new(commonmodels.ID)
 	err := c.cc.Invoke(ctx, "/LoadService/InitLoad", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -212,7 +212,7 @@ func (c *loadServiceClient) CreateLoadLinkSet(ctx context.Context, in *loadmodel
 	return out, nil
 }
 
-func (c *loadServiceClient) FinishLoad(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error) {
+func (c *loadServiceClient) FinishLoad(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error) {
 	out := new(commonmodels.Empty)
 	err := c.cc.Invoke(ctx, "/LoadService/FinishLoad", in, out, opts...)
 	if err != nil {
@@ -225,26 +225,26 @@ func (c *loadServiceClient) FinishLoad(ctx context.Context, in *loadmodels.ID, o
 type LoadServiceServer interface {
 	// Initiates a dataset
 	// Returns: The id of the dataset
-	InitLoad(context.Context, *loadmodels.InitLoadDataset) (*loadmodels.ID, error)
+	InitLoad(context.Context, *loadmodels.InitLoadDataset) (*commonmodels.ID, error)
 	// Creates a list of upload links to place dataset entities in object storage
 	// and adds corresponding metadata objects
 	CreateLoadLinkSet(context.Context, *loadmodels.CreateLoadLinkSetRequest) (*loadmodels.UploadLinks, error)
 	// Finishes a dataset load operation
 	// Datasets that finished loading can not add more entities
-	FinishLoad(context.Context, *loadmodels.ID) (*commonmodels.Empty, error)
+	FinishLoad(context.Context, *commonmodels.ID) (*commonmodels.Empty, error)
 }
 
 // UnimplementedLoadServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedLoadServiceServer struct {
 }
 
-func (*UnimplementedLoadServiceServer) InitLoad(context.Context, *loadmodels.InitLoadDataset) (*loadmodels.ID, error) {
+func (*UnimplementedLoadServiceServer) InitLoad(context.Context, *loadmodels.InitLoadDataset) (*commonmodels.ID, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InitLoad not implemented")
 }
 func (*UnimplementedLoadServiceServer) CreateLoadLinkSet(context.Context, *loadmodels.CreateLoadLinkSetRequest) (*loadmodels.UploadLinks, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateLoadLinkSet not implemented")
 }
-func (*UnimplementedLoadServiceServer) FinishLoad(context.Context, *loadmodels.ID) (*commonmodels.Empty, error) {
+func (*UnimplementedLoadServiceServer) FinishLoad(context.Context, *commonmodels.ID) (*commonmodels.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method FinishLoad not implemented")
 }
 
@@ -289,7 +289,7 @@ func _LoadService_CreateLoadLinkSet_Handler(srv interface{}, ctx context.Context
 }
 
 func _LoadService_FinishLoad_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(loadmodels.ID)
+	in := new(commonmodels.ID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -301,7 +301,7 @@ func _LoadService_FinishLoad_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/LoadService/FinishLoad",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LoadServiceServer).FinishLoad(ctx, req.(*loadmodels.ID))
+		return srv.(LoadServiceServer).FinishLoad(ctx, req.(*commonmodels.ID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -337,11 +337,11 @@ type DatasetServiceClient interface {
 	CreateNewDatasetVersion(ctx context.Context, in *datasetmodels.NewDatasetVersionRequest, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error)
 	// Lists all datasets
 	Datasets(ctx context.Context, in *commonmodels.Empty, opts ...grpc.CallOption) (*datasetmodels.DatasetEntry, error)
-	DatasetVersion(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error)
+	DatasetVersion(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error)
 	// Lists all entities of a dataset
-	DatasetVersionEntities(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error)
+	DatasetVersionEntities(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error)
 	// Creates preauth download links for all entities of a dataset
-	DatasetVersionEntitiesLinks(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLinks, error)
+	DatasetVersionEntitiesLinks(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLinks, error)
 }
 
 type datasetServiceClient struct {
@@ -379,7 +379,7 @@ func (c *datasetServiceClient) Datasets(ctx context.Context, in *commonmodels.Em
 	return out, nil
 }
 
-func (c *datasetServiceClient) DatasetVersion(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error) {
+func (c *datasetServiceClient) DatasetVersion(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error) {
 	out := new(datasetmodels.DatasetVersionEntry)
 	err := c.cc.Invoke(ctx, "/DatasetService/DatasetVersion", in, out, opts...)
 	if err != nil {
@@ -388,7 +388,7 @@ func (c *datasetServiceClient) DatasetVersion(ctx context.Context, in *loadmodel
 	return out, nil
 }
 
-func (c *datasetServiceClient) DatasetVersionEntities(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error) {
+func (c *datasetServiceClient) DatasetVersionEntities(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error) {
 	out := new(datasetmodels.DatasetObjectList)
 	err := c.cc.Invoke(ctx, "/DatasetService/DatasetVersionEntities", in, out, opts...)
 	if err != nil {
@@ -397,7 +397,7 @@ func (c *datasetServiceClient) DatasetVersionEntities(ctx context.Context, in *l
 	return out, nil
 }
 
-func (c *datasetServiceClient) DatasetVersionEntitiesLinks(ctx context.Context, in *loadmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLinks, error) {
+func (c *datasetServiceClient) DatasetVersionEntitiesLinks(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLinks, error) {
 	out := new(datasetmodels.DatasetObjectLinks)
 	err := c.cc.Invoke(ctx, "/DatasetService/DatasetVersionEntitiesLinks", in, out, opts...)
 	if err != nil {
@@ -414,11 +414,11 @@ type DatasetServiceServer interface {
 	CreateNewDatasetVersion(context.Context, *datasetmodels.NewDatasetVersionRequest) (*datasetmodels.DatasetVersionEntry, error)
 	// Lists all datasets
 	Datasets(context.Context, *commonmodels.Empty) (*datasetmodels.DatasetEntry, error)
-	DatasetVersion(context.Context, *loadmodels.ID) (*datasetmodels.DatasetVersionEntry, error)
+	DatasetVersion(context.Context, *commonmodels.ID) (*datasetmodels.DatasetVersionEntry, error)
 	// Lists all entities of a dataset
-	DatasetVersionEntities(context.Context, *loadmodels.ID) (*datasetmodels.DatasetObjectList, error)
+	DatasetVersionEntities(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectList, error)
 	// Creates preauth download links for all entities of a dataset
-	DatasetVersionEntitiesLinks(context.Context, *loadmodels.ID) (*datasetmodels.DatasetObjectLinks, error)
+	DatasetVersionEntitiesLinks(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectLinks, error)
 }
 
 // UnimplementedDatasetServiceServer can be embedded to have forward compatible implementations.
@@ -434,13 +434,13 @@ func (*UnimplementedDatasetServiceServer) CreateNewDatasetVersion(context.Contex
 func (*UnimplementedDatasetServiceServer) Datasets(context.Context, *commonmodels.Empty) (*datasetmodels.DatasetEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Datasets not implemented")
 }
-func (*UnimplementedDatasetServiceServer) DatasetVersion(context.Context, *loadmodels.ID) (*datasetmodels.DatasetVersionEntry, error) {
+func (*UnimplementedDatasetServiceServer) DatasetVersion(context.Context, *commonmodels.ID) (*datasetmodels.DatasetVersionEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersion not implemented")
 }
-func (*UnimplementedDatasetServiceServer) DatasetVersionEntities(context.Context, *loadmodels.ID) (*datasetmodels.DatasetObjectList, error) {
+func (*UnimplementedDatasetServiceServer) DatasetVersionEntities(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersionEntities not implemented")
 }
-func (*UnimplementedDatasetServiceServer) DatasetVersionEntitiesLinks(context.Context, *loadmodels.ID) (*datasetmodels.DatasetObjectLinks, error) {
+func (*UnimplementedDatasetServiceServer) DatasetVersionEntitiesLinks(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectLinks, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersionEntitiesLinks not implemented")
 }
 
@@ -503,7 +503,7 @@ func _DatasetService_Datasets_Handler(srv interface{}, ctx context.Context, dec 
 }
 
 func _DatasetService_DatasetVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(loadmodels.ID)
+	in := new(commonmodels.ID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -515,13 +515,13 @@ func _DatasetService_DatasetVersion_Handler(srv interface{}, ctx context.Context
 		FullMethod: "/DatasetService/DatasetVersion",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatasetServiceServer).DatasetVersion(ctx, req.(*loadmodels.ID))
+		return srv.(DatasetServiceServer).DatasetVersion(ctx, req.(*commonmodels.ID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _DatasetService_DatasetVersionEntities_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(loadmodels.ID)
+	in := new(commonmodels.ID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -533,13 +533,13 @@ func _DatasetService_DatasetVersionEntities_Handler(srv interface{}, ctx context
 		FullMethod: "/DatasetService/DatasetVersionEntities",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatasetServiceServer).DatasetVersionEntities(ctx, req.(*loadmodels.ID))
+		return srv.(DatasetServiceServer).DatasetVersionEntities(ctx, req.(*commonmodels.ID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _DatasetService_DatasetVersionEntitiesLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(loadmodels.ID)
+	in := new(commonmodels.ID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -551,7 +551,7 @@ func _DatasetService_DatasetVersionEntitiesLinks_Handler(srv interface{}, ctx co
 		FullMethod: "/DatasetService/DatasetVersionEntitiesLinks",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatasetServiceServer).DatasetVersionEntitiesLinks(ctx, req.(*loadmodels.ID))
+		return srv.(DatasetServiceServer).DatasetVersionEntitiesLinks(ctx, req.(*commonmodels.ID))
 	}
 	return interceptor(ctx, in, info, handler)
 }

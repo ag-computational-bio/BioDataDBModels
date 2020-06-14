@@ -47,3 +47,12 @@ message Origin {
     }
 }
 
+message ID {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "ID";
+            description: "An arbitrary ID"
+        };
+    };
+    string ID = 1; // An arbitrary ID
+}

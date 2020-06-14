@@ -103,7 +103,7 @@ func local_request_LoadService_CreateLoadLinkSet_0(ctx context.Context, marshale
 }
 
 func request_LoadService_FinishLoad_0(ctx context.Context, marshaler runtime.Marshaler, client LoadServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -120,7 +120,7 @@ func request_LoadService_FinishLoad_0(ctx context.Context, marshaler runtime.Mar
 }
 
 func local_request_LoadService_FinishLoad_0(ctx context.Context, marshaler runtime.Marshaler, server LoadServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -239,7 +239,7 @@ func local_request_DatasetService_Datasets_0(ctx context.Context, marshaler runt
 }
 
 func request_DatasetService_DatasetVersion_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -256,7 +256,7 @@ func request_DatasetService_DatasetVersion_0(ctx context.Context, marshaler runt
 }
 
 func local_request_DatasetService_DatasetVersion_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -273,7 +273,7 @@ func local_request_DatasetService_DatasetVersion_0(ctx context.Context, marshale
 }
 
 func request_DatasetService_DatasetVersionEntities_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -290,7 +290,7 @@ func request_DatasetService_DatasetVersionEntities_0(ctx context.Context, marsha
 }
 
 func local_request_DatasetService_DatasetVersionEntities_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -307,7 +307,7 @@ func local_request_DatasetService_DatasetVersionEntities_0(ctx context.Context, 
 }
 
 func request_DatasetService_DatasetVersionEntitiesLinks_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -324,7 +324,7 @@ func request_DatasetService_DatasetVersionEntitiesLinks_0(ctx context.Context, m
 }
 
 func local_request_DatasetService_DatasetVersionEntitiesLinks_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq loadmodels.ID
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
