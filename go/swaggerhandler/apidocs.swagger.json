@@ -99,7 +99,7 @@
     "/api/v1/datasetobjects/links": {
       "post": {
         "summary": "Creates preauth download links for all entities of a dataset",
-        "operationId": "DatasetService_DatasetVersionEntitiesLinks",
+        "operationId": "DatasetService_DatasetVersionObjectsLinks",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -139,7 +139,7 @@
     "/api/v1/datasetobjects/list": {
       "post": {
         "summary": "Lists all entities of a dataset",
-        "operationId": "DatasetService_DatasetVersionEntities",
+        "operationId": "DatasetService_DatasetVersionObjects",
         "responses": {
           "200": {
             "description": "A successful response.",

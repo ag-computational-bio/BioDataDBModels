@@ -59,7 +59,7 @@ service DatasetService {
     }
 
     // Lists all entities of a dataset
-    rpc DatasetVersionEntities(ID) returns (DatasetObjectList) {
+    rpc DatasetVersionObjects(ID) returns (DatasetObjectList) {
         option (google.api.http) = {
             post: "/api/v1/datasetobjects/list"
             body: "*"
@@ -67,7 +67,7 @@ service DatasetService {
     }
 
     // Creates preauth download links for all entities of a dataset
-    rpc DatasetVersionEntitiesLinks(ID) returns (DatasetObjectLinks) {
+    rpc DatasetVersionObjectsLinks(ID) returns (DatasetObjectLinks) {
         option (google.api.http) = {
             post: "/api/v1/datasetobjects/links"
             body: "*"

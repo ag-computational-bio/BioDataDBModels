@@ -42,9 +42,9 @@ module DatasetService
     # Lists Versions of a dataset
     rpc :DatasetVersion, ID, DatasetVersionEntry
     # Lists all entities of a dataset
-    rpc :DatasetVersionEntities, ID, DatasetObjectList
+    rpc :DatasetVersionObjects, ID, DatasetObjectList
     # Creates preauth download links for all entities of a dataset
-    rpc :DatasetVersionEntitiesLinks, ID, DatasetObjectLinks
+    rpc :DatasetVersionObjectsLinks, ID, DatasetObjectLinks
   end
 
   Stub = Service.rpc_stub_class
