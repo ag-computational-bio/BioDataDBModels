@@ -11,15 +11,6 @@ import "google/api/annotations.proto";
 // and create corresponding metadata objects to store the location of the entities in object storage.
 // This interface should be usable from within the platform and from outside
 service LoadService {
-    // Initiates a dataset
-    // Returns: The id of the dataset
-    rpc InitLoad(InitLoadDataset) returns (ID) {
-        option (google.api.http) = {
-            post: "/api/v1/load/init"
-            body: "*"
-        };
-    }
-
     // Creates a list of upload links to place dataset entities in object storage
     // and adds corresponding metadata objects
     rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks) {

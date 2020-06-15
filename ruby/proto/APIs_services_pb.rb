@@ -16,9 +16,6 @@ module LoadService
     self.unmarshal_class_method = :decode
     self.service_name = 'LoadService'
 
-    # Initiates a dataset
-    # Returns: The id of the dataset
-    rpc :InitLoad, InitLoadDataset, ID
     # Creates a list of upload links to place dataset entities in object storage
     # and adds corresponding metadata objects
     rpc :CreateLoadLinkSet, CreateLoadLinkSetRequest, UploadLinks

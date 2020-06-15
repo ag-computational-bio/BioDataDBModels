@@ -334,46 +334,6 @@
           "LoadService"
         ]
       }
-    },
-    "/api/v1/load/init": {
-      "post": {
-        "summary": "Initiates a dataset\nReturns: The id of the dataset",
-        "operationId": "LoadService_InitLoad",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
-          },
-          "404": {
-            "description": "Returned when the resource does not exist.",
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/InitLoadDataset"
-            }
-          }
-        ],
-        "tags": [
-          "LoadService"
-        ]
-      }
     }
   },
   "definitions": {
@@ -565,23 +525,6 @@
       },
       "description": "An arbitrary ID",
       "title": "ID"
-    },
-    "InitLoadDataset": {
-      "type": "object",
-      "example": {
-        "DatasetID": "test",
-        "Version": "0.1"
-      },
-      "properties": {
-        "DatasetID": {
-          "type": "string"
-        },
-        "DatasetVersionID": {
-          "type": "string"
-        }
-      },
-      "description": "Data required to start loading a dataset into the BioDataDB",
-      "title": "InitLoadDataset"
     },
     "Location": {
       "type": "object",
