@@ -28,8 +28,6 @@ message DatasetEntryMetadata {
             description: "Representation of the metadata of a dataset"
         };
     };
-    string Status = 1; // The status of the dataset, currently supported: running, finished
-    string Error = 2; // Reports a fundemental error in the dataset
     google.protobuf.Timestamp Started = 3; // When the datasets was initiated
     google.protobuf.Timestamp Finished = 4; // Last change TODO: need to rename
     string Datasetname = 5; // Name of the dataset
@@ -130,9 +128,19 @@ message DatasetVersionEntry {
         };
     };
     string ID = 1;
-    string DatasetID = 2;
-    string DatasetName = 3;
-    string Version = 4;
+    DatasetVersionMetadata Metadata = 2;
+}
+
+message DatasetVersionMetadata {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetVersionMetadata";
+            description: "Metadata of a dataset version"
+        };
+    };
+    string DatasetID = 1;
+    string DatasetName = 2;
+    string Version = 3;
 }
 
 message NewDatasetVersionRequest {

@@ -426,12 +426,6 @@
     "DatasetEntryMetadata": {
       "type": "object",
       "properties": {
-        "Status": {
-          "type": "string"
-        },
-        "Error": {
-          "type": "string"
-        },
         "Started": {
           "type": "string",
           "format": "date-time"
@@ -538,6 +532,16 @@
         "ID": {
           "type": "string"
         },
+        "Metadata": {
+          "$ref": "#/definitions/DatasetVersionMetadata"
+        }
+      },
+      "description": "Dataset version representation",
+      "title": "DatasetVersionEntry"
+    },
+    "DatasetVersionMetadata": {
+      "type": "object",
+      "properties": {
         "DatasetID": {
           "type": "string"
         },
@@ -548,8 +552,8 @@
           "type": "string"
         }
       },
-      "description": "Dataset version representation",
-      "title": "DatasetVersionEntry"
+      "description": "Metadata of a dataset version",
+      "title": "DatasetVersionMetadata"
     },
     "Empty": {
       "type": "object",
