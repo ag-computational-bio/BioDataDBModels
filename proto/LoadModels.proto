@@ -3,6 +3,7 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
 import "proto/DatasetModels.proto";
+import "google/protobuf/timestamp.proto";
 import "protoc/gateway/options/annotations.proto";
 
 // These messages are used in the Load service (user facing)
@@ -42,6 +43,8 @@ message LoadSequenceMetadata {
     string DatasetVersionID = 2;
     string Status = 3;
     string Error = 4;
+    google.protobuf.Timestamp Started = 5; // When the datasets was initiated
+    google.protobuf.Timestamp Finished = 6; // Last change TODO: need to rename
 }
 
 message UploadLinks {

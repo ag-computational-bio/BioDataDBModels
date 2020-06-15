@@ -426,14 +426,6 @@
     "DatasetEntryMetadata": {
       "type": "object",
       "properties": {
-        "Started": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "Finished": {
-          "type": "string",
-          "format": "date-time"
-        },
         "Datasetname": {
           "type": "string"
         },
@@ -550,6 +542,10 @@
         },
         "Version": {
           "type": "string"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
         }
       },
       "description": "Metadata of a dataset version",
