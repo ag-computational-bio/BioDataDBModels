@@ -8,19 +8,6 @@ import "protoc/gateway/options/annotations.proto";
 
 // These messages are used in the Load service (user facing)
 
-
-message InitLoadDataset {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        example: { value: '{ "DatasetID": "test", "Version": "0.1" }' }
-        json_schema: {
-            title: "InitLoadDataset";
-            description: "Data required to start loading a dataset into the BioDataDB"
-        };
-    };
-    string DatasetID = 1; // ID of the dataset
-    string DatasetVersionID = 2;
-}
-
 message LoadSequence {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -76,5 +63,6 @@ message CreateLoadLinkSetRequest {
         };
     };
     string DatasetID = 1; // ID of the dataset upload links should be created for
-    repeated DatasetObjectMetaData Metadata = 2; // List of metadata of uploaded objects
+    string DatasetVersionID = 2;
+    repeated DatasetObjectMetaData Metadata = 3; // List of metadata of uploaded objects
 }

@@ -19,9 +19,6 @@ module LoadService
     # Creates a list of upload links to place dataset entities in object storage
     # and adds corresponding metadata objects
     rpc :CreateLoadLinkSet, CreateLoadLinkSetRequest, UploadLinks
-    # Finishes a dataset load operation
-    # Datasets that finished loading can not add more entities
-    rpc :FinishLoad, ID, Empty
   end
 
   Stub = Service.rpc_stub_class
@@ -42,6 +39,7 @@ module DatasetService
     rpc :CreateNewDatasetVersion, NewDatasetVersionRequest, DatasetVersionEntry
     # Lists all datasets
     rpc :Datasets, Empty, DatasetEntry
+    # Lists Versions of a dataset
     rpc :DatasetVersion, ID, DatasetVersionEntry
     # Lists all entities of a dataset
     rpc :DatasetVersionEntities, ID, DatasetObjectList

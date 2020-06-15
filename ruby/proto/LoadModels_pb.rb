@@ -8,10 +8,6 @@ require 'google/protobuf/timestamp_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do
-    add_message "InitLoadDataset" do
-      optional :DatasetID, :string, 1
-      optional :DatasetVersionID, :string, 2
-    end
     add_message "LoadSequence" do
       optional :ID, :string, 1
       optional :Metadata, :message, 2, "LoadSequenceMetadata"
@@ -33,12 +29,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "CreateLoadLinkSetRequest" do
       optional :DatasetID, :string, 1
-      repeated :Metadata, :message, 2, "DatasetObjectMetaData"
+      optional :DatasetVersionID, :string, 2
+      repeated :Metadata, :message, 3, "DatasetObjectMetaData"
     end
   end
 end
 
-InitLoadDataset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitLoadDataset").msgclass
 LoadSequence = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("LoadSequence").msgclass
 LoadSequenceMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("LoadSequenceMetadata").msgclass
 UploadLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLinks").msgclass

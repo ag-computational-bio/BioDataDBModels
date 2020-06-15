@@ -218,6 +218,7 @@
     },
     "/api/v1/datasetversion/list": {
       "post": {
+        "summary": "Lists Versions of a dataset",
         "operationId": "DatasetService_DatasetVersion",
         "responses": {
           "200": {
@@ -294,46 +295,6 @@
           "LoadService"
         ]
       }
-    },
-    "/api/v1/load/finish": {
-      "post": {
-        "summary": "Finishes a dataset load operation\nDatasets that finished loading can not add more entities",
-        "operationId": "LoadService_FinishLoad",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            }
-          },
-          "404": {
-            "description": "Returned when the resource does not exist.",
-            "schema": {
-              "type": "string",
-              "format": "string"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
-          }
-        ],
-        "tags": [
-          "LoadService"
-        ]
-      }
     }
   },
   "definitions": {
@@ -358,6 +319,9 @@
       "type": "object",
       "properties": {
         "DatasetID": {
+          "type": "string"
+        },
+        "DatasetVersionID": {
           "type": "string"
         },
         "Metadata": {
