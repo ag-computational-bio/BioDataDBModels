@@ -580,7 +580,7 @@
         "DatasetID": {
           "type": "string"
         },
-        "Version": {
+        "DatasetVersionID": {
           "type": "string"
         }
       },

@@ -17,7 +17,31 @@ message InitLoadDataset {
         };
     };
     string DatasetID = 1; // ID of the dataset
-    string Version = 2; // Version of the dataset upload
+    string DatasetVersionID = 2;
+}
+
+message LoadSequence {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "LoadSequence";
+            description: "Database entry for a load sequence"
+        };
+    };
+    string ID = 1;
+    LoadSequenceMetadata Metadata = 2;
+}
+
+message LoadSequenceMetadata {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "LoadSequenceMetadata";
+            description: "Metadata for a load sequence"
+        };
+    };
+    string DatasetID = 1;
+    string DatasetVersionID = 2;
+    string Status = 3;
+    string Error = 4;
 }
 
 message UploadLinks {
