@@ -35,12 +35,12 @@ module DatasetService
 
     # Creates a new dataset
     rpc :CreateNewDataset, CreateDatasetRequest, DatasetEntry
+    # Lists all datasets
+    rpc :Datasets, Empty, DatasetList
     # Creates a new dataset version based on an existing dataset
     rpc :CreateNewDatasetVersion, NewDatasetVersionRequest, DatasetVersionEntry
-    # Lists all datasets
-    rpc :Datasets, Empty, DatasetEntry
     # Lists Versions of a dataset
-    rpc :DatasetVersion, ID, DatasetVersionEntry
+    rpc :DatasetVersions, ID, DatasetVersionList
     # Lists all entities of a dataset
     rpc :DatasetVersionObjects, ID, DatasetObjectList
     # Creates preauth download links for all entities of a dataset

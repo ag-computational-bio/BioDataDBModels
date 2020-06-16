@@ -33,6 +33,14 @@ service DatasetService {
         };
     }
 
+    // Lists all datasets
+    rpc Datasets(Empty) returns (DatasetList) {
+        option (google.api.http) = {
+            post: "/api/v1/dataset/list"
+            body: "*"
+        };
+    }
+
     // Creates a new dataset version based on an existing dataset
     rpc CreateNewDatasetVersion(NewDatasetVersionRequest) returns (DatasetVersionEntry) {
         option (google.api.http) = {
@@ -42,16 +50,8 @@ service DatasetService {
 
     }
 
-    // Lists all datasets
-    rpc Datasets(Empty) returns (DatasetEntry) {
-        option (google.api.http) = {
-            post: "/api/v1/dataset/list"
-            body: "*"
-        };
-    }
-
     // Lists Versions of a dataset
-    rpc DatasetVersion(ID) returns (DatasetVersionEntry) {
+    rpc DatasetVersions(ID) returns (DatasetVersionList) {
         option (google.api.http) = {
             post: "/api/v1/datasetversion/list"
             body: "*"

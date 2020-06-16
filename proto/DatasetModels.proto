@@ -108,6 +108,16 @@ message DatasetList {
     repeated DatasetEntry Datasets = 1;
 }
 
+message DatasetVersionList {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetList";
+            description: "A list of datasetversions"
+        };
+    };
+    repeated DatasetVersionEntry DatasetVersions = 2;
+}
+
 message DatasetObjectList {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {

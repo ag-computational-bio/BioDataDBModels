@@ -64,7 +64,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetEntry"
+              "$ref": "#/definitions/DatasetList"
             }
           },
           "404": {
@@ -219,12 +219,12 @@
     "/api/v1/datasetversion/list": {
       "post": {
         "summary": "Lists Versions of a dataset",
-        "operationId": "DatasetService_DatasetVersion",
+        "operationId": "DatasetService_DatasetVersions",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetVersionEntry"
+              "$ref": "#/definitions/DatasetVersionList"
             }
           },
           "404": {
@@ -367,6 +367,19 @@
       "description": "Representation of the metadata of a dataset",
       "title": "DatasetEntryMetadata"
     },
+    "DatasetList": {
+      "type": "object",
+      "properties": {
+        "Datasets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetEntry"
+          }
+        }
+      },
+      "description": "A list of datasets",
+      "title": "DatasetList"
+    },
     "DatasetObjectLink": {
       "type": "object",
       "properties": {
@@ -454,6 +467,19 @@
       },
       "description": "Dataset version representation",
       "title": "DatasetVersionEntry"
+    },
+    "DatasetVersionList": {
+      "type": "object",
+      "properties": {
+        "DatasetVersions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetVersionEntry"
+          }
+        }
+      },
+      "description": "A list of datasetversions",
+      "title": "DatasetList"
     },
     "DatasetVersionMetadata": {
       "type": "object",
