@@ -18,7 +18,7 @@ protoc -I. --swagger_out=logtostderr=true,allow_merge=true:./go/swaggerhandler p
 go generate go/swaggerhandler/SwaggerGen.go
 
 grpc_tools_ruby_protoc -I. --ruby_out=ruby --grpc_out=ruby proto/CommonModels.proto proto/DatasetModels.proto proto/LoadModels.proto proto/APIs.proto
-mv ruby/proto/* ruby 
+mv ruby/proto/* ruby/lib
 
 rm -r ruby/proto
 rm -r go/proto
