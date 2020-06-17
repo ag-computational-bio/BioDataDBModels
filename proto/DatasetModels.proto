@@ -125,7 +125,7 @@ message DatasetObjectList {
             description: "A list of datasets"
         };
     };
-    repeated DatasetEntry Datasets = 1;
+    repeated DatasetObjectEntry DatasetVersionObjects = 1;
 }
 
 message DatasetVersionEntry {

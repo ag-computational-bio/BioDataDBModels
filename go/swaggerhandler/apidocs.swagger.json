@@ -380,6 +380,25 @@
       "description": "A list of datasets",
       "title": "DatasetList"
     },
+    "DatasetObjectEntry": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "Metadata": {
+          "$ref": "#/definitions/DatasetObjectMetaData"
+        },
+        "Location": {
+          "$ref": "#/definitions/Location"
+        }
+      },
+      "description": "Representation of a dataset entity",
+      "title": "DatasetObjectEntry"
+    },
     "DatasetObjectLink": {
       "type": "object",
       "properties": {
@@ -412,10 +431,10 @@
     "DatasetObjectList": {
       "type": "object",
       "properties": {
-        "Datasets": {
+        "DatasetVersionObjects": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetEntry"
+            "$ref": "#/definitions/DatasetObjectEntry"
           }
         }
       },

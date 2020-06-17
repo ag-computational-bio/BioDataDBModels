@@ -51,7 +51,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :DatasetVersions, :message, 2, "DatasetVersionEntry"
     end
     add_message "DatasetObjectList" do
-      repeated :Datasets, :message, 1, "DatasetEntry"
+      repeated :DatasetVersionObjects, :message, 1, "DatasetObjectEntry"
     end
     add_message "DatasetVersionEntry" do
       optional :ID, :string, 1
