@@ -58,7 +58,7 @@ message DatasetObjectMetaData {
     string Name = 3; // Name: Name of the dataset entity e.g.: mydata
     string Version = 4; // Remote version of the dataset
     Origin Origin = 5; // Origin: Source of the dataset
-    int64 ContentLen = 6; // ContentLen: Lenght of the stored dataset
+    int32 ContentLen = 6; // ContentLen: Lenght of the stored dataset
     string DatasetID = 7; // DatasetID: ID of the parent dataset
     string DatasetVersionID = 8; // DatasetVersionID: ID of the parent dataset version
     Location Location = 9; // Location: Location of the data
