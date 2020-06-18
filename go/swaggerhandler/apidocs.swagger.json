@@ -386,14 +386,8 @@
         "ID": {
           "type": "string"
         },
-        "DatasetID": {
-          "type": "string"
-        },
         "Metadata": {
           "$ref": "#/definitions/DatasetObjectMetaData"
-        },
-        "Location": {
-          "$ref": "#/definitions/Location"
         }
       },
       "description": "Representation of a dataset entity",
@@ -469,6 +463,15 @@
         "ContentLen": {
           "type": "string",
           "format": "int64"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "DatasetVersionID": {
+          "type": "string"
+        },
+        "Location": {
+          "$ref": "#/definitions/Location"
         }
       },
       "description": "Metadata of a dataset entity",

@@ -20,9 +20,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "DatasetObjectEntry" do
       optional :ID, :string, 1
-      optional :DatasetID, :string, 2
       optional :Metadata, :message, 3, "DatasetObjectMetaData"
-      optional :Location, :message, 4, "Location"
     end
     add_message "DatasetObjectMetaData" do
       optional :Filename, :string, 1
@@ -31,6 +29,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Version, :string, 4
       optional :Origin, :message, 5, "Origin"
       optional :ContentLen, :int64, 6
+      optional :DatasetID, :string, 7
+      optional :DatasetVersionID, :string, 8
+      optional :Location, :message, 9, "Location"
     end
     add_message "DatasetObjectLinks" do
       optional :ID, :string, 1

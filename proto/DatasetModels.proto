@@ -42,9 +42,7 @@ message DatasetObjectEntry {
         };
     };
     string ID = 1; //ID of the entity
-    string DatasetID = 2; // ID of the corresponding dataset
     DatasetObjectMetaData Metadata = 3; // Metadata of the dataset
-    Location Location = 4; //Where the entity is stored
 }
 
 message DatasetObjectMetaData {
@@ -61,6 +59,9 @@ message DatasetObjectMetaData {
     string Version = 4; // Remote version of the dataset
     Origin Origin = 5; // Origin: Source of the dataset
     int64 ContentLen = 6; // ContentLen: Lenght of the stored dataset
+    string DatasetID = 7; // DatasetID: ID of the parent dataset
+    string DatasetVersionID = 8; // DatasetVersionID: ID of the parent dataset version
+    Location Location = 9; // Location: Location of the data
 }
 
 
