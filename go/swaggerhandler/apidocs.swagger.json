@@ -6,8 +6,8 @@
     "contact": {}
   },
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "consumes": [
     "application/json"
@@ -661,7 +661,7 @@
   "securityDefinitions": {
     "ApiKeyAuth": {
       "type": "apiKey",
-      "name": "X-API-Key",
+      "name": "Grpc-Metadata-token",
       "in": "header"
     }
   },
