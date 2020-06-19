@@ -22,7 +22,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
             value: {
                 type: TYPE_API_KEY;
                 in: IN_HEADER;
-                name: "X-API-Key";
+                name: "Grpc-Metadata-token";
             }
         }
     }
@@ -32,7 +32,7 @@ option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 			value: {};
 		}
 	}
-    schemes: [HTTP,HTTPS]
+    schemes: [HTTPS,HTTP]
     consumes: "application/json"
     produces: "application/json"
     responses: {
