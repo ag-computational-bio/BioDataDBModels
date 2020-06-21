@@ -3,6 +3,7 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels";
 
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
 import "proto/CommonModels.proto";
 import "protoc/gateway/options/annotations.proto";
 
@@ -62,6 +63,7 @@ message DatasetObjectMetaData {
     string DatasetID = 7; // DatasetID: ID of the parent dataset
     string DatasetVersionID = 8; // DatasetVersionID: ID of the parent dataset version
     Location Location = 9; // Location: Location of the data
+    google.protobuf.Struct AdditionalMetadata = 10; // Additional metadata of the object
 }
 
 
@@ -151,6 +153,9 @@ message DatasetVersionMetadata {
     string DatasetName = 2;
     string Version = 3;
     google.protobuf.Timestamp Created = 4; // When the datasets version was created
+    google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata for the dataset version
+    string AdditionalMetadataMessageRef = 6; // Message reference for the metadata
+    string AdditionalObjectMetadataMessageRef = 7; // Message reference for the metadata of the objects associated with this DatasetVersion
 }
 
 message NewDatasetVersionRequest {

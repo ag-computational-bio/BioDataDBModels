@@ -4,6 +4,7 @@
 require 'google/protobuf'
 
 require 'google/protobuf/timestamp_pb'
+require 'google/protobuf/struct_pb'
 require 'proto/CommonModels_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
@@ -32,6 +33,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetID, :string, 7
       optional :DatasetVersionID, :string, 8
       optional :Location, :message, 9, "Location"
+      optional :AdditionalMetadata, :message, 10, "google.protobuf.Struct"
     end
     add_message "DatasetObjectLinks" do
       optional :ID, :string, 1
@@ -63,6 +65,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetName, :string, 2
       optional :Version, :string, 3
       optional :Created, :message, 4, "google.protobuf.Timestamp"
+      optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
+      optional :AdditionalMetadataMessageRef, :string, 6
+      optional :AdditionalObjectMetadataMessageRef, :string, 7
     end
     add_message "NewDatasetVersionRequest" do
       optional :DatasetID, :string, 1
