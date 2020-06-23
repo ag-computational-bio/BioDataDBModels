@@ -26,10 +26,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ID, :string, 1
     end
     add_message "Version" do
-      optional :Major, :string, 1
-      optional :Minor, :string, 2
-      optional :Patch, :string, 3
-      optional :Revision, :string, 4
+      optional :Major, :int32, 1
+      optional :Minor, :int32, 2
+      optional :Patch, :int32, 3
+      optional :Revision, :int32, 4
       optional :Stage, :enum, 5, "Version.VersionStage"
     end
     add_enum "Version.VersionStage" do

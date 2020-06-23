@@ -646,16 +646,20 @@
       "type": "object",
       "properties": {
         "Major": {
-          "type": "string"
+          "type": "integer",
+          "format": "int32"
         },
         "Minor": {
-          "type": "string"
+          "type": "integer",
+          "format": "int32"
         },
         "Patch": {
-          "type": "string"
+          "type": "integer",
+          "format": "int32"
         },
         "Revision": {
-          "type": "string"
+          "type": "integer",
+          "format": "int32"
         },
         "Stage": {
           "$ref": "#/definitions/VersionVersionStage"

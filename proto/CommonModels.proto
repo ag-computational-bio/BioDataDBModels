@@ -65,10 +65,10 @@ message Version {
         };
     };
 
-    string Major = 1;
-    string Minor = 2;
-    string Patch = 3;
-    string Revision = 4;
+    int32 Major = 1;
+    int32 Minor = 2;
+    int32 Patch = 3;
+    int32 Revision = 4;
     VersionStage Stage = 5;
 
     enum VersionStage {
