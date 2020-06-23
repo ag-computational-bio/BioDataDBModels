@@ -27,7 +27,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Filename, :string, 1
       optional :Filetype, :string, 2
       optional :Name, :string, 3
-      optional :Version, :string, 4
+      optional :Version, :message, 4, "Version"
       optional :Origin, :message, 5, "Origin"
       optional :ContentLen, :int32, 6
       optional :DatasetID, :string, 7
@@ -63,7 +63,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "DatasetVersionMetadata" do
       optional :DatasetID, :string, 1
       optional :DatasetName, :string, 2
-      optional :Version, :string, 3
+      optional :Version, :message, 3, "Version"
       optional :Created, :message, 4, "google.protobuf.Timestamp"
       optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
       optional :AdditionalMetadataMessageRef, :string, 6
@@ -71,7 +71,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "NewDatasetVersionRequest" do
       optional :DatasetID, :string, 1
-      optional :Version, :string, 2
+      optional :Version, :message, 2, "Version"
+      optional :AdditionalMetadataMessageRef, :string, 3
+      optional :AdditionalObjectMetadataMessageRef, :string, 4
+      optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
     end
   end
 end

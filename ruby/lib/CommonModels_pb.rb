@@ -25,6 +25,19 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "ID" do
       optional :ID, :string, 1
     end
+    add_message "Version" do
+      optional :Major, :string, 1
+      optional :Minor, :string, 2
+      optional :Patch, :string, 3
+      optional :Revision, :string, 4
+      optional :Stage, :enum, 5, "Version.VersionStage"
+    end
+    add_enum "Version.VersionStage" do
+      value :Stable, 0
+      value :ReleaseCandidate, 1
+      value :Beta, 2
+      value :Alpha, 3
+    end
   end
 end
 
@@ -33,3 +46,5 @@ Location = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Location").
 Origin = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Origin").msgclass
 Origin::OriginTypeEnum = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Origin.OriginTypeEnum").enummodule
 ID = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ID").msgclass
+Version = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version").msgclass
+Version::VersionStage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version.VersionStage").enummodule

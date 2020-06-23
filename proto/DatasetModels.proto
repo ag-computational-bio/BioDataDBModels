@@ -57,7 +57,7 @@ message DatasetObjectMetaData {
     string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
     string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
     string Name = 3; // Name: Name of the dataset entity e.g.: mydata
-    string Version = 4; // Remote version of the dataset
+    Version Version = 4; // Remote version of the dataset
     Origin Origin = 5; // Origin: Source of the dataset
     int32 ContentLen = 6; // ContentLen: Lenght of the stored dataset
     string DatasetID = 7; // DatasetID: ID of the parent dataset
@@ -151,7 +151,7 @@ message DatasetVersionMetadata {
     };
     string DatasetID = 1;
     string DatasetName = 2;
-    string Version = 3;
+    Version Version = 3;
     google.protobuf.Timestamp Created = 4; // When the datasets version was created
     google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata for the dataset version
     string AdditionalMetadataMessageRef = 6; // Message reference for the metadata
@@ -165,6 +165,9 @@ message NewDatasetVersionRequest {
             description: "Creates a new dataset version"
         };
     };
-    string DatasetID = 1;
-    string Version = 2;
+    string DatasetID = 1; // ID of the parent Dataset
+    Version Version = 2; // Version of the Dataset
+    string AdditionalMetadataMessageRef = 3; // Message reference for the metadata
+    string AdditionalObjectMetadataMessageRef = 4; // Message reference for the metadata of the objects associated with this DatasetVersion
+    google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata for the dataset version
 }

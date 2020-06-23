@@ -455,7 +455,7 @@
           "type": "string"
         },
         "Version": {
-          "type": "string"
+          "$ref": "#/definitions/Version"
         },
         "Origin": {
           "$ref": "#/definitions/Origin"
@@ -516,7 +516,7 @@
           "type": "string"
         },
         "Version": {
-          "type": "string"
+          "$ref": "#/definitions/Version"
         },
         "Created": {
           "type": "string",
@@ -573,7 +573,16 @@
           "type": "string"
         },
         "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "AdditionalMetadataMessageRef": {
           "type": "string"
+        },
+        "AdditionalObjectMetadataMessageRef": {
+          "type": "string"
+        },
+        "AdditionalMetadata": {
+          "type": "object"
         }
       },
       "description": "Creates a new dataset version",
@@ -632,6 +641,38 @@
       },
       "description": "A set of presigned put URL to store the data",
       "title": "UploadLinks"
+    },
+    "Version": {
+      "type": "object",
+      "properties": {
+        "Major": {
+          "type": "string"
+        },
+        "Minor": {
+          "type": "string"
+        },
+        "Patch": {
+          "type": "string"
+        },
+        "Revision": {
+          "type": "string"
+        },
+        "Stage": {
+          "$ref": "#/definitions/VersionVersionStage"
+        }
+      },
+      "description": "A version representation based on semantic versioning",
+      "title": "Version"
+    },
+    "VersionVersionStage": {
+      "type": "string",
+      "enum": [
+        "Stable",
+        "ReleaseCandidate",
+        "Beta",
+        "Alpha"
+      ],
+      "default": "Stable"
     },
     "protobufAny": {
       "type": "object",
