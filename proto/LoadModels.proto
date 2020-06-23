@@ -3,36 +3,7 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
 import "proto/DatasetModels.proto";
-import "google/protobuf/timestamp.proto";
 import "protoc/gateway/options/annotations.proto";
-
-// These messages are used in the Load service (user facing)
-
-message LoadSequence {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "LoadSequence";
-            description: "Database entry for a load sequence"
-        };
-    };
-    string ID = 1;
-    LoadSequenceMetadata Metadata = 2;
-}
-
-message LoadSequenceMetadata {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "LoadSequenceMetadata";
-            description: "Metadata for a load sequence"
-        };
-    };
-    string DatasetID = 1;
-    string DatasetVersionID = 2;
-    string Status = 3;
-    string Error = 4;
-    google.protobuf.Timestamp Started = 5; // When the datasets was initiated
-    google.protobuf.Timestamp Finished = 6; // Last change TODO: need to rename
-}
 
 message UploadLinks {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {

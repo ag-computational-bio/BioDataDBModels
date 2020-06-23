@@ -4,22 +4,9 @@
 require 'google/protobuf'
 
 require 'proto/DatasetModels_pb'
-require 'google/protobuf/timestamp_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do
-    add_message "LoadSequence" do
-      optional :ID, :string, 1
-      optional :Metadata, :message, 2, "LoadSequenceMetadata"
-    end
-    add_message "LoadSequenceMetadata" do
-      optional :DatasetID, :string, 1
-      optional :DatasetVersionID, :string, 2
-      optional :Status, :string, 3
-      optional :Error, :string, 4
-      optional :Started, :message, 5, "google.protobuf.Timestamp"
-      optional :Finished, :message, 6, "google.protobuf.Timestamp"
-    end
     add_message "UploadLinks" do
       repeated :Links, :message, 1, "UploadLink"
     end
@@ -35,8 +22,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
-LoadSequence = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("LoadSequence").msgclass
-LoadSequenceMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("LoadSequenceMetadata").msgclass
 UploadLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLinks").msgclass
 UploadLink = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLink").msgclass
 CreateLoadLinkSetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateLoadLinkSetRequest").msgclass
