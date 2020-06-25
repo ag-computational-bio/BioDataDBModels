@@ -6,6 +6,7 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/metadata
 
 import "protoc/gateway/options/annotations.proto";
 import "google/protobuf/struct.proto";
+import "google/protobuf/any.proto";
 import "google/protobuf/timestamp.proto";
 
 
@@ -36,7 +37,7 @@ message MetadataDBEntry {
 message InsertMetadataRequest {
     string MetadataDBID = 1;
     string CollectionID = 2;
-    repeated google.protobuf.Struct Metadata = 3; // Metadata to be inserted
+    repeated google.protobuf.Any Metadata = 3; // Metadata to be inserted
 }
 
 message AddMetadataIndexRequest {

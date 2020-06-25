@@ -5,6 +5,7 @@ require 'google/protobuf'
 
 require 'protoc/gateway/options/annotations_pb'
 require 'google/protobuf/struct_pb'
+require 'google/protobuf/any_pb'
 require 'google/protobuf/timestamp_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/MetadataModels.proto", :syntax => :proto3) do
@@ -20,7 +21,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "InsertMetadataRequest" do
       optional :MetadataDBID, :string, 1
       optional :CollectionID, :string, 2
-      repeated :Metadata, :message, 3, "google.protobuf.Struct"
+      repeated :Metadata, :message, 3, "google.protobuf.Any"
     end
     add_message "AddMetadataIndexRequest" do
       optional :MetadataDBID, :string, 1
