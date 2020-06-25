@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/metadatamodels";
+
+// These are common messages that are used in multiple interfaces
+
+import "protoc/gateway/options/annotations.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+
+message InitMetadataDBRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "InitMetadataDBRequest";
+            description: "Request a new MetadataDB"
+        };
+    };
+    string Name = 1;
+    string StructMessageRef = 2;
+
+}
+
+message MetadataDBEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "MetadataDBEntry";
+            description: "MetadataDB"
+        };
+    };
+    string ID = 1;
+    string Name = 2;
+    google.protobuf.Timestamp Created = 4; // When the MetadataDB was created
+}
+
+message InsertMetadataRequest {
+    string MetadataDBID = 1;
+    string CollectionID = 2;
+    repeated google.protobuf.Struct Metadata = 3; // Metadata to be inserted
+}
+
+message AddMetadataIndexRequest {
+    string MetadataDBID = 1;
+    string CollectionID = 2;
+    repeated Index Indices = 3; // Field to be indexed
+}
+
+message QueryRequest {
+    string MetadataDBID = 1;
+    string CollectionID = 2;
+    repeated google.protobuf.Struct Query = 4; // Query
+}
+
+message Index {
+    string Field = 1;
+}
+
+message Field {
+    repeated google.protobuf.Struct Data = 1;
+}

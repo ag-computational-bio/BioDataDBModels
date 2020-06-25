@@ -4,6 +4,7 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
 import "proto/LoadModels.proto";
 import "proto/DatasetModels.proto";
+import "proto/MetadataModels.proto";
 import "proto/CommonModels.proto";
 import "google/api/annotations.proto";
 
@@ -70,6 +71,36 @@ service DatasetService {
     rpc DatasetVersionObjectsLinks(ID) returns (DatasetObjectLinks) {
         option (google.api.http) = {
             post: "/api/v1/datasetobjects/links"
+            body: "*"
+        };
+    }
+}
+
+service MetadataCompositeStore {
+    rpc InitMetadataDB(InitMetadataDBRequest) returns (MetadataDBEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/initdb"
+            body: "*"
+        };
+    }
+
+    rpc InsertMetadata(InsertMetadataRequest) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/insert"
+            body: "*"
+        };
+    }
+
+    rpc AddMetadataIndex(AddMetadataIndexRequest) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/index"
+            body: "*"
+        };
+    }
+
+    rpc Query(QueryRequest) returns (Field) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/query"
             body: "*"
         };
     }

@@ -295,9 +295,182 @@
           "LoadService"
         ]
       }
+    },
+    "/api/v1/metadata/index": {
+      "post": {
+        "operationId": "MetadataCompositeStore_AddMetadataIndex",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddMetadataIndexRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
+    },
+    "/api/v1/metadata/initdb": {
+      "post": {
+        "operationId": "MetadataCompositeStore_InitMetadataDB",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MetadataDBEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InitMetadataDBRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
+    },
+    "/api/v1/metadata/insert": {
+      "post": {
+        "operationId": "MetadataCompositeStore_InsertMetadata",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InsertMetadataRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
+    },
+    "/api/v1/metadata/query": {
+      "post": {
+        "operationId": "MetadataCompositeStore_Query",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Field"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/QueryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
     }
   },
   "definitions": {
+    "AddMetadataIndexRequest": {
+      "type": "object",
+      "properties": {
+        "MetadataDBID": {
+          "type": "string"
+        },
+        "CollectionID": {
+          "type": "string"
+        },
+        "Indices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Index"
+          }
+        }
+      }
+    },
     "CreateDatasetRequest": {
       "type": "object",
       "example": {
@@ -540,6 +713,17 @@
       "description": "An empty object",
       "title": "Empty"
     },
+    "Field": {
+      "type": "object",
+      "properties": {
+        "Data": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
     "ID": {
       "type": "object",
       "properties": {
@@ -549,6 +733,44 @@
       },
       "description": "An arbitrary ID",
       "title": "ID"
+    },
+    "Index": {
+      "type": "object",
+      "properties": {
+        "Field": {
+          "type": "string"
+        }
+      }
+    },
+    "InitMetadataDBRequest": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "StructMessageRef": {
+          "type": "string"
+        }
+      },
+      "description": "Request a new MetadataDB",
+      "title": "InitMetadataDBRequest"
+    },
+    "InsertMetadataRequest": {
+      "type": "object",
+      "properties": {
+        "MetadataDBID": {
+          "type": "string"
+        },
+        "CollectionID": {
+          "type": "string"
+        },
+        "Metadata": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
     },
     "Location": {
       "type": "object",
@@ -565,6 +787,23 @@
       },
       "description": "A location in an object storage",
       "title": "Location"
+    },
+    "MetadataDBEntry": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "MetadataDB",
+      "title": "MetadataDBEntry"
     },
     "NewDatasetVersionRequest": {
       "type": "object",
@@ -615,6 +854,23 @@
         "OriginLink"
       ],
       "default": "ObjectStorage"
+    },
+    "QueryRequest": {
+      "type": "object",
+      "properties": {
+        "MetadataDBID": {
+          "type": "string"
+        },
+        "CollectionID": {
+          "type": "string"
+        },
+        "Query": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
     },
     "UploadLink": {
       "type": "object",

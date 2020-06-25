@@ -49,3 +49,20 @@ module DatasetService
 
   Stub = Service.rpc_stub_class
 end
+module MetadataCompositeStore
+  class Service
+
+    include GRPC::GenericService
+
+    self.marshal_class_method = :encode
+    self.unmarshal_class_method = :decode
+    self.service_name = 'MetadataCompositeStore'
+
+    rpc :InitMetadataDB, InitMetadataDBRequest, MetadataDBEntry
+    rpc :InsertMetadata, InsertMetadataRequest, Empty
+    rpc :AddMetadataIndex, AddMetadataIndexRequest, Empty
+    rpc :Query, QueryRequest, Field
+  end
+
+  Stub = Service.rpc_stub_class
+end
