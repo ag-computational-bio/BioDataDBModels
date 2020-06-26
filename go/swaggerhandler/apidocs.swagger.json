@@ -452,6 +452,64 @@
         ]
       }
     },
+    "/api/v1/metadata/listcollcetions": {
+      "get": {
+        "operationId": "MetadataCompositeStore_ListMetadataDBCollections",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MetadataDBCollectionList"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
+    },
+    "/api/v1/metadata/listdbs": {
+      "get": {
+        "operationId": "MetadataCompositeStore_ListMetadataDBs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MetadataDBList"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
+    },
     "/api/v1/metadata/query": {
       "post": {
         "operationId": "MetadataCompositeStore_Query",
@@ -848,6 +906,43 @@
       "description": "A location in an object storage",
       "title": "Location"
     },
+    "MetadataCollectionEntry": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "MessageRef": {
+          "type": "string"
+        },
+        "StructMessageRef": {
+          "type": "string"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "MetadatDBEntryID": {
+          "type": "string"
+        }
+      },
+      "description": "A MetadataDB Collection",
+      "title": "MetadataCollectionEntry"
+    },
+    "MetadataDBCollectionList": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataCollectionEntry"
+          }
+        }
+      }
+    },
     "MetadataDBEntry": {
       "type": "object",
       "properties": {
@@ -867,6 +962,17 @@
       },
       "description": "MetadataDB",
       "title": "MetadataDBEntry"
+    },
+    "MetadataDBList": {
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetadataDBEntry"
+          }
+        }
+      }
     },
     "NewDatasetVersionRequest": {
       "type": "object",

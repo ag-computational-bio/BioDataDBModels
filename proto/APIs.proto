@@ -84,10 +84,22 @@ service MetadataCompositeStore {
         };
     }
 
+    rpc ListMetadataDBs(Empty) returns (MetadataDBList) {
+        option (google.api.http) = {
+            get: "/api/v1/metadata/listdbs"
+        };
+    }
+
     rpc InitMetadataDBCollection(InitMetadataDBRequest) returns (MetadataDBEntry) {
         option (google.api.http) = {
             post: "/api/v1/metadata/initcollection"
             body: "*"
+        };
+    }
+
+    rpc ListMetadataDBCollections(Empty) returns (MetadataDBCollectionList) {
+        option (google.api.http) = {
+            get: "/api/v1/metadata/listcollcetions"
         };
     }
 
