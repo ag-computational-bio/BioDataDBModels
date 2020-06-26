@@ -335,6 +335,45 @@
         ]
       }
     },
+    "/api/v1/metadata/initcollection": {
+      "post": {
+        "operationId": "MetadataCompositeStore_InitMetadataDBCollection",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/MetadataDBEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InitMetadataDBRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MetadataCompositeStore"
+        ]
+      }
+    },
     "/api/v1/metadata/initdb": {
       "post": {
         "operationId": "MetadataCompositeStore_InitMetadataDB",

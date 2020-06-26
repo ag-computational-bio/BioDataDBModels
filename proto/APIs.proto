@@ -84,6 +84,13 @@ service MetadataCompositeStore {
         };
     }
 
+    rpc InitMetadataDBCollection(InitMetadataDBRequest) returns (MetadataDBEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/initcollection"
+            body: "*"
+        };
+    }
+
     rpc InsertMetadata(InsertMetadataRequest) returns (Empty) {
         option (google.api.http) = {
             post: "/api/v1/metadata/insert"

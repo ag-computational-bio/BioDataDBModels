@@ -33,6 +33,10 @@ message MetadataDBEntry {
     google.protobuf.Timestamp Created = 4; // When the MetadataDB was created
 }
 
+message MetadataDBList {
+    repeated MetadataDBEntry entries = 1;
+}
+
 message InitMetadataCollectionRequest {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -52,12 +56,18 @@ message MetadataCollectionEntry {
             description: "A MetadataDB Collection"
         };
     };
-    string Name = 1;
-    string MessageRef = 2;
-    string StructMessageRef = 3;
-    google.protobuf.Timestamp Created = 4; // When the MetadataDB was created
-    string MetadatDBEntryID = 5;
+    string ID = 1;
+    string Name = 2;
+    string MessageRef = 3;
+    string StructMessageRef = 4;
+    google.protobuf.Timestamp Created = 5; // When the MetadataDB was created
+    string MetadatDBEntryID = 6;
 }
+
+message MetadataDBCollectionList {
+    repeated MetadataCollectionEntry entries = 1;
+}
+
 
 message InsertMetadataRequest {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {

@@ -59,6 +59,7 @@ module MetadataCompositeStore
     self.service_name = 'MetadataCompositeStore'
 
     rpc :InitMetadataDB, InitMetadataDBRequest, MetadataDBEntry
+    rpc :InitMetadataDBCollection, InitMetadataDBRequest, MetadataDBEntry
     rpc :InsertMetadata, InsertMetadataRequest, Empty
     rpc :AddMetadataIndex, AddMetadataIndexRequest, Empty
     rpc :Query, QueryRequest, Field
