@@ -18,8 +18,6 @@ message InitMetadataDBRequest {
         };
     };
     string Name = 1;
-    string StructMessageRef = 2;
-
 }
 
 message MetadataDBEntry {
@@ -35,6 +33,32 @@ message MetadataDBEntry {
     google.protobuf.Timestamp Created = 4; // When the MetadataDB was created
 }
 
+message InitMetadataCollectionRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "InitMetadataCollectionRequest";
+            description: "Request a new MetadataDB Collection"
+        };
+    };
+    string Name = 1;
+    string MessageRef = 2;
+    string MetadatDBEntryID = 3;
+}
+
+message MetadataCollectionEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "MetadataCollectionEntry";
+            description: "A MetadataDB Collection"
+        };
+    };
+    string Name = 1;
+    string MessageRef = 2;
+    string StructMessageRef = 3;
+    google.protobuf.Timestamp Created = 4; // When the MetadataDB was created
+    string MetadatDBEntryID = 5;
+}
+
 message InsertMetadataRequest {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -44,7 +68,7 @@ message InsertMetadataRequest {
     };
 
     string MetadataDBID = 1; // MetadataDB to be used
-    string CollectionID = 2; // Colletion to be used. Currently not used, a ColletionID will be assigned randomly. Will be changed in the future.
+    string CollectionID = 2; // Colletion to be used.
     enum MetaDataType { 
         AnyMsg = 0; // Metadata is provided as Any type
         StructMsg = 1; // Metadata is provided as Struct type
