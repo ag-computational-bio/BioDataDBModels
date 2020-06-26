@@ -469,7 +469,25 @@
             "$ref": "#/definitions/Index"
           }
         }
-      }
+      },
+      "description": "Request to add indices on a list of fields",
+      "title": "AddMetadataIndexRequest"
+    },
+    "AnyMetadataMessage": {
+      "type": "object",
+      "properties": {
+        "Metadata": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        },
+        "MsgURL": {
+          "type": "string"
+        }
+      },
+      "description": "Metadata message of Any type",
+      "title": "AnyMetadataMessage"
     },
     "CreateDatasetRequest": {
       "type": "object",
@@ -722,7 +740,9 @@
             "type": "object"
           }
         }
-      }
+      },
+      "description": "TODO - WIP",
+      "title": "Field"
     },
     "ID": {
       "type": "object",
@@ -740,7 +760,9 @@
         "Field": {
           "type": "string"
         }
-      }
+      },
+      "description": "TODO - WIP",
+      "title": "Index"
     },
     "InitMetadataDBRequest": {
       "type": "object",
@@ -764,13 +786,15 @@
         "CollectionID": {
           "type": "string"
         },
-        "Metadata": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
+        "AnyMetadata": {
+          "$ref": "#/definitions/AnyMetadataMessage"
+        },
+        "StructMetadata": {
+          "$ref": "#/definitions/StructMetadataMessage"
         }
-      }
+      },
+      "description": "A request to insert a set of metadata. Metadata can be provided either as Any message type or Struct message type. If Any type is used, the message must be well known",
+      "title": "InsertMetadataRequest"
     },
     "Location": {
       "type": "object",
@@ -795,6 +819,9 @@
           "type": "string"
         },
         "Name": {
+          "type": "string"
+        },
+        "StructMessageRef": {
           "type": "string"
         },
         "Created": {
@@ -870,7 +897,33 @@
             "type": "object"
           }
         }
-      }
+      },
+      "description": "TODO - WIP",
+      "title": "QueryRequest"
+    },
+    "StructMetadataMessage": {
+      "type": "object",
+      "properties": {
+        "Metadata": {
+          "type": "object"
+        },
+        "Int64Indices": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "int64"
+          }
+        },
+        "UInt64Indices": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "uint64"
+          }
+        }
+      },
+      "description": "Metadata message of struct type. The struct type uses JSON and cannot store int64/uint64 properly. To create indices on int64/uint64 values please use the provided maps.",
+      "title": "AnyMetadataMessage"
     },
     "UploadLink": {
       "type": "object",

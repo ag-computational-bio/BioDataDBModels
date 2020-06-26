@@ -31,31 +31,94 @@ message MetadataDBEntry {
     };
     string ID = 1;
     string Name = 2;
+    string StructMessageRef = 3;
     google.protobuf.Timestamp Created = 4; // When the MetadataDB was created
 }
 
 message InsertMetadataRequest {
-    string MetadataDBID = 1;
-    string CollectionID = 2;
-    repeated google.protobuf.Any Metadata = 3; // Metadata to be inserted
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "InsertMetadataRequest";
+            description: "A request to insert a set of metadata. Metadata can be provided either as Any message type or Struct message type. If Any type is used, the message must be well known"
+        };
+    };
+
+    string MetadataDBID = 1; // MetadataDB to be used
+    string CollectionID = 2; // Colletion to be used. Currently not used, a ColletionID will be assigned randomly. Will be changed in the future.
+    enum MetaDataType { 
+        AnyMsg = 0; // Metadata is provided as Any type
+        StructMsg = 1; // Metadata is provided as Struct type
+    }
+
+    oneof Metadata_oneof {
+        AnyMetadataMessage AnyMetadata = 3; // Metadata to be inserted as Any type
+        StructMetadataMessage StructMetadata = 4; //Metadata to be inserted as Struct type
+    }
+}
+
+message AnyMetadataMessage {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "AnyMetadataMessage";
+            description: "Metadata message of Any type"
+        };
+    };
+    repeated google.protobuf.Any Metadata = 1; 
+    string MsgURL = 2;
+}
+
+message StructMetadataMessage {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "AnyMetadataMessage";
+            description: "Metadata message of struct type. The struct type uses JSON and cannot store int64/uint64 properly. To create indices on int64/uint64 values please use the provided maps."
+        };
+    };
+    google.protobuf.Struct Metadata = 1;
+    map<string, int64> Int64Indices = 2;
+    map<string, uint64> UInt64Indices = 3;
 }
 
 message AddMetadataIndexRequest {
-    string MetadataDBID = 1;
-    string CollectionID = 2;
-    repeated Index Indices = 3; // Field to be indexed
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "AddMetadataIndexRequest";
+            description: "Request to add indices on a list of fields"
+        };
+    };
+    string MetadataDBID = 1; // MetadataDB to be used
+    string CollectionID = 2; // MetadataCollection to be used
+    repeated Index Indices = 3; // Fields to be indexed
 }
 
 message QueryRequest {
-    string MetadataDBID = 1;
-    string CollectionID = 2;
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "QueryRequest";
+            description: "TODO - WIP"
+        };
+    };
+    string MetadataDBID = 1; // MetadataDB to be used
+    string CollectionID = 2; // MetadataCollection to be used
     repeated google.protobuf.Struct Query = 4; // Query
 }
 
 message Index {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Index";
+            description: "TODO - WIP"
+        };
+    };
     string Field = 1;
 }
 
 message Field {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Field";
+            description: "TODO - WIP"
+        };
+    };
     repeated google.protobuf.Struct Data = 1;
 }
