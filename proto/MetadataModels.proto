@@ -6,7 +6,6 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/metadata
 
 import "protoc/gateway/options/annotations.proto";
 import "google/protobuf/struct.proto";
-import "google/protobuf/any.proto";
 import "google/protobuf/timestamp.proto";
 
 
@@ -79,26 +78,8 @@ message InsertMetadataRequest {
 
     string MetadataDBID = 1; // MetadataDB to be used
     string CollectionID = 2; // Colletion to be used.
-    enum MetaDataType { 
-        AnyMsg = 0; // Metadata is provided as Any type
-        StructMsg = 1; // Metadata is provided as Struct type
-    }
 
-    oneof Metadata_oneof {
-        AnyMetadataMessage AnyMetadata = 3; // Metadata to be inserted as Any type
-        StructMetadataMessage StructMetadata = 4; //Metadata to be inserted as Struct type
-    }
-}
-
-message AnyMetadataMessage {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "AnyMetadataMessage";
-            description: "Metadata message of Any type"
-        };
-    };
-    repeated google.protobuf.Any Metadata = 1; 
-    string MsgURL = 2;
+    repeated StructMetadataMessage StructMetadata = 4; //Metadata to be inserted as Struct type
 }
 
 message StructMetadataMessage {

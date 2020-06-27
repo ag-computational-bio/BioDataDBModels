@@ -570,22 +570,6 @@
       "description": "Request to add indices on a list of fields",
       "title": "AddMetadataIndexRequest"
     },
-    "AnyMetadataMessage": {
-      "type": "object",
-      "properties": {
-        "Metadata": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/protobufAny"
-          }
-        },
-        "MsgURL": {
-          "type": "string"
-        }
-      },
-      "description": "Metadata message of Any type",
-      "title": "AnyMetadataMessage"
-    },
     "CreateDatasetRequest": {
       "type": "object",
       "example": {
@@ -880,11 +864,11 @@
         "CollectionID": {
           "type": "string"
         },
-        "AnyMetadata": {
-          "$ref": "#/definitions/AnyMetadataMessage"
-        },
         "StructMetadata": {
-          "$ref": "#/definitions/StructMetadataMessage"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StructMetadataMessage"
+          }
         }
       },
       "description": "A request to insert a set of metadata. Metadata can be provided either as Any message type or Struct message type. If Any type is used, the message must be well known",

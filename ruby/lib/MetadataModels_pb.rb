@@ -5,7 +5,6 @@ require 'google/protobuf'
 
 require 'protoc/gateway/options/annotations_pb'
 require 'google/protobuf/struct_pb'
-require 'google/protobuf/any_pb'
 require 'google/protobuf/timestamp_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/MetadataModels.proto", :syntax => :proto3) do
@@ -40,18 +39,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "InsertMetadataRequest" do
       optional :MetadataDBID, :string, 1
       optional :CollectionID, :string, 2
-      oneof :Metadata_oneof do
-        optional :AnyMetadata, :message, 3, "AnyMetadataMessage"
-        optional :StructMetadata, :message, 4, "StructMetadataMessage"
-      end
-    end
-    add_enum "InsertMetadataRequest.MetaDataType" do
-      value :AnyMsg, 0
-      value :StructMsg, 1
-    end
-    add_message "AnyMetadataMessage" do
-      repeated :Metadata, :message, 1, "google.protobuf.Any"
-      optional :MsgURL, :string, 2
+      repeated :StructMetadata, :message, 4, "StructMetadataMessage"
     end
     add_message "StructMetadataMessage" do
       optional :Metadata, :message, 1, "google.protobuf.Struct"
@@ -84,8 +72,6 @@ InitMetadataCollectionRequest = ::Google::Protobuf::DescriptorPool.generated_poo
 MetadataCollectionEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("MetadataCollectionEntry").msgclass
 MetadataDBCollectionList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("MetadataDBCollectionList").msgclass
 InsertMetadataRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InsertMetadataRequest").msgclass
-InsertMetadataRequest::MetaDataType = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InsertMetadataRequest.MetaDataType").enummodule
-AnyMetadataMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("AnyMetadataMessage").msgclass
 StructMetadataMessage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("StructMetadataMessage").msgclass
 AddMetadataIndexRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("AddMetadataIndexRequest").msgclass
 QueryRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("QueryRequest").msgclass
