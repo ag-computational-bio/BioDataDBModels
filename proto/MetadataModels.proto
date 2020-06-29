@@ -115,7 +115,7 @@ message QueryRequest {
     };
     string MetadataDBID = 1; // MetadataDB to be used
     string CollectionID = 2; // MetadataCollection to be used
-    repeated google.protobuf.Struct Query = 4; // Query
+    google.protobuf.Struct Query = 4; // Query
 }
 
 message Index {

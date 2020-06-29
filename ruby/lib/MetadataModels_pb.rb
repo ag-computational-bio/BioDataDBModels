@@ -54,7 +54,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "QueryRequest" do
       optional :MetadataDBID, :string, 1
       optional :CollectionID, :string, 2
-      repeated :Query, :message, 4, "google.protobuf.Struct"
+      optional :Query, :message, 4, "google.protobuf.Struct"
     end
     add_message "Index" do
       optional :Field, :string, 1

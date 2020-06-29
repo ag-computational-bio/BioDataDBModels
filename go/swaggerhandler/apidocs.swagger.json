@@ -1018,10 +1018,7 @@
           "type": "string"
         },
         "Query": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
+          "type": "object"
         }
       },
       "description": "TODO - WIP",
