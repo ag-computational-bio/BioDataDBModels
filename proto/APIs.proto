@@ -90,7 +90,7 @@ service MetadataCompositeStore {
         };
     }
 
-    rpc InitMetadataDBCollection(InitMetadataDBRequest) returns (MetadataDBEntry) {
+    rpc InitMetadataDBCollection(InitMetadataCollectionRequest) returns (MetadataDBEntry) {
         option (google.api.http) = {
             post: "/api/v1/metadata/initcollection"
             body: "*"

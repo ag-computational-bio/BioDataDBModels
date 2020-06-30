@@ -45,7 +45,7 @@ message InitMetadataCollectionRequest {
     };
     string Name = 1;
     string MessageRef = 2;
-    string MetadatDBEntryID = 3;
+    string MetadataDBEntryID = 3;
 }
 
 message MetadataCollectionEntry {

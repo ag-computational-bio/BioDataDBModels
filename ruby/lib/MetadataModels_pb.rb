@@ -23,7 +23,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "InitMetadataCollectionRequest" do
       optional :Name, :string, 1
       optional :MessageRef, :string, 2
-      optional :MetadatDBEntryID, :string, 3
+      optional :MetadataDBEntryID, :string, 3
     end
     add_message "MetadataCollectionEntry" do
       optional :ID, :string, 1

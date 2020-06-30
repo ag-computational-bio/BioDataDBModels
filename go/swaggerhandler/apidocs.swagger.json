@@ -365,7 +365,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/InitMetadataDBRequest"
+              "$ref": "#/definitions/InitMetadataCollectionRequest"
             }
           }
         ],
@@ -844,6 +844,22 @@
       },
       "description": "TODO - WIP",
       "title": "Index"
+    },
+    "InitMetadataCollectionRequest": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "MessageRef": {
+          "type": "string"
+        },
+        "MetadataDBEntryID": {
+          "type": "string"
+        }
+      },
+      "description": "Request a new MetadataDB Collection",
+      "title": "InitMetadataCollectionRequest"
     },
     "InitMetadataDBRequest": {
       "type": "object",

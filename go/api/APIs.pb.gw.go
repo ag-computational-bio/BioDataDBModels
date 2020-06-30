@@ -326,7 +326,7 @@ func local_request_MetadataCompositeStore_ListMetadataDBs_0(ctx context.Context,
 }
 
 func request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataCompositeStoreClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq metadatamodels.InitMetadataDBRequest
+	var protoReq metadatamodels.InitMetadataCollectionRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -343,7 +343,7 @@ func request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context.Conte
 }
 
 func local_request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context.Context, marshaler runtime.Marshaler, server MetadataCompositeStoreServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq metadatamodels.InitMetadataDBRequest
+	var protoReq metadatamodels.InitMetadataCollectionRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)

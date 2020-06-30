@@ -60,7 +60,7 @@ module MetadataCompositeStore
 
     rpc :InitMetadataDB, InitMetadataDBRequest, MetadataDBEntry
     rpc :ListMetadataDBs, Empty, MetadataDBList
-    rpc :InitMetadataDBCollection, InitMetadataDBRequest, MetadataDBEntry
+    rpc :InitMetadataDBCollection, InitMetadataCollectionRequest, MetadataDBEntry
     rpc :ListMetadataDBCollections, Empty, MetadataDBCollectionList
     rpc :InsertMetadata, InsertMetadataRequest, Empty
     rpc :AddMetadataIndex, AddMetadataIndexRequest, Empty
