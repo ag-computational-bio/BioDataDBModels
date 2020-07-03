@@ -807,15 +807,17 @@ type DatasetVersionMetadata struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatasetID                          string                `protobuf:"bytes,1,opt,name=DatasetID,proto3" json:"DatasetID,omitempty"`
-	DatasetName                        string                `protobuf:"bytes,2,opt,name=DatasetName,proto3" json:"DatasetName,omitempty"`
-	Version                            *commonmodels.Version `protobuf:"bytes,3,opt,name=Version,proto3" json:"Version,omitempty"`
-	Created                            *timestamp.Timestamp  `protobuf:"bytes,4,opt,name=Created,proto3" json:"Created,omitempty"`                                                       // When the datasets version was created
-	AdditionalMetadata                 *_struct.Struct       `protobuf:"bytes,5,opt,name=AdditionalMetadata,proto3" json:"AdditionalMetadata,omitempty"`                                 // Additional metadata for the dataset version
-	AdditionalMetadataMessageRef       string                `protobuf:"bytes,6,opt,name=AdditionalMetadataMessageRef,proto3" json:"AdditionalMetadataMessageRef,omitempty"`             // Message reference for the metadata
-	AdditionalObjectMetadataMessageRef string                `protobuf:"bytes,7,opt,name=AdditionalObjectMetadataMessageRef,proto3" json:"AdditionalObjectMetadataMessageRef,omitempty"` // Message reference for the metadata of the objects associated with this DatasetVersion
-	ObjectCount                        int64                 `protobuf:"varint,8,opt,name=ObjectCount,proto3" json:"ObjectCount,omitempty"`                                              // Number of objects registered with this dataset version
-	ExpectedObjectCount                int64                 `protobuf:"varint,9,opt,name=ExpectedObjectCount,proto3" json:"ExpectedObjectCount,omitempty"`                              // Number of objects that is expected to be registered in this dataset
+	DatasetID                          string                                      `protobuf:"bytes,1,opt,name=DatasetID,proto3" json:"DatasetID,omitempty"`
+	DatasetName                        string                                      `protobuf:"bytes,2,opt,name=DatasetName,proto3" json:"DatasetName,omitempty"`
+	Version                            *commonmodels.Version                       `protobuf:"bytes,3,opt,name=Version,proto3" json:"Version,omitempty"`
+	Created                            *timestamp.Timestamp                        `protobuf:"bytes,4,opt,name=Created,proto3" json:"Created,omitempty"`                                                       // When the datasets version was created
+	AdditionalMetadata                 *_struct.Struct                             `protobuf:"bytes,5,opt,name=AdditionalMetadata,proto3" json:"AdditionalMetadata,omitempty"`                                 // Additional metadata for the dataset version
+	AdditionalMetadataMessageRef       string                                      `protobuf:"bytes,6,opt,name=AdditionalMetadataMessageRef,proto3" json:"AdditionalMetadataMessageRef,omitempty"`             // Message reference for the metadata
+	AdditionalObjectMetadataMessageRef string                                      `protobuf:"bytes,7,opt,name=AdditionalObjectMetadataMessageRef,proto3" json:"AdditionalObjectMetadataMessageRef,omitempty"` // Message reference for the metadata of the objects associated with this DatasetVersion
+	ObjectCount                        int64                                       `protobuf:"varint,8,opt,name=ObjectCount,proto3" json:"ObjectCount,omitempty"`                                              // Number of objects registered with this dataset version
+	ObjectLinkCount                    int64                                       `protobuf:"varint,9,opt,name=ObjectLinkCount,proto3" json:"ObjectLinkCount,omitempty"`                                      // Number of requested links to upload objects
+	ExpectedObjectCount                int64                                       `protobuf:"varint,10,opt,name=ExpectedObjectCount,proto3" json:"ExpectedObjectCount,omitempty"`                             // Number of objects that is expected to be registered in this dataset
+	Status                             DatasetVersionMetadata_DatasetVersionStatus `protobuf:"varint,11,opt,name=Status,proto3,enum=DatasetVersionMetadata_DatasetVersionStatus" json:"Status,omitempty"`
 }
 
 func (x *DatasetVersionMetadata) Reset() {
@@ -906,11 +908,25 @@ func (x *DatasetVersionMetadata) GetObjectCount() int64 {
 	return 0
 }
 
+func (x *DatasetVersionMetadata) GetObjectLinkCount() int64 {
+	if x != nil {
+		return x.ObjectLinkCount
+	}
+	return 0
+}
+
 func (x *DatasetVersionMetadata) GetExpectedObjectCount() int64 {
 	if x != nil {
 		return x.ExpectedObjectCount
 	}
 	return 0
+}
+
+func (x *DatasetVersionMetadata) GetStatus() DatasetVersionMetadata_DatasetVersionStatus {
+	if x != nil {
+		return x.Status
+	}
+	return DatasetVersionMetadata_InitialUploading
 }
 
 type NewDatasetVersionRequest struct {
@@ -1146,7 +1162,7 @@ var file_proto_DatasetModels_proto_rawDesc = []byte{
 	0x2a, 0x13, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,
 	0x45, 0x6e, 0x74, 0x72, 0x79, 0x32, 0x1e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x20, 0x76,
 	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x20, 0x72, 0x65, 0x70, 0x72, 0x65, 0x73, 0x65, 0x6e, 0x74,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0xf6, 0x04, 0x0a, 0x16, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x22, 0xe6, 0x05, 0x0a, 0x16, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65,
 	0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
 	0x12, 0x1c, 0x0a, 0x09, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x49, 0x44, 0x18, 0x01, 0x20,
 	0x01, 0x28, 0x09, 0x52, 0x09, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x49, 0x44, 0x12, 0x20,
@@ -1173,10 +1189,17 @@ var file_proto_DatasetModels_proto_rawDesc = []byte{
 	0x62, 0x6a, 0x65, 0x63, 0x74, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x4d, 0x65, 0x73,
 	0x73, 0x61, 0x67, 0x65, 0x52, 0x65, 0x66, 0x12, 0x20, 0x0a, 0x0b, 0x4f, 0x62, 0x6a, 0x65, 0x63,
 	0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x4f, 0x62,
-	0x6a, 0x65, 0x63, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x30, 0x0a, 0x13, 0x45, 0x78, 0x70,
-	0x65, 0x63, 0x74, 0x65, 0x64, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74,
-	0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x13, 0x45, 0x78, 0x70, 0x65, 0x63, 0x74, 0x65, 0x64,
-	0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x22, 0x53, 0x0a, 0x14, 0x44,
+	0x6a, 0x65, 0x63, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x28, 0x0a, 0x0f, 0x4f, 0x62, 0x6a,
+	0x65, 0x63, 0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x09, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x0f, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x43, 0x6f,
+	0x75, 0x6e, 0x74, 0x12, 0x30, 0x0a, 0x13, 0x45, 0x78, 0x70, 0x65, 0x63, 0x74, 0x65, 0x64, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x13, 0x45, 0x78, 0x70, 0x65, 0x63, 0x74, 0x65, 0x64, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x44, 0x0a, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x18,
+	0x0b, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x2c, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56,
+	0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0x2e, 0x44,
+	0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x53, 0x74, 0x61,
+	0x74, 0x75, 0x73, 0x52, 0x06, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73, 0x22, 0x53, 0x0a, 0x14, 0x44,
 	0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x53, 0x74, 0x61,
 	0x74, 0x75, 0x73, 0x12, 0x14, 0x0a, 0x10, 0x49, 0x6e, 0x69, 0x74, 0x69, 0x61, 0x6c, 0x55, 0x70,
 	0x6c, 0x6f, 0x61, 0x64, 0x69, 0x6e, 0x67, 0x10, 0x00, 0x12, 0x0c, 0x0a, 0x08, 0x46, 0x69, 0x6e,
@@ -1268,13 +1291,14 @@ var file_proto_DatasetModels_proto_depIdxs = []int32{
 	15, // 11: DatasetVersionMetadata.Version:type_name -> Version
 	19, // 12: DatasetVersionMetadata.Created:type_name -> google.protobuf.Timestamp
 	18, // 13: DatasetVersionMetadata.AdditionalMetadata:type_name -> google.protobuf.Struct
-	15, // 14: NewDatasetVersionRequest.Version:type_name -> Version
-	18, // 15: NewDatasetVersionRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
-	16, // [16:16] is the sub-list for method output_type
-	16, // [16:16] is the sub-list for method input_type
-	16, // [16:16] is the sub-list for extension type_name
-	16, // [16:16] is the sub-list for extension extendee
-	0,  // [0:16] is the sub-list for field type_name
+	0,  // 14: DatasetVersionMetadata.Status:type_name -> DatasetVersionMetadata.DatasetVersionStatus
+	15, // 15: NewDatasetVersionRequest.Version:type_name -> Version
+	18, // 16: NewDatasetVersionRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
+	17, // [17:17] is the sub-list for method output_type
+	17, // [17:17] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_proto_DatasetModels_proto_init() }

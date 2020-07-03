@@ -18,7 +18,7 @@
   "paths": {
     "/api/v1/dataset/create": {
       "post": {
-        "summary": "Creates a new dataset",
+        "summary": "CreateNewDataset Creates a new dataset",
         "operationId": "DatasetService_CreateNewDataset",
         "responses": {
           "200": {
@@ -56,9 +56,49 @@
         ]
       }
     },
+    "/api/v1/dataset/delete": {
+      "post": {
+        "summary": "DeleteDataset Delete a dataset",
+        "operationId": "DatasetService_DeleteDataset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/dataset/list": {
       "post": {
-        "summary": "Lists all datasets",
+        "summary": "Datasets Lists all datasets",
         "operationId": "DatasetService_Datasets",
         "responses": {
           "200": {
@@ -216,6 +256,45 @@
         ]
       }
     },
+    "/api/v1/datasetversion/delete": {
+      "post": {
+        "operationId": "DatasetService_DeleteDatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/datasetversion/list": {
       "post": {
         "summary": "Lists Versions of a dataset",
@@ -256,7 +335,7 @@
         ]
       }
     },
-    "/api/v1/datasetversions/update/objectcount": {
+    "/api/v1/datasetversion/update/objectcount": {
       "post": {
         "operationId": "DatasetService_UpdateDatasetVersionObjectCount",
         "responses": {
@@ -849,13 +928,29 @@
           "type": "string",
           "format": "int64"
         },
+        "ObjectLinkCount": {
+          "type": "string",
+          "format": "int64"
+        },
         "ExpectedObjectCount": {
           "type": "string",
           "format": "int64"
+        },
+        "Status": {
+          "$ref": "#/definitions/DatasetVersionMetadataDatasetVersionStatus"
         }
       },
       "description": "Metadata of a dataset version",
       "title": "DatasetVersionMetadata"
+    },
+    "DatasetVersionMetadataDatasetVersionStatus": {
+      "type": "string",
+      "enum": [
+        "InitialUploading",
+        "Finished",
+        "AdditionalUploading"
+      ],
+      "default": "InitialUploading"
     },
     "Empty": {
       "type": "object",

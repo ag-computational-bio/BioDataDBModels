@@ -26,7 +26,7 @@ service LoadService {
 // Dataset management service
 service DatasetService {
 
-    // Creates a new dataset
+    // CreateNewDataset Creates a new dataset
     rpc CreateNewDataset(CreateDatasetRequest) returns (DatasetEntry) {
         option (google.api.http) = {
             post: "/api/v1/dataset/create"
@@ -34,10 +34,18 @@ service DatasetService {
         };
     }
 
-    // Lists all datasets
+    // Datasets Lists all datasets
     rpc Datasets(Empty) returns (DatasetList) {
         option (google.api.http) = {
             post: "/api/v1/dataset/list"
+            body: "*"
+        };
+    }
+
+    // DeleteDataset Delete a dataset
+    rpc DeleteDataset(ID) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/dataset/delete"
             body: "*"
         };
     }
@@ -59,9 +67,16 @@ service DatasetService {
         };
     }
 
+    rpc DeleteDatasetVersion(ID) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetversion/delete"
+            body: "*"
+        };
+    }
+
     rpc UpdateDatasetVersionObjectCount(UpdateDatasetVersionObjectCountRequest) returns (Empty) {
         option (google.api.http) = {
-            post: "/api/v1/datasetversions/update/objectcount"
+            post: "/api/v1/datasetversion/update/objectcount"
             body: "*"
         };
     }

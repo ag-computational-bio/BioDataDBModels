@@ -33,14 +33,17 @@ module DatasetService
     self.unmarshal_class_method = :decode
     self.service_name = 'DatasetService'
 
-    # Creates a new dataset
+    # CreateNewDataset Creates a new dataset
     rpc :CreateNewDataset, CreateDatasetRequest, DatasetEntry
-    # Lists all datasets
+    # Datasets Lists all datasets
     rpc :Datasets, Empty, DatasetList
+    # DeleteDataset Delete a dataset
+    rpc :DeleteDataset, ID, Empty
     # Creates a new dataset version based on an existing dataset
     rpc :CreateNewDatasetVersion, NewDatasetVersionRequest, DatasetVersionEntry
     # Lists Versions of a dataset
     rpc :DatasetVersions, ID, DatasetVersionList
+    rpc :DeleteDatasetVersion, ID, Empty
     rpc :UpdateDatasetVersionObjectCount, UpdateDatasetVersionObjectCountRequest, Empty
     # Lists all entities of a dataset
     rpc :DatasetVersionObjects, ID, DatasetObjectList

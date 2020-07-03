@@ -74,7 +74,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :AdditionalMetadataMessageRef, :string, 6
       optional :AdditionalObjectMetadataMessageRef, :string, 7
       optional :ObjectCount, :int64, 8
-      optional :ExpectedObjectCount, :int64, 9
+      optional :ObjectLinkCount, :int64, 9
+      optional :ExpectedObjectCount, :int64, 10
+      optional :Status, :enum, 11, "DatasetVersionMetadata.DatasetVersionStatus"
     end
     add_enum "DatasetVersionMetadata.DatasetVersionStatus" do
       value :InitialUploading, 0

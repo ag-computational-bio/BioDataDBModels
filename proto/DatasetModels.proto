@@ -163,7 +163,9 @@ message DatasetVersionMetadata {
     string AdditionalMetadataMessageRef = 6; // Message reference for the metadata
     string AdditionalObjectMetadataMessageRef = 7; // Message reference for the metadata of the objects associated with this DatasetVersion
     int64 ObjectCount = 8; // Number of objects registered with this dataset version
-    int64 ExpectedObjectCount = 9; // Number of objects that is expected to be registered in this dataset
+    int64 ObjectLinkCount = 9; // Number of requested links to upload objects
+    int64 ExpectedObjectCount = 10; // Number of objects that is expected to be registered in this dataset
+    DatasetVersionStatus Status = 11;
 
     enum DatasetVersionStatus {
         InitialUploading = 0;
