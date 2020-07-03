@@ -59,6 +59,13 @@ service DatasetService {
         };
     }
 
+    rpc UpdateDatasetVersionObjectCount(ID) returns (Int64Wrapper) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetversions/update/objectcount"
+            body: "*"
+        };
+    }
+
     // Lists all entities of a dataset
     rpc DatasetVersionObjects(ID) returns (DatasetObjectList) {
         option (google.api.http) = {

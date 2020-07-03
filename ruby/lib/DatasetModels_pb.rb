@@ -12,6 +12,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "DatasetEntry" do
       optional :ID, :string, 1
       optional :Metadata, :message, 2, "DatasetEntryMetadata"
+      optional :CurrentVersion, :string, 3
     end
     add_message "DatasetEntryMetadata" do
       optional :Datasetname, :string, 1
@@ -68,6 +69,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
       optional :AdditionalMetadataMessageRef, :string, 6
       optional :AdditionalObjectMetadataMessageRef, :string, 7
+      optional :ObjectCount, :int64, 8
+      optional :ExpectedObjectCount, :int64, 9
+    end
+    add_enum "DatasetVersionMetadata.DatasetVersionStatus" do
+      value :InitialUploading, 0
+      value :Finished, 1
+      value :AdditionalUploading, 2
     end
     add_message "NewDatasetVersionRequest" do
       optional :DatasetID, :string, 1
@@ -91,4 +99,5 @@ DatasetVersionList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("D
 DatasetObjectList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectList").msgclass
 DatasetVersionEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionEntry").msgclass
 DatasetVersionMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionMetadata").msgclass
+DatasetVersionMetadata::DatasetVersionStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionMetadata.DatasetVersionStatus").enummodule
 NewDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("NewDatasetVersionRequest").msgclass

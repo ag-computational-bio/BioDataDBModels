@@ -18,6 +18,7 @@ message DatasetEntry {
     };
     string ID = 1;
     DatasetEntryMetadata Metadata = 2;
+    string CurrentVersion = 3;
 }
 
 
@@ -156,6 +157,14 @@ message DatasetVersionMetadata {
     google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata for the dataset version
     string AdditionalMetadataMessageRef = 6; // Message reference for the metadata
     string AdditionalObjectMetadataMessageRef = 7; // Message reference for the metadata of the objects associated with this DatasetVersion
+    int64 ObjectCount = 8; // Number of objects registered with this dataset version
+    int64 ExpectedObjectCount = 9; // Number of objects that is expected to be registered in this dataset
+
+    enum DatasetVersionStatus {
+        InitialUploading = 0;
+        Finished = 1;
+        AdditionalUploading = 2;
+    }
 }
 
 message NewDatasetVersionRequest {

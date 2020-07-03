@@ -38,6 +38,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :Beta, 2
       value :Alpha, 3
     end
+    add_message "Int64Wrapper" do
+      optional :Value, :int64, 1
+    end
   end
 end
 
@@ -48,3 +51,4 @@ Origin::OriginTypeEnum = ::Google::Protobuf::DescriptorPool.generated_pool.looku
 ID = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ID").msgclass
 Version = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version").msgclass
 Version::VersionStage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version.VersionStage").enummodule
+Int64Wrapper = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Int64Wrapper").msgclass

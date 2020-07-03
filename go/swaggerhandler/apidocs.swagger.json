@@ -256,6 +256,45 @@
         ]
       }
     },
+    "/api/v1/datasetversions/update/objectcount": {
+      "post": {
+        "operationId": "DatasetService_UpdateDatasetVersionObjectCount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Int64Wrapper"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/load/createlinks": {
       "post": {
         "summary": "Creates a list of upload links to place dataset entities in object storage\nand adds corresponding metadata objects",
@@ -614,6 +653,9 @@
         },
         "Metadata": {
           "$ref": "#/definitions/DatasetEntryMetadata"
+        },
+        "CurrentVersion": {
+          "type": "string"
         }
       },
       "description": "Database entry for a dataset",
@@ -802,6 +844,14 @@
         },
         "AdditionalObjectMetadataMessageRef": {
           "type": "string"
+        },
+        "ObjectCount": {
+          "type": "string",
+          "format": "int64"
+        },
+        "ExpectedObjectCount": {
+          "type": "string",
+          "format": "int64"
         }
       },
       "description": "Metadata of a dataset version",
@@ -889,6 +939,17 @@
       },
       "description": "A request to insert a set of metadata. Metadata can be provided either as Any message type or Struct message type. If Any type is used, the message must be well known",
       "title": "InsertMetadataRequest"
+    },
+    "Int64Wrapper": {
+      "type": "object",
+      "properties": {
+        "Value": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "description": "A wrapper for an int64",
+      "title": "Int64Wrapper"
     },
     "Location": {
       "type": "object",

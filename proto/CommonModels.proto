@@ -78,3 +78,14 @@ message Version {
         Alpha = 3;
     }
 }
+
+message Int64Wrapper {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "Int64Wrapper";
+            description: "A wrapper for an int64"
+        };
+    };
+
+    int64 Value = 1;
+}

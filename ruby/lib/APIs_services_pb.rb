@@ -41,6 +41,7 @@ module DatasetService
     rpc :CreateNewDatasetVersion, NewDatasetVersionRequest, DatasetVersionEntry
     # Lists Versions of a dataset
     rpc :DatasetVersions, ID, DatasetVersionList
+    rpc :UpdateDatasetVersionObjectCount, ID, Int64Wrapper
     # Lists all entities of a dataset
     rpc :DatasetVersionObjects, ID, DatasetObjectList
     # Creates preauth download links for all entities of a dataset
