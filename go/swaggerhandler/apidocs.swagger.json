@@ -1136,6 +1136,10 @@
         },
         "AdditionalMetadata": {
           "type": "object"
+        },
+        "ExpectedObjectCount": {
+          "type": "string",
+          "format": "int64"
         }
       },
       "description": "Creates a new dataset version",

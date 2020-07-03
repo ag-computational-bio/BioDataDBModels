@@ -89,6 +89,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :AdditionalMetadataMessageRef, :string, 3
       optional :AdditionalObjectMetadataMessageRef, :string, 4
       optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
+      optional :ExpectedObjectCount, :int64, 6
     end
   end
 end

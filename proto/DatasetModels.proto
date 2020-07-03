@@ -186,4 +186,5 @@ message NewDatasetVersionRequest {
     string AdditionalMetadataMessageRef = 3; // Message reference for the metadata
     string AdditionalObjectMetadataMessageRef = 4; // Message reference for the metadata of the objects associated with this DatasetVersion
     google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata for the dataset version
+    int64 ExpectedObjectCount = 6; // Expected objects
 }
