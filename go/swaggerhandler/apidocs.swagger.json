@@ -948,7 +948,8 @@
       "enum": [
         "InitialUploading",
         "Finished",
-        "AdditionalUploading"
+        "AdditionalUploading",
+        "Deleting"
       ],
       "default": "InitialUploading"
     },

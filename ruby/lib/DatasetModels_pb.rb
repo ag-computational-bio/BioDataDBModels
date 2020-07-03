@@ -82,6 +82,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :InitialUploading, 0
       value :Finished, 1
       value :AdditionalUploading, 2
+      value :Deleting, 3
     end
     add_message "NewDatasetVersionRequest" do
       optional :DatasetID, :string, 1

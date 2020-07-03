@@ -171,6 +171,7 @@ message DatasetVersionMetadata {
         InitialUploading = 0;
         Finished = 1;
         AdditionalUploading = 2;
+        Deleting = 3;
     }
 }
 
