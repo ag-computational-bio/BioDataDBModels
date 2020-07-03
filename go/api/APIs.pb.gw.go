@@ -206,7 +206,7 @@ func local_request_DatasetService_DatasetVersions_0(ctx context.Context, marshal
 }
 
 func request_DatasetService_UpdateDatasetVersionObjectCount_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq commonmodels.ID
+	var protoReq datasetmodels.UpdateDatasetVersionObjectCountRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -223,7 +223,7 @@ func request_DatasetService_UpdateDatasetVersionObjectCount_0(ctx context.Contex
 }
 
 func local_request_DatasetService_UpdateDatasetVersionObjectCount_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq commonmodels.ID
+	var protoReq datasetmodels.UpdateDatasetVersionObjectCountRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)

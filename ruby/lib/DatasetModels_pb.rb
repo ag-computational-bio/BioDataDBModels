@@ -48,6 +48,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetName, :string, 1
       optional :Datatype, :string, 2
     end
+    add_message "UpdateDatasetVersionObjectCountRequest" do
+      optional :DatasetVersionID, :string, 1
+      optional :Value, :int64, 2
+    end
     add_message "DatasetList" do
       repeated :Datasets, :message, 1, "DatasetEntry"
     end
@@ -94,6 +98,7 @@ DatasetObjectMetaData = ::Google::Protobuf::DescriptorPool.generated_pool.lookup
 DatasetObjectLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectLinks").msgclass
 DatasetObjectLink = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectLink").msgclass
 CreateDatasetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetRequest").msgclass
+UpdateDatasetVersionObjectCountRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UpdateDatasetVersionObjectCountRequest").msgclass
 DatasetList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetList").msgclass
 DatasetVersionList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionList").msgclass
 DatasetObjectList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectList").msgclass

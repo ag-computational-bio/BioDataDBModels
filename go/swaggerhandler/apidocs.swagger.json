@@ -263,7 +263,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/Int64Wrapper"
+              "$ref": "#/definitions/Empty"
             }
           },
           "404": {
@@ -286,7 +286,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ID"
+              "$ref": "#/definitions/UpdateDatasetVersionObjectCountRequest"
             }
           }
         ],
@@ -940,17 +940,6 @@
       "description": "A request to insert a set of metadata. Metadata can be provided either as Any message type or Struct message type. If Any type is used, the message must be well known",
       "title": "InsertMetadataRequest"
     },
-    "Int64Wrapper": {
-      "type": "object",
-      "properties": {
-        "Value": {
-          "type": "string",
-          "format": "int64"
-        }
-      },
-      "description": "A wrapper for an int64",
-      "title": "Int64Wrapper"
-    },
     "Location": {
       "type": "object",
       "properties": {
@@ -1124,6 +1113,18 @@
       },
       "description": "Metadata message of struct type. The struct type uses JSON and cannot store int64/uint64 properly. To create indices on int64/uint64 values please use the provided maps.",
       "title": "AnyMetadataMessage"
+    },
+    "UpdateDatasetVersionObjectCountRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetVersionID": {
+          "type": "string"
+        },
+        "Value": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
     },
     "UploadLink": {
       "type": "object",

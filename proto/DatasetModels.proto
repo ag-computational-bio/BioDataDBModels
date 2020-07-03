@@ -102,6 +102,11 @@ message CreateDatasetRequest {
     string Datatype = 2; //Datatype of the dataset, e.g. json, gbff, fasta
 }
 
+message UpdateDatasetVersionObjectCountRequest {
+    string DatasetVersionID = 1;
+    int64 Value = 2;
+}
+
 message DatasetList {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {

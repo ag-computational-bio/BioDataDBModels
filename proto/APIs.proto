@@ -59,7 +59,7 @@ service DatasetService {
         };
     }
 
-    rpc UpdateDatasetVersionObjectCount(ID) returns (Int64Wrapper) {
+    rpc UpdateDatasetVersionObjectCount(UpdateDatasetVersionObjectCountRequest) returns (Empty) {
         option (google.api.http) = {
             post: "/api/v1/datasetversions/update/objectcount"
             body: "*"
