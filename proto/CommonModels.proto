@@ -59,6 +59,7 @@ message ID {
 
 message Version {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "Major": 0, "Minor": 1, "Patch": 0, "Revision": 1, "Stage": "Alpha" }' }
         json_schema: {
             title: "Version";
             description: "A version representation based on semantic versioning"

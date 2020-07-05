@@ -834,7 +834,13 @@
         "Filename": "test.gbff",
         "Filetype": "gbff",
         "Name": "test",
-        "Version": "v0.1",
+        "Version": {
+          "Major": 0,
+          "Minor": 1,
+          "Patch": 0,
+          "Revision": 1,
+          "Stage": "Alpha"
+        },
         "ContentLen": 5
       },
       "properties": {
@@ -1254,6 +1260,13 @@
     },
     "Version": {
       "type": "object",
+      "example": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 0,
+        "Revision": 1,
+        "Stage": "Alpha"
+      },
       "properties": {
         "Major": {
           "type": "integer",
