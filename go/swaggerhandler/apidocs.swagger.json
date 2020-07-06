@@ -831,6 +831,8 @@
     "DatasetObjectMetaData": {
       "type": "object",
       "example": {
+        "DatasetID": "test",
+        "DatasetVersionID": "test",
         "Filename": "test.gbff",
         "Filetype": "gbff",
         "Name": "test",
