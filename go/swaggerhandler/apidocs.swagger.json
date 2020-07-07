@@ -139,12 +139,12 @@
     "/api/v1/datasetobjects/link": {
       "post": {
         "summary": "DatasetObjectLink A download link for",
-        "operationId": "DatasetService_DatasetObjectLink",
+        "operationId": "DatasetService_CreateDatasetObjectLink",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetObjectEntry"
+              "$ref": "#/definitions/DatasetObjectLink"
             }
           },
           "404": {
