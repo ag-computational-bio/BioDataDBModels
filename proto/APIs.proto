@@ -96,6 +96,14 @@ service DatasetService {
             body: "*"
         };
     }
+
+    // DatasetObjectLink A download link for 
+    rpc DatasetObjectLink(ID) returns (DatasetObjectEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetobjects/link"
+            body: "*"
+        };
+    }
 }
 
 service MetadataCompositeStore {

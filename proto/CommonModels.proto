@@ -90,3 +90,15 @@ message Int64Wrapper {
 
     int64 Value = 1;
 }
+
+message IDList {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        example: { value: '{ "IDs": ["1","2","3","4"]}' }
+        json_schema: {
+            title: "ID list";
+            description: "A list of ideas"
+        };
+    };
+
+    repeated string IDs = 1;
+}
