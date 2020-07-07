@@ -49,6 +49,8 @@ module DatasetService
     rpc :DatasetVersionObjects, ID, DatasetObjectList
     # Creates preauth download links for all entities of a dataset
     rpc :DatasetVersionObjectsLinks, ID, DatasetObjectLinks
+    # DatasetObjectLink A download link for 
+    rpc :DatasetObjectLink, ID, DatasetObjectEntry
   end
 
   Stub = Service.rpc_stub_class

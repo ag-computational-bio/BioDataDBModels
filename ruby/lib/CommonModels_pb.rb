@@ -41,6 +41,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "Int64Wrapper" do
       optional :Value, :int64, 1
     end
+    add_message "IDList" do
+      repeated :IDs, :string, 1
+    end
   end
 end
 
@@ -52,3 +55,4 @@ ID = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ID").msgclass
 Version = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version").msgclass
 Version::VersionStage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version.VersionStage").enummodule
 Int64Wrapper = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Int64Wrapper").msgclass
+IDList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IDList").msgclass

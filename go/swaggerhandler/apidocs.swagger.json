@@ -136,6 +136,46 @@
         ]
       }
     },
+    "/api/v1/datasetobjects/link": {
+      "post": {
+        "summary": "DatasetObjectLink A download link for",
+        "operationId": "DatasetService_DatasetObjectLink",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetObjectEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/datasetobjects/links": {
       "post": {
         "summary": "Creates preauth download links for all entities of a dataset",
