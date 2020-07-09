@@ -43,6 +43,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "DatasetObjectLink" do
       optional :Link, :string, 1
       optional :ObjectID, :string, 2
+      optional :Objectmetadata, :message, 3, "DatasetObjectMetaData"
     end
     add_message "CreateDatasetRequest" do
       optional :DatasetName, :string, 1

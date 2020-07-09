@@ -88,6 +88,9 @@ message DatasetObjectLink {
     };
     string Link = 1;
     string ObjectID = 2;
+    DatasetObjectMetaData Objectmetadata = 3;
+
+
 }
 
 message CreateDatasetRequest {

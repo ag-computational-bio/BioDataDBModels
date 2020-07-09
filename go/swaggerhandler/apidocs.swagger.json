@@ -834,6 +834,9 @@
         },
         "ObjectID": {
           "type": "string"
+        },
+        "Objectmetadata": {
+          "$ref": "#/definitions/DatasetObjectMetaData"
         }
       },
       "description": "Links to download a specific entity of a dataset",
