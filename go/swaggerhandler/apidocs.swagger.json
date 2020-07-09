@@ -905,8 +905,8 @@
           "$ref": "#/definitions/Origin"
         },
         "ContentLen": {
-          "type": "integer",
-          "format": "int32"
+          "type": "string",
+          "format": "int64"
         },
         "DatasetID": {
           "type": "string"

@@ -30,7 +30,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Name, :string, 3
       optional :Version, :message, 4, "Version"
       optional :Origin, :message, 5, "Origin"
-      optional :ContentLen, :int32, 6
+      optional :ContentLen, :int64, 6
       optional :DatasetID, :string, 7
       optional :DatasetVersionID, :string, 8
       optional :Location, :message, 9, "Location"
