@@ -52,6 +52,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "UpdateDatasetVersionObjectCountRequest" do
       optional :DatasetVersionID, :string, 1
       optional :Value, :int64, 2
+      optional :DatasetID, :string, 3
     end
     add_message "DatasetList" do
       repeated :Datasets, :message, 1, "DatasetEntry"

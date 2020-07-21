@@ -1455,6 +1455,9 @@
         "Value": {
           "type": "string",
           "format": "int64"
+        },
+        "DatasetID": {
+          "type": "string"
         }
       }
     },
