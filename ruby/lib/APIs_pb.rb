@@ -7,6 +7,7 @@ require 'proto/LoadModels_pb'
 require 'proto/DatasetModels_pb'
 require 'proto/MetadataModels_pb'
 require 'proto/CommonModels_pb'
+require 'proto/AuthModels_pb'
 require 'google/api/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/APIs.proto", :syntax => :proto3) do

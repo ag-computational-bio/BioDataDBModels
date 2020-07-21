@@ -6,7 +6,31 @@ import "proto/LoadModels.proto";
 import "proto/DatasetModels.proto";
 import "proto/MetadataModels.proto";
 import "proto/CommonModels.proto";
+import "proto/AuthModels.proto";
 import "google/api/annotations.proto";
+
+// Manages api tokens to access datasets
+service APITokenService {
+    rpc CreateAPIToken(CreateTokenRequest) returns (TokenEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/auth/createapitoken"
+            body: "*"
+        };
+    }
+
+    rpc GetTokenList(Empty) returns (TokenList) {
+        option (google.api.http) = {
+            get: "/api/v1/auth/listapitokens"
+        };
+    }
+
+    rpc RevokeToken(ID) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/auth/deleteapitoken"
+            body: "*"
+        };
+    }
+ }
 
 // This service is used to create datasets and load their entities into an object storage
 // and create corresponding metadata objects to store the location of the entities in object storage.

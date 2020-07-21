@@ -16,6 +16,113 @@
     "application/json"
   ],
   "paths": {
+    "/api/v1/auth/createapitoken": {
+      "post": {
+        "operationId": "APITokenService_CreateAPIToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TokenEntry"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateTokenRequest"
+            }
+          }
+        ],
+        "tags": [
+          "APITokenService"
+        ]
+      }
+    },
+    "/api/v1/auth/deleteapitoken": {
+      "post": {
+        "operationId": "APITokenService_RevokeToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "APITokenService"
+        ]
+      }
+    },
+    "/api/v1/auth/listapitokens": {
+      "get": {
+        "operationId": "APITokenService_GetTokenList",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TokenList"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exist.",
+            "schema": {
+              "type": "string",
+              "format": "string"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "APITokenService"
+        ]
+      }
+    },
     "/api/v1/dataset/create": {
       "post": {
         "summary": "CreateNewDataset Creates a new dataset",
@@ -764,6 +871,26 @@
       "description": "Request message to request a set of presigned URL links",
       "title": "CreateLoadLinkSetRequest"
     },
+    "CreateTokenRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetID": {
+          "type": "string"
+        },
+        "AccessScopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Scope"
+          }
+        },
+        "Expires": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "description": "Request data to create a new token for a given dataset",
+      "title": "CreateTokenRequest"
+    },
     "DatasetEntry": {
       "type": "object",
       "properties": {
@@ -1241,6 +1368,14 @@
       "description": "TODO - WIP",
       "title": "QueryRequest"
     },
+    "Scope": {
+      "type": "string",
+      "enum": [
+        "Read",
+        "Write"
+      ],
+      "default": "Read"
+    },
     "StructMetadataMessage": {
       "type": "object",
       "properties": {
@@ -1264,6 +1399,52 @@
       },
       "description": "Metadata message of struct type. The struct type uses JSON and cannot store int64/uint64 properly. To create indices on int64/uint64 values please use the provided maps.",
       "title": "AnyMetadataMessage"
+    },
+    "TokenEntry": {
+      "type": "object",
+      "properties": {
+        "UserID": {
+          "type": "string"
+        },
+        "Token": {
+          "type": "string"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "Expires": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "AccessScopes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Scope"
+          }
+        }
+      },
+      "description": "A description of an api token",
+      "title": "TokenEntry"
+    },
+    "TokenList": {
+      "type": "object",
+      "properties": {
+        "UserID": {
+          "type": "string"
+        },
+        "token": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TokenEntry"
+          }
+        }
+      },
+      "description": "Lists all available api tokens for a user",
+      "title": "TokenList"
     },
     "UpdateDatasetVersionObjectCountRequest": {
       "type": "object",

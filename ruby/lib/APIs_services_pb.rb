@@ -4,6 +4,23 @@
 require 'grpc'
 require 'proto/APIs_pb'
 
+module APITokenService
+  # Manages api tokens to access datasets
+  class Service
+
+    include GRPC::GenericService
+
+    self.marshal_class_method = :encode
+    self.unmarshal_class_method = :decode
+    self.service_name = 'APITokenService'
+
+    rpc :CreateAPIToken, CreateTokenRequest, TokenEntry
+    rpc :GetTokenList, Empty, TokenList
+    rpc :RevokeToken, ID, Empty
+  end
+
+  Stub = Service.rpc_stub_class
+end
 module LoadService
   # This service is used to create datasets and load their entities into an object storage
   # and create corresponding metadata objects to store the location of the entities in object storage.

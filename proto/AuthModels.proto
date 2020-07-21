@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/authmodels";
+
+import "google/protobuf/timestamp.proto";
+import "protoc/gateway/options/annotations.proto";
+
+
+message TokenList {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "TokenList";
+            description: "Lists all available api tokens for a user"
+        };
+    };
+    string UserID = 1;
+    repeated TokenEntry token = 2;
+}
+
+enum Scope {
+    Read = 0;
+    Write = 1;
+}
+
+message TokenEntry {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "TokenEntry";
+            description: "A description of an api token"
+        };
+    };
+    string UserID = 1;
+    string Token = 2;
+    google.protobuf.Timestamp Created = 3; // When the token was created
+    google.protobuf.Timestamp Expires = 4; // When the token expires
+    string DatasetID = 5;
+    repeated Scope AccessScopes = 6;
+}
+
+message CreateTokenRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "CreateTokenRequest";
+            description: "Request data to create a new token for a given dataset"
+        };
+    };
+    string DatasetID = 1;
+    repeated Scope AccessScopes = 2;
+    google.protobuf.Timestamp Expires = 3; // When the token expires
+}
