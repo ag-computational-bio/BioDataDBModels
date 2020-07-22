@@ -3,7 +3,7 @@
 
 require 'google/protobuf'
 
-require 'proto/DatasetModels_pb'
+require 'proto/DatasetEntryModels_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do

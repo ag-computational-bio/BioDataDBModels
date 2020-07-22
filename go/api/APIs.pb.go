@@ -41,6 +41,8 @@ var file_proto_APIs_proto_rawDesc = []byte{
 	0x74, 0x6f, 0x1a, 0x16, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x4c, 0x6f, 0x61, 0x64, 0x4d, 0x6f,
 	0x64, 0x65, 0x6c, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x19, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x2f, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x44, 0x61, 0x74,
+	0x61, 0x73, 0x65, 0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e,
 	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1a, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x4d, 0x65, 0x74,
 	0x61, 0x64, 0x61, 0x74, 0x61, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74,
 	0x6f, 0x1a, 0x18, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x4d,
@@ -292,8 +294,11 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type APITokenServiceClient interface {
+	// CreateAPIToken Creates a new API token and returns it
 	CreateAPIToken(ctx context.Context, in *authmodels.CreateTokenRequest, opts ...grpc.CallOption) (*authmodels.TokenEntry, error)
+	// GetTokenList Lists all available access tokens
 	GetTokenList(ctx context.Context, in *commonmodels.Empty, opts ...grpc.CallOption) (*authmodels.TokenList, error)
+	// RevokeToken Revokes an access token
 	RevokeToken(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error)
 }
 
@@ -334,8 +339,11 @@ func (c *aPITokenServiceClient) RevokeToken(ctx context.Context, in *commonmodel
 
 // APITokenServiceServer is the server API for APITokenService service.
 type APITokenServiceServer interface {
+	// CreateAPIToken Creates a new API token and returns it
 	CreateAPIToken(context.Context, *authmodels.CreateTokenRequest) (*authmodels.TokenEntry, error)
+	// GetTokenList Lists all available access tokens
 	GetTokenList(context.Context, *commonmodels.Empty) (*authmodels.TokenList, error)
+	// RevokeToken Revokes an access token
 	RevokeToken(context.Context, *commonmodels.ID) (*commonmodels.Empty, error)
 }
 
@@ -522,7 +530,10 @@ type DatasetServiceClient interface {
 	CreateNewDatasetVersion(ctx context.Context, in *datasetmodels.NewDatasetVersionRequest, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error)
 	// Lists Versions of a dataset
 	DatasetVersions(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionList, error)
+	// Deletes a dataset version
+	// This should not delete the underlaying dataset objects
 	DeleteDatasetVersion(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error)
+	// Updates the expected number of objects in a dataset
 	UpdateDatasetVersionObjectCount(ctx context.Context, in *datasetmodels.UpdateDatasetVersionObjectCountRequest, opts ...grpc.CallOption) (*commonmodels.Empty, error)
 	// Lists all entities of a dataset
 	DatasetVersionObjects(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error)
@@ -642,7 +653,10 @@ type DatasetServiceServer interface {
 	CreateNewDatasetVersion(context.Context, *datasetmodels.NewDatasetVersionRequest) (*datasetmodels.DatasetVersionEntry, error)
 	// Lists Versions of a dataset
 	DatasetVersions(context.Context, *commonmodels.ID) (*datasetmodels.DatasetVersionList, error)
+	// Deletes a dataset version
+	// This should not delete the underlaying dataset objects
 	DeleteDatasetVersion(context.Context, *commonmodels.ID) (*commonmodels.Empty, error)
+	// Updates the expected number of objects in a dataset
 	UpdateDatasetVersionObjectCount(context.Context, *datasetmodels.UpdateDatasetVersionObjectCountRequest) (*commonmodels.Empty, error)
 	// Lists all entities of a dataset
 	DatasetVersionObjects(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectList, error)

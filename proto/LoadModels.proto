@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
-import "proto/DatasetModels.proto";
+import "proto/DatasetEntryModels.proto";
 import "protoc/gateway/options/annotations.proto";
 
 message UploadLinks {

@@ -5,6 +5,7 @@ require 'google/protobuf'
 
 require 'proto/LoadModels_pb'
 require 'proto/DatasetModels_pb'
+require 'proto/DatasetEntryModels_pb'
 require 'proto/MetadataModels_pb'
 require 'proto/CommonModels_pb'
 require 'proto/AuthModels_pb'

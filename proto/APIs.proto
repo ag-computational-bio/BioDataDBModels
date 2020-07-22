@@ -4,6 +4,7 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
 import "proto/LoadModels.proto";
 import "proto/DatasetModels.proto";
+import "proto/DatasetEntryModels.proto";
 import "proto/MetadataModels.proto";
 import "proto/CommonModels.proto";
 import "proto/AuthModels.proto";
@@ -11,6 +12,7 @@ import "google/api/annotations.proto";
 
 // Manages api tokens to access datasets
 service APITokenService {
+    // CreateAPIToken Creates a new API token and returns it
     rpc CreateAPIToken(CreateTokenRequest) returns (TokenEntry) {
         option (google.api.http) = {
             post: "/api/v1/auth/createapitoken"
@@ -18,12 +20,14 @@ service APITokenService {
         };
     }
 
+    // GetTokenList Lists all available access tokens
     rpc GetTokenList(Empty) returns (TokenList) {
         option (google.api.http) = {
             get: "/api/v1/auth/listapitokens"
         };
     }
 
+    // RevokeToken Revokes an access token
     rpc RevokeToken(ID) returns (Empty) {
         option (google.api.http) = {
             post: "/api/v1/auth/deleteapitoken"
@@ -48,6 +52,9 @@ service LoadService {
 
 
 // Dataset management service
+// Manages all dataset related services
+// All data objects are associated with one data dataset
+// Dataset versions group these data objects, which makes them reusable
 service DatasetService {
 
     // CreateNewDataset Creates a new dataset
@@ -91,6 +98,8 @@ service DatasetService {
         };
     }
 
+    // Deletes a dataset version
+    // This should not delete the underlaying dataset objects
     rpc DeleteDatasetVersion(ID) returns (Empty) {
         option (google.api.http) = {
             post: "/api/v1/datasetversion/delete"
@@ -98,6 +107,7 @@ service DatasetService {
         };
     }
 
+    // Updates the expected number of objects in a dataset
     rpc UpdateDatasetVersionObjectCount(UpdateDatasetVersionObjectCountRequest) returns (Empty) {
         option (google.api.http) = {
             post: "/api/v1/datasetversion/update/objectcount"

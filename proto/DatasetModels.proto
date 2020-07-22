@@ -2,71 +2,12 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels";
 
-import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";
 import "proto/CommonModels.proto";
+import "proto/DatasetEntryModels.proto";
 import "protoc/gateway/options/annotations.proto";
 
 // These messages are used as templates for the Database storage schemas
-
-message DatasetEntry {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "DatasetEntry";
-            description: "Database entry for a dataset"
-        };
-    };
-    string ID = 1;
-    DatasetEntryMetadata Metadata = 2;
-    string CurrentVersion = 3;
-}
-
-
-
-message DatasetEntryMetadata {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "DatasetEntryMetadata";
-            description: "Representation of the metadata of a dataset"
-        };
-    };
-    string Datasetname = 1; // Name of the dataset
-    string Datasettype = 2; // Type of the stored data in the dataset
-    string OwnerID = 3; // ID of the owner
-    bool isPublic = 4; //Indicates if the dataset if publicly available
-}
-
-message DatasetObjectEntry {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "DatasetObjectEntry";
-            description: "Representation of a dataset entity"
-        };
-    };
-    string ID = 1; //ID of the entity
-    DatasetObjectMetaData Metadata = 3; // Metadata of the dataset
-}
-
-message DatasetObjectMetaData {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        example: { value: '{ "DatasetID": "test", "DatasetVersionID": "test", "Filename": "test.gbff", "Filetype": "gbff", "Name": "test", "Version": { "Major": 0, "Minor": 1, "Patch": 0, "Revision": 1, "Stage": "Alpha" }, "ContentLen": 5 }' }
-        json_schema: {
-            title: "DatasetObjectMetaData";
-            description: "Metadata of a dataset entity"
-        };
-    };
-    string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
-    string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
-    string Name = 3; // Name: Name of the dataset entity e.g.: mydata
-    Version Version = 4; // Remote version of the dataset
-    Origin Origin = 5; // Origin: Source of the dataset
-    int64 ContentLen = 6; // ContentLen: Lenght of the stored dataset
-    string DatasetID = 7; // DatasetID: ID of the parent dataset
-    string DatasetVersionID = 8; // DatasetVersionID: ID of the parent dataset version
-    Location Location = 9; // Location: Location of the data
-    google.protobuf.Struct AdditionalMetadata = 10; // Additional metadata of the object
-}
-
 
 message DatasetObjectLinks {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
@@ -141,43 +82,6 @@ message DatasetObjectList {
     repeated DatasetObjectEntry DatasetVersionObjects = 1;
 }
 
-message DatasetVersionEntry {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "DatasetVersionEntry";
-            description: "Dataset version representation"
-        };
-    };
-    string ID = 1;
-    DatasetVersionMetadata Metadata = 2;
-}
-
-message DatasetVersionMetadata {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "DatasetVersionMetadata";
-            description: "Metadata of a dataset version"
-        };
-    };
-    string DatasetID = 1;
-    string DatasetName = 2;
-    Version Version = 3;
-    google.protobuf.Timestamp Created = 4; // When the datasets version was created
-    google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata for the dataset version
-    string AdditionalMetadataMessageRef = 6; // Message reference for the metadata
-    string AdditionalObjectMetadataMessageRef = 7; // Message reference for the metadata of the objects associated with this DatasetVersion
-    int64 ObjectCount = 8; // Number of objects registered with this dataset version
-    int64 ObjectLinkCount = 9; // Number of requested links to upload objects
-    int64 ExpectedObjectCount = 10; // Number of objects that is expected to be registered in this dataset
-    DatasetVersionStatus Status = 11;
-
-    enum DatasetVersionStatus {
-        InitialUploading = 0;
-        Finished = 1;
-        AdditionalUploading = 2;
-        Deleting = 3;
-    }
-}
 
 message NewDatasetVersionRequest {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {

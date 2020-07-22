@@ -14,8 +14,11 @@ module APITokenService
     self.unmarshal_class_method = :decode
     self.service_name = 'APITokenService'
 
+    # CreateAPIToken Creates a new API token and returns it
     rpc :CreateAPIToken, CreateTokenRequest, TokenEntry
+    # GetTokenList Lists all available access tokens
     rpc :GetTokenList, Empty, TokenList
+    # RevokeToken Revokes an access token
     rpc :RevokeToken, ID, Empty
   end
 
@@ -42,6 +45,9 @@ module LoadService
 end
 module DatasetService
   # Dataset management service
+  # Manages all dataset related services
+  # All data objects are associated with one data dataset
+  # Dataset versions group these data objects, which makes them reusable
   class Service
 
     include GRPC::GenericService
@@ -60,7 +66,10 @@ module DatasetService
     rpc :CreateNewDatasetVersion, NewDatasetVersionRequest, DatasetVersionEntry
     # Lists Versions of a dataset
     rpc :DatasetVersions, ID, DatasetVersionList
+    # Deletes a dataset version
+    # This should not delete the underlaying dataset objects
     rpc :DeleteDatasetVersion, ID, Empty
+    # Updates the expected number of objects in a dataset
     rpc :UpdateDatasetVersionObjectCount, UpdateDatasetVersionObjectCountRequest, Empty
     # Lists all entities of a dataset
     rpc :DatasetVersionObjects, ID, DatasetObjectList
