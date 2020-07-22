@@ -10,6 +10,7 @@ import (
 	context "context"
 	authmodels "github.com/ag-computational-bio/BioDataDBModels/go/authmodels"
 	commonmodels "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
+	datasetentrymodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetentrymodels"
 	datasetmodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels"
 	loadmodels "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels"
 	metadatamodels "github.com/ag-computational-bio/BioDataDBModels/go/metadatamodels"
@@ -196,9 +197,9 @@ var file_proto_APIs_proto_goTypes = []interface{}{
 	(*authmodels.TokenEntry)(nil),                                // 12: TokenEntry
 	(*authmodels.TokenList)(nil),                                 // 13: TokenList
 	(*loadmodels.UploadLinks)(nil),                               // 14: UploadLinks
-	(*datasetmodels.DatasetEntry)(nil),                           // 15: DatasetEntry
+	(*datasetentrymodels.DatasetEntry)(nil),                      // 15: DatasetEntry
 	(*datasetmodels.DatasetList)(nil),                            // 16: DatasetList
-	(*datasetmodels.DatasetVersionEntry)(nil),                    // 17: DatasetVersionEntry
+	(*datasetentrymodels.DatasetVersionEntry)(nil),               // 17: DatasetVersionEntry
 	(*datasetmodels.DatasetVersionList)(nil),                     // 18: DatasetVersionList
 	(*datasetmodels.DatasetObjectList)(nil),                      // 19: DatasetObjectList
 	(*datasetmodels.DatasetObjectLinks)(nil),                     // 20: DatasetObjectLinks
@@ -521,13 +522,13 @@ var _LoadService_serviceDesc = grpc.ServiceDesc{
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DatasetServiceClient interface {
 	// CreateNewDataset Creates a new dataset
-	CreateNewDataset(ctx context.Context, in *datasetmodels.CreateDatasetRequest, opts ...grpc.CallOption) (*datasetmodels.DatasetEntry, error)
+	CreateNewDataset(ctx context.Context, in *datasetmodels.CreateDatasetRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetEntry, error)
 	// Datasets Lists all datasets
 	Datasets(ctx context.Context, in *commonmodels.Empty, opts ...grpc.CallOption) (*datasetmodels.DatasetList, error)
 	// DeleteDataset Delete a dataset
 	DeleteDataset(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error)
 	// Creates a new dataset version based on an existing dataset
-	CreateNewDatasetVersion(ctx context.Context, in *datasetmodels.NewDatasetVersionRequest, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error)
+	CreateNewDatasetVersion(ctx context.Context, in *datasetmodels.NewDatasetVersionRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetVersionEntry, error)
 	// Lists Versions of a dataset
 	DatasetVersions(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionList, error)
 	// Deletes a dataset version
@@ -551,8 +552,8 @@ func NewDatasetServiceClient(cc grpc.ClientConnInterface) DatasetServiceClient {
 	return &datasetServiceClient{cc}
 }
 
-func (c *datasetServiceClient) CreateNewDataset(ctx context.Context, in *datasetmodels.CreateDatasetRequest, opts ...grpc.CallOption) (*datasetmodels.DatasetEntry, error) {
-	out := new(datasetmodels.DatasetEntry)
+func (c *datasetServiceClient) CreateNewDataset(ctx context.Context, in *datasetmodels.CreateDatasetRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetEntry, error) {
+	out := new(datasetentrymodels.DatasetEntry)
 	err := c.cc.Invoke(ctx, "/DatasetService/CreateNewDataset", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -578,8 +579,8 @@ func (c *datasetServiceClient) DeleteDataset(ctx context.Context, in *commonmode
 	return out, nil
 }
 
-func (c *datasetServiceClient) CreateNewDatasetVersion(ctx context.Context, in *datasetmodels.NewDatasetVersionRequest, opts ...grpc.CallOption) (*datasetmodels.DatasetVersionEntry, error) {
-	out := new(datasetmodels.DatasetVersionEntry)
+func (c *datasetServiceClient) CreateNewDatasetVersion(ctx context.Context, in *datasetmodels.NewDatasetVersionRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetVersionEntry, error) {
+	out := new(datasetentrymodels.DatasetVersionEntry)
 	err := c.cc.Invoke(ctx, "/DatasetService/CreateNewDatasetVersion", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -644,13 +645,13 @@ func (c *datasetServiceClient) CreateDatasetObjectLink(ctx context.Context, in *
 // DatasetServiceServer is the server API for DatasetService service.
 type DatasetServiceServer interface {
 	// CreateNewDataset Creates a new dataset
-	CreateNewDataset(context.Context, *datasetmodels.CreateDatasetRequest) (*datasetmodels.DatasetEntry, error)
+	CreateNewDataset(context.Context, *datasetmodels.CreateDatasetRequest) (*datasetentrymodels.DatasetEntry, error)
 	// Datasets Lists all datasets
 	Datasets(context.Context, *commonmodels.Empty) (*datasetmodels.DatasetList, error)
 	// DeleteDataset Delete a dataset
 	DeleteDataset(context.Context, *commonmodels.ID) (*commonmodels.Empty, error)
 	// Creates a new dataset version based on an existing dataset
-	CreateNewDatasetVersion(context.Context, *datasetmodels.NewDatasetVersionRequest) (*datasetmodels.DatasetVersionEntry, error)
+	CreateNewDatasetVersion(context.Context, *datasetmodels.NewDatasetVersionRequest) (*datasetentrymodels.DatasetVersionEntry, error)
 	// Lists Versions of a dataset
 	DatasetVersions(context.Context, *commonmodels.ID) (*datasetmodels.DatasetVersionList, error)
 	// Deletes a dataset version
@@ -670,7 +671,7 @@ type DatasetServiceServer interface {
 type UnimplementedDatasetServiceServer struct {
 }
 
-func (*UnimplementedDatasetServiceServer) CreateNewDataset(context.Context, *datasetmodels.CreateDatasetRequest) (*datasetmodels.DatasetEntry, error) {
+func (*UnimplementedDatasetServiceServer) CreateNewDataset(context.Context, *datasetmodels.CreateDatasetRequest) (*datasetentrymodels.DatasetEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateNewDataset not implemented")
 }
 func (*UnimplementedDatasetServiceServer) Datasets(context.Context, *commonmodels.Empty) (*datasetmodels.DatasetList, error) {
@@ -679,7 +680,7 @@ func (*UnimplementedDatasetServiceServer) Datasets(context.Context, *commonmodel
 func (*UnimplementedDatasetServiceServer) DeleteDataset(context.Context, *commonmodels.ID) (*commonmodels.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteDataset not implemented")
 }
-func (*UnimplementedDatasetServiceServer) CreateNewDatasetVersion(context.Context, *datasetmodels.NewDatasetVersionRequest) (*datasetmodels.DatasetVersionEntry, error) {
+func (*UnimplementedDatasetServiceServer) CreateNewDatasetVersion(context.Context, *datasetmodels.NewDatasetVersionRequest) (*datasetentrymodels.DatasetVersionEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateNewDatasetVersion not implemented")
 }
 func (*UnimplementedDatasetServiceServer) DatasetVersions(context.Context, *commonmodels.ID) (*datasetmodels.DatasetVersionList, error) {

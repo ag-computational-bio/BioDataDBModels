@@ -8,6 +8,7 @@ package datasetmodels
 
 import (
 	commonmodels "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
+	datasetentrymodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetentrymodels"
 	proto "github.com/golang/protobuf/proto"
 	_struct "github.com/golang/protobuf/ptypes/struct"
 	_ "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger/options"
@@ -88,9 +89,9 @@ type DatasetObjectLink struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Link           string                 `protobuf:"bytes,1,opt,name=Link,proto3" json:"Link,omitempty"`
-	ObjectID       string                 `protobuf:"bytes,2,opt,name=ObjectID,proto3" json:"ObjectID,omitempty"`
-	Objectmetadata *DatasetObjectMetaData `protobuf:"bytes,3,opt,name=Objectmetadata,proto3" json:"Objectmetadata,omitempty"`
+	Link           string                                    `protobuf:"bytes,1,opt,name=Link,proto3" json:"Link,omitempty"`
+	ObjectID       string                                    `protobuf:"bytes,2,opt,name=ObjectID,proto3" json:"ObjectID,omitempty"`
+	Objectmetadata *datasetentrymodels.DatasetObjectMetaData `protobuf:"bytes,3,opt,name=Objectmetadata,proto3" json:"Objectmetadata,omitempty"`
 }
 
 func (x *DatasetObjectLink) Reset() {
@@ -139,7 +140,7 @@ func (x *DatasetObjectLink) GetObjectID() string {
 	return ""
 }
 
-func (x *DatasetObjectLink) GetObjectmetadata() *DatasetObjectMetaData {
+func (x *DatasetObjectLink) GetObjectmetadata() *datasetentrymodels.DatasetObjectMetaData {
 	if x != nil {
 		return x.Objectmetadata
 	}
@@ -269,7 +270,7 @@ type DatasetList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Datasets []*DatasetEntry `protobuf:"bytes,1,rep,name=Datasets,proto3" json:"Datasets,omitempty"`
+	Datasets []*datasetentrymodels.DatasetEntry `protobuf:"bytes,1,rep,name=Datasets,proto3" json:"Datasets,omitempty"`
 }
 
 func (x *DatasetList) Reset() {
@@ -304,7 +305,7 @@ func (*DatasetList) Descriptor() ([]byte, []int) {
 	return file_proto_DatasetModels_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *DatasetList) GetDatasets() []*DatasetEntry {
+func (x *DatasetList) GetDatasets() []*datasetentrymodels.DatasetEntry {
 	if x != nil {
 		return x.Datasets
 	}
@@ -316,7 +317,7 @@ type DatasetVersionList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatasetVersions []*DatasetVersionEntry `protobuf:"bytes,2,rep,name=DatasetVersions,proto3" json:"DatasetVersions,omitempty"`
+	DatasetVersions []*datasetentrymodels.DatasetVersionEntry `protobuf:"bytes,2,rep,name=DatasetVersions,proto3" json:"DatasetVersions,omitempty"`
 }
 
 func (x *DatasetVersionList) Reset() {
@@ -351,7 +352,7 @@ func (*DatasetVersionList) Descriptor() ([]byte, []int) {
 	return file_proto_DatasetModels_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *DatasetVersionList) GetDatasetVersions() []*DatasetVersionEntry {
+func (x *DatasetVersionList) GetDatasetVersions() []*datasetentrymodels.DatasetVersionEntry {
 	if x != nil {
 		return x.DatasetVersions
 	}
@@ -363,7 +364,7 @@ type DatasetObjectList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatasetVersionObjects []*DatasetObjectEntry `protobuf:"bytes,1,rep,name=DatasetVersionObjects,proto3" json:"DatasetVersionObjects,omitempty"`
+	DatasetVersionObjects []*datasetentrymodels.DatasetObjectEntry `protobuf:"bytes,1,rep,name=DatasetVersionObjects,proto3" json:"DatasetVersionObjects,omitempty"`
 }
 
 func (x *DatasetObjectList) Reset() {
@@ -398,7 +399,7 @@ func (*DatasetObjectList) Descriptor() ([]byte, []int) {
 	return file_proto_DatasetModels_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *DatasetObjectList) GetDatasetVersionObjects() []*DatasetObjectEntry {
+func (x *DatasetObjectList) GetDatasetVersionObjects() []*datasetentrymodels.DatasetObjectEntry {
 	if x != nil {
 		return x.DatasetVersionObjects
 	}
@@ -622,20 +623,20 @@ func file_proto_DatasetModels_proto_rawDescGZIP() []byte {
 
 var file_proto_DatasetModels_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_proto_DatasetModels_proto_goTypes = []interface{}{
-	(*DatasetObjectLinks)(nil),                     // 0: DatasetObjectLinks
-	(*DatasetObjectLink)(nil),                      // 1: DatasetObjectLink
-	(*CreateDatasetRequest)(nil),                   // 2: CreateDatasetRequest
-	(*UpdateDatasetVersionObjectCountRequest)(nil), // 3: UpdateDatasetVersionObjectCountRequest
-	(*DatasetList)(nil),                            // 4: DatasetList
-	(*DatasetVersionList)(nil),                     // 5: DatasetVersionList
-	(*DatasetObjectList)(nil),                      // 6: DatasetObjectList
-	(*NewDatasetVersionRequest)(nil),               // 7: NewDatasetVersionRequest
-	(*DatasetObjectMetaData)(nil),                  // 8: DatasetObjectMetaData
-	(*DatasetEntry)(nil),                           // 9: DatasetEntry
-	(*DatasetVersionEntry)(nil),                    // 10: DatasetVersionEntry
-	(*DatasetObjectEntry)(nil),                     // 11: DatasetObjectEntry
-	(*commonmodels.Version)(nil),                   // 12: Version
-	(*_struct.Struct)(nil),                         // 13: google.protobuf.Struct
+	(*DatasetObjectLinks)(nil),                       // 0: DatasetObjectLinks
+	(*DatasetObjectLink)(nil),                        // 1: DatasetObjectLink
+	(*CreateDatasetRequest)(nil),                     // 2: CreateDatasetRequest
+	(*UpdateDatasetVersionObjectCountRequest)(nil),   // 3: UpdateDatasetVersionObjectCountRequest
+	(*DatasetList)(nil),                              // 4: DatasetList
+	(*DatasetVersionList)(nil),                       // 5: DatasetVersionList
+	(*DatasetObjectList)(nil),                        // 6: DatasetObjectList
+	(*NewDatasetVersionRequest)(nil),                 // 7: NewDatasetVersionRequest
+	(*datasetentrymodels.DatasetObjectMetaData)(nil), // 8: DatasetObjectMetaData
+	(*datasetentrymodels.DatasetEntry)(nil),          // 9: DatasetEntry
+	(*datasetentrymodels.DatasetVersionEntry)(nil),   // 10: DatasetVersionEntry
+	(*datasetentrymodels.DatasetObjectEntry)(nil),    // 11: DatasetObjectEntry
+	(*commonmodels.Version)(nil),                     // 12: Version
+	(*_struct.Struct)(nil),                           // 13: google.protobuf.Struct
 }
 var file_proto_DatasetModels_proto_depIdxs = []int32{
 	1,  // 0: DatasetObjectLinks.Entites:type_name -> DatasetObjectLink
@@ -657,7 +658,6 @@ func file_proto_DatasetModels_proto_init() {
 	if File_proto_DatasetModels_proto != nil {
 		return
 	}
-	file_proto_DatasetEntryModels_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_proto_DatasetModels_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*DatasetObjectLinks); i {

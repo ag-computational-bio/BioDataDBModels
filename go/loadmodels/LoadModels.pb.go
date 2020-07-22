@@ -7,7 +7,7 @@
 package loadmodels
 
 import (
-	datasetmodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels"
+	datasetentrymodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetentrymodels"
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -134,9 +134,9 @@ type CreateLoadLinkSetRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	DatasetID        string                                 `protobuf:"bytes,1,opt,name=DatasetID,proto3" json:"DatasetID,omitempty"` // ID of the dataset upload links should be created for
-	DatasetVersionID string                                 `protobuf:"bytes,2,opt,name=DatasetVersionID,proto3" json:"DatasetVersionID,omitempty"`
-	Metadata         []*datasetmodels.DatasetObjectMetaData `protobuf:"bytes,3,rep,name=Metadata,proto3" json:"Metadata,omitempty"` // List of metadata of uploaded objects
+	DatasetID        string                                      `protobuf:"bytes,1,opt,name=DatasetID,proto3" json:"DatasetID,omitempty"` // ID of the dataset upload links should be created for
+	DatasetVersionID string                                      `protobuf:"bytes,2,opt,name=DatasetVersionID,proto3" json:"DatasetVersionID,omitempty"`
+	Metadata         []*datasetentrymodels.DatasetObjectMetaData `protobuf:"bytes,3,rep,name=Metadata,proto3" json:"Metadata,omitempty"` // List of metadata of uploaded objects
 }
 
 func (x *CreateLoadLinkSetRequest) Reset() {
@@ -185,7 +185,7 @@ func (x *CreateLoadLinkSetRequest) GetDatasetVersionID() string {
 	return ""
 }
 
-func (x *CreateLoadLinkSetRequest) GetMetadata() []*datasetmodels.DatasetObjectMetaData {
+func (x *CreateLoadLinkSetRequest) GetMetadata() []*datasetentrymodels.DatasetObjectMetaData {
 	if x != nil {
 		return x.Metadata
 	}
@@ -252,10 +252,10 @@ func file_proto_LoadModels_proto_rawDescGZIP() []byte {
 
 var file_proto_LoadModels_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_proto_LoadModels_proto_goTypes = []interface{}{
-	(*UploadLinks)(nil),                         // 0: UploadLinks
-	(*UploadLink)(nil),                          // 1: UploadLink
-	(*CreateLoadLinkSetRequest)(nil),            // 2: CreateLoadLinkSetRequest
-	(*datasetmodels.DatasetObjectMetaData)(nil), // 3: DatasetObjectMetaData
+	(*UploadLinks)(nil),                              // 0: UploadLinks
+	(*UploadLink)(nil),                               // 1: UploadLink
+	(*CreateLoadLinkSetRequest)(nil),                 // 2: CreateLoadLinkSetRequest
+	(*datasetentrymodels.DatasetObjectMetaData)(nil), // 3: DatasetObjectMetaData
 }
 var file_proto_LoadModels_proto_depIdxs = []int32{
 	1, // 0: UploadLinks.Links:type_name -> UploadLink
