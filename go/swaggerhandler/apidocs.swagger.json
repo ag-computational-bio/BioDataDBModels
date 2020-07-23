@@ -907,6 +907,9 @@
         },
         "CurrentVersion": {
           "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/EntryStatus"
         }
       },
       "description": "Database entry for a dataset",
@@ -1151,6 +1154,15 @@
       "type": "object",
       "description": "An empty object",
       "title": "Empty"
+    },
+    "EntryStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Archived",
+        "Deleting"
+      ],
+      "default": "Active"
     },
     "Field": {
       "type": "object",

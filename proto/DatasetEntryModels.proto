@@ -7,6 +7,12 @@ import "google/protobuf/struct.proto";
 import "proto/CommonModels.proto";
 import "protoc/gateway/options/annotations.proto";
 
+enum EntryStatus {
+    Active = 0;
+    Archived = 1;
+    Deleting = 2;
+}
+
 message DatasetEntry {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -17,6 +23,7 @@ message DatasetEntry {
     string ID = 1;
     DatasetEntryMetadata Metadata = 2;
     string CurrentVersion = 3;
+    EntryStatus Status = 4;
 }
 
 message DatasetEntryMetadata {

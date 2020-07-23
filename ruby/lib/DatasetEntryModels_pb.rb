@@ -13,6 +13,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ID, :string, 1
       optional :Metadata, :message, 2, "DatasetEntryMetadata"
       optional :CurrentVersion, :string, 3
+      optional :Status, :enum, 4, "EntryStatus"
     end
     add_message "DatasetEntryMetadata" do
       optional :Datasetname, :string, 1
@@ -61,6 +62,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :AdditionalMetadata, :message, 10, "google.protobuf.Struct"
       optional :Created, :message, 11, "google.protobuf.Timestamp"
     end
+    add_enum "EntryStatus" do
+      value :Active, 0
+      value :Archived, 1
+      value :Deleting, 2
+    end
   end
 end
 
@@ -71,3 +77,4 @@ DatasetVersionMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.looku
 DatasetVersionMetadata::DatasetVersionStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionMetadata.DatasetVersionStatus").enummodule
 DatasetObjectEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectEntry").msgclass
 DatasetObjectMetaData = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectMetaData").msgclass
+EntryStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("EntryStatus").enummodule
