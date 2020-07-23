@@ -89,7 +89,7 @@ message StructMetadataMessage {
             description: "Metadata message of struct type. The struct type uses JSON and cannot store int64/uint64 properly. To create indices on int64/uint64 values please use the provided maps."
         };
     };
-    google.protobuf.Value Metadata = 1;
+    google.protobuf.Struct Metadata = 1;
     map<string, int64> Int64Indices = 2;
     map<string, uint64> UInt64Indices = 3;
 }
@@ -115,7 +115,7 @@ message QueryRequest {
     };
     string MetadataDBID = 1; // MetadataDB to be used
     string CollectionID = 2; // MetadataCollection to be used
-    google.protobuf.Value Query = 4; // Query
+    google.protobuf.Struct Query = 4; // Query
 }
 
 message Index {
@@ -135,5 +135,5 @@ message Field {
             description: "TODO - WIP"
         };
     };
-    repeated google.protobuf.Value Data = 1;
+    repeated google.protobuf.Struct Data = 1;
 }
