@@ -42,7 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :StructMetadata, :message, 4, "StructMetadataMessage"
     end
     add_message "StructMetadataMessage" do
-      optional :Metadata, :message, 1, "google.protobuf.Struct"
+      optional :Metadata, :message, 1, "google.protobuf.Value"
       map :Int64Indices, :string, :int64, 2
       map :UInt64Indices, :string, :uint64, 3
     end
@@ -54,13 +54,13 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "QueryRequest" do
       optional :MetadataDBID, :string, 1
       optional :CollectionID, :string, 2
-      optional :Query, :message, 4, "google.protobuf.Struct"
+      optional :Query, :message, 4, "google.protobuf.Value"
     end
     add_message "Index" do
       optional :Field, :string, 1
     end
     add_message "Field" do
-      repeated :Data, :message, 1, "google.protobuf.Struct"
+      repeated :Data, :message, 1, "google.protobuf.Value"
     end
   end
 end
