@@ -31,7 +31,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Datasetname, :string, 2
       optional :Version, :message, 3, "Version"
       optional :Created, :message, 4, "google.protobuf.Timestamp"
-      optional :AdditionalMetadata, :message, 5, "google.protobuf.Value"
+      optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
       optional :AdditionalMetadataMessageRef, :string, 6
       optional :AdditionalObjectMetadataMessageRef, :string, 7
       optional :ObjectCount, :int64, 8
@@ -59,7 +59,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetID, :string, 7
       repeated :DatasetVersionID, :string, 8
       optional :Location, :message, 9, "Location"
-      optional :AdditionalMetadata, :message, 10, "google.protobuf.Value"
+      optional :AdditionalMetadata, :message, 10, "google.protobuf.Struct"
       optional :Created, :message, 11, "google.protobuf.Timestamp"
     end
     add_enum "EntryStatus" do
