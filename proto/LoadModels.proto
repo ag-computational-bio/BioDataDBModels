@@ -24,6 +24,7 @@ message UploadLink {
     };
     string ID = 1; // ID of the upload request
     string Link = 2; // Upload link (normally a presigned put URL for S3)
+    DatasetObjectEntry Object = 3;
 }
 
 message CreateLoadLinkSetRequest {

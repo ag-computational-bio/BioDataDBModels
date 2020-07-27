@@ -1497,6 +1497,9 @@
         },
         "Link": {
           "type": "string"
+        },
+        "Object": {
+          "$ref": "#/definitions/DatasetObjectEntry"
         }
       },
       "description": "A presigned URL link and its upload request URL",

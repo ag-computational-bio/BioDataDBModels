@@ -13,6 +13,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "UploadLink" do
       optional :ID, :string, 1
       optional :Link, :string, 2
+      optional :Object, :message, 3, "DatasetObjectEntry"
     end
     add_message "CreateLoadLinkSetRequest" do
       optional :DatasetID, :string, 1
