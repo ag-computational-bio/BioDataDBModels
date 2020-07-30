@@ -13,15 +13,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "Project" do
       optional :ID, :string, 1
-      repeated :Datasets, :message, 2, "ProjectDataset"
       repeated :Users, :message, 3, "ProjectUser"
     end
-    add_message "ProjectDataset" do
-      optional :DatasetID, :string, 1
-      optional :Scope, :enum, 2, "Scope"
-    end
     add_message "TokenList" do
-      optional :UserID, :string, 1
+      optional :ProjectID, :string, 1
       repeated :token, :message, 2, "TokenEntry"
     end
     add_message "TokenEntry" do
@@ -46,7 +41,6 @@ end
 
 ProjectUser = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectUser").msgclass
 Project = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Project").msgclass
-ProjectDataset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectDataset").msgclass
 TokenList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenList").msgclass
 TokenEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenEntry").msgclass
 CreateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateTokenRequest").msgclass

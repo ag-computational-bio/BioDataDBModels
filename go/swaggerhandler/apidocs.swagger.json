@@ -910,6 +910,19 @@
         },
         "Status": {
           "$ref": "#/definitions/EntryStatus"
+        },
+        "OwnerProjectID": {
+          "type": "string"
+        },
+        "BurrowedProjectIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isPublic": {
+          "type": "boolean",
+          "format": "boolean"
         }
       },
       "description": "Database entry for a dataset",
@@ -1461,7 +1474,7 @@
     "TokenList": {
       "type": "object",
       "properties": {
-        "UserID": {
+        "ProjectID": {
           "type": "string"
         },
         "token": {

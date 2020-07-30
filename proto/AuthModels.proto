@@ -12,13 +12,7 @@ message ProjectUser {
 
 message Project {
     string ID = 1;
-    repeated ProjectDataset Datasets = 2;
     repeated ProjectUser Users = 3;
-}
-
-message ProjectDataset {
-    string DatasetID = 1;
-    Scope Scope = 2;
 }
 
 message TokenList {
@@ -28,7 +22,7 @@ message TokenList {
             description: "Lists all available api tokens for a user"
         };
     };
-    string UserID = 1;
+    string ProjectID = 1;
     repeated TokenEntry token = 2;
 }
 

@@ -24,6 +24,9 @@ message DatasetEntry {
     DatasetEntryMetadata Metadata = 2;
     string CurrentVersion = 3;
     EntryStatus Status = 4;
+    string OwnerProjectID = 5;
+    repeated string BurrowedProjectIDs = 6;
+    bool isPublic = 7;
 }
 
 message DatasetEntryMetadata {

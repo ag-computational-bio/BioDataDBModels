@@ -14,6 +14,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Metadata, :message, 2, "DatasetEntryMetadata"
       optional :CurrentVersion, :string, 3
       optional :Status, :enum, 4, "EntryStatus"
+      optional :OwnerProjectID, :string, 5
+      repeated :BurrowedProjectIDs, :string, 6
+      optional :isPublic, :bool, 7
     end
     add_message "DatasetEntryMetadata" do
       optional :Datasetname, :string, 1
