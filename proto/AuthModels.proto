@@ -17,9 +17,8 @@ message Project {
 }
 
 message ProjectDataset {
-    string ProjectID = 1;
-    string DatasetID = 2;
-    Scope Scope = 3;
+    string DatasetID = 1;
+    Scope Scope = 2;
 }
 
 message TokenList {

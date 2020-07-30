@@ -17,9 +17,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :Users, :message, 3, "ProjectUser"
     end
     add_message "ProjectDataset" do
-      optional :ProjectID, :string, 1
-      optional :DatasetID, :string, 2
-      optional :Scope, :enum, 3, "Scope"
+      optional :DatasetID, :string, 1
+      optional :Scope, :enum, 2, "Scope"
     end
     add_message "TokenList" do
       optional :UserID, :string, 1
