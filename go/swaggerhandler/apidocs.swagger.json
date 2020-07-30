@@ -1445,7 +1445,7 @@
           "type": "string",
           "format": "date-time"
         },
-        "DatasetID": {
+        "ProjectID": {
           "type": "string"
         },
         "AccessScopes": {

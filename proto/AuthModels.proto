@@ -6,6 +6,27 @@ import "google/protobuf/timestamp.proto";
 import "protoc/gateway/options/annotations.proto";
 
 
+message User {
+    string UserID = 1;
+    repeated UserProject Projects = 2;
+}
+
+message UserProject {
+    string ProjectID = 1;
+    Scope Scope = 2;
+}
+
+message Project {
+    string ID = 1;
+    repeated ProjectDataset Datasets = 2;
+}
+
+message ProjectDataset {
+    string ProjectID = 1;
+    string DatasetID = 2;
+    Scope Scope = 3;
+}
+
 message TokenList {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -33,7 +54,7 @@ message TokenEntry {
     string Token = 2;
     google.protobuf.Timestamp Created = 3; // When the token was created
     google.protobuf.Timestamp Expires = 4; // When the token expires
-    string DatasetID = 5;
+    string ProjectID = 5;
     repeated Scope AccessScopes = 6;
 }
 

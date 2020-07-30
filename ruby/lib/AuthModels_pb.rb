@@ -7,6 +7,23 @@ require 'google/protobuf/timestamp_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/AuthModels.proto", :syntax => :proto3) do
+    add_message "User" do
+      optional :UserID, :string, 1
+      repeated :Projects, :message, 2, "UserProject"
+    end
+    add_message "UserProject" do
+      optional :ProjectID, :string, 1
+      optional :Scope, :enum, 2, "Scope"
+    end
+    add_message "Project" do
+      optional :ID, :string, 1
+      repeated :Datasets, :message, 2, "ProjectDataset"
+    end
+    add_message "ProjectDataset" do
+      optional :ProjectID, :string, 1
+      optional :DatasetID, :string, 2
+      optional :Scope, :enum, 3, "Scope"
+    end
     add_message "TokenList" do
       optional :UserID, :string, 1
       repeated :token, :message, 2, "TokenEntry"
@@ -16,7 +33,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Token, :string, 2
       optional :Created, :message, 3, "google.protobuf.Timestamp"
       optional :Expires, :message, 4, "google.protobuf.Timestamp"
-      optional :DatasetID, :string, 5
+      optional :ProjectID, :string, 5
       repeated :AccessScopes, :enum, 6, "Scope"
     end
     add_message "CreateTokenRequest" do
@@ -31,6 +48,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
+User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("User").msgclass
+UserProject = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UserProject").msgclass
+Project = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Project").msgclass
+ProjectDataset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectDataset").msgclass
 TokenList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenList").msgclass
 TokenEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenEntry").msgclass
 CreateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateTokenRequest").msgclass
