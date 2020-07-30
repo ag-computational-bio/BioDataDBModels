@@ -7,17 +7,14 @@ require 'google/protobuf/timestamp_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/AuthModels.proto", :syntax => :proto3) do
-    add_message "User" do
+    add_message "ProjectUser" do
       optional :UserID, :string, 1
-      repeated :Projects, :message, 2, "UserProject"
-    end
-    add_message "UserProject" do
-      optional :ProjectID, :string, 1
       optional :Scope, :enum, 2, "Scope"
     end
     add_message "Project" do
       optional :ID, :string, 1
       repeated :Datasets, :message, 2, "ProjectDataset"
+      repeated :Users, :message, 3, "ProjectUser"
     end
     add_message "ProjectDataset" do
       optional :ProjectID, :string, 1
@@ -48,8 +45,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
-User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("User").msgclass
-UserProject = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UserProject").msgclass
+ProjectUser = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectUser").msgclass
 Project = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Project").msgclass
 ProjectDataset = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectDataset").msgclass
 TokenList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenList").msgclass

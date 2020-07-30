@@ -5,20 +5,15 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/authmode
 import "google/protobuf/timestamp.proto";
 import "protoc/gateway/options/annotations.proto";
 
-
-message User {
+message ProjectUser {
     string UserID = 1;
-    repeated UserProject Projects = 2;
-}
-
-message UserProject {
-    string ProjectID = 1;
     Scope Scope = 2;
 }
 
 message Project {
     string ID = 1;
     repeated ProjectDataset Datasets = 2;
+    repeated ProjectUser Users = 3;
 }
 
 message ProjectDataset {
