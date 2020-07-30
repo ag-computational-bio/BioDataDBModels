@@ -844,13 +844,17 @@
       "type": "object",
       "example": {
         "DatasetName": "test",
-        "Datatype": "test2"
+        "Datatype": "test2",
+        "ProjectID": "testProject"
       },
       "properties": {
         "DatasetName": {
           "type": "string"
         },
         "Datatype": {
+          "type": "string"
+        },
+        "ProjectID": {
           "type": "string"
         }
       },

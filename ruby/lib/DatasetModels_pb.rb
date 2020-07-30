@@ -21,6 +21,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "CreateDatasetRequest" do
       optional :DatasetName, :string, 1
       optional :Datatype, :string, 2
+      optional :ProjectID, :string, 3
     end
     add_message "UpdateDatasetVersionObjectCountRequest" do
       optional :DatasetVersionID, :string, 1
