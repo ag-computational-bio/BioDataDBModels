@@ -14,6 +14,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ID, :string, 1
       optional :Description, :string, 2
       repeated :Users, :message, 3, "ProjectUser"
+      optional :ProjectName, :string, 4
     end
   end
 end

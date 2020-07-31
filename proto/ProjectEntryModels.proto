@@ -14,4 +14,5 @@ message Project {
     string ID = 1;
     string Description = 2;
     repeated ProjectUser Users = 3;
+    string ProjectName = 4;
 }

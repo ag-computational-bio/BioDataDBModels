@@ -1403,6 +1403,9 @@
           "items": {
             "$ref": "#/definitions/ProjectUser"
           }
+        },
+        "ProjectName": {
+          "type": "string"
         }
       }
     },
