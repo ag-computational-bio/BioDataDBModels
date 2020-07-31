@@ -3,18 +3,11 @@
 
 require 'google/protobuf'
 
+require 'proto/CommonModels_pb'
 require 'google/protobuf/timestamp_pb'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/AuthModels.proto", :syntax => :proto3) do
-    add_message "ProjectUser" do
-      optional :UserID, :string, 1
-      optional :Scope, :enum, 2, "Scope"
-    end
-    add_message "Project" do
-      optional :ID, :string, 1
-      repeated :Users, :message, 3, "ProjectUser"
-    end
     add_message "TokenList" do
       optional :ProjectID, :string, 1
       repeated :token, :message, 2, "TokenEntry"
@@ -32,16 +25,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :AccessScopes, :enum, 2, "Scope"
       optional :Expires, :message, 3, "google.protobuf.Timestamp"
     end
-    add_enum "Scope" do
-      value :Read, 0
-      value :Write, 1
-    end
   end
 end
 
-ProjectUser = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectUser").msgclass
-Project = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Project").msgclass
 TokenList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenList").msgclass
 TokenEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("TokenEntry").msgclass
 CreateTokenRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateTokenRequest").msgclass
-Scope = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Scope").enummodule

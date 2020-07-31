@@ -2,18 +2,10 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/authmodels";
 
+import "proto/CommonModels.proto";
+
 import "google/protobuf/timestamp.proto";
 import "protoc/gateway/options/annotations.proto";
-
-message ProjectUser {
-    string UserID = 1;
-    Scope Scope = 2;
-}
-
-message Project {
-    string ID = 1;
-    repeated ProjectUser Users = 3;
-}
 
 message TokenList {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
@@ -24,11 +16,6 @@ message TokenList {
     };
     string ProjectID = 1;
     repeated TokenEntry token = 2;
-}
-
-enum Scope {
-    Read = 0;
-    Write = 1;
 }
 
 message TokenEntry {

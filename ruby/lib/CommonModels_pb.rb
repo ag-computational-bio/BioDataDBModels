@@ -44,6 +44,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "IDList" do
       repeated :IDs, :string, 1
     end
+    add_enum "Scope" do
+      value :Read, 0
+      value :Write, 1
+    end
   end
 end
 
@@ -56,3 +60,4 @@ Version = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version").ms
 Version::VersionStage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version.VersionStage").enummodule
 Int64Wrapper = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Int64Wrapper").msgclass
 IDList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IDList").msgclass
+Scope = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Scope").enummodule

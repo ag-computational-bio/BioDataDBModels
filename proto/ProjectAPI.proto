@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
+
+import "proto/ProjectEntryModels.proto";
+import "proto/ProjectModels.proto";
+import "google/api/annotations.proto";
+
+
+service ProjectAPI {
+    rpc CreateProject (CreateProjectRequest) returns (Project) {
+        option (google.api.http) = {
+            post: "/api/v1/project/createproject"
+            body: "*"
+        };
+    }
+
+    rpc AddUserToProject (AddUserToProjectRequest) returns (Project) {
+        option (google.api.http) = {
+            post: "/api/v1/project/createproject"
+            body: "*"
+        };
+    }
+}

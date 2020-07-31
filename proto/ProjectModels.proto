@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/projectmodel";
+
+import "proto/CommonModels.proto";
+
+import "protoc/gateway/options/annotations.proto";
+
+
+message CreateProjectRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "CreateProjectRequest";
+            description: "Request to create a new project"
+        };
+    };
+    string Name = 1;
+    string Description = 2;
+}
+
+message AddUserToProjectRequest {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "AddUserToProjectRequest";
+            description: "Adds a new user to a project"
+        };
+    };
+
+    string UserID = 1;
+    Scope Scope = 2;
+}

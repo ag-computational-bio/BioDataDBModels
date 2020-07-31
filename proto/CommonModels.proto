@@ -6,6 +6,10 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/commonmo
 
 import "protoc/gateway/options/annotations.proto";
 
+enum Scope {
+    Read = 0;
+    Write = 1;
+}
 
 message Empty {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
