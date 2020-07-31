@@ -7,6 +7,10 @@ protoc --proto_path=. --go_out=plugins=grpc:go --go_opt=paths=source_relative pr
 mv go/proto/APIs.pb.go go/api
 mv go/proto/ProjectAPI.pb.go go/api
 
+mv go/proto/ProjectModels.pb.go go/projectmodels
+mv go/proto/ProjectEntryModels.pb.go go/projectmodels
+
+
 mv go/proto/DatasetModels.pb.go go/datasetmodels
 mv go/proto/LoadModels.pb.go go/loadmodels
 mv go/proto/CommonModels.pb.go go/commonmodels
