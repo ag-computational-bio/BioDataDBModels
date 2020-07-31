@@ -15,6 +15,8 @@ module ProjectAPI
 
     rpc :CreateProject, CreateProjectRequest, Project
     rpc :AddUserToProject, AddUserToProjectRequest, Project
+    rpc :GetProjectDatasets, ID, DatasetList
+    rpc :GetUserProjects, Empty, ProjectEntryList
   end
 
   Stub = Service.rpc_stub_class

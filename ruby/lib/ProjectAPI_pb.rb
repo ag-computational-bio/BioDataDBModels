@@ -3,6 +3,8 @@
 
 require 'google/protobuf'
 
+require 'proto/DatasetModels_pb'
+require 'proto/CommonModels_pb'
 require 'proto/ProjectEntryModels_pb'
 require 'proto/ProjectModels_pb'
 require 'google/api/annotations_pb'

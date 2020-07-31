@@ -5,6 +5,7 @@ require 'google/protobuf'
 
 require 'proto/CommonModels_pb'
 require 'protoc/gateway/options/annotations_pb'
+require 'proto/ProjectEntryModels_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/ProjectModels.proto", :syntax => :proto3) do
     add_message "CreateProjectRequest" do
@@ -15,8 +16,12 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :UserID, :string, 1
       optional :Scope, :enum, 2, "Scope"
     end
+    add_message "ProjectEntryList" do
+      repeated :Projects, :message, 1, "Project"
+    end
   end
 end
 
 CreateProjectRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateProjectRequest").msgclass
 AddUserToProjectRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("AddUserToProjectRequest").msgclass
+ProjectEntryList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectEntryList").msgclass

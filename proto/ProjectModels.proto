@@ -5,6 +5,7 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/projectm
 import "proto/CommonModels.proto";
 
 import "protoc/gateway/options/annotations.proto";
+import "proto/ProjectEntryModels.proto";
 
 
 message CreateProjectRequest {
@@ -28,4 +29,15 @@ message AddUserToProjectRequest {
 
     string UserID = 1;
     Scope Scope = 2;
+}
+
+message ProjectEntryList {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "ProjectEntryList";
+            description: "Lists all projects of a user"
+        };
+    };
+
+    repeated Project Projects = 1;
 }

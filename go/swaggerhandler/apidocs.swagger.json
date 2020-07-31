@@ -667,7 +667,7 @@
         ]
       }
     },
-    "/api/v1/project/createproject": {
+    "/api/v1/project/addusertoproject": {
       "post": {
         "operationId": "ProjectAPI_AddUserToProject",
         "responses": {
@@ -694,6 +694,92 @@
             }
           }
         ],
+        "tags": [
+          "ProjectAPI"
+        ]
+      }
+    },
+    "/api/v1/project/createproject": {
+      "post": {
+        "operationId": "ProjectAPI_CreateProject",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateProjectRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProjectAPI"
+        ]
+      }
+    },
+    "/api/v1/project/projectdatasets": {
+      "post": {
+        "operationId": "ProjectAPI_GetProjectDatasets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "ProjectAPI"
+        ]
+      }
+    },
+    "/api/v1/projects": {
+      "get": {
+        "operationId": "ProjectAPI_GetUserProjects",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/ProjectEntryList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
         "tags": [
           "ProjectAPI"
         ]
@@ -1319,6 +1405,19 @@
           }
         }
       }
+    },
+    "ProjectEntryList": {
+      "type": "object",
+      "properties": {
+        "Projects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Project"
+          }
+        }
+      },
+      "description": "Lists all projects of a user",
+      "title": "ProjectEntryList"
     },
     "ProjectUser": {
       "type": "object",
