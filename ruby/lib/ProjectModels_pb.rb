@@ -15,6 +15,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "AddUserToProjectRequest" do
       optional :UserID, :string, 1
       optional :Scope, :enum, 2, "Scope"
+      optional :ProjectID, :string, 3
     end
     add_message "ProjectEntryList" do
       repeated :Projects, :message, 1, "Project"

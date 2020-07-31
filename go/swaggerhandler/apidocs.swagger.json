@@ -814,6 +814,9 @@
         },
         "Scope": {
           "$ref": "#/definitions/Scope"
+        },
+        "ProjectID": {
+          "type": "string"
         }
       },
       "description": "Adds a new user to a project",

@@ -29,6 +29,7 @@ message AddUserToProjectRequest {
 
     string UserID = 1;
     Scope Scope = 2;
+    string ProjectID = 3;
 }
 
 message ProjectEntryList {
