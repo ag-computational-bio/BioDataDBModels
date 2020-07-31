@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/projectentrymodels";
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/projectmodel";
 
 import "proto/CommonModels.proto";
 

@@ -10,7 +10,6 @@ import (
 	context "context"
 	commonmodels "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
 	datasetmodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels"
-	projectentrymodels "github.com/ag-computational-bio/BioDataDBModels/go/projectentrymodels"
 	projectmodel "github.com/ag-computational-bio/BioDataDBModels/go/projectmodel"
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -81,7 +80,7 @@ var file_proto_ProjectAPI_proto_goTypes = []interface{}{
 	(*projectmodel.AddUserToProjectRequest)(nil), // 1: AddUserToProjectRequest
 	(*commonmodels.ID)(nil),                      // 2: ID
 	(*commonmodels.Empty)(nil),                   // 3: Empty
-	(*projectentrymodels.Project)(nil),           // 4: Project
+	(*projectmodel.Project)(nil),                 // 4: Project
 	(*datasetmodels.DatasetList)(nil),            // 5: DatasetList
 	(*projectmodel.ProjectEntryList)(nil),        // 6: ProjectEntryList
 }
@@ -137,8 +136,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ProjectAPIClient interface {
-	CreateProject(ctx context.Context, in *projectmodel.CreateProjectRequest, opts ...grpc.CallOption) (*projectentrymodels.Project, error)
-	AddUserToProject(ctx context.Context, in *projectmodel.AddUserToProjectRequest, opts ...grpc.CallOption) (*projectentrymodels.Project, error)
+	CreateProject(ctx context.Context, in *projectmodel.CreateProjectRequest, opts ...grpc.CallOption) (*projectmodel.Project, error)
+	AddUserToProject(ctx context.Context, in *projectmodel.AddUserToProjectRequest, opts ...grpc.CallOption) (*projectmodel.Project, error)
 	GetProjectDatasets(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetList, error)
 	GetUserProjects(ctx context.Context, in *commonmodels.Empty, opts ...grpc.CallOption) (*projectmodel.ProjectEntryList, error)
 }
@@ -151,8 +150,8 @@ func NewProjectAPIClient(cc grpc.ClientConnInterface) ProjectAPIClient {
 	return &projectAPIClient{cc}
 }
 
-func (c *projectAPIClient) CreateProject(ctx context.Context, in *projectmodel.CreateProjectRequest, opts ...grpc.CallOption) (*projectentrymodels.Project, error) {
-	out := new(projectentrymodels.Project)
+func (c *projectAPIClient) CreateProject(ctx context.Context, in *projectmodel.CreateProjectRequest, opts ...grpc.CallOption) (*projectmodel.Project, error) {
+	out := new(projectmodel.Project)
 	err := c.cc.Invoke(ctx, "/ProjectAPI/CreateProject", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -160,8 +159,8 @@ func (c *projectAPIClient) CreateProject(ctx context.Context, in *projectmodel.C
 	return out, nil
 }
 
-func (c *projectAPIClient) AddUserToProject(ctx context.Context, in *projectmodel.AddUserToProjectRequest, opts ...grpc.CallOption) (*projectentrymodels.Project, error) {
-	out := new(projectentrymodels.Project)
+func (c *projectAPIClient) AddUserToProject(ctx context.Context, in *projectmodel.AddUserToProjectRequest, opts ...grpc.CallOption) (*projectmodel.Project, error) {
+	out := new(projectmodel.Project)
 	err := c.cc.Invoke(ctx, "/ProjectAPI/AddUserToProject", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -189,8 +188,8 @@ func (c *projectAPIClient) GetUserProjects(ctx context.Context, in *commonmodels
 
 // ProjectAPIServer is the server API for ProjectAPI service.
 type ProjectAPIServer interface {
-	CreateProject(context.Context, *projectmodel.CreateProjectRequest) (*projectentrymodels.Project, error)
-	AddUserToProject(context.Context, *projectmodel.AddUserToProjectRequest) (*projectentrymodels.Project, error)
+	CreateProject(context.Context, *projectmodel.CreateProjectRequest) (*projectmodel.Project, error)
+	AddUserToProject(context.Context, *projectmodel.AddUserToProjectRequest) (*projectmodel.Project, error)
 	GetProjectDatasets(context.Context, *commonmodels.ID) (*datasetmodels.DatasetList, error)
 	GetUserProjects(context.Context, *commonmodels.Empty) (*projectmodel.ProjectEntryList, error)
 }
@@ -199,10 +198,10 @@ type ProjectAPIServer interface {
 type UnimplementedProjectAPIServer struct {
 }
 
-func (*UnimplementedProjectAPIServer) CreateProject(context.Context, *projectmodel.CreateProjectRequest) (*projectentrymodels.Project, error) {
+func (*UnimplementedProjectAPIServer) CreateProject(context.Context, *projectmodel.CreateProjectRequest) (*projectmodel.Project, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateProject not implemented")
 }
-func (*UnimplementedProjectAPIServer) AddUserToProject(context.Context, *projectmodel.AddUserToProjectRequest) (*projectentrymodels.Project, error) {
+func (*UnimplementedProjectAPIServer) AddUserToProject(context.Context, *projectmodel.AddUserToProjectRequest) (*projectmodel.Project, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddUserToProject not implemented")
 }
 func (*UnimplementedProjectAPIServer) GetProjectDatasets(context.Context, *commonmodels.ID) (*datasetmodels.DatasetList, error) {

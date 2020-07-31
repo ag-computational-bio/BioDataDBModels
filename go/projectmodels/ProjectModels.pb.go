@@ -8,7 +8,6 @@ package projectmodel
 
 import (
 	commonmodels "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
-	projectentrymodels "github.com/ag-computational-bio/BioDataDBModels/go/projectentrymodels"
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger/options"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -143,7 +142,7 @@ type ProjectEntryList struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Projects []*projectentrymodels.Project `protobuf:"bytes,1,rep,name=Projects,proto3" json:"Projects,omitempty"`
+	Projects []*Project `protobuf:"bytes,1,rep,name=Projects,proto3" json:"Projects,omitempty"`
 }
 
 func (x *ProjectEntryList) Reset() {
@@ -178,7 +177,7 @@ func (*ProjectEntryList) Descriptor() ([]byte, []int) {
 	return file_proto_ProjectModels_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *ProjectEntryList) GetProjects() []*projectentrymodels.Project {
+func (x *ProjectEntryList) GetProjects() []*Project {
 	if x != nil {
 		return x.Projects
 	}
@@ -242,11 +241,11 @@ func file_proto_ProjectModels_proto_rawDescGZIP() []byte {
 
 var file_proto_ProjectModels_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_proto_ProjectModels_proto_goTypes = []interface{}{
-	(*CreateProjectRequest)(nil),       // 0: CreateProjectRequest
-	(*AddUserToProjectRequest)(nil),    // 1: AddUserToProjectRequest
-	(*ProjectEntryList)(nil),           // 2: ProjectEntryList
-	(commonmodels.Scope)(0),            // 3: Scope
-	(*projectentrymodels.Project)(nil), // 4: Project
+	(*CreateProjectRequest)(nil),    // 0: CreateProjectRequest
+	(*AddUserToProjectRequest)(nil), // 1: AddUserToProjectRequest
+	(*ProjectEntryList)(nil),        // 2: ProjectEntryList
+	(commonmodels.Scope)(0),         // 3: Scope
+	(*Project)(nil),                 // 4: Project
 }
 var file_proto_ProjectModels_proto_depIdxs = []int32{
 	3, // 0: AddUserToProjectRequest.Scope:type_name -> Scope
@@ -263,6 +262,7 @@ func file_proto_ProjectModels_proto_init() {
 	if File_proto_ProjectModels_proto != nil {
 		return
 	}
+	file_proto_ProjectEntryModels_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_proto_ProjectModels_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*CreateProjectRequest); i {
