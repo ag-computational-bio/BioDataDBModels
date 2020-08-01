@@ -190,7 +190,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/Empty"
+              "$ref": "#/definitions/ID"
             }
           }
         ],

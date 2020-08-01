@@ -22,7 +22,7 @@ service DatasetService {
     }
 
     // Datasets Lists all datasets
-    rpc Datasets(Empty) returns (DatasetList) {
+    rpc Datasets(ID) returns (DatasetList) {
         option (google.api.http) = {
             post: "/api/v1/dataset/list"
             body: "*"

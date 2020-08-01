@@ -20,7 +20,7 @@ module DatasetService
     # CreateNewDataset Creates a new dataset
     rpc :CreateNewDataset, CreateDatasetRequest, DatasetEntry
     # Datasets Lists all datasets
-    rpc :Datasets, Empty, DatasetList
+    rpc :Datasets, ID, DatasetList
     # DeleteDataset Delete a dataset
     rpc :DeleteDataset, ID, Empty
     # Creates a new dataset version based on an existing dataset
