@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
+
+
+import "proto/MetadataModels.proto";
+import "proto/CommonModels.proto";
+import "google/api/annotations.proto";
+
+service MetadataCompositeStore {
+    rpc InitMetadataDB(InitMetadataDBRequest) returns (MetadataDBEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/initdb"
+            body: "*"
+        };
+    }
+
+    rpc ListMetadataDBs(Empty) returns (MetadataDBList) {
+        option (google.api.http) = {
+            get: "/api/v1/metadata/listdbs"
+        };
+    }
+
+    rpc InitMetadataDBCollection(InitMetadataCollectionRequest) returns (MetadataDBEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/initcollection"
+            body: "*"
+        };
+    }
+
+    rpc ListMetadataDBCollections(Empty) returns (MetadataDBCollectionList) {
+        option (google.api.http) = {
+            get: "/api/v1/metadata/listcollcetions"
+        };
+    }
+
+    rpc InsertMetadata(InsertMetadataRequest) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/insert"
+            body: "*"
+        };
+    }
+
+    rpc AddMetadataIndex(AddMetadataIndexRequest) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/index"
+            body: "*"
+        };
+    }
+
+    rpc Query(QueryRequest) returns (Field) {
+        option (google.api.http) = {
+            post: "/api/v1/metadata/query"
+            body: "*"
+        };
+    }
+}

@@ -2,54 +2,10 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
-import "proto/LoadModels.proto";
 import "proto/DatasetModels.proto";
 import "proto/DatasetEntryModels.proto";
-import "proto/MetadataModels.proto";
 import "proto/CommonModels.proto";
-import "proto/AuthModels.proto";
 import "google/api/annotations.proto";
-
-// Manages api tokens to access datasets
-service APITokenService {
-    // CreateAPIToken Creates a new API token and returns it
-    rpc CreateAPIToken(CreateTokenRequest) returns (TokenEntry) {
-        option (google.api.http) = {
-            post: "/api/v1/auth/createapitoken"
-            body: "*"
-        };
-    }
-
-    // GetTokenList Lists all available access tokens
-    rpc GetTokenList(Empty) returns (TokenList) {
-        option (google.api.http) = {
-            get: "/api/v1/auth/listapitokens"
-        };
-    }
-
-    // RevokeToken Revokes an access token
-    rpc RevokeToken(ID) returns (Empty) {
-        option (google.api.http) = {
-            post: "/api/v1/auth/deleteapitoken"
-            body: "*"
-        };
-    }
- }
-
-// This service is used to create datasets and load their entities into an object storage
-// and create corresponding metadata objects to store the location of the entities in object storage.
-// This interface should be usable from within the platform and from outside
-service LoadService {
-    // Creates a list of upload links to place dataset entities in object storage
-    // and adds corresponding metadata objects
-    rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks) {
-        option (google.api.http) = {
-            post: "/api/v1/load/createlinks"
-            body: "*"
-        };
-    }
-}
-
 
 // Dataset management service
 // Manages all dataset related services
@@ -135,55 +91,6 @@ service DatasetService {
     rpc CreateDatasetObjectLink(ID) returns (DatasetObjectLink) {
         option (google.api.http) = {
             post: "/api/v1/datasetobjects/link"
-            body: "*"
-        };
-    }
-}
-
-service MetadataCompositeStore {
-    rpc InitMetadataDB(InitMetadataDBRequest) returns (MetadataDBEntry) {
-        option (google.api.http) = {
-            post: "/api/v1/metadata/initdb"
-            body: "*"
-        };
-    }
-
-    rpc ListMetadataDBs(Empty) returns (MetadataDBList) {
-        option (google.api.http) = {
-            get: "/api/v1/metadata/listdbs"
-        };
-    }
-
-    rpc InitMetadataDBCollection(InitMetadataCollectionRequest) returns (MetadataDBEntry) {
-        option (google.api.http) = {
-            post: "/api/v1/metadata/initcollection"
-            body: "*"
-        };
-    }
-
-    rpc ListMetadataDBCollections(Empty) returns (MetadataDBCollectionList) {
-        option (google.api.http) = {
-            get: "/api/v1/metadata/listcollcetions"
-        };
-    }
-
-    rpc InsertMetadata(InsertMetadataRequest) returns (Empty) {
-        option (google.api.http) = {
-            post: "/api/v1/metadata/insert"
-            body: "*"
-        };
-    }
-
-    rpc AddMetadataIndex(AddMetadataIndexRequest) returns (Empty) {
-        option (google.api.http) = {
-            post: "/api/v1/metadata/index"
-            body: "*"
-        };
-    }
-
-    rpc Query(QueryRequest) returns (Field) {
-        option (google.api.http) = {
-            post: "/api/v1/metadata/query"
             body: "*"
         };
     }
