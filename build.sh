@@ -16,10 +16,10 @@ mv go/proto/LoadModels.pb.go go/loadmodels
 mv go/proto/LoadAPI.pb.go go/api
 
 mv go/proto/MetadataModels.pb.go go/metadatamodels
-mv go/proto/MetadataAPI.pb.go go/metadatamodels
+mv go/proto/MetadataAPI.pb.go go/api
 
 mv go/proto/AuthModels.pb.go go/authmodels
-mv go/proto/AuthAPI.pb.go go/authmodels
+mv go/proto/AuthAPI.pb.go go/api
 
 mv go/proto/CommonModels.pb.go go/commonmodels
 
