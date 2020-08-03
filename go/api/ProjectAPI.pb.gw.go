@@ -14,7 +14,7 @@ import (
 	"net/http"
 
 	"github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
-	"github.com/ag-computational-bio/BioDataDBModels/go/projectmodel"
+	"github.com/ag-computational-bio/BioDataDBModels/go/projectmodels"
 	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
@@ -34,7 +34,7 @@ var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 
 func request_ProjectAPI_CreateProject_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq projectmodel.CreateProjectRequest
+	var protoReq projectmodels.CreateProjectRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -51,7 +51,7 @@ func request_ProjectAPI_CreateProject_0(ctx context.Context, marshaler runtime.M
 }
 
 func local_request_ProjectAPI_CreateProject_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq projectmodel.CreateProjectRequest
+	var protoReq projectmodels.CreateProjectRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -68,7 +68,7 @@ func local_request_ProjectAPI_CreateProject_0(ctx context.Context, marshaler run
 }
 
 func request_ProjectAPI_AddUserToProject_0(ctx context.Context, marshaler runtime.Marshaler, client ProjectAPIClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq projectmodel.AddUserToProjectRequest
+	var protoReq projectmodels.AddUserToProjectRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -85,7 +85,7 @@ func request_ProjectAPI_AddUserToProject_0(ctx context.Context, marshaler runtim
 }
 
 func local_request_ProjectAPI_AddUserToProject_0(ctx context.Context, marshaler runtime.Marshaler, server ProjectAPIServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq projectmodel.AddUserToProjectRequest
+	var protoReq projectmodels.AddUserToProjectRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
