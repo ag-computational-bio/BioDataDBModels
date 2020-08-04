@@ -67,9 +67,20 @@ func local_request_APITokenService_CreateAPIToken_0(ctx context.Context, marshal
 
 }
 
+var (
+	filter_APITokenService_GetTokenList_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
 func request_APITokenService_GetTokenList_0(ctx context.Context, marshaler runtime.Marshaler, client APITokenServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq commonmodels.Empty
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_APITokenService_GetTokenList_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
 
 	msg, err := client.GetTokenList(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
@@ -77,8 +88,15 @@ func request_APITokenService_GetTokenList_0(ctx context.Context, marshaler runti
 }
 
 func local_request_APITokenService_GetTokenList_0(ctx context.Context, marshaler runtime.Marshaler, server APITokenServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq commonmodels.Empty
+	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_APITokenService_GetTokenList_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
 
 	msg, err := server.GetTokenList(ctx, &protoReq)
 	return msg, metadata, err

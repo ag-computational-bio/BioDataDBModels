@@ -17,7 +17,7 @@ module APITokenService
     # CreateAPIToken Creates a new API token and returns it
     rpc :CreateAPIToken, CreateTokenRequest, TokenEntry
     # GetTokenList Lists all available access tokens
-    rpc :GetTokenList, Empty, TokenList
+    rpc :GetTokenList, ID, TokenList
     # RevokeToken Revokes an access token
     rpc :RevokeToken, ID, Empty
   end

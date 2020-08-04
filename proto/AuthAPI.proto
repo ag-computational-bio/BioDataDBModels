@@ -19,7 +19,7 @@ service APITokenService {
     }
 
     // GetTokenList Lists all available access tokens
-    rpc GetTokenList(Empty) returns (TokenList) {
+    rpc GetTokenList(ID) returns (TokenList) {
         option (google.api.http) = {
             get: "/api/v1/auth/listapitokens"
         };
