@@ -36,5 +36,5 @@ message CreateLoadLinkSetRequest {
     };
     string DatasetID = 1; // ID of the dataset upload links should be created for
     string DatasetVersionID = 2;
-    repeated DatasetObjectMetaData Metadata = 3; // List of metadata of uploaded objects
+    repeated DatasetObjectEntry Entries = 3; // List of metadata of uploaded objects, ID field will be ignored
 }

@@ -18,7 +18,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "CreateLoadLinkSetRequest" do
       optional :DatasetID, :string, 1
       optional :DatasetVersionID, :string, 2
-      repeated :Metadata, :message, 3, "DatasetObjectMetaData"
+      repeated :Entries, :message, 3, "DatasetObjectEntry"
     end
   end
 end

@@ -852,10 +852,10 @@
         "DatasetVersionID": {
           "type": "string"
         },
-        "Metadata": {
+        "Entries": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetObjectMetaData"
+            "$ref": "#/definitions/DatasetObjectEntry"
           }
         }
       },
@@ -901,42 +901,10 @@
         "ID": {
           "type": "string"
         },
-        "Metadata": {
-          "$ref": "#/definitions/DatasetEntryMetadata"
-        },
-        "CurrentVersion": {
-          "type": "string"
-        },
-        "Status": {
-          "$ref": "#/definitions/EntryStatus"
-        },
-        "OwnerProjectID": {
-          "type": "string"
-        },
-        "BurrowedProjectIDs": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "isPublic": {
-          "type": "boolean",
-          "format": "boolean"
-        }
-      },
-      "description": "Database entry for a dataset",
-      "title": "DatasetEntry"
-    },
-    "DatasetEntryMetadata": {
-      "type": "object",
-      "properties": {
         "Datasetname": {
           "type": "string"
         },
         "Datasettype": {
-          "type": "string"
-        },
-        "OwnerID": {
           "type": "string"
         },
         "IsPublic": {
@@ -946,10 +914,25 @@
         "Created": {
           "type": "string",
           "format": "date-time"
+        },
+        "CurrentVersion": {
+          "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/Status"
+        },
+        "OwnerProjectID": {
+          "type": "string"
+        },
+        "BurrowedProjectIDs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "description": "Representation of the metadata of a dataset",
-      "title": "DatasetEntryMetadata"
+      "description": "Database entry for a dataset",
+      "title": "DatasetEntry"
     },
     "DatasetList": {
       "type": "object",
@@ -970,8 +953,43 @@
         "ID": {
           "type": "string"
         },
-        "Metadata": {
-          "$ref": "#/definitions/DatasetObjectMetaData"
+        "Filename": {
+          "type": "string"
+        },
+        "Filetype": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "Origin": {
+          "$ref": "#/definitions/Origin"
+        },
+        "ContentLen": {
+          "type": "string",
+          "format": "int64"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "DatasetVersionID": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "Location": {
+          "$ref": "#/definitions/Location"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AdditionalMetadata": {
+          "type": "object"
         }
       },
       "description": "Representation of a dataset entity",
@@ -986,8 +1004,8 @@
         "ObjectID": {
           "type": "string"
         },
-        "Objectmetadata": {
-          "$ref": "#/definitions/DatasetObjectMetaData"
+        "Object": {
+          "$ref": "#/definitions/DatasetObjectEntry"
         }
       },
       "description": "Links to download a specific entity of a dataset",
@@ -1022,95 +1040,12 @@
       "description": "A list of datasets",
       "title": "DatasetList"
     },
-    "DatasetObjectMetaData": {
-      "type": "object",
-      "example": {
-        "DatasetID": "test",
-        "DatasetVersionID": "test",
-        "Filename": "test.gbff",
-        "Filetype": "gbff",
-        "Name": "test",
-        "Version": {
-          "Major": 0,
-          "Minor": 1,
-          "Patch": 0,
-          "Revision": 1,
-          "Stage": "Alpha"
-        },
-        "ContentLen": 5
-      },
-      "properties": {
-        "Filename": {
-          "type": "string"
-        },
-        "Filetype": {
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "Version": {
-          "$ref": "#/definitions/Version"
-        },
-        "Origin": {
-          "$ref": "#/definitions/Origin"
-        },
-        "ContentLen": {
-          "type": "string",
-          "format": "int64"
-        },
-        "DatasetID": {
-          "type": "string"
-        },
-        "DatasetVersionID": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "Location": {
-          "$ref": "#/definitions/Location"
-        },
-        "AdditionalMetadata": {
-          "type": "object"
-        },
-        "Created": {
-          "type": "string",
-          "format": "date-time"
-        }
-      },
-      "description": "Metadata of a dataset entity",
-      "title": "DatasetObjectMetaData"
-    },
     "DatasetVersionEntry": {
       "type": "object",
       "properties": {
         "ID": {
           "type": "string"
         },
-        "Metadata": {
-          "$ref": "#/definitions/DatasetVersionMetadata"
-        }
-      },
-      "description": "Dataset version representation",
-      "title": "DatasetVersionEntry"
-    },
-    "DatasetVersionList": {
-      "type": "object",
-      "properties": {
-        "DatasetVersions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DatasetVersionEntry"
-          }
-        }
-      },
-      "description": "A list of datasetversions",
-      "title": "DatasetList"
-    },
-    "DatasetVersionMetadata": {
-      "type": "object",
-      "properties": {
         "DatasetID": {
           "type": "string"
         },
@@ -1146,35 +1081,29 @@
           "format": "int64"
         },
         "Status": {
-          "$ref": "#/definitions/DatasetVersionMetadataDatasetVersionStatus"
+          "$ref": "#/definitions/Status"
         }
       },
-      "description": "Metadata of a dataset version",
-      "title": "DatasetVersionMetadata"
+      "description": "Dataset version representation",
+      "title": "DatasetVersionEntry"
     },
-    "DatasetVersionMetadataDatasetVersionStatus": {
-      "type": "string",
-      "enum": [
-        "InitialUploading",
-        "Finished",
-        "AdditionalUploading",
-        "Deleting"
-      ],
-      "default": "InitialUploading"
+    "DatasetVersionList": {
+      "type": "object",
+      "properties": {
+        "DatasetVersions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetVersionEntry"
+          }
+        }
+      },
+      "description": "A list of datasetversions",
+      "title": "DatasetList"
     },
     "Empty": {
       "type": "object",
       "description": "An empty object",
       "title": "Empty"
-    },
-    "EntryStatus": {
-      "type": "string",
-      "enum": [
-        "Active",
-        "Archived",
-        "Deleting"
-      ],
-      "default": "Active"
     },
     "Field": {
       "type": "object",
@@ -1459,6 +1388,17 @@
         "Write"
       ],
       "default": "Read"
+    },
+    "Status": {
+      "type": "string",
+      "enum": [
+        "Initiating",
+        "Available",
+        "Updating",
+        "Archived",
+        "Deleting"
+      ],
+      "default": "Initiating"
     },
     "StructMetadataMessage": {
       "type": "object",

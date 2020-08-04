@@ -11,73 +11,54 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/DatasetEntryModels.proto", :syntax => :proto3) do
     add_message "DatasetEntry" do
       optional :ID, :string, 1
-      optional :Metadata, :message, 2, "DatasetEntryMetadata"
-      optional :CurrentVersion, :string, 3
-      optional :Status, :enum, 4, "EntryStatus"
-      optional :OwnerProjectID, :string, 5
-      repeated :BurrowedProjectIDs, :string, 6
-      optional :isPublic, :bool, 7
-    end
-    add_message "DatasetEntryMetadata" do
-      optional :Datasetname, :string, 1
-      optional :Datasettype, :string, 2
-      optional :OwnerID, :string, 3
+      optional :Datasetname, :string, 2
+      optional :Datasettype, :string, 3
       optional :IsPublic, :bool, 4
       optional :Created, :message, 5, "google.protobuf.Timestamp"
+      optional :CurrentVersion, :string, 6
+      optional :Status, :enum, 7, "Status"
+      optional :OwnerProjectID, :string, 8
+      repeated :BurrowedProjectIDs, :string, 9
     end
     add_message "DatasetVersionEntry" do
       optional :ID, :string, 1
-      optional :Metadata, :message, 2, "DatasetVersionMetadata"
-    end
-    add_message "DatasetVersionMetadata" do
-      optional :DatasetID, :string, 1
-      optional :Datasetname, :string, 2
-      optional :Version, :message, 3, "Version"
-      optional :Created, :message, 4, "google.protobuf.Timestamp"
-      optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
-      optional :AdditionalMetadataMessageRef, :string, 6
-      optional :AdditionalObjectMetadataMessageRef, :string, 7
-      optional :ObjectCount, :int64, 8
-      optional :ObjectLinkCount, :int64, 9
-      optional :ExpectedObjectCount, :int64, 10
-      optional :Status, :enum, 11, "DatasetVersionMetadata.DatasetVersionStatus"
-    end
-    add_enum "DatasetVersionMetadata.DatasetVersionStatus" do
-      value :InitialUploading, 0
-      value :Finished, 1
-      value :AdditionalUploading, 2
-      value :Deleting, 3
+      optional :DatasetID, :string, 2
+      optional :Datasetname, :string, 3
+      optional :Version, :message, 4, "Version"
+      optional :Created, :message, 5, "google.protobuf.Timestamp"
+      optional :AdditionalMetadata, :message, 56, "google.protobuf.Struct"
+      optional :AdditionalMetadataMessageRef, :string, 7
+      optional :AdditionalObjectMetadataMessageRef, :string, 8
+      optional :ObjectCount, :int64, 9
+      optional :ObjectLinkCount, :int64, 10
+      optional :ExpectedObjectCount, :int64, 11
+      optional :Status, :enum, 12, "Status"
     end
     add_message "DatasetObjectEntry" do
       optional :ID, :string, 1
-      optional :Metadata, :message, 3, "DatasetObjectMetaData"
-    end
-    add_message "DatasetObjectMetaData" do
-      optional :Filename, :string, 1
-      optional :Filetype, :string, 2
-      optional :Name, :string, 3
-      optional :Version, :message, 4, "Version"
-      optional :Origin, :message, 5, "Origin"
-      optional :ContentLen, :int64, 6
-      optional :DatasetID, :string, 7
-      repeated :DatasetVersionID, :string, 8
-      optional :Location, :message, 9, "Location"
-      optional :AdditionalMetadata, :message, 10, "google.protobuf.Struct"
+      optional :Filename, :string, 2
+      optional :Filetype, :string, 3
+      optional :Name, :string, 4
+      optional :Version, :message, 5, "Version"
+      optional :Origin, :message, 6, "Origin"
+      optional :ContentLen, :int64, 7
+      optional :DatasetID, :string, 8
+      repeated :DatasetVersionID, :string, 9
+      optional :Location, :message, 10, "Location"
       optional :Created, :message, 11, "google.protobuf.Timestamp"
+      optional :AdditionalMetadata, :message, 12, "google.protobuf.Struct"
     end
-    add_enum "EntryStatus" do
-      value :Active, 0
-      value :Archived, 1
-      value :Deleting, 2
+    add_enum "Status" do
+      value :Initiating, 0
+      value :Available, 1
+      value :Updating, 2
+      value :Archived, 3
+      value :Deleting, 4
     end
   end
 end
 
 DatasetEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetEntry").msgclass
-DatasetEntryMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetEntryMetadata").msgclass
 DatasetVersionEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionEntry").msgclass
-DatasetVersionMetadata = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionMetadata").msgclass
-DatasetVersionMetadata::DatasetVersionStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionMetadata.DatasetVersionStatus").enummodule
 DatasetObjectEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectEntry").msgclass
-DatasetObjectMetaData = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectMetaData").msgclass
-EntryStatus = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("EntryStatus").enummodule
+Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Status").enummodule
