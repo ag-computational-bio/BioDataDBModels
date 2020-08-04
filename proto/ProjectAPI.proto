@@ -36,4 +36,11 @@ service ProjectAPI {
             get: "/api/v1/projects"
         };
     }
+
+    rpc DeleteProject(ID) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/project/delete"
+            body: "*"
+        };
+    }
 }

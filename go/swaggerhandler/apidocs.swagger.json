@@ -731,6 +731,38 @@
         ]
       }
     },
+    "/api/v1/project/delete": {
+      "post": {
+        "operationId": "ProjectAPI_DeleteProject",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "ProjectAPI"
+        ]
+      }
+    },
     "/api/v1/project/projectdatasets": {
       "post": {
         "operationId": "ProjectAPI_GetProjectDatasets",
