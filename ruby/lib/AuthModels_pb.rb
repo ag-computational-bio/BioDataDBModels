@@ -18,12 +18,14 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Created, :message, 3, "google.protobuf.Timestamp"
       optional :Expires, :message, 4, "google.protobuf.Timestamp"
       optional :ProjectID, :string, 5
-      repeated :AccessScopes, :enum, 6, "Scope"
+      optional :DatasetID, :string, 6
+      repeated :AccessScopes, :enum, 7, "Scope"
     end
     add_message "CreateTokenRequest" do
-      optional :DatasetID, :string, 1
-      repeated :AccessScopes, :enum, 2, "Scope"
-      optional :Expires, :message, 3, "google.protobuf.Timestamp"
+      optional :ProjectID, :string, 1
+      optional :DatasetID, :string, 2
+      repeated :AccessScopes, :enum, 3, "Scope"
+      optional :Expires, :message, 4, "google.protobuf.Timestamp"
     end
   end
 end

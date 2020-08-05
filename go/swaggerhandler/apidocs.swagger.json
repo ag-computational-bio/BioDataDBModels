@@ -918,6 +918,9 @@
     "CreateTokenRequest": {
       "type": "object",
       "properties": {
+        "ProjectID": {
+          "type": "string"
+        },
         "DatasetID": {
           "type": "string"
         },
@@ -1482,6 +1485,9 @@
           "format": "date-time"
         },
         "ProjectID": {
+          "type": "string"
+        },
+        "DatasetID": {
           "type": "string"
         },
         "AccessScopes": {

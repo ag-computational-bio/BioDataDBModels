@@ -30,7 +30,8 @@ message TokenEntry {
     google.protobuf.Timestamp Created = 3; // When the token was created
     google.protobuf.Timestamp Expires = 4; // When the token expires
     string ProjectID = 5;
-    repeated Scope AccessScopes = 6;
+    string DatasetID = 6;
+    repeated Scope AccessScopes = 7;
 }
 
 message CreateTokenRequest {
@@ -40,7 +41,8 @@ message CreateTokenRequest {
             description: "Request data to create a new token for a given dataset"
         };
     };
-    string DatasetID = 1;
-    repeated Scope AccessScopes = 2;
-    google.protobuf.Timestamp Expires = 3; // When the token expires
+    string ProjectID = 1;
+    string DatasetID = 2;
+    repeated Scope AccessScopes = 3;
+    google.protobuf.Timestamp Expires = 4; // When the token expires
 }
