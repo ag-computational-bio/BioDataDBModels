@@ -4,15 +4,9 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/projectm
 
 import "proto/CommonModels.proto";
 
-
-message ProjectUser {
-    string UserID = 1;
-    Scope Scope = 2;
-}
-
-message Project {
+message ProjectEntry {
     string ID = 1;
     string Description = 2;
-    repeated ProjectUser Users = 3;
+    repeated User Users = 3;
     string ProjectName = 4;
 }

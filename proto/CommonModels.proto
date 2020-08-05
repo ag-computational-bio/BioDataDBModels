@@ -6,9 +6,20 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/commonmo
 
 import "protoc/gateway/options/annotations.proto";
 
-enum Scope {
+enum Right {
     Read = 0;
     Write = 1;
+}
+
+enum Resource {
+    Project = 0;
+    Dataset = 1;
+}
+
+message User {
+    string UserID = 1;
+    Right Rights = 2;
+    Resource Resource = 3;
 }
 
 message Empty {

@@ -6,18 +6,13 @@ require 'google/protobuf'
 require 'proto/CommonModels_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/ProjectEntryModels.proto", :syntax => :proto3) do
-    add_message "ProjectUser" do
-      optional :UserID, :string, 1
-      optional :Scope, :enum, 2, "Scope"
-    end
-    add_message "Project" do
+    add_message "ProjectEntry" do
       optional :ID, :string, 1
       optional :Description, :string, 2
-      repeated :Users, :message, 3, "ProjectUser"
+      repeated :Users, :message, 3, "User"
       optional :ProjectName, :string, 4
     end
   end
 end
 
-ProjectUser = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectUser").msgclass
-Project = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Project").msgclass
+ProjectEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ProjectEntry").msgclass

@@ -6,6 +6,11 @@ require 'google/protobuf'
 require 'protoc/gateway/options/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/CommonModels.proto", :syntax => :proto3) do
+    add_message "User" do
+      optional :UserID, :string, 1
+      optional :Rights, :enum, 2, "Right"
+      optional :Resource, :enum, 3, "Resource"
+    end
     add_message "Empty" do
     end
     add_message "Location" do
@@ -44,13 +49,18 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "IDList" do
       repeated :IDs, :string, 1
     end
-    add_enum "Scope" do
+    add_enum "Right" do
       value :Read, 0
       value :Write, 1
+    end
+    add_enum "Resource" do
+      value :Project, 0
+      value :Dataset, 1
     end
   end
 end
 
+User = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("User").msgclass
 Empty = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Empty").msgclass
 Location = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Location").msgclass
 Origin = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Origin").msgclass
@@ -60,4 +70,5 @@ Version = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version").ms
 Version::VersionStage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Version.VersionStage").enummodule
 Int64Wrapper = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Int64Wrapper").msgclass
 IDList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IDList").msgclass
-Scope = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Scope").enummodule
+Right = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Right").enummodule
+Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Resource").enummodule

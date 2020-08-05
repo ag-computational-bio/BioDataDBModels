@@ -682,7 +682,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/Project"
+              "$ref": "#/definitions/ProjectEntry"
             }
           },
           "default": {
@@ -714,7 +714,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/Project"
+              "$ref": "#/definitions/ProjectEntry"
             }
           },
           "default": {
@@ -853,7 +853,10 @@
           "type": "string"
         },
         "Scope": {
-          "$ref": "#/definitions/Scope"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Right"
+          }
         },
         "ProjectID": {
           "type": "string"
@@ -918,14 +921,17 @@
     "CreateTokenRequest": {
       "type": "object",
       "properties": {
-        "DatasetID": {
+        "ResourceID": {
           "type": "string"
         },
-        "AccessScopes": {
+        "Rights": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Scope"
+            "$ref": "#/definitions/Right"
           }
+        },
+        "Resource": {
+          "$ref": "#/definitions/Resource"
         },
         "Expires": {
           "type": "string",
@@ -1361,7 +1367,7 @@
       ],
       "default": "ObjectStorage"
     },
-    "Project": {
+    "ProjectEntry": {
       "type": "object",
       "properties": {
         "ID": {
@@ -1373,7 +1379,7 @@
         "Users": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ProjectUser"
+            "$ref": "#/definitions/User"
           }
         },
         "ProjectName": {
@@ -1387,23 +1393,12 @@
         "Projects": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Project"
+            "$ref": "#/definitions/ProjectEntry"
           }
         }
       },
       "description": "Lists all projects of a user",
       "title": "ProjectEntryList"
-    },
-    "ProjectUser": {
-      "type": "object",
-      "properties": {
-        "UserID": {
-          "type": "string"
-        },
-        "Scope": {
-          "$ref": "#/definitions/Scope"
-        }
-      }
     },
     "QueryRequest": {
       "type": "object",
@@ -1421,7 +1416,15 @@
       "description": "TODO - WIP",
       "title": "QueryRequest"
     },
-    "Scope": {
+    "Resource": {
+      "type": "string",
+      "enum": [
+        "Project",
+        "Dataset"
+      ],
+      "default": "Project"
+    },
+    "Right": {
       "type": "string",
       "enum": [
         "Read",
@@ -1467,8 +1470,11 @@
     "TokenEntry": {
       "type": "object",
       "properties": {
-        "UserID": {
+        "ID": {
           "type": "string"
+        },
+        "UserID": {
+          "$ref": "#/definitions/User"
         },
         "Token": {
           "type": "string"
@@ -1480,15 +1486,6 @@
         "Expires": {
           "type": "string",
           "format": "date-time"
-        },
-        "DatasetID": {
-          "type": "string"
-        },
-        "AccessScopes": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Scope"
-          }
         }
       },
       "description": "A description of an api token",
@@ -1553,6 +1550,20 @@
       },
       "description": "A set of presigned put URL to store the data",
       "title": "UploadLinks"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "UserID": {
+          "type": "string"
+        },
+        "Rights": {
+          "$ref": "#/definitions/Right"
+        },
+        "Resource": {
+          "$ref": "#/definitions/Resource"
+        }
+      }
     },
     "Version": {
       "type": "object",

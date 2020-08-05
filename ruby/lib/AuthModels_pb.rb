@@ -13,17 +13,17 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :token, :message, 2, "TokenEntry"
     end
     add_message "TokenEntry" do
-      optional :UserID, :string, 1
-      optional :Token, :string, 2
-      optional :Created, :message, 3, "google.protobuf.Timestamp"
-      optional :Expires, :message, 4, "google.protobuf.Timestamp"
-      optional :DatasetID, :string, 6
-      repeated :AccessScopes, :enum, 7, "Scope"
+      optional :ID, :string, 1
+      optional :UserID, :message, 2, "User"
+      optional :Token, :string, 3
+      optional :Created, :message, 4, "google.protobuf.Timestamp"
+      optional :Expires, :message, 5, "google.protobuf.Timestamp"
     end
     add_message "CreateTokenRequest" do
-      optional :DatasetID, :string, 1
-      repeated :AccessScopes, :enum, 2, "Scope"
-      optional :Expires, :message, 3, "google.protobuf.Timestamp"
+      optional :ResourceID, :string, 1
+      repeated :Rights, :enum, 2, "Right"
+      optional :Resource, :enum, 3, "Resource"
+      optional :Expires, :message, 4, "google.protobuf.Timestamp"
     end
   end
 end

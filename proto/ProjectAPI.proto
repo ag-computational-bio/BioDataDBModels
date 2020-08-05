@@ -10,14 +10,14 @@ import "google/api/annotations.proto";
 
 
 service ProjectAPI {
-    rpc CreateProject (CreateProjectRequest) returns (Project) {
+    rpc CreateProject (CreateProjectRequest) returns (ProjectEntry) {
         option (google.api.http) = {
             post: "/api/v1/project/createproject"
             body: "*"
         };
     }
 
-    rpc AddUserToProject (AddUserToProjectRequest) returns (Project) {
+    rpc AddUserToProject (AddUserToProjectRequest) returns (ProjectEntry) {
         option (google.api.http) = {
             post: "/api/v1/project/addusertoproject"
             body: "*"
