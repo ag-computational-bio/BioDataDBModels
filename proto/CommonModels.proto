@@ -18,7 +18,7 @@ enum Resource {
 
 message User {
     string UserID = 1;
-    Right Rights = 2;
+    repeated Right Rights = 2;
     Resource Resource = 3;
 }
 

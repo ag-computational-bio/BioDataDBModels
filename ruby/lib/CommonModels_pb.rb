@@ -8,7 +8,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/CommonModels.proto", :syntax => :proto3) do
     add_message "User" do
       optional :UserID, :string, 1
-      optional :Rights, :enum, 2, "Right"
+      repeated :Rights, :enum, 2, "Right"
       optional :Resource, :enum, 3, "Resource"
     end
     add_message "Empty" do

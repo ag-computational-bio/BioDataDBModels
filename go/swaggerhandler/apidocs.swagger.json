@@ -1558,7 +1558,10 @@
           "type": "string"
         },
         "Rights": {
-          "$ref": "#/definitions/Right"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Right"
+          }
         },
         "Resource": {
           "$ref": "#/definitions/Resource"
