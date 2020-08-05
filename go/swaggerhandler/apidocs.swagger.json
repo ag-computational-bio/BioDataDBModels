@@ -918,9 +918,6 @@
     "CreateTokenRequest": {
       "type": "object",
       "properties": {
-        "ProjectID": {
-          "type": "string"
-        },
         "DatasetID": {
           "type": "string"
         },
@@ -1483,9 +1480,6 @@
         "Expires": {
           "type": "string",
           "format": "date-time"
-        },
-        "ProjectID": {
-          "type": "string"
         },
         "DatasetID": {
           "type": "string"
