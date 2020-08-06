@@ -1479,6 +1479,9 @@
         "Token": {
           "type": "string"
         },
+        "Resource": {
+          "$ref": "#/definitions/Resource"
+        },
         "Created": {
           "type": "string",
           "format": "date-time"

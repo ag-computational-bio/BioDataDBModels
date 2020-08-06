@@ -16,8 +16,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ID, :string, 1
       optional :UserID, :message, 2, "User"
       optional :Token, :string, 3
-      optional :Created, :message, 4, "google.protobuf.Timestamp"
-      optional :Expires, :message, 5, "google.protobuf.Timestamp"
+      optional :Resource, :enum, 4, "Resource"
+      optional :Created, :message, 5, "google.protobuf.Timestamp"
+      optional :Expires, :message, 6, "google.protobuf.Timestamp"
     end
     add_message "CreateTokenRequest" do
       optional :ResourceID, :string, 1

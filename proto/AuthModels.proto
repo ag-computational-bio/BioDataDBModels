@@ -28,8 +28,9 @@ message TokenEntry {
     string ID = 1;
     User UserID = 2;
     string Token = 3;
-    google.protobuf.Timestamp Created = 4; // When the token was created
-    google.protobuf.Timestamp Expires = 5; // When the token expires
+    Resource Resource = 4;
+    google.protobuf.Timestamp Created = 5; // When the token was created
+    google.protobuf.Timestamp Expires = 6; // When the token expires
 }
 
 message CreateTokenRequest {
