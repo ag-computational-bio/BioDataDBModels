@@ -73,4 +73,5 @@ message DatasetObjectEntry {
     Location Location = 10; // Location: Location of the data
     google.protobuf.Timestamp Created = 11; // When the data object was created
     google.protobuf.Struct AdditionalMetadata = 12; // Additional metadata of the object
+    string UploadID = 13;
 }

@@ -3,6 +3,7 @@
 
 require 'google/protobuf'
 
+require 'proto/CommonModels_pb'
 require 'proto/LoadModels_pb'
 require 'google/api/annotations_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do

@@ -19,6 +19,9 @@ module LoadService
     # Creates a list of upload links to place dataset entities in object storage
     # and adds corresponding metadata objects
     rpc :CreateLoadLinkSet, CreateLoadLinkSetRequest, UploadLinks
+    rpc :InitMultipartUpload, InitMultipartUploadRequest, InitMultiPartUploadResponse
+    rpc :GetMultipartUploadLinkPart, GetMultipartUploadLinkPartRequest, GetMultipartUploadLinkPartResponse
+    rpc :FinishMultipartUpload, FinishMultipartUploadRequest, Empty
   end
 
   Stub = Service.rpc_stub_class

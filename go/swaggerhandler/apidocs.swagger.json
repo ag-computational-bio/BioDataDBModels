@@ -471,6 +471,102 @@
         ]
       }
     },
+    "/api/v1/load/finishmultipartupload": {
+      "post": {
+        "operationId": "LoadService_FinishMultipartUpload",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FinishMultipartUploadRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoadService"
+        ]
+      }
+    },
+    "/api/v1/load/getmultipartuploadlinkpart": {
+      "post": {
+        "operationId": "LoadService_GetMultipartUploadLinkPart",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetMultipartUploadLinkPartResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetMultipartUploadLinkPartRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoadService"
+        ]
+      }
+    },
+    "/api/v1/load/initmultipartupload": {
+      "post": {
+        "operationId": "LoadService_InitMultipartUpload",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/InitMultiPartUploadResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/InitMultipartUploadRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoadService"
+        ]
+      }
+    },
     "/api/v1/metadata/index": {
       "post": {
         "operationId": "MetadataCompositeStore_AddMetadataIndex",
@@ -865,6 +961,17 @@
       "description": "Adds a new user to a project",
       "title": "AddUserToProjectRequest"
     },
+    "CompletedUploadParts": {
+      "type": "object",
+      "properties": {
+        "Etag": {
+          "type": "string"
+        },
+        "Partnumber": {
+          "type": "string"
+        }
+      }
+    },
     "CreateDatasetRequest": {
       "type": "object",
       "example": {
@@ -1036,6 +1143,9 @@
         },
         "AdditionalMetadata": {
           "type": "object"
+        },
+        "UploadID": {
+          "type": "string"
         }
       },
       "description": "Representation of a dataset entity",
@@ -1164,6 +1274,43 @@
       "description": "TODO - WIP",
       "title": "Field"
     },
+    "FinishMultipartUploadRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectID": {
+          "type": "string"
+        },
+        "CompletedUploadParts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CompletedUploadParts"
+          }
+        }
+      }
+    },
+    "GetMultipartUploadLinkPartRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectID": {
+          "type": "string"
+        },
+        "UploadPart": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "GetMultipartUploadLinkPartResponse": {
+      "type": "object",
+      "properties": {
+        "UploadLink": {
+          "type": "string"
+        },
+        "Etag": {
+          "type": "string"
+        }
+      }
+    },
     "ID": {
       "type": "object",
       "properties": {
@@ -1209,6 +1356,28 @@
       },
       "description": "Request a new MetadataDB",
       "title": "InitMetadataDBRequest"
+    },
+    "InitMultiPartUploadResponse": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectID": {
+          "type": "string"
+        }
+      }
+    },
+    "InitMultipartUploadRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetID": {
+          "type": "string"
+        },
+        "DatasetVersionID": {
+          "type": "string"
+        },
+        "Entries": {
+          "$ref": "#/definitions/DatasetObjectEntry"
+        }
+      }
     },
     "InsertMetadataRequest": {
       "type": "object",

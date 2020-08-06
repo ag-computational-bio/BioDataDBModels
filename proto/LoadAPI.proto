@@ -2,6 +2,8 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
+import "proto/CommonModels.proto";
+
 import "proto/LoadModels.proto";
 import "google/api/annotations.proto";
 
@@ -14,6 +16,27 @@ service LoadService {
     rpc CreateLoadLinkSet(CreateLoadLinkSetRequest) returns (UploadLinks) {
         option (google.api.http) = {
             post: "/api/v1/load/createlinks"
+            body: "*"
+        };
+    }
+
+    rpc InitMultipartUpload(InitMultipartUploadRequest) returns (InitMultiPartUploadResponse){
+        option (google.api.http) = {
+            post: "/api/v1/load/initmultipartupload"
+            body: "*"
+        };
+    }
+
+    rpc GetMultipartUploadLinkPart(GetMultipartUploadLinkPartRequest) returns (GetMultipartUploadLinkPartResponse){
+        option (google.api.http) = {
+            post: "/api/v1/load/getmultipartuploadlinkpart"
+            body: "*"
+        };
+    }
+
+    rpc FinishMultipartUpload(FinishMultipartUploadRequest) returns (Empty){
+        option (google.api.http) = {
+            post: "/api/v1/load/finishmultipartupload"
             body: "*"
         };
     }

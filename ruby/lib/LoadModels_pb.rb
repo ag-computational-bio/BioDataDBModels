@@ -20,9 +20,39 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetVersionID, :string, 2
       repeated :Entries, :message, 3, "DatasetObjectEntry"
     end
+    add_message "InitMultipartUploadRequest" do
+      optional :DatasetID, :string, 1
+      optional :DatasetVersionID, :string, 2
+      optional :Entries, :message, 3, "DatasetObjectEntry"
+    end
+    add_message "InitMultiPartUploadResponse" do
+      optional :DatasetObjectID, :string, 1
+    end
+    add_message "GetMultipartUploadLinkPartRequest" do
+      optional :DatasetObjectID, :string, 1
+      optional :UploadPart, :int64, 2
+    end
+    add_message "GetMultipartUploadLinkPartResponse" do
+      optional :UploadLink, :string, 1
+      optional :Etag, :string, 2
+    end
+    add_message "FinishMultipartUploadRequest" do
+      optional :DatasetObjectID, :string, 1
+      repeated :CompletedUploadParts, :message, 2, "CompletedUploadParts"
+    end
+    add_message "CompletedUploadParts" do
+      optional :Etag, :string, 1
+      optional :Partnumber, :string, 2
+    end
   end
 end
 
 UploadLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLinks").msgclass
 UploadLink = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLink").msgclass
 CreateLoadLinkSetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateLoadLinkSetRequest").msgclass
+InitMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultipartUploadRequest").msgclass
+InitMultiPartUploadResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultiPartUploadResponse").msgclass
+GetMultipartUploadLinkPartRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartRequest").msgclass
+GetMultipartUploadLinkPartResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartResponse").msgclass
+FinishMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FinishMultipartUploadRequest").msgclass
+CompletedUploadParts = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CompletedUploadParts").msgclass

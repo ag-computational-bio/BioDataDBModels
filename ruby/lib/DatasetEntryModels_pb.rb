@@ -47,6 +47,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Location, :message, 10, "Location"
       optional :Created, :message, 11, "google.protobuf.Timestamp"
       optional :AdditionalMetadata, :message, 12, "google.protobuf.Struct"
+      optional :UploadID, :string, 13
     end
     add_enum "Status" do
       value :Initiating, 0
