@@ -42,7 +42,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "CompletedUploadParts" do
       optional :Etag, :string, 1
-      optional :Partnumber, :string, 2
+      optional :Partnumber, :int64, 2
     end
   end
 end

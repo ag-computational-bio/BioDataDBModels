@@ -66,5 +66,5 @@ message FinishMultipartUploadRequest {
 
 message CompletedUploadParts {
     string Etag = 1;
-    string Partnumber = 2;
+    int64 Partnumber = 2;
 }

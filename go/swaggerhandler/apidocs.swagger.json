@@ -968,7 +968,8 @@
           "type": "string"
         },
         "Partnumber": {
-          "type": "string"
+          "type": "string",
+          "format": "int64"
         }
       }
     },
