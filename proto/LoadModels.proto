@@ -40,9 +40,8 @@ message CreateLoadLinkSetRequest {
 }
 
 message InitMultipartUploadRequest {
-    string DatasetID = 1; // ID of the dataset upload links should be created for
-    string DatasetVersionID = 2;
-    DatasetObjectEntry Entries = 3;
+    string DatasetVersionID = 1;
+    DatasetObjectEntry Entries = 2;
 }
 
 message InitMultiPartUploadResponse {
