@@ -1372,8 +1372,34 @@
         "DatasetVersionID": {
           "type": "string"
         },
-        "Entries": {
-          "$ref": "#/definitions/DatasetObjectEntry"
+        "Filename": {
+          "type": "string"
+        },
+        "Filetype": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "Origin": {
+          "$ref": "#/definitions/Origin"
+        },
+        "ContentLen": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Location": {
+          "$ref": "#/definitions/Location"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AdditionalMetadata": {
+          "type": "object"
         }
       }
     },
