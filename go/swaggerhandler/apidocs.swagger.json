@@ -441,12 +441,12 @@
     "/api/v1/load/createlinks": {
       "post": {
         "summary": "Creates a list of upload links to place dataset entities in object storage\nand adds corresponding metadata objects",
-        "operationId": "LoadService_CreateLoadLinkSet",
+        "operationId": "LoadService_CreateUploadLink",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/UploadLinks"
+              "$ref": "#/definitions/CreateUploadLinkResponse"
             }
           },
           "default": {
@@ -462,7 +462,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/CreateLoadLinkSetRequest"
+              "$ref": "#/definitions/CreateUploadLinkRequest"
             }
           }
         ],
@@ -994,25 +994,6 @@
       "description": "Data required to start loading a dataset into the BioDataDB",
       "title": "InitLoadDataset"
     },
-    "CreateLoadLinkSetRequest": {
-      "type": "object",
-      "properties": {
-        "DatasetID": {
-          "type": "string"
-        },
-        "DatasetVersionID": {
-          "type": "string"
-        },
-        "Entries": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DatasetObjectEntry"
-          }
-        }
-      },
-      "description": "Request message to request a set of presigned URL links",
-      "title": "CreateLoadLinkSetRequest"
-    },
     "CreateProjectRequest": {
       "type": "object",
       "properties": {
@@ -1048,6 +1029,59 @@
       },
       "description": "Request data to create a new token for a given dataset",
       "title": "CreateTokenRequest"
+    },
+    "CreateUploadLinkRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetVersionID": {
+          "type": "string"
+        },
+        "Filename": {
+          "type": "string"
+        },
+        "Filetype": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "Origin": {
+          "$ref": "#/definitions/Origin"
+        },
+        "ContentLen": {
+          "type": "string",
+          "format": "int64"
+        },
+        "Location": {
+          "$ref": "#/definitions/Location"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AdditionalMetadata": {
+          "type": "object"
+        }
+      }
+    },
+    "CreateUploadLinkResponse": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Link": {
+          "type": "string"
+        },
+        "Object": {
+          "$ref": "#/definitions/DatasetObjectEntry"
+        }
+      },
+      "description": "A presigned URL link and its upload request URL",
+      "title": "UploadLink"
     },
     "DatasetEntry": {
       "type": "object",
@@ -1721,35 +1755,6 @@
           "type": "string"
         }
       }
-    },
-    "UploadLink": {
-      "type": "object",
-      "properties": {
-        "ID": {
-          "type": "string"
-        },
-        "Link": {
-          "type": "string"
-        },
-        "Object": {
-          "$ref": "#/definitions/DatasetObjectEntry"
-        }
-      },
-      "description": "A presigned URL link and its upload request URL",
-      "title": "UploadLink"
-    },
-    "UploadLinks": {
-      "type": "object",
-      "properties": {
-        "Links": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/UploadLink"
-          }
-        }
-      },
-      "description": "A set of presigned put URL to store the data",
-      "title": "UploadLinks"
     },
     "User": {
       "type": "object",

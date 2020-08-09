@@ -10,18 +10,22 @@ require 'google/protobuf/struct_pb'
 require 'proto/CommonModels_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do
-    add_message "UploadLinks" do
-      repeated :Links, :message, 1, "UploadLink"
+    add_message "CreateUploadLinkRequest" do
+      optional :DatasetVersionID, :string, 1
+      optional :Filename, :string, 2
+      optional :Filetype, :string, 3
+      optional :Name, :string, 4
+      optional :Version, :message, 5, "Version"
+      optional :Origin, :message, 6, "Origin"
+      optional :ContentLen, :int64, 7
+      optional :Location, :message, 10, "Location"
+      optional :Created, :message, 11, "google.protobuf.Timestamp"
+      optional :AdditionalMetadata, :message, 12, "google.protobuf.Struct"
     end
-    add_message "UploadLink" do
+    add_message "CreateUploadLinkResponse" do
       optional :ID, :string, 1
       optional :Link, :string, 2
       optional :Object, :message, 3, "DatasetObjectEntry"
-    end
-    add_message "CreateLoadLinkSetRequest" do
-      optional :DatasetID, :string, 1
-      optional :DatasetVersionID, :string, 2
-      repeated :Entries, :message, 3, "DatasetObjectEntry"
     end
     add_message "InitMultipartUploadRequest" do
       optional :DatasetVersionID, :string, 1
@@ -58,9 +62,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   end
 end
 
-UploadLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLinks").msgclass
-UploadLink = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UploadLink").msgclass
-CreateLoadLinkSetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateLoadLinkSetRequest").msgclass
+CreateUploadLinkRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateUploadLinkRequest").msgclass
+CreateUploadLinkResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateUploadLinkResponse").msgclass
 InitMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultipartUploadRequest").msgclass
 InitMultiPartUploadResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultiPartUploadResponse").msgclass
 GetMultipartUploadLinkPartRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartRequest").msgclass

@@ -8,17 +8,20 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";
 import "proto/CommonModels.proto";
 
-message UploadLinks {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "UploadLinks";
-            description: "A set of presigned put URL to store the data"
-        };
-    };
-    repeated UploadLink Links = 1; // List of Links to upload a dataset
+message CreateUploadLinkRequest {
+    string DatasetVersionID = 1;
+    string Filename = 2; // Filename: Name of the original file e.g.: mydata.json
+    string Filetype = 3; // Filetype: Type of the stored file, e.g.: json, gbff,...
+    string Name = 4; // Name: Name of the dataset entity e.g.: mydata
+    Version Version = 5; // Remote version of the dataset
+    Origin Origin = 6; // Origin: Source of the dataset
+    int64 ContentLen = 7; // ContentLen: Lenght of the stored dataset
+    Location Location = 10; // Location: Location of the data
+    google.protobuf.Timestamp Created = 11; // When the data object was created
+    google.protobuf.Struct AdditionalMetadata = 12; // Additional metadata of the object
 }
 
-message UploadLink {
+message CreateUploadLinkResponse {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
             title: "UploadLink";
@@ -28,18 +31,6 @@ message UploadLink {
     string ID = 1; // ID of the upload request
     string Link = 2; // Upload link (normally a presigned put URL for S3)
     DatasetObjectEntry Object = 3;
-}
-
-message CreateLoadLinkSetRequest {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "CreateLoadLinkSetRequest";
-            description: "Request message to request a set of presigned URL links"
-        };
-    };
-    string DatasetID = 1; // ID of the dataset upload links should be created for
-    string DatasetVersionID = 2;
-    repeated DatasetObjectEntry Entries = 3; // List of metadata of uploaded objects, ID field will be ignored
 }
 
 message InitMultipartUploadRequest {
