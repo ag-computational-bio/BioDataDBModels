@@ -1298,6 +1298,10 @@
         "UploadPart": {
           "type": "string",
           "format": "int64"
+        },
+        "ContentLen": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },

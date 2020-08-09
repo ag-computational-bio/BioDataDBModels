@@ -41,6 +41,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "GetMultipartUploadLinkPartRequest" do
       optional :DatasetObjectID, :string, 1
       optional :UploadPart, :int64, 2
+      optional :ContentLen, :int64, 3
     end
     add_message "GetMultipartUploadLinkPartResponse" do
       optional :UploadLink, :string, 1

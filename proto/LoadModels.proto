@@ -62,6 +62,7 @@ message InitMultiPartUploadResponse {
 message GetMultipartUploadLinkPartRequest {
     string DatasetObjectID = 1;
     int64 UploadPart = 2;
+    int64 ContentLen = 3;
 }
 
 message GetMultipartUploadLinkPartResponse {
