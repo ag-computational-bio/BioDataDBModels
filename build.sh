@@ -25,7 +25,7 @@ mv go/proto/CommonModels.pb.go go/commonmodels
 
 
 protoc -I. --grpc-gateway_out=logtostderr=true,paths=source_relative:./go/api proto/*API.proto
-mv ./go/api/proto/*.pb.gw.go ./go/gateway
+mv ./go/api/proto/*.pb.gw.go ./go/api
 
 
 
