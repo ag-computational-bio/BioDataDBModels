@@ -79,7 +79,7 @@ service DatasetService {
         };
     }
 
-    rpc CreateDatasetObjectGroup (CreateDatasetObjectGroupRequest) returns (DatasetObjectGroup) {
+    rpc CreateDatasetObjectGroup (CreateDatasetObjectGroupRequest) returns (CreateDatasetObjectReponse) {
         option (google.api.http) = {
             post: "/api/v1/datasetobjectgroup/create"
             body: "*"

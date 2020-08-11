@@ -684,6 +684,61 @@ func (x *CreateDatasetObjectRequest) GetUploadID() string {
 	return ""
 }
 
+type CreateDatasetObjectReponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DatasetObjectGroup *datasetentrymodels.DatasetObjectGroup   `protobuf:"bytes,1,opt,name=DatasetObjectGroup,proto3" json:"DatasetObjectGroup,omitempty"`
+	DatasetObjects     []*datasetentrymodels.DatasetObjectEntry `protobuf:"bytes,2,rep,name=DatasetObjects,proto3" json:"DatasetObjects,omitempty"`
+}
+
+func (x *CreateDatasetObjectReponse) Reset() {
+	*x = CreateDatasetObjectReponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_DatasetModels_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *CreateDatasetObjectReponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateDatasetObjectReponse) ProtoMessage() {}
+
+func (x *CreateDatasetObjectReponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_DatasetModels_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateDatasetObjectReponse.ProtoReflect.Descriptor instead.
+func (*CreateDatasetObjectReponse) Descriptor() ([]byte, []int) {
+	return file_proto_DatasetModels_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *CreateDatasetObjectReponse) GetDatasetObjectGroup() *datasetentrymodels.DatasetObjectGroup {
+	if x != nil {
+		return x.DatasetObjectGroup
+	}
+	return nil
+}
+
+func (x *CreateDatasetObjectReponse) GetDatasetObjects() []*datasetentrymodels.DatasetObjectEntry {
+	if x != nil {
+		return x.DatasetObjects
+	}
+	return nil
+}
+
 var File_proto_DatasetModels_proto protoreflect.FileDescriptor
 
 var file_proto_DatasetModels_proto_rawDesc = []byte{
@@ -834,12 +889,22 @@ var file_proto_DatasetModels_proto_rawDesc = []byte{
 	0x74, 0x65, 0x6e, 0x74, 0x4c, 0x65, 0x6e, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x43,
 	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x4c, 0x65, 0x6e, 0x12, 0x1a, 0x0a, 0x08, 0x55, 0x70, 0x6c,
 	0x6f, 0x61, 0x64, 0x49, 0x44, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x55, 0x70, 0x6c,
-	0x6f, 0x61, 0x64, 0x49, 0x44, 0x42, 0x42, 0x5a, 0x40, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
-	0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x67, 0x2d, 0x63, 0x6f, 0x6d, 0x70, 0x75, 0x74, 0x61, 0x74, 0x69,
-	0x6f, 0x6e, 0x61, 0x6c, 0x2d, 0x62, 0x69, 0x6f, 0x2f, 0x42, 0x69, 0x6f, 0x44, 0x61, 0x74, 0x61,
-	0x44, 0x42, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x67, 0x6f, 0x2f, 0x64, 0x61, 0x74, 0x61,
-	0x73, 0x65, 0x74, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x6f, 0x61, 0x64, 0x49, 0x44, 0x22, 0x9e, 0x01, 0x0a, 0x1a, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x52, 0x65, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x12, 0x43, 0x0a, 0x12, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
+	0x32, 0x13, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x52, 0x12, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62,
+	0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x3b, 0x0a, 0x0e, 0x44, 0x61, 0x74,
+	0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x13, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63,
+	0x74, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x0e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x42, 0x42, 0x5a, 0x40, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62,
+	0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x67, 0x2d, 0x63, 0x6f, 0x6d, 0x70, 0x75, 0x74, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x2d, 0x62, 0x69, 0x6f, 0x2f, 0x42, 0x69, 0x6f, 0x44, 0x61, 0x74,
+	0x61, 0x44, 0x42, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x67, 0x6f, 0x2f, 0x64, 0x61, 0x74,
+	0x61, 0x73, 0x65, 0x74, 0x6d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -854,7 +919,7 @@ func file_proto_DatasetModels_proto_rawDescGZIP() []byte {
 	return file_proto_DatasetModels_proto_rawDescData
 }
 
-var file_proto_DatasetModels_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_proto_DatasetModels_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_proto_DatasetModels_proto_goTypes = []interface{}{
 	(*DatasetObjectLinks)(nil),                     // 0: DatasetObjectLinks
 	(*DatasetObjectLink)(nil),                      // 1: DatasetObjectLink
@@ -866,33 +931,36 @@ var file_proto_DatasetModels_proto_goTypes = []interface{}{
 	(*NewDatasetVersionRequest)(nil),               // 7: NewDatasetVersionRequest
 	(*CreateDatasetObjectGroupRequest)(nil),        // 8: CreateDatasetObjectGroupRequest
 	(*CreateDatasetObjectRequest)(nil),             // 9: CreateDatasetObjectRequest
-	(*datasetentrymodels.DatasetObjectEntry)(nil),  // 10: DatasetObjectEntry
-	(*datasetentrymodels.DatasetEntry)(nil),        // 11: DatasetEntry
-	(*datasetentrymodels.DatasetVersionEntry)(nil), // 12: DatasetVersionEntry
-	(*datasetentrymodels.DatasetObjectGroup)(nil),  // 13: DatasetObjectGroup
-	(*commonmodels.Version)(nil),                   // 14: Version
-	(*_struct.Struct)(nil),                         // 15: google.protobuf.Struct
-	(*commonmodels.Origin)(nil),                    // 16: Origin
-	(*timestamp.Timestamp)(nil),                    // 17: google.protobuf.Timestamp
+	(*CreateDatasetObjectReponse)(nil),             // 10: CreateDatasetObjectReponse
+	(*datasetentrymodels.DatasetObjectEntry)(nil),  // 11: DatasetObjectEntry
+	(*datasetentrymodels.DatasetEntry)(nil),        // 12: DatasetEntry
+	(*datasetentrymodels.DatasetVersionEntry)(nil), // 13: DatasetVersionEntry
+	(*datasetentrymodels.DatasetObjectGroup)(nil),  // 14: DatasetObjectGroup
+	(*commonmodels.Version)(nil),                   // 15: Version
+	(*_struct.Struct)(nil),                         // 16: google.protobuf.Struct
+	(*commonmodels.Origin)(nil),                    // 17: Origin
+	(*timestamp.Timestamp)(nil),                    // 18: google.protobuf.Timestamp
 }
 var file_proto_DatasetModels_proto_depIdxs = []int32{
 	1,  // 0: DatasetObjectLinks.Entites:type_name -> DatasetObjectLink
-	10, // 1: DatasetObjectLink.Object:type_name -> DatasetObjectEntry
-	11, // 2: DatasetList.Datasets:type_name -> DatasetEntry
-	12, // 3: DatasetVersionList.DatasetVersions:type_name -> DatasetVersionEntry
-	13, // 4: DatasetObjectGroupList.DatasetVersionObjects:type_name -> DatasetObjectGroup
-	14, // 5: NewDatasetVersionRequest.Version:type_name -> Version
-	15, // 6: NewDatasetVersionRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
-	14, // 7: CreateDatasetObjectGroupRequest.Version:type_name -> Version
+	11, // 1: DatasetObjectLink.Object:type_name -> DatasetObjectEntry
+	12, // 2: DatasetList.Datasets:type_name -> DatasetEntry
+	13, // 3: DatasetVersionList.DatasetVersions:type_name -> DatasetVersionEntry
+	14, // 4: DatasetObjectGroupList.DatasetVersionObjects:type_name -> DatasetObjectGroup
+	15, // 5: NewDatasetVersionRequest.Version:type_name -> Version
+	16, // 6: NewDatasetVersionRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
+	15, // 7: CreateDatasetObjectGroupRequest.Version:type_name -> Version
 	9,  // 8: CreateDatasetObjectGroupRequest.DatasetObjects:type_name -> CreateDatasetObjectRequest
-	16, // 9: CreateDatasetObjectRequest.Origin:type_name -> Origin
-	17, // 10: CreateDatasetObjectRequest.Created:type_name -> google.protobuf.Timestamp
-	15, // 11: CreateDatasetObjectRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
-	12, // [12:12] is the sub-list for method output_type
-	12, // [12:12] is the sub-list for method input_type
-	12, // [12:12] is the sub-list for extension type_name
-	12, // [12:12] is the sub-list for extension extendee
-	0,  // [0:12] is the sub-list for field type_name
+	17, // 9: CreateDatasetObjectRequest.Origin:type_name -> Origin
+	18, // 10: CreateDatasetObjectRequest.Created:type_name -> google.protobuf.Timestamp
+	16, // 11: CreateDatasetObjectRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
+	14, // 12: CreateDatasetObjectReponse.DatasetObjectGroup:type_name -> DatasetObjectGroup
+	11, // 13: CreateDatasetObjectReponse.DatasetObjects:type_name -> DatasetObjectEntry
+	14, // [14:14] is the sub-list for method output_type
+	14, // [14:14] is the sub-list for method input_type
+	14, // [14:14] is the sub-list for extension type_name
+	14, // [14:14] is the sub-list for extension extendee
+	0,  // [0:14] is the sub-list for field type_name
 }
 
 func init() { file_proto_DatasetModels_proto_init() }
@@ -1021,6 +1089,18 @@ func file_proto_DatasetModels_proto_init() {
 				return nil
 			}
 		}
+		file_proto_DatasetModels_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CreateDatasetObjectReponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -1028,7 +1108,7 @@ func file_proto_DatasetModels_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_DatasetModels_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -214,7 +214,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetObjectGroup"
+              "$ref": "#/definitions/CreateDatasetObjectReponse"
             }
           },
           "default": {
@@ -996,6 +996,20 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/CreateDatasetObjectRequest"
+          }
+        }
+      }
+    },
+    "CreateDatasetObjectReponse": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectGroup": {
+          "$ref": "#/definitions/DatasetObjectGroup"
+        },
+        "DatasetObjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetObjectEntry"
           }
         }
       }

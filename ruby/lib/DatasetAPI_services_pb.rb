@@ -34,7 +34,7 @@ module DatasetService
     rpc :UpdateDatasetVersionObjectCount, UpdateDatasetVersionObjectCountRequest, Empty
     # Lists all entities of a dataset
     rpc :DatasetVersionObjectGroups, ID, DatasetObjectGroupList
-    rpc :CreateDatasetObjectGroup, CreateDatasetObjectGroupRequest, DatasetObjectGroup
+    rpc :CreateDatasetObjectGroup, CreateDatasetObjectGroupRequest, CreateDatasetObjectReponse
   end
 
   Stub = Service.rpc_stub_class

@@ -118,3 +118,8 @@ message CreateDatasetObjectRequest {
     int64 ContentLen = 8; // ContentLen: Lenght of the stored dataset
     string UploadID = 9;
 }
+
+message CreateDatasetObjectReponse {
+    DatasetObjectGroup DatasetObjectGroup = 1;
+    repeated DatasetObjectEntry DatasetObjects = 2;
+}

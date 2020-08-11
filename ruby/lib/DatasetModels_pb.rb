@@ -63,6 +63,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ContentLen, :int64, 8
       optional :UploadID, :string, 9
     end
+    add_message "CreateDatasetObjectReponse" do
+      optional :DatasetObjectGroup, :message, 1, "DatasetObjectGroup"
+      repeated :DatasetObjects, :message, 2, "DatasetObjectEntry"
+    end
   end
 end
 
@@ -76,3 +80,4 @@ DatasetObjectGroupList = ::Google::Protobuf::DescriptorPool.generated_pool.looku
 NewDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("NewDatasetVersionRequest").msgclass
 CreateDatasetObjectGroupRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectGroupRequest").msgclass
 CreateDatasetObjectRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectRequest").msgclass
+CreateDatasetObjectReponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectReponse").msgclass
