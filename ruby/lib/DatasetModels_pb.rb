@@ -52,6 +52,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Version, :message, 3, "Version"
       optional :DatasetID, :string, 4
       repeated :DatasetVersionID, :string, 5
+      repeated :DatasetObjects, :message, 6, "CreateDatasetObjectRequest"
     end
     add_message "CreateDatasetObjectRequest" do
       optional :Filename, :string, 1

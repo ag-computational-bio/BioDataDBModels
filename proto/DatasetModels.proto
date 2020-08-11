@@ -106,6 +106,7 @@ message CreateDatasetObjectGroupRequest {
     Version Version = 3;
     string DatasetID = 4;
     repeated string DatasetVersionID = 5;
+    repeated CreateDatasetObjectRequest DatasetObjects = 6;
 }
 
 message CreateDatasetObjectRequest {

@@ -991,6 +991,40 @@
           "items": {
             "type": "string"
           }
+        },
+        "DatasetObjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CreateDatasetObjectRequest"
+          }
+        }
+      }
+    },
+    "CreateDatasetObjectRequest": {
+      "type": "object",
+      "properties": {
+        "Filename": {
+          "type": "string"
+        },
+        "Filetype": {
+          "type": "string"
+        },
+        "Origin": {
+          "$ref": "#/definitions/Origin"
+        },
+        "Created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "AdditionalMetadata": {
+          "type": "object"
+        },
+        "ContentLen": {
+          "type": "string",
+          "format": "int64"
+        },
+        "UploadID": {
+          "type": "string"
         }
       }
     },
