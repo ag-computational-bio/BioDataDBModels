@@ -56,6 +56,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_enum "Resource" do
       value :Project, 0
       value :Dataset, 1
+      value :DatasetVersion, 2
+      value :DatasetObject, 3
+      value :DatasetObjectGroupResource, 4
     end
   end
 end

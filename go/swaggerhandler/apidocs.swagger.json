@@ -1626,7 +1626,10 @@
       "type": "string",
       "enum": [
         "Project",
-        "Dataset"
+        "Dataset",
+        "DatasetVersion",
+        "DatasetObject",
+        "DatasetObjectGroupResource"
       ],
       "default": "Project"
     },
