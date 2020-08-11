@@ -33,11 +33,8 @@ module DatasetService
     # Updates the expected number of objects in a dataset
     rpc :UpdateDatasetVersionObjectCount, UpdateDatasetVersionObjectCountRequest, Empty
     # Lists all entities of a dataset
-    rpc :DatasetVersionObjects, ID, DatasetObjectList
-    # Creates preauth download links for all entities of a dataset
-    rpc :DatasetVersionObjectsLinks, ID, DatasetObjectLinks
-    # DatasetObjectLink A download link for 
-    rpc :CreateDatasetObjectLink, ID, DatasetObjectLink
+    rpc :DatasetVersionObjectGroups, ID, DatasetObjectGroupList
+    rpc :CreateDatasetObjectGroup, CreateDatasetObjectGroupRequest, DatasetObjectGroup
   end
 
   Stub = Service.rpc_stub_class

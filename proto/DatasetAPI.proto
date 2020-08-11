@@ -72,26 +72,17 @@ service DatasetService {
     }
 
     // Lists all entities of a dataset
-    rpc DatasetVersionObjects(ID) returns (DatasetObjectList) {
+    rpc DatasetVersionObjectGroups(ID) returns (DatasetObjectGroupList) {
         option (google.api.http) = {
-            post: "/api/v1/datasetobjects/list"
+            post: "/api/v1/datasetobjectgroup/list"
             body: "*"
         };
     }
 
-    // Creates preauth download links for all entities of a dataset
-    rpc DatasetVersionObjectsLinks(ID) returns (DatasetObjectLinks) {
+    rpc CreateDatasetObjectGroup (CreateDatasetObjectGroupRequest) returns (DatasetObjectGroup) {
         option (google.api.http) = {
-            post: "/api/v1/datasetobjects/links"
+            post: "/api/v1/datasetobjectgroup/create"
             body: "*"
         };
     }
-
-    // DatasetObjectLink A download link for 
-    rpc CreateDatasetObjectLink(ID) returns (DatasetObjectLink) {
-        option (google.api.http) = {
-            post: "/api/v1/datasetobjects/link"
-            body: "*"
-        };
-    }
-}
+ }

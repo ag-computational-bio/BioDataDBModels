@@ -54,6 +54,23 @@ message DatasetVersionEntry {
     Status Status = 12; // Indicates the status of a dataset
 }
 
+message DatasetGroupHistory {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetObjectAnchor";
+            description: "An anchor for dataset objects. Represents the lineage of a dataset object."
+        };
+    };
+    string ID = 1;
+    string CurrentStableVersionID = 2;
+    string CurrentDevelopmentVersionID = 3;
+    string CurrentHead = 4;
+    string Name = 5; // Name: Name of the dataset entity e.g.: mydata
+    repeated string Fileformat = 6;
+    repeated string Filetype = 7;
+    map<string, string> Labels = 8;
+}
+
 message DatasetObjectEntry {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -64,14 +81,27 @@ message DatasetObjectEntry {
     string ID = 1; //ID of the entity
     string Filename = 2; // Filename: Name of the original file e.g.: mydata.json
     string Filetype = 3; // Filetype: Type of the stored file, e.g.: json, gbff,...
-    string Name = 4; // Name: Name of the dataset entity e.g.: mydata
-    Version Version = 5; // Remote version of the dataset
-    Origin Origin = 6; // Origin: Source of the dataset
-    int64 ContentLen = 7; // ContentLen: Lenght of the stored dataset
-    string DatasetID = 8; // DatasetID: ID of the parent dataset
-    repeated string DatasetVersionID = 9; // DatasetVersionID: ID of the parent dataset version
-    Location Location = 10; // Location: Location of the data
-    google.protobuf.Timestamp Created = 11; // When the data object was created
-    google.protobuf.Struct AdditionalMetadata = 12; // Additional metadata of the object
-    string UploadID = 13;
+    Origin Origin = 4; // Origin: Source of the dataset
+    int64 ContentLen = 5; // ContentLen: Lenght of the stored dataset
+    Location Location = 6; // Location: Location of the data
+    google.protobuf.Timestamp Created = 7; // When the data object was created
+    google.protobuf.Struct AdditionalMetadata = 8; // Additional metadata of the object
+    string UploadID = 9;
+    Status Status = 10;
+}
+
+message DatasetObjectGroup {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetObjectGroup";
+            description: "A set of dataset objects that are bundled together for easier management. An example use case would be a set of binary data objects along with an index file."
+        };
+    };
+
+    string ID = 1;
+    string DatasetObjectAnchor = 2;
+    string Name = 3;
+    Version Version = 4;
+    string DatasetID = 5; // DatasetID: ID of the parent dataset
+    repeated string DatasetVersionID = 6; // DatasetVersionID: ID of the parent dataset version
 }

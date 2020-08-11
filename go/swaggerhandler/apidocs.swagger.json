@@ -207,15 +207,14 @@
         ]
       }
     },
-    "/api/v1/datasetobjects/link": {
+    "/api/v1/datasetobjectgroup/create": {
       "post": {
-        "summary": "DatasetObjectLink A download link for",
-        "operationId": "DatasetService_CreateDatasetObjectLink",
+        "operationId": "DatasetService_CreateDatasetObjectGroup",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetObjectLink"
+              "$ref": "#/definitions/DatasetObjectGroup"
             }
           },
           "default": {
@@ -231,7 +230,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/ID"
+              "$ref": "#/definitions/CreateDatasetObjectGroupRequest"
             }
           }
         ],
@@ -240,48 +239,15 @@
         ]
       }
     },
-    "/api/v1/datasetobjects/links": {
-      "post": {
-        "summary": "Creates preauth download links for all entities of a dataset",
-        "operationId": "DatasetService_DatasetVersionObjectsLinks",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/DatasetObjectLinks"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
-          }
-        ],
-        "tags": [
-          "DatasetService"
-        ]
-      }
-    },
-    "/api/v1/datasetobjects/list": {
+    "/api/v1/datasetobjectgroup/list": {
       "post": {
         "summary": "Lists all entities of a dataset",
-        "operationId": "DatasetService_DatasetVersionObjects",
+        "operationId": "DatasetService_DatasetVersionObjectGroups",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetObjectList"
+              "$ref": "#/definitions/DatasetObjectGroupList"
             }
           },
           "default": {
@@ -471,6 +437,38 @@
         ]
       }
     },
+    "/api/v1/load/download": {
+      "post": {
+        "operationId": "LoadService_GetDownloadLinks",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GetDownloadResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GetDownloadRequest"
+            }
+          }
+        ],
+        "tags": [
+          "LoadService"
+        ]
+      }
+    },
     "/api/v1/load/finishmultipartupload": {
       "post": {
         "operationId": "LoadService_FinishMultipartUpload",
@@ -542,7 +540,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/InitMultiPartUploadResponse"
+              "$ref": "#/definitions/Empty"
             }
           },
           "default": {
@@ -973,6 +971,29 @@
         }
       }
     },
+    "CreateDatasetObjectGroupRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectAnchor": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "DatasetVersionID": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "CreateDatasetRequest": {
       "type": "object",
       "example": {
@@ -1033,37 +1054,8 @@
     "CreateUploadLinkRequest": {
       "type": "object",
       "properties": {
-        "DatasetVersionID": {
+        "DatsetObjectID": {
           "type": "string"
-        },
-        "Filename": {
-          "type": "string"
-        },
-        "Filetype": {
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "Version": {
-          "$ref": "#/definitions/Version"
-        },
-        "Origin": {
-          "$ref": "#/definitions/Origin"
-        },
-        "ContentLen": {
-          "type": "string",
-          "format": "int64"
-        },
-        "Location": {
-          "$ref": "#/definitions/Location"
-        },
-        "Created": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "AdditionalMetadata": {
-          "type": "object"
         }
       }
     },
@@ -1147,27 +1139,12 @@
         "Filetype": {
           "type": "string"
         },
-        "Name": {
-          "type": "string"
-        },
-        "Version": {
-          "$ref": "#/definitions/Version"
-        },
         "Origin": {
           "$ref": "#/definitions/Origin"
         },
         "ContentLen": {
           "type": "string",
           "format": "int64"
-        },
-        "DatasetID": {
-          "type": "string"
-        },
-        "DatasetVersionID": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         },
         "Location": {
           "$ref": "#/definitions/Location"
@@ -1181,50 +1158,49 @@
         },
         "UploadID": {
           "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/Status"
         }
       },
       "description": "Representation of a dataset entity",
       "title": "DatasetObjectEntry"
     },
-    "DatasetObjectLink": {
-      "type": "object",
-      "properties": {
-        "Link": {
-          "type": "string"
-        },
-        "ObjectID": {
-          "type": "string"
-        },
-        "Object": {
-          "$ref": "#/definitions/DatasetObjectEntry"
-        }
-      },
-      "description": "Links to download a specific entity of a dataset",
-      "title": "DatasetObjectLink"
-    },
-    "DatasetObjectLinks": {
+    "DatasetObjectGroup": {
       "type": "object",
       "properties": {
         "ID": {
           "type": "string"
         },
-        "Entites": {
+        "DatasetObjectAnchor": {
+          "type": "string"
+        },
+        "Name": {
+          "type": "string"
+        },
+        "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "DatasetID": {
+          "type": "string"
+        },
+        "DatasetVersionID": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetObjectLink"
+            "type": "string"
           }
         }
       },
-      "description": "List of links to download the entities of a dataset",
-      "title": "DatasetLinks"
+      "description": "A set of dataset objects that are bundled together for easier management. An example use case would be a set of binary data objects along with an index file.",
+      "title": "DatasetObjectGroup"
     },
-    "DatasetObjectList": {
+    "DatasetObjectGroupList": {
       "type": "object",
       "properties": {
         "DatasetVersionObjects": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetObjectEntry"
+            "$ref": "#/definitions/DatasetObjectGroup"
           }
         }
       },
@@ -1323,6 +1299,28 @@
         }
       }
     },
+    "GetDownloadRequest": {
+      "type": "object",
+      "properties": {
+        "Resource": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ResourceRequest"
+          }
+        }
+      }
+    },
+    "GetDownloadResponse": {
+      "type": "object",
+      "properties": {
+        "Links": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ObjectDownloadLink"
+          }
+        }
+      }
+    },
     "GetMultipartUploadLinkPartRequest": {
       "type": "object",
       "properties": {
@@ -1396,48 +1394,11 @@
       "description": "Request a new MetadataDB",
       "title": "InitMetadataDBRequest"
     },
-    "InitMultiPartUploadResponse": {
-      "type": "object",
-      "properties": {
-        "DatasetObjectID": {
-          "type": "string"
-        }
-      }
-    },
     "InitMultipartUploadRequest": {
       "type": "object",
       "properties": {
-        "DatasetVersionID": {
+        "DatsetObjectID": {
           "type": "string"
-        },
-        "Filename": {
-          "type": "string"
-        },
-        "Filetype": {
-          "type": "string"
-        },
-        "Name": {
-          "type": "string"
-        },
-        "Version": {
-          "$ref": "#/definitions/Version"
-        },
-        "Origin": {
-          "$ref": "#/definitions/Origin"
-        },
-        "ContentLen": {
-          "type": "string",
-          "format": "int64"
-        },
-        "Location": {
-          "$ref": "#/definitions/Location"
-        },
-        "Created": {
-          "type": "string",
-          "format": "date-time"
-        },
-        "AdditionalMetadata": {
-          "type": "object"
         }
       }
     },
@@ -1570,6 +1531,17 @@
       "description": "Creates a new dataset version",
       "title": "NewDatasetVersionRequest"
     },
+    "ObjectDownloadLink": {
+      "type": "object",
+      "properties": {
+        "Link": {
+          "type": "string"
+        },
+        "Object": {
+          "$ref": "#/definitions/DatasetObjectEntry"
+        }
+      }
+    },
     "Origin": {
       "type": "object",
       "example": {
@@ -1654,6 +1626,17 @@
         "Dataset"
       ],
       "default": "Project"
+    },
+    "ResourceRequest": {
+      "type": "object",
+      "properties": {
+        "Resource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "ResourceID": {
+          "type": "string"
+        }
+      }
     },
     "Right": {
       "type": "string",

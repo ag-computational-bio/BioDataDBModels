@@ -5,22 +5,11 @@ require 'google/protobuf'
 
 require 'proto/DatasetEntryModels_pb'
 require 'protoc/gateway/options/annotations_pb'
-require 'google/protobuf/timestamp_pb'
-require 'google/protobuf/struct_pb'
 require 'proto/CommonModels_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do
     add_message "CreateUploadLinkRequest" do
-      optional :DatasetVersionID, :string, 1
-      optional :Filename, :string, 2
-      optional :Filetype, :string, 3
-      optional :Name, :string, 4
-      optional :Version, :message, 5, "Version"
-      optional :Origin, :message, 6, "Origin"
-      optional :ContentLen, :int64, 7
-      optional :Location, :message, 10, "Location"
-      optional :Created, :message, 11, "google.protobuf.Timestamp"
-      optional :AdditionalMetadata, :message, 12, "google.protobuf.Struct"
+      optional :DatsetObjectID, :string, 1
     end
     add_message "CreateUploadLinkResponse" do
       optional :ID, :string, 1
@@ -28,19 +17,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Object, :message, 3, "DatasetObjectEntry"
     end
     add_message "InitMultipartUploadRequest" do
-      optional :DatasetVersionID, :string, 1
-      optional :Filename, :string, 2
-      optional :Filetype, :string, 3
-      optional :Name, :string, 4
-      optional :Version, :message, 5, "Version"
-      optional :Origin, :message, 6, "Origin"
-      optional :ContentLen, :int64, 7
-      optional :Location, :message, 10, "Location"
-      optional :Created, :message, 11, "google.protobuf.Timestamp"
-      optional :AdditionalMetadata, :message, 12, "google.protobuf.Struct"
-    end
-    add_message "InitMultiPartUploadResponse" do
-      optional :DatasetObjectID, :string, 1
+      optional :DatsetObjectID, :string, 1
     end
     add_message "GetMultipartUploadLinkPartRequest" do
       optional :DatasetObjectID, :string, 1
@@ -55,6 +32,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetObjectID, :string, 1
       repeated :CompletedUploadParts, :message, 2, "CompletedUploadParts"
     end
+    add_message "GetDownloadRequest" do
+      repeated :Resource, :message, 1, "ResourceRequest"
+    end
+    add_message "ResourceRequest" do
+      optional :Resource, :enum, 1, "Resource"
+      optional :ResourceID, :string, 2
+    end
+    add_message "GetDownloadResponse" do
+      repeated :Links, :message, 1, "ObjectDownloadLink"
+    end
+    add_message "ObjectDownloadLink" do
+      optional :Link, :string, 1
+      optional :Object, :message, 2, "DatasetObjectEntry"
+    end
     add_message "CompletedUploadParts" do
       optional :Etag, :string, 1
       optional :Partnumber, :int64, 2
@@ -65,8 +56,11 @@ end
 CreateUploadLinkRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateUploadLinkRequest").msgclass
 CreateUploadLinkResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateUploadLinkResponse").msgclass
 InitMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultipartUploadRequest").msgclass
-InitMultiPartUploadResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultiPartUploadResponse").msgclass
 GetMultipartUploadLinkPartRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartRequest").msgclass
 GetMultipartUploadLinkPartResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartResponse").msgclass
 FinishMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FinishMultipartUploadRequest").msgclass
+GetDownloadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetDownloadRequest").msgclass
+ResourceRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ResourceRequest").msgclass
+GetDownloadResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetDownloadResponse").msgclass
+ObjectDownloadLink = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("ObjectDownloadLink").msgclass
 CompletedUploadParts = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CompletedUploadParts").msgclass

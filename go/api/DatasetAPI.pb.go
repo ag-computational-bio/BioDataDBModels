@@ -43,7 +43,7 @@ var file_proto_DatasetAPI_proto_rawDesc = []byte{
 	0x6f, 0x74, 0x6f, 0x1a, 0x18, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
 	0x6e, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67,
 	0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61,
-	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xaa, 0x07, 0x0a, 0x0e,
+	0x74, 0x69, 0x6f, 0x6e, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x32, 0xfc, 0x06, 0x0a, 0x0e,
 	0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x5b,
 	0x0a, 0x10, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x4e, 0x65, 0x77, 0x44, 0x61, 0x74, 0x61, 0x73,
 	0x65, 0x74, 0x12, 0x15, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x73,
@@ -85,28 +85,25 @@ var file_proto_DatasetAPI_proto_rawDesc = []byte{
 	0x93, 0x02, 0x2e, 0x22, 0x29, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x61, 0x74,
 	0x61, 0x73, 0x65, 0x74, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x2f, 0x75, 0x70, 0x64, 0x61,
 	0x74, 0x65, 0x2f, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x01,
-	0x2a, 0x12, 0x58, 0x0a, 0x15, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73,
-	0x69, 0x6f, 0x6e, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x12, 0x03, 0x2e, 0x49, 0x44, 0x1a,
-	0x12, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x4c,
-	0x69, 0x73, 0x74, 0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x22, 0x1b, 0x2f, 0x61, 0x70,
-	0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65,
-	0x63, 0x74, 0x73, 0x2f, 0x6c, 0x69, 0x73, 0x74, 0x3a, 0x01, 0x2a, 0x12, 0x5f, 0x0a, 0x1a, 0x44,
-	0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4f, 0x62, 0x6a,
-	0x65, 0x63, 0x74, 0x73, 0x4c, 0x69, 0x6e, 0x6b, 0x73, 0x12, 0x03, 0x2e, 0x49, 0x44, 0x1a, 0x13,
-	0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x4c, 0x69,
-	0x6e, 0x6b, 0x73, 0x22, 0x27, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x21, 0x22, 0x1c, 0x2f, 0x61, 0x70,
-	0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65,
-	0x63, 0x74, 0x73, 0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x73, 0x3a, 0x01, 0x2a, 0x12, 0x5a, 0x0a, 0x17,
-	0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a,
-	0x65, 0x63, 0x74, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x03, 0x2e, 0x49, 0x44, 0x1a, 0x12, 0x2e, 0x44,
-	0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x4c, 0x69, 0x6e, 0x6b,
-	0x22, 0x26, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x20, 0x22, 0x1b, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76,
-	0x31, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x73,
-	0x2f, 0x6c, 0x69, 0x6e, 0x6b, 0x3a, 0x01, 0x2a, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69, 0x74, 0x68,
-	0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x67, 0x2d, 0x63, 0x6f, 0x6d, 0x70, 0x75, 0x74,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x2d, 0x62, 0x69, 0x6f, 0x2f, 0x42, 0x69, 0x6f, 0x44,
-	0x61, 0x74, 0x61, 0x44, 0x42, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x67, 0x6f, 0x2f, 0x61,
-	0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x2a, 0x12, 0x66, 0x0a, 0x1a, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73,
+	0x69, 0x6f, 0x6e, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x12,
+	0x03, 0x2e, 0x49, 0x44, 0x1a, 0x17, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62,
+	0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x2a, 0x82,
+	0xd3, 0xe4, 0x93, 0x02, 0x24, 0x22, 0x1f, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64,
+	0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x67, 0x72, 0x6f, 0x75,
+	0x70, 0x2f, 0x6c, 0x69, 0x73, 0x74, 0x3a, 0x01, 0x2a, 0x12, 0x7f, 0x0a, 0x18, 0x43, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x20, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x61,
+	0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65,
+	0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x22, 0x2c, 0x82, 0xd3,
+	0xe4, 0x93, 0x02, 0x26, 0x22, 0x21, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x61,
+	0x74, 0x61, 0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x67, 0x72, 0x6f, 0x75, 0x70,
+	0x2f, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x3a, 0x01, 0x2a, 0x42, 0x38, 0x5a, 0x36, 0x67, 0x69,
+	0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x67, 0x2d, 0x63, 0x6f, 0x6d, 0x70,
+	0x75, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x61, 0x6c, 0x2d, 0x62, 0x69, 0x6f, 0x2f, 0x42, 0x69,
+	0x6f, 0x44, 0x61, 0x74, 0x61, 0x44, 0x42, 0x4d, 0x6f, 0x64, 0x65, 0x6c, 0x73, 0x2f, 0x67, 0x6f,
+	0x2f, 0x61, 0x70, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var file_proto_DatasetAPI_proto_goTypes = []interface{}{
@@ -114,14 +111,14 @@ var file_proto_DatasetAPI_proto_goTypes = []interface{}{
 	(*commonmodels.ID)(nil),                                      // 1: ID
 	(*datasetmodels.NewDatasetVersionRequest)(nil),               // 2: NewDatasetVersionRequest
 	(*datasetmodels.UpdateDatasetVersionObjectCountRequest)(nil), // 3: UpdateDatasetVersionObjectCountRequest
-	(*datasetentrymodels.DatasetEntry)(nil),                      // 4: DatasetEntry
-	(*datasetmodels.DatasetList)(nil),                            // 5: DatasetList
-	(*commonmodels.Empty)(nil),                                   // 6: Empty
-	(*datasetentrymodels.DatasetVersionEntry)(nil),               // 7: DatasetVersionEntry
-	(*datasetmodels.DatasetVersionList)(nil),                     // 8: DatasetVersionList
-	(*datasetmodels.DatasetObjectList)(nil),                      // 9: DatasetObjectList
-	(*datasetmodels.DatasetObjectLinks)(nil),                     // 10: DatasetObjectLinks
-	(*datasetmodels.DatasetObjectLink)(nil),                      // 11: DatasetObjectLink
+	(*datasetmodels.CreateDatasetObjectGroupRequest)(nil),        // 4: CreateDatasetObjectGroupRequest
+	(*datasetentrymodels.DatasetEntry)(nil),                      // 5: DatasetEntry
+	(*datasetmodels.DatasetList)(nil),                            // 6: DatasetList
+	(*commonmodels.Empty)(nil),                                   // 7: Empty
+	(*datasetentrymodels.DatasetVersionEntry)(nil),               // 8: DatasetVersionEntry
+	(*datasetmodels.DatasetVersionList)(nil),                     // 9: DatasetVersionList
+	(*datasetmodels.DatasetObjectGroupList)(nil),                 // 10: DatasetObjectGroupList
+	(*datasetentrymodels.DatasetObjectGroup)(nil),                // 11: DatasetObjectGroup
 }
 var file_proto_DatasetAPI_proto_depIdxs = []int32{
 	0,  // 0: DatasetService.CreateNewDataset:input_type -> CreateDatasetRequest
@@ -131,21 +128,19 @@ var file_proto_DatasetAPI_proto_depIdxs = []int32{
 	1,  // 4: DatasetService.DatasetVersions:input_type -> ID
 	1,  // 5: DatasetService.DeleteDatasetVersion:input_type -> ID
 	3,  // 6: DatasetService.UpdateDatasetVersionObjectCount:input_type -> UpdateDatasetVersionObjectCountRequest
-	1,  // 7: DatasetService.DatasetVersionObjects:input_type -> ID
-	1,  // 8: DatasetService.DatasetVersionObjectsLinks:input_type -> ID
-	1,  // 9: DatasetService.CreateDatasetObjectLink:input_type -> ID
-	4,  // 10: DatasetService.CreateNewDataset:output_type -> DatasetEntry
-	5,  // 11: DatasetService.Datasets:output_type -> DatasetList
-	6,  // 12: DatasetService.DeleteDataset:output_type -> Empty
-	7,  // 13: DatasetService.CreateNewDatasetVersion:output_type -> DatasetVersionEntry
-	8,  // 14: DatasetService.DatasetVersions:output_type -> DatasetVersionList
-	6,  // 15: DatasetService.DeleteDatasetVersion:output_type -> Empty
-	6,  // 16: DatasetService.UpdateDatasetVersionObjectCount:output_type -> Empty
-	9,  // 17: DatasetService.DatasetVersionObjects:output_type -> DatasetObjectList
-	10, // 18: DatasetService.DatasetVersionObjectsLinks:output_type -> DatasetObjectLinks
-	11, // 19: DatasetService.CreateDatasetObjectLink:output_type -> DatasetObjectLink
-	10, // [10:20] is the sub-list for method output_type
-	0,  // [0:10] is the sub-list for method input_type
+	1,  // 7: DatasetService.DatasetVersionObjectGroups:input_type -> ID
+	4,  // 8: DatasetService.CreateDatasetObjectGroup:input_type -> CreateDatasetObjectGroupRequest
+	5,  // 9: DatasetService.CreateNewDataset:output_type -> DatasetEntry
+	6,  // 10: DatasetService.Datasets:output_type -> DatasetList
+	7,  // 11: DatasetService.DeleteDataset:output_type -> Empty
+	8,  // 12: DatasetService.CreateNewDatasetVersion:output_type -> DatasetVersionEntry
+	9,  // 13: DatasetService.DatasetVersions:output_type -> DatasetVersionList
+	7,  // 14: DatasetService.DeleteDatasetVersion:output_type -> Empty
+	7,  // 15: DatasetService.UpdateDatasetVersionObjectCount:output_type -> Empty
+	10, // 16: DatasetService.DatasetVersionObjectGroups:output_type -> DatasetObjectGroupList
+	11, // 17: DatasetService.CreateDatasetObjectGroup:output_type -> DatasetObjectGroup
+	9,  // [9:18] is the sub-list for method output_type
+	0,  // [0:9] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -203,11 +198,8 @@ type DatasetServiceClient interface {
 	// Updates the expected number of objects in a dataset
 	UpdateDatasetVersionObjectCount(ctx context.Context, in *datasetmodels.UpdateDatasetVersionObjectCountRequest, opts ...grpc.CallOption) (*commonmodels.Empty, error)
 	// Lists all entities of a dataset
-	DatasetVersionObjects(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error)
-	// Creates preauth download links for all entities of a dataset
-	DatasetVersionObjectsLinks(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLinks, error)
-	// DatasetObjectLink A download link for
-	CreateDatasetObjectLink(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLink, error)
+	DatasetVersionObjectGroups(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectGroupList, error)
+	CreateDatasetObjectGroup(ctx context.Context, in *datasetmodels.CreateDatasetObjectGroupRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetObjectGroup, error)
 }
 
 type datasetServiceClient struct {
@@ -281,27 +273,18 @@ func (c *datasetServiceClient) UpdateDatasetVersionObjectCount(ctx context.Conte
 	return out, nil
 }
 
-func (c *datasetServiceClient) DatasetVersionObjects(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectList, error) {
-	out := new(datasetmodels.DatasetObjectList)
-	err := c.cc.Invoke(ctx, "/DatasetService/DatasetVersionObjects", in, out, opts...)
+func (c *datasetServiceClient) DatasetVersionObjectGroups(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectGroupList, error) {
+	out := new(datasetmodels.DatasetObjectGroupList)
+	err := c.cc.Invoke(ctx, "/DatasetService/DatasetVersionObjectGroups", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *datasetServiceClient) DatasetVersionObjectsLinks(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLinks, error) {
-	out := new(datasetmodels.DatasetObjectLinks)
-	err := c.cc.Invoke(ctx, "/DatasetService/DatasetVersionObjectsLinks", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *datasetServiceClient) CreateDatasetObjectLink(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetObjectLink, error) {
-	out := new(datasetmodels.DatasetObjectLink)
-	err := c.cc.Invoke(ctx, "/DatasetService/CreateDatasetObjectLink", in, out, opts...)
+func (c *datasetServiceClient) CreateDatasetObjectGroup(ctx context.Context, in *datasetmodels.CreateDatasetObjectGroupRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetObjectGroup, error) {
+	out := new(datasetentrymodels.DatasetObjectGroup)
+	err := c.cc.Invoke(ctx, "/DatasetService/CreateDatasetObjectGroup", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -326,11 +309,8 @@ type DatasetServiceServer interface {
 	// Updates the expected number of objects in a dataset
 	UpdateDatasetVersionObjectCount(context.Context, *datasetmodels.UpdateDatasetVersionObjectCountRequest) (*commonmodels.Empty, error)
 	// Lists all entities of a dataset
-	DatasetVersionObjects(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectList, error)
-	// Creates preauth download links for all entities of a dataset
-	DatasetVersionObjectsLinks(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectLinks, error)
-	// DatasetObjectLink A download link for
-	CreateDatasetObjectLink(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectLink, error)
+	DatasetVersionObjectGroups(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectGroupList, error)
+	CreateDatasetObjectGroup(context.Context, *datasetmodels.CreateDatasetObjectGroupRequest) (*datasetentrymodels.DatasetObjectGroup, error)
 }
 
 // UnimplementedDatasetServiceServer can be embedded to have forward compatible implementations.
@@ -358,14 +338,11 @@ func (*UnimplementedDatasetServiceServer) DeleteDatasetVersion(context.Context, 
 func (*UnimplementedDatasetServiceServer) UpdateDatasetVersionObjectCount(context.Context, *datasetmodels.UpdateDatasetVersionObjectCountRequest) (*commonmodels.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateDatasetVersionObjectCount not implemented")
 }
-func (*UnimplementedDatasetServiceServer) DatasetVersionObjects(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersionObjects not implemented")
+func (*UnimplementedDatasetServiceServer) DatasetVersionObjectGroups(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectGroupList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersionObjectGroups not implemented")
 }
-func (*UnimplementedDatasetServiceServer) DatasetVersionObjectsLinks(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectLinks, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersionObjectsLinks not implemented")
-}
-func (*UnimplementedDatasetServiceServer) CreateDatasetObjectLink(context.Context, *commonmodels.ID) (*datasetmodels.DatasetObjectLink, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateDatasetObjectLink not implemented")
+func (*UnimplementedDatasetServiceServer) CreateDatasetObjectGroup(context.Context, *datasetmodels.CreateDatasetObjectGroupRequest) (*datasetentrymodels.DatasetObjectGroup, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateDatasetObjectGroup not implemented")
 }
 
 func RegisterDatasetServiceServer(s *grpc.Server, srv DatasetServiceServer) {
@@ -498,56 +475,38 @@ func _DatasetService_UpdateDatasetVersionObjectCount_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DatasetService_DatasetVersionObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _DatasetService_DatasetVersionObjectGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(commonmodels.ID)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DatasetServiceServer).DatasetVersionObjects(ctx, in)
+		return srv.(DatasetServiceServer).DatasetVersionObjectGroups(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/DatasetService/DatasetVersionObjects",
+		FullMethod: "/DatasetService/DatasetVersionObjectGroups",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatasetServiceServer).DatasetVersionObjects(ctx, req.(*commonmodels.ID))
+		return srv.(DatasetServiceServer).DatasetVersionObjectGroups(ctx, req.(*commonmodels.ID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _DatasetService_DatasetVersionObjectsLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(commonmodels.ID)
+func _DatasetService_CreateDatasetObjectGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(datasetmodels.CreateDatasetObjectGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(DatasetServiceServer).DatasetVersionObjectsLinks(ctx, in)
+		return srv.(DatasetServiceServer).CreateDatasetObjectGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/DatasetService/DatasetVersionObjectsLinks",
+		FullMethod: "/DatasetService/CreateDatasetObjectGroup",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatasetServiceServer).DatasetVersionObjectsLinks(ctx, req.(*commonmodels.ID))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _DatasetService_CreateDatasetObjectLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(commonmodels.ID)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(DatasetServiceServer).CreateDatasetObjectLink(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/DatasetService/CreateDatasetObjectLink",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(DatasetServiceServer).CreateDatasetObjectLink(ctx, req.(*commonmodels.ID))
+		return srv.(DatasetServiceServer).CreateDatasetObjectGroup(ctx, req.(*datasetmodels.CreateDatasetObjectGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -585,16 +544,12 @@ var _DatasetService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _DatasetService_UpdateDatasetVersionObjectCount_Handler,
 		},
 		{
-			MethodName: "DatasetVersionObjects",
-			Handler:    _DatasetService_DatasetVersionObjects_Handler,
+			MethodName: "DatasetVersionObjectGroups",
+			Handler:    _DatasetService_DatasetVersionObjectGroups_Handler,
 		},
 		{
-			MethodName: "DatasetVersionObjectsLinks",
-			Handler:    _DatasetService_DatasetVersionObjectsLinks_Handler,
-		},
-		{
-			MethodName: "CreateDatasetObjectLink",
-			Handler:    _DatasetService_CreateDatasetObjectLink_Handler,
+			MethodName: "CreateDatasetObjectGroup",
+			Handler:    _DatasetService_CreateDatasetObjectGroup_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -4,21 +4,10 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmode
 
 import "proto/DatasetEntryModels.proto";
 import "protoc/gateway/options/annotations.proto";
-import "google/protobuf/timestamp.proto";
-import "google/protobuf/struct.proto";
 import "proto/CommonModels.proto";
 
 message CreateUploadLinkRequest {
-    string DatasetVersionID = 1;
-    string Filename = 2; // Filename: Name of the original file e.g.: mydata.json
-    string Filetype = 3; // Filetype: Type of the stored file, e.g.: json, gbff,...
-    string Name = 4; // Name: Name of the dataset entity e.g.: mydata
-    Version Version = 5; // Remote version of the dataset
-    Origin Origin = 6; // Origin: Source of the dataset
-    int64 ContentLen = 7; // ContentLen: Lenght of the stored dataset
-    Location Location = 10; // Location: Location of the data
-    google.protobuf.Timestamp Created = 11; // When the data object was created
-    google.protobuf.Struct AdditionalMetadata = 12; // Additional metadata of the object
+    string DatsetObjectID = 1;
 }
 
 message CreateUploadLinkResponse {
@@ -34,20 +23,7 @@ message CreateUploadLinkResponse {
 }
 
 message InitMultipartUploadRequest {
-    string DatasetVersionID = 1;
-    string Filename = 2; // Filename: Name of the original file e.g.: mydata.json
-    string Filetype = 3; // Filetype: Type of the stored file, e.g.: json, gbff,...
-    string Name = 4; // Name: Name of the dataset entity e.g.: mydata
-    Version Version = 5; // Remote version of the dataset
-    Origin Origin = 6; // Origin: Source of the dataset
-    int64 ContentLen = 7; // ContentLen: Lenght of the stored dataset
-    Location Location = 10; // Location: Location of the data
-    google.protobuf.Timestamp Created = 11; // When the data object was created
-    google.protobuf.Struct AdditionalMetadata = 12; // Additional metadata of the object
-}
-
-message InitMultiPartUploadResponse {
-    string DatasetObjectID = 1;
+    string DatsetObjectID = 1;
 }
 
 message GetMultipartUploadLinkPartRequest {
@@ -64,6 +40,24 @@ message GetMultipartUploadLinkPartResponse {
 message FinishMultipartUploadRequest {
     string DatasetObjectID = 1;
     repeated CompletedUploadParts CompletedUploadParts = 2;
+}
+
+message GetDownloadRequest {
+    repeated ResourceRequest Resource = 1;
+}
+
+message ResourceRequest {
+    Resource Resource = 1;
+    string ResourceID = 2;
+}
+
+message GetDownloadResponse {
+    repeated ObjectDownloadLink Links = 1;
+}
+
+message ObjectDownloadLink {
+    string Link = 1;
+    DatasetObjectEntry Object = 2;
 }
 
 message CompletedUploadParts {

@@ -34,20 +34,35 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :ExpectedObjectCount, :int64, 11
       optional :Status, :enum, 12, "Status"
     end
+    add_message "DatasetGroupHistory" do
+      optional :ID, :string, 1
+      optional :CurrentStableVersionID, :string, 2
+      optional :CurrentDevelopmentVersionID, :string, 3
+      optional :CurrentHead, :string, 4
+      optional :Name, :string, 5
+      repeated :Fileformat, :string, 6
+      repeated :Filetype, :string, 7
+      map :Labels, :string, :string, 8
+    end
     add_message "DatasetObjectEntry" do
       optional :ID, :string, 1
       optional :Filename, :string, 2
       optional :Filetype, :string, 3
-      optional :Name, :string, 4
-      optional :Version, :message, 5, "Version"
-      optional :Origin, :message, 6, "Origin"
-      optional :ContentLen, :int64, 7
-      optional :DatasetID, :string, 8
-      repeated :DatasetVersionID, :string, 9
-      optional :Location, :message, 10, "Location"
-      optional :Created, :message, 11, "google.protobuf.Timestamp"
-      optional :AdditionalMetadata, :message, 12, "google.protobuf.Struct"
-      optional :UploadID, :string, 13
+      optional :Origin, :message, 4, "Origin"
+      optional :ContentLen, :int64, 5
+      optional :Location, :message, 6, "Location"
+      optional :Created, :message, 7, "google.protobuf.Timestamp"
+      optional :AdditionalMetadata, :message, 8, "google.protobuf.Struct"
+      optional :UploadID, :string, 9
+      optional :Status, :enum, 10, "Status"
+    end
+    add_message "DatasetObjectGroup" do
+      optional :ID, :string, 1
+      optional :DatasetObjectAnchor, :string, 2
+      optional :Name, :string, 3
+      optional :Version, :message, 4, "Version"
+      optional :DatasetID, :string, 5
+      repeated :DatasetVersionID, :string, 6
     end
     add_enum "Status" do
       value :Initiating, 0
@@ -61,5 +76,7 @@ end
 
 DatasetEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetEntry").msgclass
 DatasetVersionEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionEntry").msgclass
+DatasetGroupHistory = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetGroupHistory").msgclass
 DatasetObjectEntry = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectEntry").msgclass
+DatasetObjectGroup = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectGroup").msgclass
 Status = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Status").enummodule

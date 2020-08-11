@@ -20,7 +20,7 @@ service LoadService {
         };
     }
 
-    rpc InitMultipartUpload(InitMultipartUploadRequest) returns (InitMultiPartUploadResponse){
+    rpc InitMultipartUpload(InitMultipartUploadRequest) returns (Empty){
         option (google.api.http) = {
             post: "/api/v1/load/initmultipartupload"
             body: "*"
@@ -37,6 +37,13 @@ service LoadService {
     rpc FinishMultipartUpload(FinishMultipartUploadRequest) returns (Empty){
         option (google.api.http) = {
             post: "/api/v1/load/finishmultipartupload"
+            body: "*"
+        };
+    }
+
+    rpc GetDownloadLinks(GetDownloadRequest) returns (GetDownloadResponse) {
+        option (google.api.http) = {
+            post: "/api/v1/load/download"
             body: "*"
         };
     }
