@@ -1161,6 +1161,9 @@
         },
         "Status": {
           "$ref": "#/definitions/Status"
+        },
+        "DatasetObjectGroup": {
+          "type": "string"
         }
       },
       "description": "Representation of a dataset entity",
