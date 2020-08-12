@@ -27,6 +27,7 @@ module DatasetService
     rpc :CreateNewDatasetVersion, NewDatasetVersionRequest, DatasetVersionEntry
     # Lists Versions of a dataset
     rpc :DatasetVersions, ID, DatasetVersionList
+    rpc :GetDatasetVersion, ID, DatasetVersionEntry
     # Deletes a dataset version
     # This should not delete the underlaying dataset objects
     rpc :DeleteDatasetVersion, ID, Empty
