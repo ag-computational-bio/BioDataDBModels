@@ -1280,15 +1280,29 @@
     "DatasetObjectGroupList": {
       "type": "object",
       "properties": {
-        "DatasetVersionObjects": {
+        "DatasetObjectGroups": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetObjectGroup"
+            "$ref": "#/definitions/DatasetObjectGroupObjectContainer"
           }
         }
       },
       "description": "A list of datasets",
       "title": "DatasetList"
+    },
+    "DatasetObjectGroupObjectContainer": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectGroup": {
+          "$ref": "#/definitions/DatasetObjectGroup"
+        },
+        "Objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetObjectEntry"
+          }
+        }
+      }
     },
     "DatasetVersionEntry": {
       "type": "object",

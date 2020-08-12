@@ -81,7 +81,12 @@ message DatasetObjectGroupList {
             description: "A list of datasets"
         };
     };
-    repeated DatasetObjectGroup DatasetVersionObjects = 1;
+    repeated DatasetObjectGroupObjectContainer DatasetObjectGroups = 1;
+}
+
+message DatasetObjectGroupObjectContainer {
+    DatasetObjectGroup DatasetObjectGroup = 1;
+    repeated DatasetObjectEntry Objects = 2;
 }
 
 

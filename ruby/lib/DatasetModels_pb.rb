@@ -36,7 +36,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :DatasetVersions, :message, 2, "DatasetVersionEntry"
     end
     add_message "DatasetObjectGroupList" do
-      repeated :DatasetVersionObjects, :message, 1, "DatasetObjectGroup"
+      repeated :DatasetObjectGroups, :message, 1, "DatasetObjectGroupObjectContainer"
+    end
+    add_message "DatasetObjectGroupObjectContainer" do
+      optional :DatasetObjectGroup, :message, 1, "DatasetObjectGroup"
+      repeated :Objects, :message, 2, "DatasetObjectEntry"
     end
     add_message "NewDatasetVersionRequest" do
       optional :DatasetID, :string, 1
@@ -77,6 +81,7 @@ UpdateDatasetVersionObjectCountRequest = ::Google::Protobuf::DescriptorPool.gene
 DatasetList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetList").msgclass
 DatasetVersionList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionList").msgclass
 DatasetObjectGroupList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectGroupList").msgclass
+DatasetObjectGroupObjectContainer = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectGroupObjectContainer").msgclass
 NewDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("NewDatasetVersionRequest").msgclass
 CreateDatasetObjectGroupRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectGroupRequest").msgclass
 CreateDatasetObjectRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectRequest").msgclass
