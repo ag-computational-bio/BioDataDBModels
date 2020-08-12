@@ -338,6 +338,38 @@
         ]
       }
     },
+    "/api/v1/datasetversion/get": {
+      "post": {
+        "operationId": "DatasetService_GetDatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetVersionEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ID"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/datasetversion/list": {
       "post": {
         "summary": "Lists Versions of a dataset",

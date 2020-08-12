@@ -55,7 +55,10 @@ service DatasetService {
     }
 
     rpc GetDatasetVersion(ID) returns (DatasetVersionEntry){
-
+        option (google.api.http) = {
+            post: "/api/v1/datasetversion/get"
+            body: "*"
+        };
     }
 
     
