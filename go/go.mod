@@ -1,3 +1,3 @@
 module github.com/ag-computational-bio/BioDataDBModels/go
 
-go 1.14
+go 1.15
