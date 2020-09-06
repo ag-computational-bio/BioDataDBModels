@@ -14,7 +14,7 @@ import (
 	"net/http"
 
 	"github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
-	"github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels"
+	"github.com/ag-computational-bio/BioDataDBModels/go/datasetapimodels"
 	"github.com/golang/protobuf/descriptor"
 	"github.com/golang/protobuf/proto"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
@@ -34,7 +34,7 @@ var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 
 func request_DatasetService_CreateNewDataset_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.CreateDatasetRequest
+	var protoReq datasetapimodels.CreateDatasetRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -51,7 +51,7 @@ func request_DatasetService_CreateNewDataset_0(ctx context.Context, marshaler ru
 }
 
 func local_request_DatasetService_CreateNewDataset_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.CreateDatasetRequest
+	var protoReq datasetapimodels.CreateDatasetRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -176,7 +176,7 @@ func local_request_DatasetService_DatasetVersions_0(ctx context.Context, marshal
 }
 
 func request_DatasetService_UpdateDatasetField_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.UpdateFieldsRequest
+	var protoReq datasetapimodels.UpdateFieldsRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -193,7 +193,7 @@ func request_DatasetService_UpdateDatasetField_0(ctx context.Context, marshaler 
 }
 
 func local_request_DatasetService_UpdateDatasetField_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.UpdateFieldsRequest
+	var protoReq datasetapimodels.UpdateFieldsRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -210,7 +210,7 @@ func local_request_DatasetService_UpdateDatasetField_0(ctx context.Context, mars
 }
 
 func request_DatasetService_UpdateCurrentDatasetVersion_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.UpdateCurrentDatasetVersionRequest
+	var protoReq datasetapimodels.UpdateCurrentDatasetVersionRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -227,7 +227,7 @@ func request_DatasetService_UpdateCurrentDatasetVersion_0(ctx context.Context, m
 }
 
 func local_request_DatasetService_UpdateCurrentDatasetVersion_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.UpdateCurrentDatasetVersionRequest
+	var protoReq datasetapimodels.UpdateCurrentDatasetVersionRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -298,7 +298,7 @@ func local_request_DatasetService_DeleteDataset_0(ctx context.Context, marshaler
 }
 
 func request_DatasetService_CreateNewDatasetVersion_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.CreateDatasetVersionRequest
+	var protoReq datasetapimodels.CreateDatasetVersionRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -315,7 +315,7 @@ func request_DatasetService_CreateNewDatasetVersion_0(ctx context.Context, marsh
 }
 
 func local_request_DatasetService_CreateNewDatasetVersion_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.CreateDatasetVersionRequest
+	var protoReq datasetapimodels.CreateDatasetVersionRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -386,7 +386,7 @@ func local_request_DatasetService_GetDatasetVersion_0(ctx context.Context, marsh
 }
 
 func request_DatasetService_UpdateDatasetVersionField_0(ctx context.Context, marshaler runtime.Marshaler, client DatasetServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.UpdateFieldsRequest
+	var protoReq datasetapimodels.UpdateFieldsRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -403,7 +403,7 @@ func request_DatasetService_UpdateDatasetVersionField_0(ctx context.Context, mar
 }
 
 func local_request_DatasetService_UpdateDatasetVersionField_0(ctx context.Context, marshaler runtime.Marshaler, server DatasetServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.UpdateFieldsRequest
+	var protoReq datasetapimodels.UpdateFieldsRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -528,7 +528,7 @@ func local_request_DatasetService_DatasetVersionObjectGroups_0(ctx context.Conte
 }
 
 func request_ObjectsService_CreateDatsetObjectGroup_0(ctx context.Context, marshaler runtime.Marshaler, client ObjectsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.CreateDatasetObjectGroupRequest
+	var protoReq datasetapimodels.CreateDatasetObjectGroupRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)
@@ -545,7 +545,7 @@ func request_ObjectsService_CreateDatsetObjectGroup_0(ctx context.Context, marsh
 }
 
 func local_request_ObjectsService_CreateDatsetObjectGroup_0(ctx context.Context, marshaler runtime.Marshaler, server ObjectsServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq datasetmodels.CreateDatasetObjectGroupRequest
+	var protoReq datasetapimodels.CreateDatasetObjectGroupRequest
 	var metadata runtime.ServerMetadata
 
 	newReader, berr := utilities.IOReaderFactory(req.Body)

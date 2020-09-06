@@ -9,7 +9,7 @@ package api
 import (
 	context "context"
 	commonmodels "github.com/ag-computational-bio/BioDataDBModels/go/commonmodels"
-	datasetmodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetmodels"
+	datasetapimodels "github.com/ag-computational-bio/BioDataDBModels/go/datasetapimodels"
 	projectmodels "github.com/ag-computational-bio/BioDataDBModels/go/projectmodels"
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
@@ -86,7 +86,7 @@ var file_proto_ProjectAPI_proto_goTypes = []interface{}{
 	(*commonmodels.ID)(nil),                       // 2: ID
 	(*commonmodels.Empty)(nil),                    // 3: Empty
 	(*projectmodels.ProjectEntry)(nil),            // 4: ProjectEntry
-	(*datasetmodels.DatasetList)(nil),             // 5: DatasetList
+	(*datasetapimodels.DatasetList)(nil),          // 5: DatasetList
 	(*projectmodels.ProjectEntryList)(nil),        // 6: ProjectEntryList
 }
 var file_proto_ProjectAPI_proto_depIdxs = []int32{
@@ -145,7 +145,7 @@ const _ = grpc.SupportPackageIsVersion6
 type ProjectAPIClient interface {
 	CreateProject(ctx context.Context, in *projectmodels.CreateProjectRequest, opts ...grpc.CallOption) (*projectmodels.ProjectEntry, error)
 	AddUserToProject(ctx context.Context, in *projectmodels.AddUserToProjectRequest, opts ...grpc.CallOption) (*projectmodels.ProjectEntry, error)
-	GetProjectDatasets(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetList, error)
+	GetProjectDatasets(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetapimodels.DatasetList, error)
 	GetUserProjects(ctx context.Context, in *commonmodels.Empty, opts ...grpc.CallOption) (*projectmodels.ProjectEntryList, error)
 	DeleteProject(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*commonmodels.Empty, error)
 }
@@ -176,8 +176,8 @@ func (c *projectAPIClient) AddUserToProject(ctx context.Context, in *projectmode
 	return out, nil
 }
 
-func (c *projectAPIClient) GetProjectDatasets(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetmodels.DatasetList, error) {
-	out := new(datasetmodels.DatasetList)
+func (c *projectAPIClient) GetProjectDatasets(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetapimodels.DatasetList, error) {
+	out := new(datasetapimodels.DatasetList)
 	err := c.cc.Invoke(ctx, "/ProjectAPI/GetProjectDatasets", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -207,7 +207,7 @@ func (c *projectAPIClient) DeleteProject(ctx context.Context, in *commonmodels.I
 type ProjectAPIServer interface {
 	CreateProject(context.Context, *projectmodels.CreateProjectRequest) (*projectmodels.ProjectEntry, error)
 	AddUserToProject(context.Context, *projectmodels.AddUserToProjectRequest) (*projectmodels.ProjectEntry, error)
-	GetProjectDatasets(context.Context, *commonmodels.ID) (*datasetmodels.DatasetList, error)
+	GetProjectDatasets(context.Context, *commonmodels.ID) (*datasetapimodels.DatasetList, error)
 	GetUserProjects(context.Context, *commonmodels.Empty) (*projectmodels.ProjectEntryList, error)
 	DeleteProject(context.Context, *commonmodels.ID) (*commonmodels.Empty, error)
 }
@@ -222,7 +222,7 @@ func (*UnimplementedProjectAPIServer) CreateProject(context.Context, *projectmod
 func (*UnimplementedProjectAPIServer) AddUserToProject(context.Context, *projectmodels.AddUserToProjectRequest) (*projectmodels.ProjectEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddUserToProject not implemented")
 }
-func (*UnimplementedProjectAPIServer) GetProjectDatasets(context.Context, *commonmodels.ID) (*datasetmodels.DatasetList, error) {
+func (*UnimplementedProjectAPIServer) GetProjectDatasets(context.Context, *commonmodels.ID) (*datasetapimodels.DatasetList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetProjectDatasets not implemented")
 }
 func (*UnimplementedProjectAPIServer) GetUserProjects(context.Context, *commonmodels.Empty) (*projectmodels.ProjectEntryList, error) {
