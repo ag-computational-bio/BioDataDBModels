@@ -71,6 +71,25 @@ message DatasetGroupHistory {
     map<string, string> Labels = 8;
 }
 
+message DatasetObjectGroup {
+    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
+        json_schema: {
+            title: "DatasetObjectGroup";
+            description: "A set of dataset objects that are bundled together for easier management. An example use case would be a set of binary data objects along with an index file."
+        };
+    };
+
+    string ID = 1;
+    string DatasetGroupHistoryID = 2;
+    string Name = 3;
+    Version Version = 4;
+    string DatasetID = 5; // DatasetID: ID of the parent dataset
+    repeated string DatasetVersionID = 6; // DatasetVersionID: ID of the parent dataset version
+    repeated DatasetObjectEntry Objects = 7;
+    google.protobuf.Struct AdditionalMetadata = 8; // Additional metadata of the object
+}
+
+
 message DatasetObjectEntry {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -88,23 +107,4 @@ message DatasetObjectEntry {
     google.protobuf.Struct AdditionalMetadata = 8; // Additional metadata of the object
     string UploadID = 9;
     Status Status = 10;
-}
-
-message DatasetObjectGroup {
-    option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
-        json_schema: {
-            title: "DatasetObjectGroup";
-            description: "A set of dataset objects that are bundled together for easier management. An example use case would be a set of binary data objects along with an index file."
-        };
-    };
-
-    string ID = 1;
-    string DatasetGroupHistoryID = 2;
-    string Name = 3;
-    Version Version = 4;
-    string DatasetID = 5; // DatasetID: ID of the parent dataset
-    repeated string DatasetVersionID = 6; // DatasetVersionID: ID of the parent dataset version
-    repeated DatasetObjectEntry Objects = 7;
-    google.protobuf.Struct AdditionalMetadata = 8; // Additional metadata of the object
-
 }
