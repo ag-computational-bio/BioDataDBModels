@@ -60,6 +60,11 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       value :DatasetObject, 3
       value :DatasetObjectGroupResource, 4
     end
+    add_enum "Stage" do
+      value :Stable, 0
+      value :Beta, 1
+      value :Alpha, 2
+    end
   end
 end
 
@@ -75,3 +80,4 @@ Int64Wrapper = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Int64Wr
 IDList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IDList").msgclass
 Right = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Right").enummodule
 Resource = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Resource").enummodule
+Stage = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Stage").enummodule

@@ -13,7 +13,7 @@ import "google/api/annotations.proto";
 service LoadService {
     // Creates a list of upload links to place dataset entities in object storage
     // and adds corresponding metadata objects
-    rpc CreateUploadLink(CreateUploadLinkRequest) returns (CreateUploadLinkResponse) {
+    rpc GetUploadLink(CreateUploadLinkRequest) returns (CreateUploadLinkResponse) {
         option (google.api.http) = {
             post: "/api/v1/load/createlinks"
             body: "*"

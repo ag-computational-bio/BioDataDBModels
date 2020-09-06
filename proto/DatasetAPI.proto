@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
-import "proto/DatasetModels.proto";
+import "proto/DatasetAPIModels.proto";
 import "proto/DatasetEntryModels.proto";
 import "proto/CommonModels.proto";
 import "google/api/annotations.proto";
@@ -12,8 +12,9 @@ import "google/api/annotations.proto";
 // All data objects are associated with one data dataset
 // Dataset versions group these data objects, which makes them reusable
 service DatasetService {
+    //Dataset calls
 
-    // CreateNewDataset Creates a new dataset
+    // CreateNewDataset Creates a new dataset and associates it with a dataset
     rpc CreateNewDataset(CreateDatasetRequest) returns (DatasetEntry) {
         option (google.api.http) = {
             post: "/api/v1/dataset/create"
@@ -21,24 +22,49 @@ service DatasetService {
         };
     }
 
-    // Datasets Lists all datasets
+    // Datasets Lists all datasets of a user
     rpc Datasets(ID) returns (DatasetList) {
         option (google.api.http) = {
-            post: "/api/v1/dataset/list"
+            get: "/api/v1/datasets/{ID}"
+        };
+    }
+
+    // Lists Versions of a dataset
+    rpc DatasetVersions(ID) returns (DatasetVersionList) {
+        option (google.api.http) = {
+            get: "/api/v1/dataset/{ID}/versions"
+        };
+    }
+
+    // Updates a field of a dataset
+    rpc UpdateDatasetField(UpdateFieldsRequest) returns (DatasetEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/dataset/update"
+            body: "*"
+        };
+    }
+
+    // Updates the current dataset version of a dataset
+    rpc UpdateCurrentDatasetVersion(UpdateCurrentDatasetVersionRequest) returns (DatasetEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/dataset/updateversion"
             body: "*"
         };
     }
 
     // DeleteDataset Delete a dataset
+    // Datasets can only be deleted if 
     rpc DeleteDataset(ID) returns (Empty) {
         option (google.api.http) = {
-            post: "/api/v1/dataset/delete"
-            body: "*"
+            delete: "/api/v1/dataset/{ID}"
         };
     }
 
-    // Creates a new dataset version based on an existing dataset
-    rpc CreateNewDatasetVersion(NewDatasetVersionRequest) returns (DatasetVersionEntry) {
+    //---------------------------------------------------------------------------------------
+    // Dataset version calls
+
+    // Creates a new dataset version which is linked to an exisiting dataset
+    rpc CreateNewDatasetVersion(CreateDatasetVersionRequest) returns (DatasetVersionEntry) {
         option (google.api.http) = {
             post: "/api/v1/datasetversion/create"
             body: "*"
@@ -46,51 +72,69 @@ service DatasetService {
 
     }
 
-    // Lists Versions of a dataset
-    rpc DatasetVersions(ID) returns (DatasetVersionList) {
-        option (google.api.http) = {
-            post: "/api/v1/datasetversion/list"
-            body: "*"
-        };
-    }
-
     rpc GetDatasetVersion(ID) returns (DatasetVersionEntry){
         option (google.api.http) = {
-            post: "/api/v1/datasetversion/get"
+            get: "/api/v1/datasetversion/{ID}"
+        };
+    }
+
+    rpc UpdateDatasetVersionField(UpdateFieldsRequest) returns (DatasetEntry) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetversion/update"
             body: "*"
         };
     }
 
-    
     // Deletes a dataset version
     // This should not delete the underlaying dataset objects
     rpc DeleteDatasetVersion(ID) returns (Empty) {
         option (google.api.http) = {
-            post: "/api/v1/datasetversion/delete"
-            body: "*"
+            delete: "/api/v1/datasetversion/{ID}"
         };
     }
 
-    // Updates the expected number of objects in a dataset
-    rpc UpdateDatasetVersionObjectCount(UpdateDatasetVersionObjectCountRequest) returns (Empty) {
-        option (google.api.http) = {
-            post: "/api/v1/datasetversion/update/objectcount"
-            body: "*"
-        };
-    }
 
-    // Lists all entities of a dataset
+    //DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version
     rpc DatasetVersionObjectGroups(ID) returns (DatasetObjectGroupList) {
         option (google.api.http) = {
-            post: "/api/v1/datasetobjectgroup/list"
-            body: "*"
+            get: "/api/v1/datasetversion/{ID}/objectgroups"
         };
     }
 
-    rpc CreateDatasetObjectGroup (CreateDatasetObjectGroupRequest) returns (CreateDatasetObjectReponse) {
+ }
+
+ service ObjectsService {
+    // Object group calls
+
+    //CreateDatsetObjectGroup Creates a new dataset object group in the database
+    //Will also create all related dataset objects
+    rpc CreateDatsetObjectGroup (CreateDatasetObjectGroupRequest) returns (DatasetObjectGroup) {
         option (google.api.http) = {
             post: "/api/v1/datasetobjectgroup/create"
             body: "*"
+        };
+    }
+
+    //DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version
+    rpc DatasetVersionObjectGroups(ID) returns (DatasetObjectGroupList) {
+        option (google.api.http) = {
+            get: "/api/v1/datasetobjectgroup/{ID}"
+        };
+    }
+
+    //GetDatasetObjectGroup The dataset object group with the given ID
+    //Will only return a dataset object group without its affiliated objects
+    rpc GetDatasetObjectGroup(ID) returns (DatasetObjectGroup) {
+        option (google.api.http) = {
+            get: "/api/v1/datasetobjectgroup/{ID}"
+        };
+    }
+
+    //DeleteDatasetObjectGroup Deletes the given dataset group and all associated dataset objects
+    //Can only be used when all linked dataset versions have been deleted
+    rpc DeleteDatasetObjectGroup(ID) returns (Empty) {
+        option (google.api.http) = {
+            delete: "/api/v1/datasetobjectgroup/{ID}"           
         };
     }
  }

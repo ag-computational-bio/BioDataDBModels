@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/api";
 
-import "proto/DatasetModels.proto";
+import "proto/DatasetAPIModels.proto";
 import "proto/CommonModels.proto";
 import "proto/ProjectEntryModels.proto";
 import "proto/ProjectModels.proto";

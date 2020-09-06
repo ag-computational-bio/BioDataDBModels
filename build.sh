@@ -9,7 +9,7 @@ mv go/proto/ProjectModels.pb.go go/projectmodels
 mv go/proto/ProjectEntryModels.pb.go go/projectmodels
 
 mv go/proto/DatasetEntryModels.pb.go go/datasetentrymodels
-mv go/proto/DatasetModels.pb.go go/datasetmodels
+mv go/proto/DatasetAPIModels.pb.go go/datasetapimodels
 mv go/proto/DatasetAPI.pb.go go/api
 
 mv go/proto/LoadModels.pb.go go/loadmodels

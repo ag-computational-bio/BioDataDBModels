@@ -110,7 +110,7 @@
     },
     "/api/v1/dataset/create": {
       "post": {
-        "summary": "CreateNewDataset Creates a new dataset",
+        "summary": "CreateNewDataset Creates a new dataset and associates it with a dataset",
         "operationId": "DatasetService_CreateNewDataset",
         "responses": {
           "200": {
@@ -141,9 +141,75 @@
         ]
       }
     },
-    "/api/v1/dataset/delete": {
+    "/api/v1/dataset/update": {
       "post": {
-        "summary": "DeleteDataset Delete a dataset",
+        "summary": "Updates a field of a dataset",
+        "operationId": "DatasetService_UpdateDatasetField",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateFieldsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/dataset/updateversion": {
+      "post": {
+        "summary": "Updates the current dataset version of a dataset",
+        "operationId": "DatasetService_UpdateCurrentDatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateCurrentDatasetVersionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/dataset/{ID}": {
+      "delete": {
+        "summary": "DeleteDataset Delete a dataset\nDatasets can only be deleted if",
         "operationId": "DatasetService_DeleteDataset",
         "responses": {
           "200": {
@@ -161,12 +227,10 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "ID",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
+            "type": "string"
           }
         ],
         "tags": [
@@ -174,15 +238,15 @@
         ]
       }
     },
-    "/api/v1/dataset/list": {
-      "post": {
-        "summary": "Datasets Lists all datasets",
-        "operationId": "DatasetService_Datasets",
+    "/api/v1/dataset/{ID}/versions": {
+      "get": {
+        "summary": "Lists Versions of a dataset",
+        "operationId": "DatasetService_DatasetVersions",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetList"
+              "$ref": "#/definitions/DatasetVersionList"
             }
           },
           "default": {
@@ -194,12 +258,10 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "ID",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
+            "type": "string"
           }
         ],
         "tags": [
@@ -209,12 +271,13 @@
     },
     "/api/v1/datasetobjectgroup/create": {
       "post": {
-        "operationId": "DatasetService_CreateDatasetObjectGroup",
+        "summary": "CreateDatsetObjectGroup Creates a new dataset object group in the database\nWill also create all related dataset objects",
+        "operationId": "ObjectsService_CreateDatsetObjectGroup",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/CreateDatasetObjectReponse"
+              "$ref": "#/definitions/DatasetObjectGroup"
             }
           },
           "default": {
@@ -235,19 +298,19 @@
           }
         ],
         "tags": [
-          "DatasetService"
+          "ObjectsService"
         ]
       }
     },
-    "/api/v1/datasetobjectgroup/list": {
-      "post": {
-        "summary": "Lists all entities of a dataset",
-        "operationId": "DatasetService_DatasetVersionObjectGroups",
+    "/api/v1/datasetobjectgroup/{ID}": {
+      "get": {
+        "summary": "GetDatasetObjectGroup The dataset object group with the given ID\nWill only return a dataset object group without its affiliated objects",
+        "operationId": "ObjectsService_GetDatasetObjectGroup",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetObjectGroupList"
+              "$ref": "#/definitions/DatasetObjectGroup"
             }
           },
           "default": {
@@ -259,12 +322,70 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "ID",
+            "in": "path",
             "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ObjectsService"
+        ]
+      },
+      "delete": {
+        "summary": "DeleteDatasetObjectGroup Deletes the given dataset group and all associated dataset objects\nCan only be used when all linked dataset versions have been deleted",
+        "operationId": "ObjectsService_DeleteDatasetObjectGroup",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/ID"
+              "$ref": "#/definitions/Empty"
             }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ObjectsService"
+        ]
+      }
+    },
+    "/api/v1/datasets/{ID}": {
+      "get": {
+        "summary": "Datasets Lists all datasets of a user",
+        "operationId": "DatasetService_Datasets",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -274,7 +395,7 @@
     },
     "/api/v1/datasetversion/create": {
       "post": {
-        "summary": "Creates a new dataset version based on an existing dataset",
+        "summary": "Creates a new dataset version which is linked to an exisiting dataset",
         "operationId": "DatasetService_CreateNewDatasetVersion",
         "responses": {
           "200": {
@@ -296,7 +417,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/NewDatasetVersionRequest"
+              "$ref": "#/definitions/CreateDatasetVersionRequest"
             }
           }
         ],
@@ -305,8 +426,68 @@
         ]
       }
     },
-    "/api/v1/datasetversion/delete": {
+    "/api/v1/datasetversion/update": {
       "post": {
+        "operationId": "DatasetService_UpdateDatasetVersionField",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateFieldsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
+    "/api/v1/datasetversion/{ID}": {
+      "get": {
+        "operationId": "DatasetService_GetDatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetVersionEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      },
+      "delete": {
         "summary": "Deletes a dataset version\nThis should not delete the underlaying dataset objects",
         "operationId": "DatasetService_DeleteDatasetVersion",
         "responses": {
@@ -325,12 +506,10 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "ID",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
+            "type": "string"
           }
         ],
         "tags": [
@@ -338,14 +517,15 @@
         ]
       }
     },
-    "/api/v1/datasetversion/get": {
-      "post": {
-        "operationId": "DatasetService_GetDatasetVersion",
+    "/api/v1/datasetversion/{ID}/objectgroups": {
+      "get": {
+        "summary": "DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version",
+        "operationId": "DatasetService_DatasetVersionObjectGroups",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetVersionEntry"
+              "$ref": "#/definitions/DatasetObjectGroupList"
             }
           },
           "default": {
@@ -357,78 +537,10 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "ID",
+            "in": "path",
             "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
-          }
-        ],
-        "tags": [
-          "DatasetService"
-        ]
-      }
-    },
-    "/api/v1/datasetversion/list": {
-      "post": {
-        "summary": "Lists Versions of a dataset",
-        "operationId": "DatasetService_DatasetVersions",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/DatasetVersionList"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/ID"
-            }
-          }
-        ],
-        "tags": [
-          "DatasetService"
-        ]
-      }
-    },
-    "/api/v1/datasetversion/update/objectcount": {
-      "post": {
-        "summary": "Updates the expected number of objects in a dataset",
-        "operationId": "DatasetService_UpdateDatasetVersionObjectCount",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/Empty"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response",
-            "schema": {
-              "$ref": "#/definitions/runtimeError"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/UpdateDatasetVersionObjectCountRequest"
-            }
+            "type": "string"
           }
         ],
         "tags": [
@@ -439,7 +551,7 @@
     "/api/v1/load/createlinks": {
       "post": {
         "summary": "Creates a list of upload links to place dataset entities in object storage\nand adds corresponding metadata objects",
-        "operationId": "LoadService_CreateUploadLink",
+        "operationId": "LoadService_GetUploadLink",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -631,7 +743,7 @@
     },
     "/api/v1/metadata/initcollection": {
       "post": {
-        "operationId": "MetadataCompositeStore_InitMetadataDBCollection",
+        "operationId": "MetadataCompositeStore_CreateMetadataDBCollection",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -663,7 +775,7 @@
     },
     "/api/v1/metadata/initdb": {
       "post": {
-        "operationId": "MetadataCompositeStore_InitMetadataDB",
+        "operationId": "MetadataCompositeStore_CreateMetadataDB",
         "responses": {
           "200": {
             "description": "A successful response.",
@@ -1032,20 +1144,6 @@
         }
       }
     },
-    "CreateDatasetObjectReponse": {
-      "type": "object",
-      "properties": {
-        "DatasetObjectGroup": {
-          "$ref": "#/definitions/DatasetObjectGroup"
-        },
-        "DatasetObjects": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DatasetObjectEntry"
-          }
-        }
-      }
-    },
     "CreateDatasetObjectRequest": {
       "type": "object",
       "properties": {
@@ -1094,6 +1192,32 @@
       },
       "description": "Data required to start loading a dataset into the BioDataDB",
       "title": "InitLoadDataset"
+    },
+    "CreateDatasetVersionRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetID": {
+          "type": "string"
+        },
+        "Version": {
+          "$ref": "#/definitions/Version"
+        },
+        "AdditionalMetadataMessageRef": {
+          "type": "string"
+        },
+        "AdditionalObjectMetadataMessageRef": {
+          "type": "string"
+        },
+        "AdditionalMetadata": {
+          "type": "object"
+        },
+        "ExpectedObjectCount": {
+          "type": "string",
+          "format": "int64"
+        }
+      },
+      "description": "Creates a new dataset version",
+      "title": "CreateDatasetVersionRequest"
     },
     "CreateProjectRequest": {
       "type": "object",
@@ -1241,9 +1365,6 @@
         },
         "Status": {
           "$ref": "#/definitions/Status"
-        },
-        "DatasetObjectGroup": {
-          "type": "string"
         }
       },
       "description": "Representation of a dataset entity",
@@ -1255,7 +1376,7 @@
         "ID": {
           "type": "string"
         },
-        "DatasetObjectAnchor": {
+        "DatasetGroupHistoryID": {
           "type": "string"
         },
         "Name": {
@@ -1272,6 +1393,15 @@
           "items": {
             "type": "string"
           }
+        },
+        "Objects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DatasetObjectEntry"
+          }
+        },
+        "AdditionalMetadata": {
+          "type": "object"
         }
       },
       "description": "A set of dataset objects that are bundled together for easier management. An example use case would be a set of binary data objects along with an index file.",
@@ -1283,26 +1413,12 @@
         "DatasetObjectGroups": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DatasetObjectGroupObjectContainer"
+            "$ref": "#/definitions/DatasetObjectGroup"
           }
         }
       },
-      "description": "A list of datasets",
+      "description": "A list of dataset objects groups",
       "title": "DatasetList"
-    },
-    "DatasetObjectGroupObjectContainer": {
-      "type": "object",
-      "properties": {
-        "DatasetObjectGroup": {
-          "$ref": "#/definitions/DatasetObjectGroup"
-        },
-        "Objects": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/DatasetObjectEntry"
-          }
-        }
-      }
     },
     "DatasetVersionEntry": {
       "type": "object",
@@ -1602,32 +1718,6 @@
         }
       }
     },
-    "NewDatasetVersionRequest": {
-      "type": "object",
-      "properties": {
-        "DatasetID": {
-          "type": "string"
-        },
-        "Version": {
-          "$ref": "#/definitions/Version"
-        },
-        "AdditionalMetadataMessageRef": {
-          "type": "string"
-        },
-        "AdditionalObjectMetadataMessageRef": {
-          "type": "string"
-        },
-        "AdditionalMetadata": {
-          "type": "object"
-        },
-        "ExpectedObjectCount": {
-          "type": "string",
-          "format": "int64"
-        }
-      },
-      "description": "Creates a new dataset version",
-      "title": "NewDatasetVersionRequest"
-    },
     "ObjectDownloadLink": {
       "type": "object",
       "properties": {
@@ -1746,6 +1836,15 @@
       ],
       "default": "Read"
     },
+    "Stage": {
+      "type": "string",
+      "enum": [
+        "Stable",
+        "Beta",
+        "Alpha"
+      ],
+      "default": "Stable"
+    },
     "Status": {
       "type": "string",
       "enum": [
@@ -1824,18 +1923,43 @@
       "description": "Lists all available api tokens for a user",
       "title": "TokenList"
     },
-    "UpdateDatasetVersionObjectCountRequest": {
+    "UpdateCurrentDatasetVersionRequest": {
       "type": "object",
       "properties": {
-        "DatasetVersionID": {
+        "ID": {
           "type": "string"
         },
-        "Value": {
-          "type": "string",
-          "format": "int64"
-        },
-        "DatasetID": {
+        "UpdateTargetID": {
           "type": "string"
+        },
+        "TargetResource": {
+          "$ref": "#/definitions/Resource"
+        },
+        "UpdateStage": {
+          "$ref": "#/definitions/Stage"
+        }
+      },
+      "description": "Updates the current version entry.",
+      "title": "UpdateCurrentDatasetVersionRequest"
+    },
+    "UpdateFieldsRequest": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "UpdateStringFields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "UpdateInt64Fields": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "format": "int64"
+          }
         }
       }
     },

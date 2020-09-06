@@ -8,7 +8,7 @@ import "proto/CommonModels.proto";
 import "google/api/annotations.proto";
 
 service MetadataCompositeStore {
-    rpc InitMetadataDB(InitMetadataDBRequest) returns (MetadataDBEntry) {
+    rpc CreateMetadataDB(InitMetadataDBRequest) returns (MetadataDBEntry) {
         option (google.api.http) = {
             post: "/api/v1/metadata/initdb"
             body: "*"
@@ -21,7 +21,7 @@ service MetadataCompositeStore {
         };
     }
 
-    rpc InitMetadataDBCollection(InitMetadataCollectionRequest) returns (MetadataDBEntry) {
+    rpc CreateMetadataDBCollection(InitMetadataCollectionRequest) returns (MetadataDBEntry) {
         option (google.api.http) = {
             post: "/api/v1/metadata/initcollection"
             body: "*"

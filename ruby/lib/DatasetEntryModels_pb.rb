@@ -55,15 +55,16 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :AdditionalMetadata, :message, 8, "google.protobuf.Struct"
       optional :UploadID, :string, 9
       optional :Status, :enum, 10, "Status"
-      optional :DatasetObjectGroup, :string, 11
     end
     add_message "DatasetObjectGroup" do
       optional :ID, :string, 1
-      optional :DatasetObjectAnchor, :string, 2
+      optional :DatasetGroupHistoryID, :string, 2
       optional :Name, :string, 3
       optional :Version, :message, 4, "Version"
       optional :DatasetID, :string, 5
       repeated :DatasetVersionID, :string, 6
+      repeated :Objects, :message, 7, "DatasetObjectEntry"
+      optional :AdditionalMetadata, :message, 8, "google.protobuf.Struct"
     end
     add_enum "Status" do
       value :Initiating, 0

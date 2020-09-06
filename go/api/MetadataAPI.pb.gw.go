@@ -33,7 +33,7 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = descriptor.ForMessage
 
-func request_MetadataCompositeStore_InitMetadataDB_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataCompositeStoreClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_MetadataCompositeStore_CreateMetadataDB_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataCompositeStoreClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq metadatamodels.InitMetadataDBRequest
 	var metadata runtime.ServerMetadata
 
@@ -45,12 +45,12 @@ func request_MetadataCompositeStore_InitMetadataDB_0(ctx context.Context, marsha
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.InitMetadataDB(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.CreateMetadataDB(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_MetadataCompositeStore_InitMetadataDB_0(ctx context.Context, marshaler runtime.Marshaler, server MetadataCompositeStoreServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_MetadataCompositeStore_CreateMetadataDB_0(ctx context.Context, marshaler runtime.Marshaler, server MetadataCompositeStoreServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq metadatamodels.InitMetadataDBRequest
 	var metadata runtime.ServerMetadata
 
@@ -62,7 +62,7 @@ func local_request_MetadataCompositeStore_InitMetadataDB_0(ctx context.Context, 
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.InitMetadataDB(ctx, &protoReq)
+	msg, err := server.CreateMetadataDB(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -85,7 +85,7 @@ func local_request_MetadataCompositeStore_ListMetadataDBs_0(ctx context.Context,
 
 }
 
-func request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataCompositeStoreClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_MetadataCompositeStore_CreateMetadataDBCollection_0(ctx context.Context, marshaler runtime.Marshaler, client MetadataCompositeStoreClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq metadatamodels.InitMetadataCollectionRequest
 	var metadata runtime.ServerMetadata
 
@@ -97,12 +97,12 @@ func request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context.Conte
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.InitMetadataDBCollection(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.CreateMetadataDBCollection(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context.Context, marshaler runtime.Marshaler, server MetadataCompositeStoreServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_MetadataCompositeStore_CreateMetadataDBCollection_0(ctx context.Context, marshaler runtime.Marshaler, server MetadataCompositeStoreServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq metadatamodels.InitMetadataCollectionRequest
 	var metadata runtime.ServerMetadata
 
@@ -114,7 +114,7 @@ func local_request_MetadataCompositeStore_InitMetadataDBCollection_0(ctx context
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.InitMetadataDBCollection(ctx, &protoReq)
+	msg, err := server.CreateMetadataDBCollection(ctx, &protoReq)
 	return msg, metadata, err
 
 }
@@ -245,7 +245,7 @@ func local_request_MetadataCompositeStore_Query_0(ctx context.Context, marshaler
 // Note that using this registration option will cause many gRPC library features (such as grpc.SendHeader, etc) to stop working. Consider using RegisterMetadataCompositeStoreHandlerFromEndpoint instead.
 func RegisterMetadataCompositeStoreHandlerServer(ctx context.Context, mux *runtime.ServeMux, server MetadataCompositeStoreServer) error {
 
-	mux.Handle("POST", pattern_MetadataCompositeStore_InitMetadataDB_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_MetadataCompositeStore_CreateMetadataDB_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -254,14 +254,14 @@ func RegisterMetadataCompositeStoreHandlerServer(ctx context.Context, mux *runti
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MetadataCompositeStore_InitMetadataDB_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_MetadataCompositeStore_CreateMetadataDB_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataCompositeStore_InitMetadataDB_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataCompositeStore_CreateMetadataDB_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -285,7 +285,7 @@ func RegisterMetadataCompositeStoreHandlerServer(ctx context.Context, mux *runti
 
 	})
 
-	mux.Handle("POST", pattern_MetadataCompositeStore_InitMetadataDBCollection_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_MetadataCompositeStore_CreateMetadataDBCollection_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -294,14 +294,14 @@ func RegisterMetadataCompositeStoreHandlerServer(ctx context.Context, mux *runti
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_MetadataCompositeStore_InitMetadataDBCollection_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_MetadataCompositeStore_CreateMetadataDBCollection_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataCompositeStore_InitMetadataDBCollection_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataCompositeStore_CreateMetadataDBCollection_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -426,7 +426,7 @@ func RegisterMetadataCompositeStoreHandler(ctx context.Context, mux *runtime.Ser
 // "MetadataCompositeStoreClient" to call the correct interceptors.
 func RegisterMetadataCompositeStoreHandlerClient(ctx context.Context, mux *runtime.ServeMux, client MetadataCompositeStoreClient) error {
 
-	mux.Handle("POST", pattern_MetadataCompositeStore_InitMetadataDB_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_MetadataCompositeStore_CreateMetadataDB_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -435,14 +435,14 @@ func RegisterMetadataCompositeStoreHandlerClient(ctx context.Context, mux *runti
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataCompositeStore_InitMetadataDB_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataCompositeStore_CreateMetadataDB_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataCompositeStore_InitMetadataDB_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataCompositeStore_CreateMetadataDB_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -466,7 +466,7 @@ func RegisterMetadataCompositeStoreHandlerClient(ctx context.Context, mux *runti
 
 	})
 
-	mux.Handle("POST", pattern_MetadataCompositeStore_InitMetadataDBCollection_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_MetadataCompositeStore_CreateMetadataDBCollection_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -475,14 +475,14 @@ func RegisterMetadataCompositeStoreHandlerClient(ctx context.Context, mux *runti
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_MetadataCompositeStore_InitMetadataDBCollection_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_MetadataCompositeStore_CreateMetadataDBCollection_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_MetadataCompositeStore_InitMetadataDBCollection_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_MetadataCompositeStore_CreateMetadataDBCollection_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -570,11 +570,11 @@ func RegisterMetadataCompositeStoreHandlerClient(ctx context.Context, mux *runti
 }
 
 var (
-	pattern_MetadataCompositeStore_InitMetadataDB_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "metadata", "initdb"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_MetadataCompositeStore_CreateMetadataDB_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "metadata", "initdb"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_MetadataCompositeStore_ListMetadataDBs_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "metadata", "listdbs"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_MetadataCompositeStore_InitMetadataDBCollection_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "metadata", "initcollection"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_MetadataCompositeStore_CreateMetadataDBCollection_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "metadata", "initcollection"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_MetadataCompositeStore_ListMetadataDBCollections_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "metadata", "listcollcetions"}, "", runtime.AssumeColonVerbOpt(true)))
 
@@ -586,11 +586,11 @@ var (
 )
 
 var (
-	forward_MetadataCompositeStore_InitMetadataDB_0 = runtime.ForwardResponseMessage
+	forward_MetadataCompositeStore_CreateMetadataDB_0 = runtime.ForwardResponseMessage
 
 	forward_MetadataCompositeStore_ListMetadataDBs_0 = runtime.ForwardResponseMessage
 
-	forward_MetadataCompositeStore_InitMetadataDBCollection_0 = runtime.ForwardResponseMessage
+	forward_MetadataCompositeStore_CreateMetadataDBCollection_0 = runtime.ForwardResponseMessage
 
 	forward_MetadataCompositeStore_ListMetadataDBCollections_0 = runtime.ForwardResponseMessage
 

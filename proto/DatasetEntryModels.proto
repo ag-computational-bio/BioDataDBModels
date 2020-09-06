@@ -88,7 +88,6 @@ message DatasetObjectEntry {
     google.protobuf.Struct AdditionalMetadata = 8; // Additional metadata of the object
     string UploadID = 9;
     Status Status = 10;
-    string DatasetObjectGroup = 11;
 }
 
 message DatasetObjectGroup {
@@ -100,9 +99,12 @@ message DatasetObjectGroup {
     };
 
     string ID = 1;
-    string DatasetObjectAnchor = 2;
+    string DatasetGroupHistoryID = 2;
     string Name = 3;
     Version Version = 4;
     string DatasetID = 5; // DatasetID: ID of the parent dataset
     repeated string DatasetVersionID = 6; // DatasetVersionID: ID of the parent dataset version
+    repeated DatasetObjectEntry Objects = 7;
+    google.protobuf.Struct AdditionalMetadata = 8; // Additional metadata of the object
+
 }
