@@ -13,11 +13,11 @@ module ProjectAPI
     self.unmarshal_class_method = :decode
     self.service_name = 'ProjectAPI'
 
-    rpc :CreateProject, CreateProjectRequest, ProjectEntry
-    rpc :AddUserToProject, AddUserToProjectRequest, ProjectEntry
-    rpc :GetProjectDatasets, ID, DatasetList
-    rpc :GetUserProjects, Empty, ProjectEntryList
-    rpc :DeleteProject, ID, Empty
+    rpc :CreateProject, ::CreateProjectRequest, ::ProjectEntry
+    rpc :AddUserToProject, ::AddUserToProjectRequest, ::ProjectEntry
+    rpc :GetProjectDatasets, ::ID, ::DatasetList
+    rpc :GetUserProjects, ::Empty, ::ProjectEntryList
+    rpc :DeleteProject, ::ID, ::Empty
   end
 
   Stub = Service.rpc_stub_class

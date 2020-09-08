@@ -1260,6 +1260,10 @@
       "properties": {
         "DatsetObjectID": {
           "type": "string"
+        },
+        "DatasetObjectSize": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -1292,8 +1296,7 @@
           "type": "string"
         },
         "IsPublic": {
-          "type": "boolean",
-          "format": "boolean"
+          "type": "boolean"
         },
         "Created": {
           "type": "string",
@@ -1612,6 +1615,10 @@
       "properties": {
         "DatsetObjectID": {
           "type": "string"
+        },
+        "DatasetObjectSize": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },

@@ -13,13 +13,13 @@ module MetadataCompositeStore
     self.unmarshal_class_method = :decode
     self.service_name = 'MetadataCompositeStore'
 
-    rpc :CreateMetadataDB, InitMetadataDBRequest, MetadataDBEntry
-    rpc :ListMetadataDBs, Empty, MetadataDBList
-    rpc :CreateMetadataDBCollection, InitMetadataCollectionRequest, MetadataDBEntry
-    rpc :ListMetadataDBCollections, Empty, MetadataDBCollectionList
-    rpc :InsertMetadata, InsertMetadataRequest, Empty
-    rpc :AddMetadataIndex, AddMetadataIndexRequest, Empty
-    rpc :Query, QueryRequest, Field
+    rpc :CreateMetadataDB, ::InitMetadataDBRequest, ::MetadataDBEntry
+    rpc :ListMetadataDBs, ::Empty, ::MetadataDBList
+    rpc :CreateMetadataDBCollection, ::InitMetadataCollectionRequest, ::MetadataDBEntry
+    rpc :ListMetadataDBCollections, ::Empty, ::MetadataDBCollectionList
+    rpc :InsertMetadata, ::InsertMetadataRequest, ::Empty
+    rpc :AddMetadataIndex, ::AddMetadataIndexRequest, ::Empty
+    rpc :Query, ::QueryRequest, ::Field
   end
 
   Stub = Service.rpc_stub_class

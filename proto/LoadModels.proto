@@ -8,6 +8,7 @@ import "proto/CommonModels.proto";
 
 message CreateUploadLinkRequest {
     string DatsetObjectID = 1;
+    int64 DatasetObjectSize = 2;
 }
 
 message CreateUploadLinkResponse {
@@ -24,6 +25,7 @@ message CreateUploadLinkResponse {
 
 message InitMultipartUploadRequest {
     string DatsetObjectID = 1;
+    int64 DatasetObjectSize = 2;
 }
 
 message GetMultipartUploadLinkPartRequest {

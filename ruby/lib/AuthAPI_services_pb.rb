@@ -15,11 +15,11 @@ module APITokenService
     self.service_name = 'APITokenService'
 
     # CreateAPIToken Creates a new API token and returns it
-    rpc :CreateAPIToken, CreateTokenRequest, TokenEntry
+    rpc :CreateAPIToken, ::CreateTokenRequest, ::TokenEntry
     # GetTokenList Lists all available access tokens
-    rpc :GetTokenList, ID, TokenList
+    rpc :GetTokenList, ::ID, ::TokenList
     # RevokeToken Revokes an access token
-    rpc :RevokeToken, ID, Empty
+    rpc :RevokeToken, ::ID, ::Empty
   end
 
   Stub = Service.rpc_stub_class

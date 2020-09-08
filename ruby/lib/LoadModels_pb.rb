@@ -10,6 +10,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do
     add_message "CreateUploadLinkRequest" do
       optional :DatsetObjectID, :string, 1
+      optional :DatasetObjectSize, :int64, 2
     end
     add_message "CreateUploadLinkResponse" do
       optional :ID, :string, 1
@@ -18,6 +19,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     end
     add_message "InitMultipartUploadRequest" do
       optional :DatsetObjectID, :string, 1
+      optional :DatasetObjectSize, :int64, 2
     end
     add_message "GetMultipartUploadLinkPartRequest" do
       optional :DatasetObjectID, :string, 1
