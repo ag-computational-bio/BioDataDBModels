@@ -60,6 +60,7 @@ module ObjectsService
     # CreateDatsetObjectGroup Creates a new dataset object group in the database
     # Will also create all related dataset objects
     rpc :CreateDatsetObjectGroup, ::CreateDatasetObjectGroupRequest, ::DatasetObjectGroup
+    rpc :DatasetObjectsGroups, ::ID, ::DatasetObjectGroupList
     # DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version
     rpc :DatasetVersionObjectGroups, ::ID, ::DatasetObjectGroupList
     # GetDatasetObjectGroup The dataset object group with the given ID

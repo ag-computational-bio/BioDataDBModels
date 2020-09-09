@@ -597,6 +597,60 @@ func local_request_ObjectsService_CreateDatsetObjectGroup_0(ctx context.Context,
 
 }
 
+func request_ObjectsService_DatasetObjectsGroups_0(ctx context.Context, marshaler runtime.Marshaler, client ObjectsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq commonmodels.ID
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["ID"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "ID")
+	}
+
+	protoReq.ID, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ID", err)
+	}
+
+	msg, err := client.DatasetObjectsGroups(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_ObjectsService_DatasetObjectsGroups_0(ctx context.Context, marshaler runtime.Marshaler, server ObjectsServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq commonmodels.ID
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["ID"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "ID")
+	}
+
+	protoReq.ID, err = runtime.String(val)
+
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "ID", err)
+	}
+
+	msg, err := server.DatasetObjectsGroups(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
 func request_ObjectsService_DatasetVersionObjectGroups_0(ctx context.Context, marshaler runtime.Marshaler, client ObjectsServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq commonmodels.ID
 	var metadata runtime.ServerMetadata
@@ -1073,6 +1127,29 @@ func RegisterObjectsServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 
 	})
 
+	mux.Handle("GET", pattern_ObjectsService_DatasetObjectsGroups_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_ObjectsService_DatasetObjectsGroups_0(rctx, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ObjectsService_DatasetObjectsGroups_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("GET", pattern_ObjectsService_DatasetVersionObjectGroups_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -1536,6 +1613,26 @@ func RegisterObjectsServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 
 	})
 
+	mux.Handle("GET", pattern_ObjectsService_DatasetObjectsGroups_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		rctx, err := runtime.AnnotateContext(ctx, mux, req)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_ObjectsService_DatasetObjectsGroups_0(rctx, inboundMarshaler, client, req, pathParams)
+		ctx = runtime.NewServerMetadataContext(ctx, md)
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_ObjectsService_DatasetObjectsGroups_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("GET", pattern_ObjectsService_DatasetVersionObjectGroups_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -1602,6 +1699,8 @@ func RegisterObjectsServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 var (
 	pattern_ObjectsService_CreateDatsetObjectGroup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 2, 3}, []string{"api", "v1", "datasetobjectgroup", "create"}, "", runtime.AssumeColonVerbOpt(true)))
 
+	pattern_ObjectsService_DatasetObjectsGroups_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "datasetobjectgroups", "ID"}, "", runtime.AssumeColonVerbOpt(true)))
+
 	pattern_ObjectsService_DatasetVersionObjectGroups_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "datasetobjectgroup", "ID"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_ObjectsService_GetDatasetObjectGroup_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "datasetobjectgroup", "ID"}, "", runtime.AssumeColonVerbOpt(true)))
@@ -1611,6 +1710,8 @@ var (
 
 var (
 	forward_ObjectsService_CreateDatsetObjectGroup_0 = runtime.ForwardResponseMessage
+
+	forward_ObjectsService_DatasetObjectsGroups_0 = runtime.ForwardResponseMessage
 
 	forward_ObjectsService_DatasetVersionObjectGroups_0 = runtime.ForwardResponseMessage
 

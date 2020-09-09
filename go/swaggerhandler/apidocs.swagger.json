@@ -362,6 +362,36 @@
         ]
       }
     },
+    "/api/v1/datasetobjectgroups/{ID}": {
+      "get": {
+        "operationId": "ObjectsService_DatasetObjectsGroups",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetObjectGroupList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ObjectsService"
+        ]
+      }
+    },
     "/api/v1/datasets/{ID}": {
       "get": {
         "summary": "Datasets Lists all datasets of a user",

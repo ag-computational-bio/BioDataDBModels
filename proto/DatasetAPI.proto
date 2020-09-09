@@ -122,6 +122,13 @@ service DatasetService {
         };
     }
 
+    rpc DatasetObjectsGroups(ID) returns (DatasetObjectGroupList) {
+        option (google.api.http) = {
+            get: "/api/v1/datasetobjectgroups/{ID}"
+        };
+    }
+
+
     //DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version
     rpc DatasetVersionObjectGroups(ID) returns (DatasetObjectGroupList) {
         option (google.api.http) = {

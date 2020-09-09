@@ -117,7 +117,7 @@ var file_proto_DatasetAPI_proto_rawDesc = []byte{
 	0x69, 0x73, 0x74, 0x22, 0x30, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x2a, 0x12, 0x28, 0x2f, 0x61, 0x70,
 	0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x76, 0x65, 0x72, 0x73,
 	0x69, 0x6f, 0x6e, 0x2f, 0x7b, 0x49, 0x44, 0x7d, 0x2f, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x67,
-	0x72, 0x6f, 0x75, 0x70, 0x73, 0x32, 0xa3, 0x03, 0x0a, 0x0e, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
+	0x72, 0x6f, 0x75, 0x70, 0x73, 0x32, 0x83, 0x04, 0x0a, 0x0e, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
 	0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x7e, 0x0a, 0x17, 0x43, 0x72, 0x65, 0x61,
 	0x74, 0x65, 0x44, 0x61, 0x74, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72,
 	0x6f, 0x75, 0x70, 0x12, 0x20, 0x2e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x44, 0x61, 0x74, 0x61,
@@ -126,7 +126,13 @@ var file_proto_DatasetAPI_proto_rawDesc = []byte{
 	0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x22, 0x2c, 0x82, 0xd3, 0xe4, 0x93,
 	0x02, 0x26, 0x22, 0x21, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f, 0x64, 0x61, 0x74, 0x61,
 	0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x2f, 0x63,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x3a, 0x01, 0x2a, 0x12, 0x63, 0x0a, 0x1a, 0x44, 0x61, 0x74, 0x61,
+	0x72, 0x65, 0x61, 0x74, 0x65, 0x3a, 0x01, 0x2a, 0x12, 0x5e, 0x0a, 0x14, 0x44, 0x61, 0x74, 0x61,
+	0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x73, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x73,
+	0x12, 0x03, 0x2e, 0x49, 0x44, 0x1a, 0x17, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f,
+	0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4c, 0x69, 0x73, 0x74, 0x22, 0x28,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x22, 0x12, 0x20, 0x2f, 0x61, 0x70, 0x69, 0x2f, 0x76, 0x31, 0x2f,
+	0x64, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x6f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x67, 0x72, 0x6f,
+	0x75, 0x70, 0x73, 0x2f, 0x7b, 0x49, 0x44, 0x7d, 0x12, 0x63, 0x0a, 0x1a, 0x44, 0x61, 0x74, 0x61,
 	0x73, 0x65, 0x74, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74,
 	0x47, 0x72, 0x6f, 0x75, 0x70, 0x73, 0x12, 0x03, 0x2e, 0x49, 0x44, 0x1a, 0x17, 0x2e, 0x44, 0x61,
 	0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70,
@@ -180,27 +186,29 @@ var file_proto_DatasetAPI_proto_depIdxs = []int32{
 	1,  // 10: DatasetService.DeleteDatasetVersion:input_type -> ID
 	1,  // 11: DatasetService.DatasetVersionObjectGroups:input_type -> ID
 	6,  // 12: ObjectsService.CreateDatsetObjectGroup:input_type -> CreateDatasetObjectGroupRequest
-	1,  // 13: ObjectsService.DatasetVersionObjectGroups:input_type -> ID
-	1,  // 14: ObjectsService.GetDatasetObjectGroup:input_type -> ID
-	1,  // 15: ObjectsService.DeleteDatasetObjectGroup:input_type -> ID
-	7,  // 16: DatasetService.CreateNewDataset:output_type -> DatasetEntry
-	8,  // 17: DatasetService.Datasets:output_type -> DatasetList
-	9,  // 18: DatasetService.DatasetVersions:output_type -> DatasetVersionList
-	7,  // 19: DatasetService.UpdateDatasetField:output_type -> DatasetEntry
-	7,  // 20: DatasetService.UpdateCurrentDatasetVersion:output_type -> DatasetEntry
-	10, // 21: DatasetService.DeleteDataset:output_type -> Empty
-	11, // 22: DatasetService.CreateNewDatasetVersion:output_type -> DatasetVersionEntry
-	11, // 23: DatasetService.GetDatasetVersion:output_type -> DatasetVersionEntry
-	7,  // 24: DatasetService.UpdateDatasetVersionField:output_type -> DatasetEntry
-	10, // 25: DatasetService.AddObjectGroupToDatasetVersion:output_type -> Empty
-	10, // 26: DatasetService.DeleteDatasetVersion:output_type -> Empty
-	12, // 27: DatasetService.DatasetVersionObjectGroups:output_type -> DatasetObjectGroupList
-	13, // 28: ObjectsService.CreateDatsetObjectGroup:output_type -> DatasetObjectGroup
-	12, // 29: ObjectsService.DatasetVersionObjectGroups:output_type -> DatasetObjectGroupList
-	13, // 30: ObjectsService.GetDatasetObjectGroup:output_type -> DatasetObjectGroup
-	10, // 31: ObjectsService.DeleteDatasetObjectGroup:output_type -> Empty
-	16, // [16:32] is the sub-list for method output_type
-	0,  // [0:16] is the sub-list for method input_type
+	1,  // 13: ObjectsService.DatasetObjectsGroups:input_type -> ID
+	1,  // 14: ObjectsService.DatasetVersionObjectGroups:input_type -> ID
+	1,  // 15: ObjectsService.GetDatasetObjectGroup:input_type -> ID
+	1,  // 16: ObjectsService.DeleteDatasetObjectGroup:input_type -> ID
+	7,  // 17: DatasetService.CreateNewDataset:output_type -> DatasetEntry
+	8,  // 18: DatasetService.Datasets:output_type -> DatasetList
+	9,  // 19: DatasetService.DatasetVersions:output_type -> DatasetVersionList
+	7,  // 20: DatasetService.UpdateDatasetField:output_type -> DatasetEntry
+	7,  // 21: DatasetService.UpdateCurrentDatasetVersion:output_type -> DatasetEntry
+	10, // 22: DatasetService.DeleteDataset:output_type -> Empty
+	11, // 23: DatasetService.CreateNewDatasetVersion:output_type -> DatasetVersionEntry
+	11, // 24: DatasetService.GetDatasetVersion:output_type -> DatasetVersionEntry
+	7,  // 25: DatasetService.UpdateDatasetVersionField:output_type -> DatasetEntry
+	10, // 26: DatasetService.AddObjectGroupToDatasetVersion:output_type -> Empty
+	10, // 27: DatasetService.DeleteDatasetVersion:output_type -> Empty
+	12, // 28: DatasetService.DatasetVersionObjectGroups:output_type -> DatasetObjectGroupList
+	13, // 29: ObjectsService.CreateDatsetObjectGroup:output_type -> DatasetObjectGroup
+	12, // 30: ObjectsService.DatasetObjectsGroups:output_type -> DatasetObjectGroupList
+	12, // 31: ObjectsService.DatasetVersionObjectGroups:output_type -> DatasetObjectGroupList
+	13, // 32: ObjectsService.GetDatasetObjectGroup:output_type -> DatasetObjectGroup
+	10, // 33: ObjectsService.DeleteDatasetObjectGroup:output_type -> Empty
+	17, // [17:34] is the sub-list for method output_type
+	0,  // [0:17] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -735,6 +743,7 @@ type ObjectsServiceClient interface {
 	//CreateDatsetObjectGroup Creates a new dataset object group in the database
 	//Will also create all related dataset objects
 	CreateDatsetObjectGroup(ctx context.Context, in *datasetapimodels.CreateDatasetObjectGroupRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetObjectGroup, error)
+	DatasetObjectsGroups(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetapimodels.DatasetObjectGroupList, error)
 	//DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version
 	DatasetVersionObjectGroups(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetapimodels.DatasetObjectGroupList, error)
 	//GetDatasetObjectGroup The dataset object group with the given ID
@@ -756,6 +765,15 @@ func NewObjectsServiceClient(cc grpc.ClientConnInterface) ObjectsServiceClient {
 func (c *objectsServiceClient) CreateDatsetObjectGroup(ctx context.Context, in *datasetapimodels.CreateDatasetObjectGroupRequest, opts ...grpc.CallOption) (*datasetentrymodels.DatasetObjectGroup, error) {
 	out := new(datasetentrymodels.DatasetObjectGroup)
 	err := c.cc.Invoke(ctx, "/ObjectsService/CreateDatsetObjectGroup", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *objectsServiceClient) DatasetObjectsGroups(ctx context.Context, in *commonmodels.ID, opts ...grpc.CallOption) (*datasetapimodels.DatasetObjectGroupList, error) {
+	out := new(datasetapimodels.DatasetObjectGroupList)
+	err := c.cc.Invoke(ctx, "/ObjectsService/DatasetObjectsGroups", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -794,6 +812,7 @@ type ObjectsServiceServer interface {
 	//CreateDatsetObjectGroup Creates a new dataset object group in the database
 	//Will also create all related dataset objects
 	CreateDatsetObjectGroup(context.Context, *datasetapimodels.CreateDatasetObjectGroupRequest) (*datasetentrymodels.DatasetObjectGroup, error)
+	DatasetObjectsGroups(context.Context, *commonmodels.ID) (*datasetapimodels.DatasetObjectGroupList, error)
 	//DatasetVersionObjectGroups Lists all objects groups that are part of the given dataset version
 	DatasetVersionObjectGroups(context.Context, *commonmodels.ID) (*datasetapimodels.DatasetObjectGroupList, error)
 	//GetDatasetObjectGroup The dataset object group with the given ID
@@ -810,6 +829,9 @@ type UnimplementedObjectsServiceServer struct {
 
 func (*UnimplementedObjectsServiceServer) CreateDatsetObjectGroup(context.Context, *datasetapimodels.CreateDatasetObjectGroupRequest) (*datasetentrymodels.DatasetObjectGroup, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateDatsetObjectGroup not implemented")
+}
+func (*UnimplementedObjectsServiceServer) DatasetObjectsGroups(context.Context, *commonmodels.ID) (*datasetapimodels.DatasetObjectGroupList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DatasetObjectsGroups not implemented")
 }
 func (*UnimplementedObjectsServiceServer) DatasetVersionObjectGroups(context.Context, *commonmodels.ID) (*datasetapimodels.DatasetObjectGroupList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DatasetVersionObjectGroups not implemented")
@@ -839,6 +861,24 @@ func _ObjectsService_CreateDatsetObjectGroup_Handler(srv interface{}, ctx contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ObjectsServiceServer).CreateDatsetObjectGroup(ctx, req.(*datasetapimodels.CreateDatasetObjectGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ObjectsService_DatasetObjectsGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(commonmodels.ID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectsServiceServer).DatasetObjectsGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ObjectsService/DatasetObjectsGroups",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectsServiceServer).DatasetObjectsGroups(ctx, req.(*commonmodels.ID))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -904,6 +944,10 @@ var _ObjectsService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateDatsetObjectGroup",
 			Handler:    _ObjectsService_CreateDatsetObjectGroup_Handler,
+		},
+		{
+			MethodName: "DatasetObjectsGroups",
+			Handler:    _ObjectsService_DatasetObjectsGroups_Handler,
 		},
 		{
 			MethodName: "DatasetVersionObjectGroups",
