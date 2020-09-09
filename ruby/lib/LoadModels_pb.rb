@@ -18,7 +18,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Object, :message, 3, "DatasetObjectEntry"
     end
     add_message "InitMultipartUploadRequest" do
-      optional :DatsetObjectID, :string, 1
+      optional :DatasetObjectID, :string, 1
       optional :DatasetObjectSize, :int64, 2
     end
     add_message "GetMultipartUploadLinkPartRequest" do
