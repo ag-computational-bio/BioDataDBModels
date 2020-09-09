@@ -4,13 +4,14 @@
 require 'google/protobuf'
 
 require 'proto/DatasetEntryModels_pb'
+require 'proto/DatasetAPIModels_pb'
 require 'protoc/gateway/options/annotations_pb'
 require 'proto/CommonModels_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/LoadModels.proto", :syntax => :proto3) do
     add_message "CreateUploadLinkRequest" do
-      optional :DatsetObjectID, :string, 1
-      optional :DatasetObjectSize, :int64, 2
+      optional :DatsetObjectGroupID, :string, 1
+      optional :CreateDatasetObjectRequest, :message, 2, "CreateDatasetObjectRequest"
     end
     add_message "CreateUploadLinkResponse" do
       optional :ID, :string, 1
@@ -18,8 +19,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Object, :message, 3, "DatasetObjectEntry"
     end
     add_message "InitMultipartUploadRequest" do
-      optional :DatsetObjectID, :string, 1
-      optional :DatasetObjectSize, :int64, 2
+      optional :DatsetObjectGroupID, :string, 1
+      optional :CreateDatasetObjectRequest, :message, 2, "CreateDatasetObjectRequest"
     end
     add_message "GetMultipartUploadLinkPartRequest" do
       optional :DatasetObjectID, :string, 1
