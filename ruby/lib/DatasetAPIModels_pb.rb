@@ -7,7 +7,6 @@ require 'google/protobuf/struct_pb'
 require 'proto/CommonModels_pb'
 require 'proto/DatasetEntryModels_pb'
 require 'protoc/gateway/options/annotations_pb'
-require 'google/protobuf/timestamp_pb'
 Google::Protobuf::DescriptorPool.generated_pool.build do
   add_file("proto/DatasetAPIModels.proto", :syntax => :proto3) do
     add_message "CreateDatasetRequest" do
@@ -26,6 +25,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
       optional :ExpectedObjectCount, :int64, 6
     end
+    add_message "AddDatasetObjectGroupToDatasetVersionRequest" do
+      optional :DatasetVersionID, :string, 1
+      optional :DatasetObjectGroupID, :string, 2
+    end
     add_message "DatasetVersionList" do
       repeated :DatasetVersions, :message, 2, "DatasetVersionEntry"
     end
@@ -40,16 +43,6 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Version, :message, 3, "Version"
       optional :DatasetID, :string, 4
       repeated :DatasetVersionID, :string, 5
-      repeated :DatasetObjects, :message, 6, "CreateDatasetObjectRequest"
-    end
-    add_message "CreateDatasetObjectRequest" do
-      optional :Filename, :string, 1
-      optional :Filetype, :string, 2
-      optional :Origin, :message, 3, "Origin"
-      optional :Created, :message, 4, "google.protobuf.Timestamp"
-      optional :AdditionalMetadata, :message, 5, "google.protobuf.Struct"
-      optional :ContentLen, :int64, 8
-      optional :UploadID, :string, 9
     end
     add_message "DatasetObjectGroupList" do
       repeated :DatasetObjectGroups, :message, 1, "DatasetObjectGroup"
@@ -80,10 +73,10 @@ end
 CreateDatasetRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetRequest").msgclass
 DatasetList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetList").msgclass
 CreateDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetVersionRequest").msgclass
+AddDatasetObjectGroupToDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("AddDatasetObjectGroupToDatasetVersionRequest").msgclass
 DatasetVersionList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionList").msgclass
 UpdateDatasetVersionObjectCountRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UpdateDatasetVersionObjectCountRequest").msgclass
 CreateDatasetObjectGroupRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectGroupRequest").msgclass
-CreateDatasetObjectRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectRequest").msgclass
 DatasetObjectGroupList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectGroupList").msgclass
 DatasetObjectLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectLinks").msgclass
 DatasetObjectLink = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectLink").msgclass

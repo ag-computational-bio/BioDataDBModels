@@ -37,6 +37,7 @@ module DatasetService
     rpc :CreateNewDatasetVersion, ::CreateDatasetVersionRequest, ::DatasetVersionEntry
     rpc :GetDatasetVersion, ::ID, ::DatasetVersionEntry
     rpc :UpdateDatasetVersionField, ::UpdateFieldsRequest, ::DatasetEntry
+    rpc :AddObjectGroupToDatasetVersion, ::AddDatasetObjectGroupToDatasetVersionRequest, ::Empty
     # Deletes a dataset version
     # This should not delete the underlaying dataset objects
     rpc :DeleteDatasetVersion, ::ID, ::Empty

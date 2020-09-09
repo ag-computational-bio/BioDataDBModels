@@ -393,6 +393,38 @@
         ]
       }
     },
+    "/api/v1/datasetversion/addobjectgroup": {
+      "post": {
+        "operationId": "DatasetService_AddObjectGroupToDatasetVersion",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AddDatasetObjectGroupToDatasetVersionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/datasetversion/create": {
       "post": {
         "summary": "Creates a new dataset version which is linked to an exisiting dataset",
@@ -1065,6 +1097,17 @@
     }
   },
   "definitions": {
+    "AddDatasetObjectGroupToDatasetVersionRequest": {
+      "type": "object",
+      "properties": {
+        "DatasetVersionID": {
+          "type": "string"
+        },
+        "DatasetObjectGroupID": {
+          "type": "string"
+        }
+      }
+    },
     "AddMetadataIndexRequest": {
       "type": "object",
       "properties": {
@@ -1134,12 +1177,6 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
-        },
-        "DatasetObjects": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/CreateDatasetObjectRequest"
           }
         }
       }
@@ -1258,12 +1295,11 @@
     "CreateUploadLinkRequest": {
       "type": "object",
       "properties": {
-        "DatsetObjectID": {
+        "DatasetObjectGroupID": {
           "type": "string"
         },
-        "DatasetObjectSize": {
-          "type": "string",
-          "format": "int64"
+        "CreateDatasetObjectRequest": {
+          "$ref": "#/definitions/CreateDatasetObjectRequest"
         }
       }
     },
@@ -1613,12 +1649,11 @@
     "InitMultipartUploadRequest": {
       "type": "object",
       "properties": {
-        "DatasetObjectID": {
+        "DatasetObjectGroupID": {
           "type": "string"
         },
-        "DatasetObjectSize": {
-          "type": "string",
-          "format": "int64"
+        "CreateDatasetObjectRequest": {
+          "$ref": "#/definitions/CreateDatasetObjectRequest"
         }
       }
     },

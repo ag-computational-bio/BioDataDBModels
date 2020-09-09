@@ -6,7 +6,6 @@ import "google/protobuf/struct.proto";
 import "proto/CommonModels.proto";
 import "proto/DatasetEntryModels.proto";
 import "protoc/gateway/options/annotations.proto";
-import "google/protobuf/timestamp.proto";
 
 // These messages are used inside the DatasetAPI
 
@@ -56,6 +55,11 @@ message CreateDatasetVersionRequest {
     int64 ExpectedObjectCount = 6; // Expected objects
 }
 
+message AddDatasetObjectGroupToDatasetVersionRequest {
+    string DatasetVersionID = 1;
+    string DatasetObjectGroupID = 2;
+}
+
 message DatasetVersionList {
     option (grpc.gateway.protoc_gen_swagger.options.openapiv2_schema) = {
         json_schema: {
@@ -82,17 +86,6 @@ message CreateDatasetObjectGroupRequest {
     Version Version = 3;
     string DatasetID = 4;
     repeated string DatasetVersionID = 5;
-    repeated CreateDatasetObjectRequest DatasetObjects = 6;
-}
-
-message CreateDatasetObjectRequest {
-    string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
-    string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
-    Origin Origin = 3; // Origin: Source of the dataset
-    google.protobuf.Timestamp Created = 4; // When the data object was created
-    google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata of the object
-    int64 ContentLen = 8; // ContentLen: Lenght of the stored dataset
-    string UploadID = 9;
 }
 
 message DatasetObjectGroupList {

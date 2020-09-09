@@ -5,10 +5,14 @@ option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmode
 import "proto/DatasetEntryModels.proto";
 import "protoc/gateway/options/annotations.proto";
 import "proto/CommonModels.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+
 
 message CreateUploadLinkRequest {
-    string DatsetObjectID = 1;
-    int64 DatasetObjectSize = 2;
+    string DatasetObjectGroupID = 1;
+    CreateDatasetObjectRequest CreateDatasetObjectRequest = 2;
 }
 
 message CreateUploadLinkResponse {
@@ -24,8 +28,8 @@ message CreateUploadLinkResponse {
 }
 
 message InitMultipartUploadRequest {
-    string DatasetObjectID = 1;
-    int64 DatasetObjectSize = 2;
+    string DatasetObjectGroupID = 1;
+    CreateDatasetObjectRequest CreateDatasetObjectRequest = 2;
 }
 
 message GetMultipartUploadLinkPartRequest {
@@ -65,4 +69,14 @@ message ObjectDownloadLink {
 message CompletedUploadParts {
     string Etag = 1;
     int64 Partnumber = 2;
+}
+
+message CreateDatasetObjectRequest {
+    string Filename = 1; // Filename: Name of the original file e.g.: mydata.json
+    string Filetype = 2; // Filetype: Type of the stored file, e.g.: json, gbff,...
+    Origin Origin = 3; // Origin: Source of the dataset
+    google.protobuf.Timestamp Created = 4; // When the data object was created
+    google.protobuf.Struct AdditionalMetadata = 5; // Additional metadata of the object
+    int64 ContentLen = 8; // ContentLen: Lenght of the stored dataset
+    string UploadID = 9;
 }
