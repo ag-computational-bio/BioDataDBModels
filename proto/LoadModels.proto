@@ -24,7 +24,7 @@ message CreateUploadLinkResponse {
 }
 
 message InitMultipartUploadRequest {
-    string DatsetObjectID = 1;
+    string DatasetObjectID = 1;
     int64 DatasetObjectSize = 2;
 }
 
