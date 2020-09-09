@@ -3,13 +3,12 @@ syntax = "proto3";
 option go_package = "github.com/ag-computational-bio/BioDataDBModels/go/loadmodels";
 
 import "proto/DatasetEntryModels.proto";
-import "proto/DatasetAPIModels.proto";
 import "protoc/gateway/options/annotations.proto";
 import "proto/CommonModels.proto";
 
 message CreateUploadLinkRequest {
-    string DatsetObjectGroupID = 1;
-    CreateDatasetObjectRequest CreateDatasetObjectRequest = 2;
+    string DatsetObjectID = 1;
+    int64 DatasetObjectSize = 2;
 }
 
 message CreateUploadLinkResponse {
@@ -25,8 +24,8 @@ message CreateUploadLinkResponse {
 }
 
 message InitMultipartUploadRequest {
-    string DatsetObjectGroupID = 1;
-    CreateDatasetObjectRequest CreateDatasetObjectRequest = 2;
+    string DatsetObjectID = 1;
+    int64 DatasetObjectSize = 2;
 }
 
 message GetMultipartUploadLinkPartRequest {

@@ -1258,11 +1258,12 @@
     "CreateUploadLinkRequest": {
       "type": "object",
       "properties": {
-        "DatsetObjectGroupID": {
+        "DatsetObjectID": {
           "type": "string"
         },
-        "CreateDatasetObjectRequest": {
-          "$ref": "#/definitions/CreateDatasetObjectRequest"
+        "DatasetObjectSize": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -1612,11 +1613,12 @@
     "InitMultipartUploadRequest": {
       "type": "object",
       "properties": {
-        "DatsetObjectGroupID": {
+        "DatsetObjectID": {
           "type": "string"
         },
-        "CreateDatasetObjectRequest": {
-          "$ref": "#/definitions/CreateDatasetObjectRequest"
+        "DatasetObjectSize": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
