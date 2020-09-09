@@ -20,7 +20,7 @@ service LoadService {
         };
     }
 
-    rpc InitMultipartUpload(InitMultipartUploadRequest) returns (Empty){
+    rpc InitMultipartUpload(InitMultipartUploadRequest) returns (InitMultipartUploadResponse){
         option (google.api.http) = {
             post: "/api/v1/load/initmultipartupload"
             body: "*"

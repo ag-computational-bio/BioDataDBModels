@@ -23,6 +23,9 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :DatasetObjectGroupID, :string, 1
       optional :CreateDatasetObjectRequest, :message, 2, "CreateDatasetObjectRequest"
     end
+    add_message "InitMultipartUploadResponse" do
+      optional :DatasetObjectID, :string, 1
+    end
     add_message "GetMultipartUploadLinkPartRequest" do
       optional :DatasetObjectID, :string, 1
       optional :UploadPart, :int64, 2
@@ -69,6 +72,7 @@ end
 CreateUploadLinkRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateUploadLinkRequest").msgclass
 CreateUploadLinkResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateUploadLinkResponse").msgclass
 InitMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultipartUploadRequest").msgclass
+InitMultipartUploadResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("InitMultipartUploadResponse").msgclass
 GetMultipartUploadLinkPartRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartRequest").msgclass
 GetMultipartUploadLinkPartResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("GetMultipartUploadLinkPartResponse").msgclass
 FinishMultipartUploadRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("FinishMultipartUploadRequest").msgclass

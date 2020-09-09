@@ -746,7 +746,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/Empty"
+              "$ref": "#/definitions/InitMultipartUploadResponse"
             }
           },
           "default": {
@@ -1684,6 +1684,14 @@
         },
         "CreateDatasetObjectRequest": {
           "$ref": "#/definitions/CreateDatasetObjectRequest"
+        }
+      }
+    },
+    "InitMultipartUploadResponse": {
+      "type": "object",
+      "properties": {
+        "DatasetObjectID": {
+          "type": "string"
         }
       }
     },

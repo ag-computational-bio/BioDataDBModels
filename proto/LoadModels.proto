@@ -32,6 +32,10 @@ message InitMultipartUploadRequest {
     CreateDatasetObjectRequest CreateDatasetObjectRequest = 2;
 }
 
+message InitMultipartUploadResponse {
+    string DatasetObjectID = 1;
+}
+
 message GetMultipartUploadLinkPartRequest {
     string DatasetObjectID = 1;
     int64 UploadPart = 2;
