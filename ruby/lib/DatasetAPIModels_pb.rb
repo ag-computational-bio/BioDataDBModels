@@ -37,6 +37,10 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       optional :Value, :int64, 2
       optional :DatasetID, :string, 3
     end
+    add_message "StatusUpdate" do
+      optional :ID, :string, 1
+      optional :Status, :enum, 2, "Status"
+    end
     add_message "CreateDatasetObjectGroupRequest" do
       optional :DatasetObjectAnchor, :string, 1
       optional :Name, :string, 2
@@ -76,6 +80,7 @@ CreateDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.
 AddDatasetObjectGroupToDatasetVersionRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("AddDatasetObjectGroupToDatasetVersionRequest").msgclass
 DatasetVersionList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetVersionList").msgclass
 UpdateDatasetVersionObjectCountRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("UpdateDatasetVersionObjectCountRequest").msgclass
+StatusUpdate = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("StatusUpdate").msgclass
 CreateDatasetObjectGroupRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("CreateDatasetObjectGroupRequest").msgclass
 DatasetObjectGroupList = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectGroupList").msgclass
 DatasetObjectLinks = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("DatasetObjectLinks").msgclass

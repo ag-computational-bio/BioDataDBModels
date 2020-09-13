@@ -579,6 +579,38 @@
         ]
       }
     },
+    "/api/v1/datasetversion/updatestatus": {
+      "post": {
+        "operationId": "DatasetService_UpdateDatasetVersionStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/Empty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/StatusUpdate"
+            }
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/datasetversion/{ID}": {
       "get": {
         "operationId": "DatasetService_GetDatasetVersion",
@@ -1994,6 +2026,17 @@
         "Deleting"
       ],
       "default": "Initiating"
+    },
+    "StatusUpdate": {
+      "type": "object",
+      "properties": {
+        "ID": {
+          "type": "string"
+        },
+        "Status": {
+          "$ref": "#/definitions/Status"
+        }
+      }
     },
     "StructMetadataMessage": {
       "type": "object",

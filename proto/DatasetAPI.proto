@@ -91,6 +91,13 @@ service DatasetService {
         };
     }
 
+    rpc UpdateDatasetVersionStatus(StatusUpdate) returns (Empty) {
+        option (google.api.http) = {
+            post: "/api/v1/datasetversion/updatestatus"
+            body: "*"
+        };
+    }
+
     rpc UpdateDatasetVersionField(UpdateFieldsRequest) returns (DatasetEntry) {
         option (google.api.http) = {
             post: "/api/v1/datasetversion/update"

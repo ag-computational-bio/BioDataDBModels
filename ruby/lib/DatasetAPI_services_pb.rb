@@ -39,6 +39,7 @@ module DatasetService
     # Creates a new dataset version which is linked to an exisiting dataset
     rpc :CreateNewDatasetVersion, ::CreateDatasetVersionRequest, ::DatasetVersionEntry
     rpc :GetDatasetVersion, ::ID, ::DatasetVersionEntry
+    rpc :UpdateDatasetVersionStatus, ::StatusUpdate, ::Empty
     rpc :UpdateDatasetVersionField, ::UpdateFieldsRequest, ::DatasetEntry
     rpc :AddObjectGroupToDatasetVersion, ::AddDatasetObjectGroupToDatasetVersionRequest, ::Empty
     # Deletes a dataset version

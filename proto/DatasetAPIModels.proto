@@ -76,6 +76,11 @@ message UpdateDatasetVersionObjectCountRequest {
     string DatasetID = 3;
 }
 
+message StatusUpdate {
+    string ID = 1;
+    Status Status = 2;
+}
+
 
 //------------------------------------------------------------------------------------------------------
 // Dataset object and group models
