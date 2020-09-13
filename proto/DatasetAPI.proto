@@ -22,7 +22,20 @@ service DatasetService {
         };
     }
 
-    // Datasets Lists all datasets of a user
+    rpc Dataset(ID) returns (DatasetEntry) {
+        option (google.api.http) = {
+            get: "/api/v1/dataset/{ID}"
+        };
+    }
+
+    // GetCurrentVersionOfDataset Returns the current version of a dataset
+    rpc GetCurrentVersionOfDataset(ID) returns (DatasetEntry) {
+        option (google.api.http) = {
+            get: "/api/v1/currentdatasetversion/{ID}"
+        };
+    }
+
+    // Datasets Lists all datasets in a project
     rpc Datasets(ID) returns (DatasetList) {
         option (google.api.http) = {
             get: "/api/v1/datasets/{ID}"

@@ -108,6 +108,37 @@
         ]
       }
     },
+    "/api/v1/currentdatasetversion/{ID}": {
+      "get": {
+        "summary": "GetCurrentVersionOfDataset Returns the current version of a dataset",
+        "operationId": "DatasetService_GetCurrentVersionOfDataset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      }
+    },
     "/api/v1/dataset/create": {
       "post": {
         "summary": "CreateNewDataset Creates a new dataset and associates it with a dataset",
@@ -208,6 +239,34 @@
       }
     },
     "/api/v1/dataset/{ID}": {
+      "get": {
+        "operationId": "DatasetService_Dataset",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/DatasetEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "DatasetService"
+        ]
+      },
       "delete": {
         "summary": "DeleteDataset Delete a dataset\nDatasets can only be deleted if",
         "operationId": "DatasetService_DeleteDataset",
@@ -394,7 +453,7 @@
     },
     "/api/v1/datasets/{ID}": {
       "get": {
-        "summary": "Datasets Lists all datasets of a user",
+        "summary": "Datasets Lists all datasets in a project",
         "operationId": "DatasetService_Datasets",
         "responses": {
           "200": {

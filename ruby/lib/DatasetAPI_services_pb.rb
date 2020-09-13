@@ -19,7 +19,10 @@ module DatasetService
 
     # CreateNewDataset Creates a new dataset and associates it with a dataset
     rpc :CreateNewDataset, ::CreateDatasetRequest, ::DatasetEntry
-    # Datasets Lists all datasets of a user
+    rpc :Dataset, ::ID, ::DatasetEntry
+    # GetCurrentVersionOfDataset Returns the current version of a dataset
+    rpc :GetCurrentVersionOfDataset, ::ID, ::DatasetEntry
+    # Datasets Lists all datasets in a project
     rpc :Datasets, ::ID, ::DatasetList
     # Lists Versions of a dataset
     rpc :DatasetVersions, ::ID, ::DatasetVersionList
