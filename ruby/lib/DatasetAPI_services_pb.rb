@@ -21,7 +21,7 @@ module DatasetService
     rpc :CreateNewDataset, ::CreateDatasetRequest, ::DatasetEntry
     rpc :Dataset, ::ID, ::DatasetEntry
     # GetCurrentVersionOfDataset Returns the current version of a dataset
-    rpc :GetCurrentVersionOfDataset, ::ID, ::DatasetEntry
+    rpc :GetCurrentVersionOfDataset, ::ID, ::DatasetVersionEntry
     # Datasets Lists all datasets in a project
     rpc :Datasets, ::ID, ::DatasetList
     # Lists Versions of a dataset

@@ -29,7 +29,7 @@ service DatasetService {
     }
 
     // GetCurrentVersionOfDataset Returns the current version of a dataset
-    rpc GetCurrentVersionOfDataset(ID) returns (DatasetEntry) {
+    rpc GetCurrentVersionOfDataset(ID) returns (DatasetVersionEntry) {
         option (google.api.http) = {
             get: "/api/v1/currentdatasetversion/{ID}"
         };

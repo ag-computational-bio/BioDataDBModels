@@ -116,7 +116,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/DatasetEntry"
+              "$ref": "#/definitions/DatasetVersionEntry"
             }
           },
           "default": {
