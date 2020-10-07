@@ -52,8 +52,6 @@ func (clients *GRPCEndpointsClients) New(host string, port string) error {
 		dialOptions = grpc.WithInsecure()
 	}
 
-	dialOptions = grpc.WithInsecure()
-
 	conn, err := grpc.Dial(fmt.Sprintf("%v:%v", host, port), dialOptions)
 	if err != nil {
 		log.Println(err.Error())
