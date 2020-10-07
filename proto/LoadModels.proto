@@ -66,8 +66,8 @@ message GetDownloadResponse {
 }
 
 message ObjectDownloadLink {
-    string Link = 1;
-    DatasetObjectEntry Object = 2;
+    repeated string Link = 1;
+    DatasetObjectGroup Object = 2;
 }
 
 message CompletedUploadParts {

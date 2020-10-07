@@ -577,8 +577,8 @@ type ObjectDownloadLink struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Link   string                                 `protobuf:"bytes,1,opt,name=Link,proto3" json:"Link,omitempty"`
-	Object *datasetentrymodels.DatasetObjectEntry `protobuf:"bytes,2,opt,name=Object,proto3" json:"Object,omitempty"`
+	Link   []string                               `protobuf:"bytes,1,rep,name=Link,proto3" json:"Link,omitempty"`
+	Object *datasetentrymodels.DatasetObjectGroup `protobuf:"bytes,2,opt,name=Object,proto3" json:"Object,omitempty"`
 }
 
 func (x *ObjectDownloadLink) Reset() {
@@ -613,14 +613,14 @@ func (*ObjectDownloadLink) Descriptor() ([]byte, []int) {
 	return file_proto_LoadModels_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *ObjectDownloadLink) GetLink() string {
+func (x *ObjectDownloadLink) GetLink() []string {
 	if x != nil {
 		return x.Link
 	}
-	return ""
+	return nil
 }
 
-func (x *ObjectDownloadLink) GetObject() *datasetentrymodels.DatasetObjectEntry {
+func (x *ObjectDownloadLink) GetObject() *datasetentrymodels.DatasetObjectGroup {
 	if x != nil {
 		return x.Object
 	}
@@ -869,10 +869,10 @@ var file_proto_LoadModels_proto_rawDesc = []byte{
 	0x44, 0x6f, 0x77, 0x6e, 0x6c, 0x6f, 0x61, 0x64, 0x4c, 0x69, 0x6e, 0x6b, 0x52, 0x05, 0x4c, 0x69,
 	0x6e, 0x6b, 0x73, 0x22, 0x55, 0x0a, 0x12, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x44, 0x6f, 0x77,
 	0x6e, 0x6c, 0x6f, 0x61, 0x64, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x4c, 0x69, 0x6e,
-	0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x2b, 0x0a,
+	0x6b, 0x18, 0x01, 0x20, 0x03, 0x28, 0x09, 0x52, 0x04, 0x4c, 0x69, 0x6e, 0x6b, 0x12, 0x2b, 0x0a,
 	0x06, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e,
-	0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x45, 0x6e, 0x74,
-	0x72, 0x79, 0x52, 0x06, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x4a, 0x0a, 0x14, 0x43, 0x6f,
+	0x44, 0x61, 0x74, 0x61, 0x73, 0x65, 0x74, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x47, 0x72, 0x6f,
+	0x75, 0x70, 0x52, 0x06, 0x4f, 0x62, 0x6a, 0x65, 0x63, 0x74, 0x22, 0x4a, 0x0a, 0x14, 0x43, 0x6f,
 	0x6d, 0x70, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x55, 0x70, 0x6c, 0x6f, 0x61, 0x64, 0x50, 0x61, 0x72,
 	0x74, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x45, 0x74, 0x61, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
 	0x52, 0x04, 0x45, 0x74, 0x61, 0x67, 0x12, 0x1e, 0x0a, 0x0a, 0x50, 0x61, 0x72, 0x74, 0x6e, 0x75,
@@ -933,9 +933,10 @@ var file_proto_LoadModels_proto_goTypes = []interface{}{
 	(*CreateDatasetObjectRequest)(nil),            // 12: CreateDatasetObjectRequest
 	(*datasetentrymodels.DatasetObjectEntry)(nil), // 13: DatasetObjectEntry
 	(commonmodels.Resource)(0),                    // 14: Resource
-	(*commonmodels.Origin)(nil),                   // 15: Origin
-	(*timestamp.Timestamp)(nil),                   // 16: google.protobuf.Timestamp
-	(*_struct.Struct)(nil),                        // 17: google.protobuf.Struct
+	(*datasetentrymodels.DatasetObjectGroup)(nil), // 15: DatasetObjectGroup
+	(*commonmodels.Origin)(nil),                   // 16: Origin
+	(*timestamp.Timestamp)(nil),                   // 17: google.protobuf.Timestamp
+	(*_struct.Struct)(nil),                        // 18: google.protobuf.Struct
 }
 var file_proto_LoadModels_proto_depIdxs = []int32{
 	12, // 0: CreateUploadLinkRequest.CreateDatasetObjectRequest:type_name -> CreateDatasetObjectRequest
@@ -945,10 +946,10 @@ var file_proto_LoadModels_proto_depIdxs = []int32{
 	8,  // 4: GetDownloadRequest.Resource:type_name -> ResourceRequest
 	14, // 5: ResourceRequest.Resource:type_name -> Resource
 	10, // 6: GetDownloadResponse.Links:type_name -> ObjectDownloadLink
-	13, // 7: ObjectDownloadLink.Object:type_name -> DatasetObjectEntry
-	15, // 8: CreateDatasetObjectRequest.Origin:type_name -> Origin
-	16, // 9: CreateDatasetObjectRequest.Created:type_name -> google.protobuf.Timestamp
-	17, // 10: CreateDatasetObjectRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
+	15, // 7: ObjectDownloadLink.Object:type_name -> DatasetObjectGroup
+	16, // 8: CreateDatasetObjectRequest.Origin:type_name -> Origin
+	17, // 9: CreateDatasetObjectRequest.Created:type_name -> google.protobuf.Timestamp
+	18, // 10: CreateDatasetObjectRequest.AdditionalMetadata:type_name -> google.protobuf.Struct
 	11, // [11:11] is the sub-list for method output_type
 	11, // [11:11] is the sub-list for method input_type
 	11, // [11:11] is the sub-list for extension type_name

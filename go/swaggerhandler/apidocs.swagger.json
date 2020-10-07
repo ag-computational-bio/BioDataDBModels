@@ -1893,10 +1893,13 @@
       "type": "object",
       "properties": {
         "Link": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "Object": {
-          "$ref": "#/definitions/DatasetObjectEntry"
+          "$ref": "#/definitions/DatasetObjectGroup"
         }
       }
     },

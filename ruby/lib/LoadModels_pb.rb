@@ -50,8 +50,8 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
       repeated :Links, :message, 1, "ObjectDownloadLink"
     end
     add_message "ObjectDownloadLink" do
-      optional :Link, :string, 1
-      optional :Object, :message, 2, "DatasetObjectEntry"
+      repeated :Link, :string, 1
+      optional :Object, :message, 2, "DatasetObjectGroup"
     end
     add_message "CompletedUploadParts" do
       optional :Etag, :string, 1
