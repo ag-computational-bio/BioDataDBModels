@@ -39,7 +39,7 @@ type GRPCEndpointsClients struct {
 }
 
 // New Creates and initializes a new set of GRPCEndpointsClients
-func (clients *GRPCEndpointsClients) New(host string, port string, token string, tokentype string) error {
+func (clients *GRPCEndpointsClients) New(host string, port string) error {
 	ctx := context.Background()
 	clients.GenericOutGoingContext = ctx
 
