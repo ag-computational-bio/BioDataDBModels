@@ -88,7 +88,7 @@ func (clients *GRPCEndpointsClients) createProjectClient(conn *grpc.ClientConn) 
 	clients.ProjectBackend = api.NewProjectAPIClient(conn)
 }
 
-// OutGoingContext Creates the required outgoing context for a call
+// OutGoingContextFromToken Creates the required outgoing context for a call
 func (clients *GRPCEndpointsClients) OutGoingContextFromToken(token string, tokentype TokenType) context.Context {
 	mdMap := make(map[string]string)
 	mdMap[string(tokentype)] = token
