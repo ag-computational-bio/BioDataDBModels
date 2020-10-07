@@ -89,7 +89,7 @@ func (clients *GRPCEndpointsClients) createProjectClient(conn *grpc.ClientConn) 
 }
 
 // OutGoingContext Creates the required outgoing context for a call
-func (clients *GRPCEndpointsClients) OutGoingContext(token string, tokentype TokenType) context.Context {
+func (clients *GRPCEndpointsClients) OutGoingContextFromToken(token string, tokentype TokenType) context.Context {
 	mdMap := make(map[string]string)
 	mdMap[string(tokentype)] = token
 	tokenMetadata := metadata.New(mdMap)
